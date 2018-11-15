@@ -1,4 +1,4 @@
-package BeerBar;
+package controller;
 
 public class Login
 {
