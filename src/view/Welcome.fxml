@@ -15,7 +15,7 @@
                   <Font size="36.0" />
                </font>
             </Label>
-            <Button fx:id="buttonLogin" layoutX="210.0" layoutY="211.0" mnemonicParsing="false" onAction="#buttonLoginClicked" prefHeight="70.0" prefWidth="180.0" style="-fx-background-color: #00264d;" text="Enter" textFill="WHITE">
+            <Button fx:id="buttonLogin" layoutX="210.0" layoutY="211.0" mnemonicParsing="false" onAction="#buttonEnterClicked" prefHeight="70.0" prefWidth="180.0" style="-fx-background-color: #00264d;" text="Enter" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>

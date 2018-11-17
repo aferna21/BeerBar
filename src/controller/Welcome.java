@@ -32,7 +32,7 @@ public class Welcome implements Initializable
 
     }
 
-    public void buttonLoginClicked(ActionEvent actionEvent)
+    public void buttonEnterClicked(ActionEvent actionEvent)
     {
         try
         {
