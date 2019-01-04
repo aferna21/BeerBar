@@ -1,4 +1,4 @@
-package controller;
+package controlador;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -8,7 +8,6 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -18,7 +17,7 @@ public class Welcome implements Initializable
 
     /*public Welcome() throws IOException
     {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/Wlcome.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/Wlcome.fxml"));
         Parent root = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
         stage.setTitle("Welcome");
@@ -36,7 +35,7 @@ public class Welcome implements Initializable
     {
         try
         {
-            FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/Login.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/vista/Login.fxml"));
             Parent loginRoot = fxmlLoader.load();
             Stage loginStage = new Stage();
             loginStage.setTitle("Login");

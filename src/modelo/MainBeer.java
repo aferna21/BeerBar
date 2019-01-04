@@ -1,6 +1,5 @@
-package model;
+package modelo;
 
-import controller.Welcome;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,7 +11,7 @@ public class MainBeer extends Application
     @Override
     public void start(Stage primaryStage) throws Exception
     {
-        Parent root = FXMLLoader.load(getClass().getResource("/view/Welcome.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/vista/Welcome.fxml"));
         primaryStage.setTitle("Welcome");
         primaryStage.setScene(new Scene(root, 600, 400));
         primaryStage.setResizable(false);

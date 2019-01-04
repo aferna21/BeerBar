@@ -1,4 +1,4 @@
-package controller;
+package controlador;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -25,7 +25,7 @@ public class Login implements Initializable
     {
         try
         {
-            FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/view/User.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/vista/User.fxml"));
             Parent userRoot = fxmlLoader.load();
             Stage userStage = new Stage();
             userStage.setTitle("Login");
