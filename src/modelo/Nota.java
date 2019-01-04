@@ -1,12 +1,12 @@
 package modelo;
 
-public class Notas {
+public class Nota {
     private String texto;
     private Usuario remitente;
     private Usuario destinatario;
     private Fecha fecha;
-    private Notas padre;
-    private Notas hijo;
+    private Nota padre;
+    private Nota hijo;
     private boolean estaLeida;
 
 }
