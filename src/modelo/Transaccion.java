@@ -1,6 +1,6 @@
 package modelo;
 
-public class Transacciones {
+public class Transaccion {
     private float cantidad;
     private String concepto;
     private Fecha fecha;

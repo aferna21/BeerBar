@@ -1,6 +1,6 @@
 package modelo;
 
 public class BeerBar {
-    private Jornadas jornadas;
+    private Jornada jornadas;
     private GestorDeUsuarios usuarios;
 }

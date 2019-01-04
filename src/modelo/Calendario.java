@@ -5,7 +5,7 @@ package modelo;
  * recibiendo de la base de datos las jornadas correspondientes.
  */
 public class Calendario {
-    private Jornadas[] jornada;
+    private Jornada[] jornada;
 
 
 
@@ -17,31 +17,71 @@ public class Calendario {
 
 
     /**
-     * @param fecha
+     * @param fecha dia del que obtener los beneficios
      * @return
      */
     private int obtenerBeneficios(Fecha fecha){
         return 0;
     }
 
+
+
+
+    /**
+     * @param fechainicio
+     * @param fechafinal
+     * @return
+     */
     public int obtenerBeneficios(Fecha fechainicio, Fecha fechafinal){
         return 0;
     }
 
-    private Transacciones[] verTransaccionesDesde(Fecha fecha){
-        return new Transacciones[0];
+
+
+
+    /**
+     * @param fecha
+     * @return
+     */
+    private Transaccion[] verTransaccionesDesde(Fecha fecha){
+        return new Transaccion[0];
     }
 
-    public Transacciones[] verTransaccionesDesde(Fecha fechainicio, Fecha fechafinal){
-        return new Transacciones[0];
+
+
+
+    /**
+     * @param fechainicio
+     * @param fechafinal
+     * @return
+     */
+    public Transaccion[] verTransaccionesDesde(Fecha fechainicio, Fecha fechafinal){
+        return new Transaccion[0];
     }
 
-    private Transacciones[] verTransaccionesDe(Fecha fecha, Usuario usuario){
-        return new Transacciones[0];
+
+
+
+    /**
+     * @param fecha
+     * @param usuario
+     * @return
+     */
+    private Transaccion[] verTransaccionesDe(Fecha fecha, Usuario usuario){
+        return new Transaccion[0];
     }
 
-    private Transacciones[] verTransaccionesDe(Fecha fechainicio, Fecha fechafin, Usuario usuario){
-        return new Transacciones[0];
+
+
+
+    /**
+     * @param fechainicio
+     * @param fechafin
+     * @param usuario
+     * @return
+     */
+    private Transaccion[] verTransaccionesDe(Fecha fechainicio, Fecha fechafin, Usuario usuario){
+        return new Transaccion[0];
     }
 
 
