@@ -1,5 +1,5 @@
 package modelo;
 
 public class ServidorDeMensajeria {
-    private Notas[] nota;
+    private Nota[] nota;
 }
