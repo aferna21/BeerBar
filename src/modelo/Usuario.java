@@ -128,4 +128,9 @@ public class Usuario {
     {
         return new ArrayList();
     }
+
+
+    public boolean equals(Usuario u){
+        return this.nombre.equals(u.getNombre())  &&  this.contrasena.equals(u.getContrasena());
+    }
 }
