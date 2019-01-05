@@ -45,7 +45,7 @@ public class Fecha {
      * @return nombre del mes
      */
     private String nombreMes(){
-        String nombre;
+        String nombre = new String();
         switch(this.mes){
             case 1:
                 nombre = "enero";

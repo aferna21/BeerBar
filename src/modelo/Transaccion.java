@@ -24,7 +24,7 @@ public class Transaccion {
     //cantidad
 
     public float getCantidad(){
-        return this.cantidad
+        return this.cantidad;
     }
 
     public void setCantidad(float c){
