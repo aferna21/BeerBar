@@ -1,9 +1,9 @@
 package modelo;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class GestorDeUsuarios {
+
     private ArrayList<Usuario> usuarios;
 
     /**

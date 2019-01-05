@@ -1,36 +1,38 @@
 package modelo;
 
 import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.Test;
 
 public class FechaTest {
 
     private Fecha fecha;
 
-    @org.junit.Before
+    @Before
     public void setUp() throws Exception {
 
         fecha = new Fecha(1, 1, 2019);
     }
 
-    @org.junit.Test
+    @Test
     public void testGetDia() {
         assertEquals(1, fecha.getDia());
         assertNotEquals(2, fecha.getDia());
     }
 
-    @org.junit.Test
+    @Test
     public void testGetMes() {
         assertEquals(1, fecha.getMes());
         assertNotEquals(2, fecha.getMes());
     }
 
-    @org.junit.Test
+    @Test
     public void testGetAno() {
         assertEquals(2019, fecha.getAno());
         assertNotEquals(2020, fecha.getAno());
     }
 
-    @org.junit.Test
+    @Test
     public void testSetDia() {
 
         assertEquals(1, fecha.getDia());
@@ -39,7 +41,7 @@ public class FechaTest {
         assertNotEquals(1, fecha.getDia());
     }
 
-    @org.junit.Test
+    @Test
     public void testSetMes() {
 
         assertEquals(1, fecha.getMes());
@@ -48,7 +50,7 @@ public class FechaTest {
         assertNotEquals(1, fecha.getMes());
     }
 
-    @org.junit.Test
+    @Test
     public void testSetAno() {
 
         assertEquals(2019, fecha.getAno());
@@ -57,14 +59,14 @@ public class FechaTest {
         assertNotEquals(2019, fecha.getAno());
     }
 
-    @org.junit.Test
+    @Test
     public void testEquals() {
 
         assertTrue(fecha.equals(new Fecha(1, 1, 2019)));
         assertFalse(fecha.equals(new Fecha(2, 1, 2019)));
     }
 
-    @org.junit.Test
+    @Test
     public void testToString() {
         assertEquals("1 de enero del 2019", fecha.toString());
     }
