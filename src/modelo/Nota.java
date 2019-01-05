@@ -10,6 +10,10 @@ public class Nota {
     private boolean leida;
 
 
+    public Nota(){
+
+    }
+
     /**
      * Constructor. Crea una instancia de la clase Nota.
      * @param texto contenido de la nota.

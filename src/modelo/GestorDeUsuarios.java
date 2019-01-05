@@ -7,9 +7,9 @@ public class GestorDeUsuarios {
     private ArrayList<Usuario> usuarios;
 
     /**
-     * privado porque es singleton. Aun no se muy bien como va, buscar x google
+     * Deberia ser privado porque es un singleton pero lo pongo publico para subir los test
      */
-    private GestorDeUsuarios(){
+    public GestorDeUsuarios(){
 
     }
 

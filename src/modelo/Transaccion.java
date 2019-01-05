@@ -8,6 +8,9 @@ public class Transaccion {
     private boolean esVenta;
 
 
+    public Transaccion(){
+
+    }
 
     public Transaccion(float cantidad, String concepto, Fecha fecha, Usuario usuario){
         this.cantidad = cantidad;
