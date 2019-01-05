@@ -8,6 +8,8 @@ public class Usuario {
     private String contrasena;
     private boolean esAdmin;
 
+
+
     /**
      * Constructor de la clase. Crea un usuario y le asigna el nombre, la
      * contrasena y si es administrador o no
@@ -21,6 +23,18 @@ public class Usuario {
         this.nombre = nombre;
         this.contrasena = contrasena;
         this.esAdmin = esAdmin;
+    }
+
+    public String getNombre(){
+        return this.nombre;
+    }
+
+    public String getContrasena(){
+        return this.contrasena;
+    }
+
+    public boolean getEsAdmin(){
+        return this.esAdmin;
     }
 
     /**
