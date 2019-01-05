@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Login implements Initializable
+public class Acceso implements Initializable
 {
 
     public AnchorPane paneLogin;
@@ -25,10 +25,10 @@ public class Login implements Initializable
     {
         try
         {
-            FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/vista/User.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/vista/Usuario.fxml"));
             Parent userRoot = fxmlLoader.load();
             Stage userStage = new Stage();
-            userStage.setTitle("Login");
+            userStage.setTitle("Usuario");
             userStage.setScene(new Scene(userRoot));
             //userStage.setResizable(false);
             userStage.show();
@@ -38,7 +38,7 @@ public class Login implements Initializable
         }
         catch (Exception e)
         {
-            System.out.println("Can not load the User Window");
+            System.out.println("Fallo al cargar la ventana del usuario");
         }
     }
 }

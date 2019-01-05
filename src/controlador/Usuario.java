@@ -1,4 +1,4 @@
 package controlador;
 
-public class User {
+public class Usuario {
 }

@@ -11,16 +11,16 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Welcome implements Initializable
+public class Bievenida implements Initializable
 {
     public AnchorPane paneWelcome;
 
-    /*public Welcome() throws IOException
+    /*public Bievenida() throws IOException
     {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/Wlcome.fxml"));
         Parent root = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
-        stage.setTitle("Welcome");
+        stage.setTitle("Bievenida");
         stage.setScene(new Scene(root, 600, 400));
         stage.setResizable(false);
         stage.show();
@@ -35,10 +35,10 @@ public class Welcome implements Initializable
     {
         try
         {
-            FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/vista/Login.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/vista/Acceso.fxml"));
             Parent loginRoot = fxmlLoader.load();
             Stage loginStage = new Stage();
-            loginStage.setTitle("Login");
+            loginStage.setTitle("Acceso");
             loginStage.setScene(new Scene(loginRoot));
             loginStage.setResizable(false);
             loginStage.show();
@@ -48,7 +48,7 @@ public class Welcome implements Initializable
         }
         catch (Exception e)
         {
-            System.out.println("Can not load the Login Window");
+            System.out.println("Fallo al cargar la ventana de Bienvenida");
         }
     }
 }
