@@ -8,6 +8,7 @@ import java.util.ArrayList;
  * recibiendo de la base de datos las jornadas correspondientes.
  */
 public class Calendario {
+
     private ArrayList<Jornada> jornadas;
 
 

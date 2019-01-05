@@ -7,5 +7,5 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Suite.class)
 @SuiteClasses({ BeerBarTest.class, CalendarioTest.class, FechaTest.class, GestorDeUsuariosTest.class, JornadaTest.class, NotaTest.class, ServidorDeMensajeriaTest.class, TransaccionTest.class, UsuarioTest.class })
 
-public class AllTest {
+public class AllTestModelo {
 }

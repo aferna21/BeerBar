@@ -1,4 +1,4 @@
-package controlador;
+package controlador.main;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -25,10 +25,10 @@ public class Acceso implements Initializable
     {
         try
         {
-            FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/vista/Usuario.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/vista/usuario/Usuario.fxml"));
             Parent userRoot = fxmlLoader.load();
             Stage userStage = new Stage();
-            userStage.setTitle("Usuario");
+            userStage.setTitle("usuario");
             userStage.setScene(new Scene(userRoot));
             //userStage.setResizable(false);
             userStage.show();

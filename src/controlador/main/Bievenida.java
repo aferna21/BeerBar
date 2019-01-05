@@ -1,4 +1,4 @@
-package controlador;
+package controlador.main;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -35,7 +35,7 @@ public class Bievenida implements Initializable
     {
         try
         {
-            FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/vista/Acceso.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/vista/main/Acceso.fxml"));
             Parent loginRoot = fxmlLoader.load();
             Stage loginStage = new Stage();
             loginStage.setTitle("Acceso");

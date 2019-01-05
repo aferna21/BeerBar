@@ -41,7 +41,7 @@ public class Usuario {
      * Crea una nueva nota y se la envia al usuario destino (las notas son manejadas por
      * el servidor de mensajes)
      *
-     * @param usuario - Usuario destino
+     * @param usuario - usuario destino
      * @param nota - Texto de la nota
      */
     public void escribirNotaA(Usuario usuario, String nota){
@@ -61,7 +61,7 @@ public class Usuario {
      * Devuelve las notas enviadas hacia un usuario en concreto por el usuario
      * que las consulta (this)
      *
-     * @param usuario - Usuario destino
+     * @param usuario - usuario destino
      * @return - Lista de notas
      */
     public ArrayList verNotasHacia(Usuario usuario){
@@ -81,7 +81,7 @@ public class Usuario {
      * Devuelve las notas enviadas de un usuario en concreto hacia el usuario
      * que las consulta (this)
      *
-     * @param usuario - Usuario que envio las notas
+     * @param usuario - usuario que envio las notas
      * @return - Lista de notas
      */
     public ArrayList verNotasDe(Usuario usuario){
