@@ -58,7 +58,7 @@ public class Fecha {
      * Devuelve el nombre correspondiente al numero del mes
      * @return nombre del mes
      */
-    private String nombreMes(){
+    private String nombreMes() throws BeerBarException {
         String nombreMes = new String();
         switch(this.mes){
             case 1:
@@ -105,6 +105,10 @@ public class Fecha {
     }
 
     public String toString(){
-        return this.dia + " de " + this.nombreMes() + " del " + this.ano;
+        try {
+            return this.dia + " de " + this.nombreMes() + " del " + this.ano;
+        } catch (BeerBarException e) {
+            e.printStackTrace();
+        }
     }
 }
