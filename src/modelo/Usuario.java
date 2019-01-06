@@ -63,8 +63,8 @@ public class Usuario {
      */
     public void escribirNotaA(Usuario usuario, String texto) throws BeerBarException {
         //CAMBIAR ESTO DE LA FECHA DE HOY
-        Fecha hoy = new Fecha();
-        hoy = hoy.getFechaActual();
+        //CAMBIADO
+        Fecha hoy = new Fecha().getFechaActual();
         Nota nota = new Nota(texto, this, usuario, hoy, null);
         ServidorDeMensajeria.darInstancia().anadirNota(nota);
     }
@@ -105,7 +105,7 @@ public class Usuario {
      * @param usuario - Usuario que envio las notas.
      * @return - Lista de notas.
      */
-    public ArrayList verNotasDe(Usuario usuario){
+    public ArrayList<Nota> verNotasDe(Usuario usuario){
         return ServidorDeMensajeria.darInstancia().mostrarNotasDeHacia(usuario, this);
     }
 
