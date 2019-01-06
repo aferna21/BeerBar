@@ -146,7 +146,7 @@ public class Nota {
      * Devuelve true si la nota esta escrita en una fecha determinada.
      *
      * @param f - Presunta fecha en la que esta escrita la nota.
-     * 1@return - True si la fecha de la nota es f.
+     * @return - True si la fecha de la nota es f.
      */
     public boolean estaEscritaEn(Fecha f){
         return f.equals(this.fecha);
