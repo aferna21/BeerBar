@@ -1,6 +1,8 @@
 package modelo;
 
 import static org.junit.Assert.*;
+
+import jdk.nashorn.internal.scripts.JO;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -10,7 +12,7 @@ public class JornadaTest {
 
     @Before
     public void setUp() throws Exception{
-        jornada = new Jornada();
+        jornada = Jornada.darInstancia();
     }
 
     @Test

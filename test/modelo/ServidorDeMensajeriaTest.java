@@ -10,7 +10,7 @@ public class ServidorDeMensajeriaTest {
 
     @Before
     public void setUp() throws Exception{
-        servidorDeMensajeria = new ServidorDeMensajeria();
+        servidorDeMensajeria = ServidorDeMensajeria.darInstancia();
     }
 
     @Test

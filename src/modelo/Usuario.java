@@ -23,9 +23,6 @@ public class Usuario {
      */
     private boolean esAdmin;
 
-
-
-
     /**
      * Constructor de la clase. Crea un usuario y le asigna el nombre, la
      * contrasena y si es administrador o no.
@@ -67,7 +64,8 @@ public class Usuario {
     public void escribirNotaA(Usuario usuario, String texto) throws BeerBarException {
         //CAMBIAR ESTO DE LA FECHA DE HOY
         Fecha hoy = new Fecha();
-        Nota nota = new Nota(texto, this, usuario, hoy.getFechaActual(), null);
+        hoy = hoy.getFechaActual();
+        Nota nota = new Nota(texto, this, usuario, hoy, null);
         ServidorDeMensajeria.darInstancia().anadirNota(nota);
     }
 
@@ -118,9 +116,11 @@ public class Usuario {
      * @param concepto - Texto asociado a la venta.
      */
     public void introducirVenta(int cantidad, String concepto){
-        Fecha hoy = new Fecha(1,1,1);
-        Transaccion transaccion = new Transaccion(cantidad, concepto, hoy.getFechaActual(), this);
-
+        Fecha hoy = new Fecha();
+        hoy = hoy.getFechaActual();
+        Transaccion transaccion = new Transaccion(cantidad, concepto, hoy, this);
+        Jornada jornada = Jornada.darInstancia();
+        jornada.anadirTransaccion(transaccion);
     }
 
     /**
@@ -130,7 +130,11 @@ public class Usuario {
      * @param concepto - Texto asociado al gasto.
      */
     public void introducirGasto(int cantidad, String concepto){
-
+        Fecha hoy = new Fecha();
+        hoy = hoy.getFechaActual();
+        Transaccion transaccion = new Transaccion(-cantidad, concepto, hoy, this);
+        Jornada jornada = Jornada.darInstancia();
+        jornada.anadirTransaccion(transaccion);
     }
 
     /**
@@ -141,6 +145,9 @@ public class Usuario {
      * @return - Lista de las ventas.
      */
     public ArrayList verVentas(Fecha fechaInicio, Fecha fechaFin){
+
+        //LLAMAR A METODOS DE LA CLASE JORNADA PARA HACERLO
+
         return new ArrayList();
     }
 
@@ -149,16 +156,20 @@ public class Usuario {
      *
      * @return - Lista de las ventas.
      */
-    public ArrayList verVentasDeHoy()
-    {
-        return new ArrayList();
+    public ArrayList verVentasDeHoy() {
+        Fecha hoy = new Fecha();
+        hoy = hoy.getFechaActual();
+        return verVentas(hoy, hoy);
     }
 
-
+    /**
+     * Dos usuarios son considerados iguales cuando su nombre y contrasena coinciden.
+     *
+     * @param u - Usuario a comparar.
+     * @return - True si son los mismos.
+     */
     public boolean equals(Usuario u){
-        return this.nombre.equals(u.getNombre())  &&  this.contrasena.equals(u.getContrasena());
-
-        //No se si eso o:
-        //return this.nombre == u.getNombre() && this.contrasena == u.getContrasena()
+        return this.nombre.equals(u.getNombre())  &&
+                this.contrasena.equals(u.getContrasena());
     }
 }

@@ -1,6 +1,7 @@
 package modelo;
 
 public class Transaccion {
+
     private float cantidad;
     private String concepto;
     private Fecha fecha;

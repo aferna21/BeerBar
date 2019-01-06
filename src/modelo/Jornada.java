@@ -11,7 +11,7 @@ public class Jornada {
     private Fecha fecha;
     private ArrayList<Transaccion> transacciones;
 
-    public Jornada(){
+    private Jornada(){
         transacciones = new ArrayList<>();
     }
 
