@@ -52,14 +52,23 @@ public class Nota {
      * @param fecha - Dia en el que esta escrita la nota.
      * @param madre - Nota de la que proviene la escrita. Sera null si empieza un nuevo hilo
      */
-    public Nota(String texto, Usuario remitente, Usuario destinatario, Fecha fecha, Nota madre){
-        this.texto = texto;
-        this.remitente = remitente;
-        this.destinatario = destinatario;
-        this.fecha = fecha;
-        this.madre = madre;
-        this.hija = null;
-        this.leida = false;
+    public Nota(String texto, Usuario remitente, Usuario destinatario, Fecha fecha, Nota madre) throws BeerBarException {
+        if(texto == null || remitente == null || destinatario == null || fecha == null){
+            throw new BeerBarException("Error al crear la nota.");
+        }
+        else {
+            this.texto = texto;
+            this.remitente = remitente;
+            this.destinatario = destinatario;
+            this.fecha = fecha;
+            this.madre = madre;
+            this.hija = null;
+            this.leida = false;
+
+            if(this.madre != null){
+                this.madre.setHija(this);
+            }
+        }
     }
 
     /**
@@ -90,7 +99,7 @@ public class Nota {
         return this.hija;
     }
 
-    public boolean isLeida(){
+    public boolean esLeida(){
         return this.leida;
     }
 
@@ -104,6 +113,10 @@ public class Nota {
 
     public void setHija(Nota hija){
         this.hija = hija;
+    }
+
+    public void setLeida(boolean leida){
+        this.leida = leida;
     }
 
 
