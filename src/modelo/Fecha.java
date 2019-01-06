@@ -1,15 +1,19 @@
 package modelo;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 public class Fecha {
 
     private int dia;
     private int mes;
     private int ano;
 
-    public Fecha(int dia, int mes, int ano){
-        this.dia = dia;
-        this.mes = mes;
-        this.ano = ano;
+    public Fecha(int dia, int mes, int ano) throws BeerBarException {
+        this.setAno(ano);
+        this.setMes(mes);
+        this.setDia(dia);
     }
 
     public Fecha(){
@@ -28,16 +32,60 @@ public class Fecha {
         return this.ano;
     }
 
-    public void setDia(int d){
-        this.dia = d;
+    public void setDia(int d) throws BeerBarException {
+
+        int[] meses31dias = {1, 3, 5, 7, 8, 10, 12};
+        int[] meses30dias = {4, 6, 9, 11};
+        int[] meses28dias = {2};
+
+
+        if (contieneMes(meses31dias) && d >= 1 && d <= 31) {
+            this.dia = d;
+        } else if (contieneMes(meses30dias) && d >= 1 && d <= 30) {
+            this.dia = d;
+        } else if (contieneMes(meses28dias) && !esAnoBisiesto() && (d >= 1 && d <= 28)) {
+            this.dia = d;
+        } else if (contieneMes(meses28dias) && esAnoBisiesto() && (d >= 1 && d <= 29)) {
+            this.dia = d;
+        }else{
+            throw new BeerBarException("Dia no correcto.\n");
+        }
     }
 
-    public void setMes(int m){
-        this.mes = m;
+    private boolean esAnoBisiesto(){
+
+        if ((this.getAno() % 4 == 0) && ((this.getAno() % 100 != 0) || (this.getAno() % 400 == 0))) {
+            return true;
+        }else {
+            return false;
+        }
     }
 
-    public void setAno(int a){
-        this.ano = a;
+    private boolean contieneMes(int[] meses){
+        for(int m : meses){
+            if (m == this.getMes()){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void setMes(int m) throws BeerBarException {
+        if (m >= 1 && m <= 12){
+            this.mes = m;
+        }else{
+            throw new BeerBarException("Mes no correcto.\n");
+        }
+
+    }
+
+    public void setAno(int a) throws BeerBarException {
+        if (a >= 2019 && a <= 2099) {
+            this.ano = a;
+        }else{
+            throw new BeerBarException("Ano no correcto.\n");
+        }
+
     }
 
 
@@ -50,8 +98,16 @@ public class Fecha {
      * LO DEJO ASI PARA LOS TEST DE MOMENTO
      * @return
      */
-    public Fecha getFechaActual(){
-        return new Fecha(6, 1,2019);
+    public Fecha getFechaActual() throws BeerBarException {
+
+        Calendar cal = Calendar.getInstance();
+        Date date = cal.getTime();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        String formattedDate = dateFormat.format(date);
+
+        return new Fecha(Integer.parseInt(formattedDate.split("/")[0]),
+                Integer.parseInt(formattedDate.split("/")[1]),
+                        Integer.parseInt(formattedDate.split("/")[2]));
     }
 
     /**
