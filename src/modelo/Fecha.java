@@ -59,7 +59,7 @@ public class Fecha {
      * @return nombre del mes
      */
     private String nombreMes() throws BeerBarException {
-        String nombreMes = new String();
+        String nombreMes = "";
         switch(this.mes){
             case 1:
                 nombreMes = "enero";
@@ -98,17 +98,19 @@ public class Fecha {
                 nombreMes = "diciembre";
                 break;
         }
-        if (nombreMes == ""){
+        if (nombreMes.equals("")){
             throw new BeerBarException("Mes no correcto.\n");
         }
         return nombreMes;
     }
 
     public String toString(){
+        String str = "";
         try {
-            return this.dia + " de " + this.nombreMes() + " del " + this.ano;
+            str = this.dia + " de " + this.nombreMes() + " del " + this.ano;
         } catch (BeerBarException e) {
             e.printStackTrace();
         }
+        return str;
     }
 }
