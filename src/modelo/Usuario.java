@@ -63,8 +63,10 @@ public class Usuario {
      * @param usuario - Usuario destino.
      * @param texto - Texto de la nota.
      */
-    public void escribirNotaA(Usuario usuario, String texto){
-        Nota nota = new Nota(texto, this, usuario, )
+    public void escribirNotaA(Usuario usuario, String texto) throws BeerBarException {
+        Fecha hoy = new Fecha();
+        Nota nota = new Nota(texto, this, usuario, hoy.getFechaActual(), null);
+
     }
 
     /**

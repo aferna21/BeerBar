@@ -12,6 +12,10 @@ public class Fecha {
         this.ano = ano;
     }
 
+    public Fecha(){
+
+    }
+
     public int getDia(){
         return this.dia;
     }
