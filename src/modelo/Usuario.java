@@ -54,6 +54,18 @@ public class Usuario {
         return this.esAdmin;
     }
 
+    public void setNombre(String s) {
+        this.nombre = s;
+    }
+
+    public void setContrasena(String s){
+        this.contrasena = s;
+    }
+
+    public void setEsAdmin(boolean b){
+        this.esAdmin = b;
+    }
+
     /**
      * Crea una nueva nota y se la envia al usuario destino (las notas son manejadas por
      * el servidor de mensajes).
