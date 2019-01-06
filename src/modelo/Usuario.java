@@ -23,10 +23,6 @@ public class Usuario {
      */
     private boolean esAdmin;
 
-    /**
-     * Instancia unica del servidor de mensajeria. Incluida aqui por comodidad en los metodos.
-     */
-    private ServidorDeMensajeria servidorDeMensajeria;
 
 
 
@@ -43,8 +39,6 @@ public class Usuario {
         this.nombre = nombre;
         this.contrasena = contrasena;
         this.esAdmin = esAdmin;
-
-        this.servidorDeMensajeria = ServidorDeMensajeria.darInstancia();
     }
 
     /**
@@ -74,7 +68,7 @@ public class Usuario {
         //CAMBIAR ESTO DE LA FECHA DE HOY
         Fecha hoy = new Fecha();
         Nota nota = new Nota(texto, this, usuario, hoy.getFechaActual(), null);
-        this.servidorDeMensajeria.anadirNota(nota);
+        ServidorDeMensajeria.darInstancia().anadirNota(nota);
     }
 
     /**
@@ -83,7 +77,7 @@ public class Usuario {
      * @return - Lista de notas.
      */
     public ArrayList verNotasEnviadas(){
-        return this.servidorDeMensajeria.mostrarNotasDe(this);
+        return ServidorDeMensajeria.darInstancia().mostrarNotasDe(this);
     }
 
     /**
@@ -103,7 +97,7 @@ public class Usuario {
      * @return - Lista de notas.
      */
     public ArrayList verNotasRecibidas(){
-        return servidorDeMensajeria.mostrarNotasHacia(this);
+        return ServidorDeMensajeria.darInstancia().mostrarNotasHacia(this);
     }
 
     /**
