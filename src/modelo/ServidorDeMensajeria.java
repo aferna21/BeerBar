@@ -15,9 +15,9 @@ public class ServidorDeMensajeria {
     private ArrayList<Nota> notas;
 
     /**
-     * Constructor de la clase. Inicializa el ArrayList de notas.
+     * Constructor de la clase. Inicializa el ArrayList de notas y lo llena con todas las notas de la base de datos.
      */
-    public ServidorDeMensajeria(){
+    private ServidorDeMensajeria(){
         this.notas = new ArrayList<>();
     }
 
@@ -34,19 +34,47 @@ public class ServidorDeMensajeria {
         this.notas.add(nota);
     }
 
-    public ArrayList mostrarNotasDe(Usuario usuario){
-        return new ArrayList();
+    public ArrayList<Nota> mostrarNotasDe(Usuario usuario){
+        ArrayList<Nota> lista = new ArrayList<Nota>();
+        for(Nota n:this.notas){
+            if(n.getRemitente().equals(usuario)){
+                lista.add(n);
+            }
+        }
+        return lista;
     }
 
-    public ArrayList mostrarNotasHacia(Usuario usuario){
-        return new ArrayList();
+    public ArrayList<Nota> mostrarNotasHacia(Usuario usuario){
+        ArrayList<Nota> lista = new ArrayList<Nota>();
+        for(Nota n:this.notas){
+            if(n.getDestinatario().equals(usuario)){
+                lista.add(n);
+            }
+        }
+        return lista;
     }
 
-    public ArrayList mostrarTodasNotas(Usuario usuario){
-        return new ArrayList();
+
+
+    public ArrayList<Nota> mostrarNotasDelDia(Fecha fecha){
+        ArrayList<Nota> lista = new ArrayList<Nota>();
+        for(Nota n:this.notas){
+            if(n.getFecha().equals(fecha)){
+                lista.add(n);
+            }
+        }
+        return lista;
     }
 
-    public ArrayList mostrarNotasDelDia(Fecha fecha){
-        return new ArrayList();
+
+    public ArrayList<Nota> mostrarNotasDeHacia(Usuario rem, Usuario dest){
+        ArrayList<Nota> output = new ArrayList<Nota>();
+        ArrayList<Nota> notasremitente = this.mostrarNotasDe(rem);
+        for(Nota n:notasremitente){
+            if(n.getDestinatario().equals(dest)){
+                output.add(n);
+            }
+        }
+        return output;
     }
 }

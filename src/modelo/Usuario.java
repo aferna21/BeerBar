@@ -94,14 +94,7 @@ public class Usuario {
      * @return - Lista de notas.
      */
     public ArrayList verNotasHacia(Usuario usuario){
-        ArrayList<Nota> notasFinal = new ArrayList();
-        ArrayList<Nota> notasDeTodos = servidorDeMensajeria.mostrarNotasHacia(usuario);
-        for(Nota n : notasDeTodos){
-            if(n.getRemitente().equals(this)){
-                notasFinal.add(n);
-            }
-        }
-        return notasFinal;
+        return ServidorDeMensajeria.darInstancia().mostrarNotasDeHacia(this, usuario);
     }
 
     /**
@@ -121,14 +114,7 @@ public class Usuario {
      * @return - Lista de notas.
      */
     public ArrayList verNotasDe(Usuario usuario){
-        ArrayList<Nota> notasFinal = new ArrayList<>();
-        ArrayList<Nota> notasRecibidas = verNotasRecibidas();
-        for(Nota n : notasRecibidas){
-            if(n.getRemitente().equals(usuario)){
-                notasFinal.add(n);
-            }
-        }
-        return notasFinal;
+        return ServidorDeMensajeria.darInstancia().mostrarNotasDeHacia(usuario, this);
     }
 
     /**
