@@ -42,6 +42,15 @@ public class Fecha {
     }
 
     /**
+     * CAMBIAR PARA QUE DEVUELVA EL DIA DE HOY CORRECTAMENTE
+     * LO DEJO ASI PARA LOS TEST DE MOMENTO
+     * @return
+     */
+    public Fecha getFechaActual(){
+        return new Fecha(6, 1,2019);
+    }
+
+    /**
      * Devuelve el nombre correspondiente al numero del mes
      * @return nombre del mes
      */

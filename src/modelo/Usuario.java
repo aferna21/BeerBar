@@ -61,10 +61,10 @@ public class Usuario {
      * el servidor de mensajes).
      *
      * @param usuario - Usuario destino.
-     * @param nota - Texto de la nota.
+     * @param texto - Texto de la nota.
      */
-    public void escribirNotaA(Usuario usuario, String nota){
-
+    public void escribirNotaA(Usuario usuario, String texto){
+        Nota nota = new Nota(texto, this, usuario, )
     }
 
     /**

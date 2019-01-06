@@ -31,7 +31,7 @@ public class ServidorDeMensajeria {
     }
 
     public void anadirNota(Nota nota){
-
+        this.notas.add(nota);
     }
 
     public ArrayList mostrarNotasDe(Usuario usuario){
