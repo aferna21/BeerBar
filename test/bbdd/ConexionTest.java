@@ -4,13 +4,13 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-public class ConectorTest {
+public class ConexionTest {
 
-    private Conector conector;
+    private Conexion conexion;
 
     @Before
     public void setUp() throws Exception{
-        conector = new Conector();
+        conexion = new Conexion();
     }
 
     @Test
