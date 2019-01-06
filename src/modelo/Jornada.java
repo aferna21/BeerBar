@@ -2,9 +2,22 @@ package modelo;
 
 import java.util.ArrayList;
 
+/**
+ * Clase que maneja los dias sobre los que se trabaja. Es un Singleton
+ */
 public class Jornada {
+
+    private static Jornada instancia = new Jornada();
     private Fecha fecha;
     private ArrayList<Transaccion> transacciones;
+
+    public Jornada(){
+        transacciones = new ArrayList<>();
+    }
+
+    public static Jornada darInstancia(){
+        return instancia;
+    }
 
     public Fecha getFecha(){
         return this.fecha;
