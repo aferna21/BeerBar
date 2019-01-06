@@ -132,5 +132,8 @@ public class Usuario {
 
     public boolean equals(Usuario u){
         return this.nombre.equals(u.getNombre())  &&  this.contrasena.equals(u.getContrasena());
+
+        //No se si eso o:
+        //return this.nombre == u.getNombre() && this.contrasena == u.getContrasena()
     }
 }

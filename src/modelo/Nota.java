@@ -1,36 +1,70 @@
 package modelo;
 
+/**
+ * Mensajes que se enviaran los empleados entre ellos, contienen un texto, quien lo envia,
+ * quien lo recibe, la fecha en la que se creo, y puede contener una madre y una hija si son
+ * respuestas entre notas. Se puede comprobar si han sido leidas.
+ */
 public class Nota {
+
+    /**
+     * Texto que va en el cuerpo de la nota.
+     */
     private String texto;
+
+    /**
+     * Usuario que envia la nota.
+     */
     private Usuario remitente;
+
+    /**
+     * Usuario que recibe la nota.
+     */
     private Usuario destinatario;
+
+    /**
+     * Dia en el que se creo la nota.
+     */
     private Fecha fecha;
-    private Nota padre;
-    private Nota hijo;
+
+    /**
+     * Opcional. Nota a la que responde la nota actual.
+     */
+    private Nota madre;
+
+    /**
+     * Opcional. Nota que ha respondido a la nota actual.
+     */
+    private Nota hija;
+
+    /**
+     * True si la nota ha sido leida por el destinatario.
+     */
     private boolean leida;
 
 
-    public Nota(){
-
-    }
-
     /**
      * Constructor. Crea una instancia de la clase Nota.
-     * @param texto contenido de la nota.
-     * @param remitente usuario que escribe la nota.
-     * @param destinatario usuario al que va dirigida la nota.
-     * @param fecha dia en el que esta escrita la fecha
-     * @param padre nota de la que proviene la escrita. Sera null si empieza un nuevo hilo
+     *
+     * @param texto - Contenido de la nota.
+     * @param remitente - Usuario que escribe la nota.
+     * @param destinatario - Usuario al que va dirigida la nota.
+     * @param fecha - Dia en el que esta escrita la nota.
+     * @param madre - Nota de la que proviene la escrita. Sera null si empieza un nuevo hilo
      */
-    public Nota(String texto, Usuario remitente, Usuario destinatario, Fecha fecha, Nota padre){
+    public Nota(String texto, Usuario remitente, Usuario destinatario, Fecha fecha, Nota madre){
         this.texto = texto;
         this.remitente = remitente;
         this.destinatario = destinatario;
         this.fecha = fecha;
-        this.padre = padre;
-        this.hijo = null;
+        this.madre = madre;
+        this.hija = null;
         this.leida = false;
     }
+
+    /**
+     * Getters y setters.
+     */
 
     public String getTexto(){
         return this.texto;
@@ -48,27 +82,36 @@ public class Nota {
         return this.fecha;
     }
 
-    public Nota getPadre(){
-        return this.padre;
+    public Nota getMadre(){
+        return this.madre;
     }
 
-    public Nota getHijo(){
-        return this.hijo;
+    public Nota getHija(){
+        return this.hija;
     }
 
     public boolean isLeida(){
         return this.leida;
     }
 
-    public void setTexto(String s){
-        this.texto = s;
+    public void setTexto(String texto){
+        this.texto = texto;
+    }
+
+    public void setMadre(Nota madre){
+        this.madre = madre;
+    }
+
+    public void setHija(Nota hija){
+        this.hija = hija;
     }
 
 
     /**
      * Devuelve true si el usuario es remitente de la nota.
-     * @param u presunto remitente de la nota.
-     * @return true si el usuario u la ha escrito.
+     *
+     * @param u - Presunto remitente de la nota.
+     * @return - True si el usuario u la ha escrito.
      */
     public boolean esRemitente(Usuario u){
         return this.remitente.equals(u);
@@ -76,9 +119,10 @@ public class Nota {
 
 
     /**
-     * Devuelve true si el usuario es el destinatario de la nota
-     * @param u presunto destinatario de la nota
-     * @return true si el usuario u es al que va dirigido la nota
+     * Devuelve true si el usuario es el destinatario de la nota.
+     *
+     * @param u - Presunto destinatario de la nota.
+     * @return - true si el usuario u es al que va dirigido la nota.
      */
     public boolean esDestinatario(Usuario u){
         return this.destinatario.equals(u);
@@ -87,8 +131,9 @@ public class Nota {
 
     /**
      * Devuelve true si la nota esta escrita en una fecha determinada.
-     * @param f presunta fecha en la que esta escrita la nota.
-     * 1@return true si la fecha de la nota es f.
+     *
+     * @param f - Presunta fecha en la que esta escrita la nota.
+     * 1@return - True si la fecha de la nota es f.
      */
     public boolean estaEscritaEn(Fecha f){
         return f.equals(this.fecha);
@@ -96,28 +141,32 @@ public class Nota {
 
 
     /**
-     * Devuelve true si la nota actual es hija de la nota n
-     * @param n presunto padre de la nota actual
-     * @return true si esta nota es hija de n
+     * Devuelve true si la nota actual es hija de la nota n.
+     *
+     * @param n - Presunta madre de la nota actual.
+     * @return - True si esta nota es hija de n.
      */
     public boolean esHijaDe(Nota n){
-        return this.padre.equals(n);
+        return this.madre.equals(n);
     }
 
 
     /**
-     * Devuelve true si la nota actual es padre de la nota n
-     * @param n presunta hija de la nota actual
-     * @return true si la nota es padre de n
+     * Devuelve true si la nota actual es madre de la nota n.
+     *
+     * @param n - Presunta hija de la nota actual.
+     * @return - True si la nota es madre de n.
      */
-    public boolean esPadreDe(Nota n){
-        return this.hijo.equals(n);
+    public boolean esMadreDe(Nota n){
+        return this.hija.equals(n);
     }
 
     /**
-     * No pongo el padre ni el hijo porque pueden ser null.
-     * @param n
-     * @return
+     * Se comparan dos notas para ver si son la misma. Asumimos que es la misma si
+     * tiene el mismo texto, el mismo remitente y destinatario y se han escrito el mismo dia
+     *
+     * @param n - Presunta nota igual que la actual.
+     * @return - True si son iguales.
      */
     public boolean equals(Nota n){
         return this.texto.equals(n.getTexto()) &&
