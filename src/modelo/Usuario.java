@@ -115,7 +115,7 @@ public class Usuario {
      * @param cantidad - Importe de la venta.
      * @param concepto - Texto asociado a la venta.
      */
-    public void introducirVenta(int cantidad, String concepto){
+    public void introducirVenta(int cantidad, String concepto) throws BeerBarException {
         Fecha hoy = new Fecha();
         hoy = hoy.getFechaActual();
         Transaccion transaccion = new Transaccion(cantidad, concepto, hoy, this);
@@ -129,7 +129,7 @@ public class Usuario {
      * @param cantidad - Importe del gasto.
      * @param concepto - Texto asociado al gasto.
      */
-    public void introducirGasto(int cantidad, String concepto){
+    public void introducirGasto(int cantidad, String concepto) throws BeerBarException{
         Fecha hoy = new Fecha();
         hoy = hoy.getFechaActual();
         Transaccion transaccion = new Transaccion(-cantidad, concepto, hoy, this);
@@ -156,7 +156,7 @@ public class Usuario {
      *
      * @return - Lista de las ventas.
      */
-    public ArrayList verVentasDeHoy() {
+    public ArrayList verVentasDeHoy() throws BeerBarException{
         Fecha hoy = new Fecha();
         hoy = hoy.getFechaActual();
         return verVentas(hoy, hoy);
