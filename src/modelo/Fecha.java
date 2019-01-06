@@ -59,46 +59,49 @@ public class Fecha {
      * @return nombre del mes
      */
     private String nombreMes(){
-        String nombre = new String();
+        String nombreMes = new String();
         switch(this.mes){
             case 1:
-                nombre = "enero";
+                nombreMes = "enero";
                 break;
             case 2:
-                nombre = "febrero";
+                nombreMes = "febrero";
                 break;
             case 3:
-                nombre = "marzo";
+                nombreMes = "marzo";
                 break;
             case 4:
-                nombre = "abril";
+                nombreMes = "abril";
                 break;
             case 5:
-                nombre = "mayo";
+                nombreMes = "mayo";
                 break;
             case 6:
-                nombre = "junio";
+                nombreMes = "junio";
                 break;
             case 7:
-                nombre = "julio";
+                nombreMes = "julio";
                 break;
             case 8:
-                nombre = "agosto";
+                nombreMes = "agosto";
                 break;
             case 9:
-                nombre = "septiembre";
+                nombreMes = "septiembre";
                 break;
             case 10:
-                nombre = "octubre";
+                nombreMes = "octubre";
                 break;
             case 11:
-                nombre = "noviembre";
+                nombreMes = "noviembre";
                 break;
             case 12:
-                nombre = "diciembre";
+                nombreMes = "diciembre";
                 break;
         }
-        return nombre;
+        if (nombreMes == ""){
+            throw new BeerBarException("Mes no correcto.\n");
+        }
+        return nombreMes;
     }
 
     public String toString(){
