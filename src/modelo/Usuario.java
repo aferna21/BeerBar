@@ -86,7 +86,7 @@ public class Usuario {
      *
      * @return - Lista de notas.
      */
-    public ArrayList verNotasEnviadas(){
+    public ArrayList<Nota> verNotasEnviadas(){
         return ServidorDeMensajeria.darInstancia().mostrarNotasDe(this);
     }
 
@@ -97,7 +97,7 @@ public class Usuario {
      * @param usuario - Usuario destino.
      * @return - Lista de notas.
      */
-    public ArrayList verNotasHacia(Usuario usuario){
+    public ArrayList<Nota> verNotasHacia(Usuario usuario){
         return ServidorDeMensajeria.darInstancia().mostrarNotasDeHacia(this, usuario);
     }
 
@@ -106,7 +106,7 @@ public class Usuario {
      *
      * @return - Lista de notas.
      */
-    public ArrayList verNotasRecibidas(){
+    public ArrayList<Nota> verNotasRecibidas(){
         return ServidorDeMensajeria.darInstancia().mostrarNotasHacia(this);
     }
 
@@ -156,7 +156,7 @@ public class Usuario {
      * @param fechaFin - Fecha del fin del periodo.
      * @return - Lista de las ventas.
      */
-    public ArrayList verVentas(Fecha fechaInicio, Fecha fechaFin){
+    public ArrayList<Nota> verVentas(Fecha fechaInicio, Fecha fechaFin){
 
         //LLAMAR A METODOS DE LA CLASE JORNADA PARA HACERLO
 
@@ -168,7 +168,7 @@ public class Usuario {
      *
      * @return - Lista de las ventas.
      */
-    public ArrayList verVentasDeHoy() throws BeerBarException{
+    public ArrayList<Nota> verVentasDeHoy() throws BeerBarException{
         Fecha hoy = new Fecha();
         hoy = hoy.getFechaActual();
         return verVentas(hoy, hoy);
