@@ -169,4 +169,46 @@ public class Fecha {
         }
         return str;
     }
+
+    private int diasDelMes(int mes){
+        if (mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 10 || mes == 12){
+            return 31;
+        }else if( mes == 2){
+            return 28;
+        }else{
+            return 30;
+        }
+    }
+
+    public boolean esBisiesto(){
+        return this.ano % 4 == 0;
+    }
+
+    /*ME DA PENA BORRARLA :(
+    public int numeroDeDiaDelAno(){
+        int suma = 0;
+        for(int i = 0; i < this.mes-1; i++){
+            suma += this.diasDelMes(i);
+        }
+        suma+=this.dia;
+
+        if (esBisiesto()) suma++;
+        return suma;
+    }
+    */
+
+    public void avanza(){
+        this.dia++;
+
+        if(this.dia > diasDelMes(this.mes)){
+
+            if(!(esBisiesto() && this.dia == 28 && this.mes == 2)) {
+                this.mes++;
+                this.dia = 1;
+                if (this.mes > 12) {
+                    this.mes = 1;
+                }
+            }
+        }
+    }
 }

@@ -32,7 +32,12 @@ public class Jornada {
     }
 
     public String toString(){
-        return new String();
+        String output = "*******" + fecha.toString() + "*******";
+        for(Transaccion t: transacciones){
+            output.concat(t.toString());
+        }
+
+        return output;
     }
 
     //ESTE METODO NO SALE EN EL DIAGRAMA. ANADIR EXCEPCION
@@ -51,7 +56,21 @@ public class Jornada {
      * @return sumatorio de las transacciones en esta jornada.
      */
     public int sumaTransacciones(){
-        return 0;
+        int suma = 0;
+        for(Transaccion t:transacciones){
+            suma += t.getCantidad();
+        }
+        return suma;
+    }
+
+    public ArrayList<Transaccion> verTransaccionesDe(Usuario u){
+        ArrayList<Transaccion> output = new ArrayList<Transaccion>();
+        for(Transaccion t:this.transacciones){
+            if(t.getUsuario().equals(u)){
+                output.add(t);
+            }
+        }
+        return output;
     }
 
 }

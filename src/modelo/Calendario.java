@@ -10,16 +10,24 @@ import java.util.ArrayList;
 public class Calendario {
 
     private ArrayList<Jornada> jornadas;
+    private static Calendario instancia = new Calendario();
+
+    private Calendario(){
+        jornadas = new ArrayList<Jornada>();
+    }
 
 
     /**
      * Constructor de Calendario.
      * La clase es un singleton, el constructor crea una unica instancia al iniciar la aplicacion que carga de
      * la base de datos el conjunto de jornadas que guarda.
+     * @return instancia de la clase Calendario.
      */
-    public Calendario(){
-
+    public static Calendario darInstancia(){
+        return instancia;
     }
+
+
 
     //No hacen falta getters y setters porque para eso son los metodos de abajo
 
@@ -29,8 +37,19 @@ public class Calendario {
      * @param fecha dia del que obtener los beneficios.
      * @return beneficios de ese dia.
      */
+
+    private Jornada buscarJornada(Fecha fecha){
+        for(Jornada j:jornadas){
+            if(fecha.equals(j.getFecha())){
+                return j;
+            }
+        }
+        return null;
+    }
+
+
     private int obtenerBeneficios(Fecha fecha){
-        return 0;
+        return buscarJornada(fecha).sumaTransacciones();
     }
 
 
@@ -43,7 +62,14 @@ public class Calendario {
      * @return beneficio en un rango de dias.
      */
     public int obtenerBeneficios(Fecha fechainicio, Fecha fechafinal){
-        return 0;
+        int suma = 0;
+        Fecha fechaux = fechainicio;
+        while(!fechaux.equals(fechafinal)){
+            suma += this.obtenerBeneficios(fechaux);
+            fechaux.avanza();
+        }
+        suma+=this.obtenerBeneficios(fechaux);
+        return suma;
     }
 
 
@@ -54,8 +80,8 @@ public class Calendario {
      * @param fecha dia concreto del que se quieren ver las transacciones
      * @return conjunto de transacciones de un dia.
      */
-        private ArrayList<Transaccion> verTransaccionesDesde(Fecha fecha){
-        return new ArrayList<Transaccion>();
+        private ArrayList<Transaccion> verTransaccionesDelDia(Fecha fecha){
+        return buscarJornada(fecha).getTransacciones();
     }
 
 
@@ -67,8 +93,15 @@ public class Calendario {
      * @param fechafinal ultimo dia del rango de dias.
      * @return conjunto de transacciones de un rango de dias.
      */
-    public ArrayList<Transaccion> verTransaccionesDesde(Fecha fechainicio, Fecha fechafinal){
-        return new ArrayList<Transaccion>();
+    public ArrayList<Transaccion> verTransaccionesDeLosDias(Fecha fechainicio, Fecha fechafinal){
+        ArrayList<Transaccion> output = new ArrayList<Transaccion>();
+        Fecha fechaux = fechainicio;
+        while(!fechaux.equals(fechafinal)){
+            output.addAll(this.verTransaccionesDelDia(fechaux));
+            fechaux.avanza();
+        }
+        output.addAll(this.verTransaccionesDelDia(fechaux));
+        return output;
     }
 
 
@@ -81,7 +114,8 @@ public class Calendario {
      * @return conjunto de transacciones de un dia y un usuario concretos.
      */
     private ArrayList<Transaccion> verTransaccionesDe(Fecha fecha, Usuario usuario){
-        return new ArrayList<Transaccion>();
+        Jornada j = this.buscarJornada(fecha);
+        return j.verTransaccionesDe(usuario);
     }
 
 
@@ -92,8 +126,14 @@ public class Calendario {
      * @param usuario usuario del que obtener los beneficios.
      * @return Conjunto de transacciones de un usuario concreto en un rango de dias
      */
-    private ArrayList<Transaccion> verTransaccionesDe(Fecha fechainicio, Fecha fechafin, Usuario usuario){
-        return new ArrayList<Transaccion>();
+    public ArrayList<Transaccion> verTransaccionesDe(Fecha fechainicio, Fecha fechafin, Usuario usuario){
+        ArrayList<Transaccion> output = new ArrayList<Transaccion>();
+        Fecha fechaux = fechainicio;
+        while(!fechaux.equals(fechafin)){
+            output.addAll(verTransaccionesDe(fechaux, usuario));
+            fechainicio.avanza();
+        }
+        return output;
     }
 
 
