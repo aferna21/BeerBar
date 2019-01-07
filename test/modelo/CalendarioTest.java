@@ -10,7 +10,7 @@ public class CalendarioTest {
 
     @Before
     public void setUp() throws Exception{
-        calendario = new Calendario();
+        //calendario = new Calendario();
     }
 
     @Test
