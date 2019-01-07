@@ -5,12 +5,18 @@ import java.util.ArrayList;
 public class GestorDeUsuarios {
 
     private ArrayList<Usuario> usuarios;
+    private static GestorDeUsuarios instancia = new GestorDeUsuarios();
 
     /**
      * Deberia ser privado porque es un singleton pero lo pongo publico para subir los test
      */
-    public GestorDeUsuarios(){
+    private GestorDeUsuarios(){
+        this.usuarios = new ArrayList<Usuario>();
+    }
 
+
+    public static GestorDeUsuarios darInstancia(){
+        return instancia;
     }
 
     /**
