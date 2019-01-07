@@ -67,7 +67,7 @@ public class GestorDeUsuarios {
      * @param nombre nombre del usuario a buscar.
      * @return el usuario si existe, null si no existe.
      */
-    private Usuario getUsuario(String nombre){
+    public Usuario getUsuario(String nombre){
         for(Usuario usuario:this.usuarios){
             if(usuario.getNombre().equals(nombre)){
                 return usuario;

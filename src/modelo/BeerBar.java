@@ -23,18 +23,21 @@ public class BeerBar {
     /**
      * Constructor de la clase
      */
-    public BeerBar(){
-
+    public BeerBar(Jornada jornada){
+        this.jornada = jornada;
+        this.usuarios = GestorDeUsuarios.darInstancia();
     }
 
     /**
      * Inicia sesion en la aplicacion. Consulta si el usuario es admin o no para mostrar una ventana
      * u otra
      *
-     * @param usuario - Usuario que inicia sesion
+     * @param nombre - Usuario que inicia sesion
+     * @param contrasena - clave de inicio de sesion del usuario
+     * @return true si el usuario existe y la contrasena corresponde al nombre de usuario
      */
-    public void iniciarSesion(Usuario usuario){
-
+    public boolean iniciarSesion(String nombre, String contrasena){
+        return usuarios.autentificar(nombre, contrasena);
     }
 
     /**
@@ -45,8 +48,8 @@ public class BeerBar {
      * @param usuarioDestino - Usuario al que va dirigida
      * @param texto - Texto de la nota
      */
-    public void escribirNota(Usuario usuarioOrigen, Usuario usuarioDestino, String texto){
-
+    public void escribirNota(Usuario usuarioOrigen, Usuario usuarioDestino, String texto) throws BeerBarException {
+        usuarioOrigen.escribirNotaA(usuarioDestino, texto);
     }
 
     /**
