@@ -10,7 +10,7 @@ public class GestorDeUsuariosTest {
 
     @Before
     public void setUp() throws Exception{
-        gestorDeUsuarios = new GestorDeUsuarios();
+        //gestorDeUsuarios = new GestorDeUsuarios();
     }
 
     @Test
