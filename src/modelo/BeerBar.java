@@ -25,7 +25,7 @@ public class BeerBar {
      */
     public BeerBar(Jornada jornada){
         this.jornada = jornada;
-        this.usuarios = GestorDeUsuarios.darInstancia();
+        this.usuarios = GestorDeUsuarios.darInstancia().;
     }
 
     /**
@@ -57,8 +57,9 @@ public class BeerBar {
      *
      * @return - Lista de transacciones
      */
-    public ArrayList verHistorialDeTransacciones(){
-        return new ArrayList();
+    public ArrayList<Transaccion> verHistorialDeTransacciones() throws BeerBarException {
+        return Calendario.darInstancia().verTransaccionesDeLosDias(
+                new Fecha().getFechaActual(), new Fecha().getFechaActual());
     }
 
     /**
@@ -67,8 +68,10 @@ public class BeerBar {
      * @param usuario - Usuario a eliminar
      * @return - True si se ha eliminado correctamente
      */
-    public boolean eliminarUsuario(Usuario usuario){
-        return true;
+    public boolean eliminarUsuario(Usuario usuario) throws BeerBarException {
+
+        return GestorDeUsuarios.darInstancia().eliminarUsuario(usuario.getNombre());
+
     }
 
     /**
@@ -77,8 +80,9 @@ public class BeerBar {
      * @param usuario - Usuario nuevo
      * @return - True si se ha anadido correctamente
      */
-    public boolean anadirUsuario(Usuario usuario){
-        return true;
+    public boolean anadirUsuario(Usuario usuario) throws BeerBarException {
+
+        return GestorDeUsuarios.darInstancia().anadirUsuario(usuario.getNombre(), usuario.getContrasena());
     }
 
     /**
@@ -87,8 +91,9 @@ public class BeerBar {
      *
      * @return - Lista de notas
      */
-    public ArrayList verNotasDeTodosLosUsuarios(){
-        return new ArrayList();
+    public ArrayList<Nota> verNotasDeTodosLosUsuarios() throws BeerBarException {
+        // Como ponemos que solo sea usado por el administrador???
+        return ServidorDeMensajeria.darInstancia().mostrarNotasDelDia(new Fecha().getFechaActual());
     }
 
     /**
@@ -99,8 +104,16 @@ public class BeerBar {
      * @param cantidad - Nueva cantidad
      * @return - True si se ha modificado correctamente
      */
-    public boolean modificarTransaccion(Transaccion transaccion, int cantidad){
-        return true;
+    public boolean modificarTransaccion(Transaccion transaccion, int cantidad) throws BeerBarException {
+        // Como ponemos que solo sea usado por el administrador???
+        ArrayList<Transaccion> transaccionesJornada = Jornada.darInstancia().getTransacciones();
+        for (Transaccion t : transaccionesJornada){
+            if (t.equals(transaccion)){
+                t.setCantidad(cantidad);
+                return true;
+            }
+        }
+        throw new BeerBarException("Transaccion no encontrada.\n");
     }
 
     /**
@@ -110,8 +123,11 @@ public class BeerBar {
      * @param cantidad - Cantidad de la transaccion
      * @return - True si se ha introducido correctamente
      */
-    public boolean introducirTransaccion(boolean esVenta, int cantidad){
+    public boolean introducirTransaccion(boolean esVenta, float cantidad){
+        // Como se que usuario es
         return true;
+        //Transaccion t = new Transaccion(cantidad, "", new Fecha().getFechaActual(), usuario);
+        //return Jornada.darInstancia().anadirTransaccion(t);
     }
 
     /**
@@ -119,8 +135,9 @@ public class BeerBar {
      *
      * @return - Lista de notas
      */
-    public ArrayList verNotasRecibidas(){
-        return new ArrayList();
+    public ArrayList<Nota> verNotasRecibidas() throws BeerBarException {
+        // Este metodo es para un usuario en concreto ¿?
+        return ServidorDeMensajeria.darInstancia().mostrarNotasDelDia(new Fecha().getFechaActual());
     }
 
     /**
@@ -130,6 +147,7 @@ public class BeerBar {
      * @return - True si se ha descargado correctamente
      */
     public boolean descargarCopiaDeSeguridad(){
+        // Que queremos descargar¿?
         return true;
     }
 

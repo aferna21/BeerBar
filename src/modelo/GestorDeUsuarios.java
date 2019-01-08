@@ -56,9 +56,28 @@ public class GestorDeUsuarios {
      * @param nombre nombre el usuario a anadir
      * @param contrasena contrasena del usuario a anadir
      */
-    public void anadirUsuario(String nombre, String contrasena){
-        Usuario nuevousuario = new Usuario(nombre, contrasena, false);
-        this.usuarios.add(nuevousuario);
+    public boolean anadirUsuario(String nombre, String contrasena) throws BeerBarException {
+        for (Usuario u : this.usuarios){
+            if (u.getNombre().equals(nombre)){
+                throw new BeerBarException("El nombre de usuario ya existe.\n");
+            }
+        }
+        this.usuarios.add(new Usuario(nombre, contrasena, false));
+        return true;
+    }
+
+    /**
+     * Elimina un usuario de la coleccion de usuarios del sistema
+     * @param nombre nombre del usuario a eliminar
+     */
+    public boolean eliminarUsuario(String nombre) throws BeerBarException {
+        for (Usuario u : this.usuarios){
+            if (u.getNombre().equals(nombre)){
+                this.usuarios.remove(u);
+                return true;
+            }
+        }
+        throw new BeerBarException("Usuario no encontrado.\n");
     }
 
     /**

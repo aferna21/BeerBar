@@ -131,4 +131,15 @@ public class Transaccion {
     public boolean estaEscritaEn(Fecha fecha){
         return this.getFecha().equals(fecha);
     }
+
+    /**
+     * Dos transacciones son consideradas iguales cuando su cantidad, usuario, fecha y concepto son iguales.
+     *
+     * @param t - Transaccion a comparar.
+     * @return - True si son los mismos.
+     */
+    public boolean equals(Transaccion t){
+        return this.cantidad == t.getCantidad()  && this.concepto.equals(t.getConcepto())
+                && this.fecha.equals(t.getFecha()) && this.usuario.equals(t.getFecha());
+    }
 }
