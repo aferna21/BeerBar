@@ -23,17 +23,25 @@ public class ServidorDeMensajeria {
 
     /**
      * Devuelve la instancia unica de la clase.
-     *
      * @return - Instancia de la clase.
      */
     public static ServidorDeMensajeria darInstancia(){
         return instancia;
     }
 
+    /**
+     * Anade una nota al conjunto de notas.
+     * @param nota que se anade.
+     */
     public void anadirNota(Nota nota){
         this.notas.add(nota);
     }
 
+    /**
+     * Muestra las notas que se ha enviado el usuario pasado por parametro.
+     * @param usuario remitente de las notas que queremos mostrar.
+     * @return Conjunto de notas del usuario con ese remitente.
+     */
     public ArrayList<Nota> mostrarNotasDe(Usuario usuario){
         ArrayList<Nota> lista = new ArrayList<Nota>();
         for(Nota n:this.notas){
@@ -44,6 +52,11 @@ public class ServidorDeMensajeria {
         return lista;
     }
 
+    /**
+     * Muestra las notas que se han enviado hacia el usuario pasado por parametro.
+     * @param usuario destinatario de las notas que queremos mostrar.
+     * @return Conjunto de notas del usuario con ese destinatario.
+     */
     public ArrayList<Nota> mostrarNotasHacia(Usuario usuario){
         ArrayList<Nota> lista = new ArrayList<Nota>();
         for(Nota n:this.notas){
@@ -55,7 +68,11 @@ public class ServidorDeMensajeria {
     }
 
 
-
+    /**
+     * Muestra todas las notas de ese dia.
+     * @param fecha de las notas que queremos mostrar.
+     * @return Conjunto de notas de esa fecha.
+     */
     public ArrayList<Nota> mostrarNotasDelDia(Fecha fecha){
         ArrayList<Nota> lista = new ArrayList<Nota>();
         for(Nota n:this.notas){
@@ -66,7 +83,12 @@ public class ServidorDeMensajeria {
         return lista;
     }
 
-
+    /**
+     * Muestra las notas de un usuario especifico a un destinatario especifico.
+     * @param  rem usuario remitente de la nota.
+     * @param dest usuario destinatario de la nota.
+     * @return Conjunto de notas entre el remitente y el destinatario.
+     */
     public ArrayList<Nota> mostrarNotasDeHacia(Usuario rem, Usuario dest){
         ArrayList<Nota> output = new ArrayList<Nota>();
         ArrayList<Nota> notasremitente = this.mostrarNotasDe(rem);

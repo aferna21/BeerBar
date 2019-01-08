@@ -51,7 +51,6 @@ public class GestorDeUsuarios {
         return u.getEsAdmin();
     }
 
-
     /**
      * Anade un nuevo usuario a la coleccion de usuarios del sistema
      * @param nombre nombre el usuario a anadir

@@ -114,7 +114,6 @@ public class Transaccion {
         return salida;
     }
 
-
     /**
      * Devuelve true si el usuario es el que ha creado la transaccion.
      * @param usuario presunto creador de la transaccion.

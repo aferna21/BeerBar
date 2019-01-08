@@ -27,8 +27,6 @@ public class Calendario {
         return instancia;
     }
 
-
-
     //No hacen falta getters y setters porque para eso son los metodos de abajo
 
 
@@ -47,13 +45,9 @@ public class Calendario {
         return null;
     }
 
-
     private int obtenerBeneficios(Fecha fecha){
         return buscarJornada(fecha).sumaTransacciones();
     }
-
-
-
 
     /**
      * Devuelve el beneficio en un rango de dias.
@@ -72,9 +66,6 @@ public class Calendario {
         return suma;
     }
 
-
-
-
     /**
      * Devuelve el conjunto de beneficios y gastos en un dia concreto.
      * @param fecha dia concreto del que se quieren ver las transacciones
@@ -83,9 +74,6 @@ public class Calendario {
         private ArrayList<Transaccion> verTransaccionesDelDia(Fecha fecha){
         return buscarJornada(fecha).getTransacciones();
     }
-
-
-
 
     /**
      * Devuelve el conjunto de beneficios y gastos en un rango de dias.
@@ -104,9 +92,6 @@ public class Calendario {
         return output;
     }
 
-
-
-
     /**
      * Devuelve el conjunto de beneficios y gastos en un dia concreto de un usuario concreto.
      * @param fecha dia del que obtener las transacciones.
@@ -117,7 +102,6 @@ public class Calendario {
         Jornada j = this.buscarJornada(fecha);
         return j.verTransaccionesDe(usuario);
     }
-
 
     /**
      * Devuelve el conjunto de beneficios y gastos en un rango de dias de un usuario concreto.
@@ -135,6 +119,4 @@ public class Calendario {
         }
         return output;
     }
-
-
 }

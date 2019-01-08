@@ -6,19 +6,43 @@ import java.util.Date;
 
 public class Fecha {
 
+    /**
+     * Dia de la fecha.
+     */
     private int dia;
+
+    /**
+     * Mes de la fecha.
+     */
     private int mes;
+
+    /**
+     * Ano de la fecha.
+     */
     private int ano;
 
+
+    /**
+     * Constructor de Fecha.
+     * Crea un objeto Fecha, con dia, mes y ano.
+     * Antes comprueba que son datos correctos.
+     */
     public Fecha(int dia, int mes, int ano) throws BeerBarException {
         this.setAno(ano);
         this.setMes(mes);
         this.setDia(dia);
     }
 
+    /**
+     * Constructor vacio de Fecha.
+     */
     public Fecha(){
 
     }
+
+    /**
+     * Getters y setters.
+     */
 
     public int getDia(){
         return this.dia;
@@ -52,18 +76,27 @@ public class Fecha {
         }
     }
 
+    /**
+     * Comprueba si el ano de la fecha es bisiesto.
+     * @return si es bisiesto o no
+     */
     private boolean esAnoBisiesto(){
 
-        if ((this.getAno() % 4 == 0) && ((this.getAno() % 100 != 0) || (this.getAno() % 400 == 0))) {
+        if ((this.ano % 4 == 0) && ((this.ano % 100 != 0) || (this.ano % 400 == 0))) {
             return true;
         }else {
             return false;
         }
     }
 
+    /**
+     * Comprueba si el mes esta en el grupo de meses.
+     * @param meses array de meses que tienen 31 dias, 30 o 28.
+     * @return si el mes esta dentro de ese grupo de meses.
+     */
     private boolean contieneMes(int[] meses){
         for(int m : meses){
-            if (m == this.getMes()){
+            if (m == this.mes){
                 return true;
             }
         }
@@ -88,15 +121,18 @@ public class Fecha {
 
     }
 
-
+    /**
+     * Dos fechas son consideradas iguales cuando el dia, mes y ano coinciden.
+     * @param f - Fecha a comparar.
+     * @return - True si son los mismos.
+     */
     public boolean equals(Fecha f){
         return this.dia == f.getDia()  &&  this.mes == f.getMes()  &&  this.ano == f.getAno();
     }
 
     /**
-     * CAMBIAR PARA QUE DEVUELVA EL DIA DE HOY CORRECTAMENTE
-     * LO DEJO ASI PARA LOS TEST DE MOMENTO
-     * @return
+     * Crea un objeto Fecha con la fecha actual.
+     * @return un objeto clase Fecha con la fecha actual.
      */
     public Fecha getFechaActual() throws BeerBarException {
 
@@ -111,7 +147,7 @@ public class Fecha {
     }
 
     /**
-     * Devuelve el nombre correspondiente al numero del mes
+     * Devuelve el nombre correspondiente al numero del mes.
      * @return nombre del mes
      */
     private String getNombreMes() throws BeerBarException {
@@ -170,18 +206,14 @@ public class Fecha {
         return str;
     }
 
-    private int diasDelMes(int mes){
-        if (mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 10 || mes == 12){
+    private int diasDelMes(){
+        if (this.mes == 1 || this.mes == 3 || this.mes == 5 || this.mes == 7 || this.mes == 8 || this.mes == 10 || this.mes == 12){
             return 31;
-        }else if( mes == 2){
+        }else if(this.mes == 2){
             return 28;
         }else{
             return 30;
         }
-    }
-
-    public boolean esBisiesto(){
-        return this.ano % 4 == 0;
     }
 
     /*ME DA PENA BORRARLA :(
@@ -197,16 +229,22 @@ public class Fecha {
     }
     */
 
+    /**
+     * Avanza el dia del ano.
+     * Si es 28 de febrero, comprueba si es bisiesto o no.
+     * Si es 31 de diciembre, pasa a 1 de enero del ano siguiente.
+     */
     public void avanza(){
         this.dia++;
 
-        if(this.dia > diasDelMes(this.mes)){
+        if(this.dia > diasDelMes()){
 
-            if(!(esBisiesto() && this.dia == 28 && this.mes == 2)) {
+            if(!(esAnoBisiesto() && this.dia == 28 && this.mes == 2)) {
                 this.mes++;
                 this.dia = 1;
                 if (this.mes > 12) {
                     this.mes = 1;
+                    this.ano++;
                 }
             }
         }
