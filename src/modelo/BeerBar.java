@@ -25,7 +25,7 @@ public class BeerBar {
      */
     public BeerBar(Jornada jornada){
         this.jornada = jornada;
-        this.usuarios = GestorDeUsuarios.darInstancia().;
+        this.usuarios = GestorDeUsuarios.darInstancia();
     }
 
     /**

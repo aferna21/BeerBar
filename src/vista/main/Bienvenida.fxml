@@ -8,14 +8,14 @@
 
 <Pane maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.main.Bievenida">
    <children>
-    <AnchorPane fx:id="paneWelcome" maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" scaleShape="false" style="-fx-background-color: #808080;">
+    <AnchorPane fx:id="cristalBienvenida" maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" scaleShape="false" style="-fx-background-color: #808080;">
          <children>
-            <Label fx:id="labelWelcome" layoutX="90.0" layoutY="91.0" text="¡Bienvenido a BeerBar!" textFill="#00264d">
+            <Label fx:id="etiquetaBienvenida" layoutX="90.0" layoutY="91.0" text="¡Bienvenido a BeerBar!" textFill="#00264d">
                <font>
                   <Font size="36.0" />
                </font>
             </Label>
-            <Button fx:id="buttonLogin" layoutX="210.0" layoutY="212.0" mnemonicParsing="false" onAction="#buttonEnterClicked" prefHeight="70.0" prefWidth="180.0" style="-fx-background-color: #00264d;" text="Entrar" textFill="WHITE">
+            <Button fx:id="botonEntrar" layoutX="210.0" layoutY="212.0" mnemonicParsing="false" onAction="#pulsadoBotonEntrar" prefHeight="70.0" prefWidth="180.0" style="-fx-background-color: #00264d;" text="Entrar" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>

@@ -21,17 +21,17 @@ public class Acceso implements Initializable
 
     }
 
-    public void buttonLoginClicked(ActionEvent actionEvent)
+    public void pulsadoBotonAcceso(ActionEvent actionEvent)
     {
         try
         {
             FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/vista/usuario/Usuario.fxml"));
-            Parent userRoot = fxmlLoader.load();
-            Stage userStage = new Stage();
-            userStage.setTitle("usuario");
-            userStage.setScene(new Scene(userRoot));
-            //userStage.setResizable(false);
-            userStage.show();
+            Parent raizUsuario = fxmlLoader.load();
+            Stage escenarioUsuario = new Stage();
+            escenarioUsuario.setTitle("Usuario");
+            escenarioUsuario.setScene(new Scene(raizUsuario));
+            escenarioUsuario.setMaximized(true);
+            escenarioUsuario.show();
 
             Stage loginStage = (Stage) paneLogin.getScene().getWindow();
             loginStage.close();

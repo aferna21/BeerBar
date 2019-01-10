@@ -13,7 +13,7 @@ import java.util.ResourceBundle;
 
 public class Bievenida implements Initializable
 {
-    public AnchorPane paneWelcome;
+    public AnchorPane cristalBienvenida;
 
     /*public Bievenida() throws IOException
     {
@@ -31,7 +31,7 @@ public class Bievenida implements Initializable
 
     }
 
-    public void buttonEnterClicked(ActionEvent actionEvent)
+    public void pulsadoBotonEntrar(ActionEvent actionEvent)
     {
         try
         {
@@ -43,7 +43,7 @@ public class Bievenida implements Initializable
             loginStage.setResizable(false);
             loginStage.show();
 
-            Stage welcomeStage = (Stage) paneWelcome.getScene().getWindow();
+            Stage welcomeStage = (Stage) cristalBienvenida.getScene().getWindow();
             welcomeStage.close();
         }
         catch (Exception e)
