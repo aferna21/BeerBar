@@ -30,7 +30,8 @@ public class Acceso implements Initializable
             Stage escenarioUsuario = new Stage();
             escenarioUsuario.setTitle("Usuario");
             escenarioUsuario.setScene(new Scene(raizUsuario));
-            escenarioUsuario.setMaximized(true);
+            //escenarioUsuario.setMaximized(true);
+            escenarioUsuario.setResizable(false);
             escenarioUsuario.show();
 
             Stage loginStage = (Stage) paneLogin.getScene().getWindow();
