@@ -1,4 +1,6 @@
-package modelo;
+package controlador;
+
+import modelo.*;
 
 import java.util.ArrayList;
 

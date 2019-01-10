@@ -1,6 +1,8 @@
 package modelo;
 
 import static org.junit.Assert.*;
+
+import controlador.BeerBar;
 import org.junit.Before;
 import org.junit.Test;
 
