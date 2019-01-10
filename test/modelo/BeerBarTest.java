@@ -10,7 +10,7 @@ public class BeerBarTest {
 
     @Before
     public void setUp() throws Exception{
-        beerbar = new BeerBar();
+        beerbar = new BeerBar(Jornada.darInstancia());
     }
 
     @Test

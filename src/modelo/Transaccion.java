@@ -120,7 +120,7 @@ public class Transaccion {
      * @return true si el usuario es el que ha escrito la transaccion.
      */
     public boolean esUsuario(Usuario usuario){
-        return this.usuario.equals(this.getUsuario());
+        return usuario.equals(this.getUsuario());
     }
 
     /**

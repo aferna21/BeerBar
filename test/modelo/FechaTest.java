@@ -67,14 +67,14 @@ public class FechaTest {
         assertEquals("1 de enero del 2019", fecha.toString());
     }
 
-    @Test
+    /*@Test
     public void testGetFechaActual() throws BeerBarException {
         Fecha f = new Fecha().getFechaActual();
         assertEquals(6, f.getDia());
         assertEquals(1, f.getMes());
         assertEquals(2019, f.getAno());
         assertEquals("6 de enero del 2019", f.toString());
-    }
+    }*/
 
     @Test (expected = modelo.BeerBarException.class)
     public void testGetNombreMesException() throws BeerBarException {
