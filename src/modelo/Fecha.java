@@ -216,18 +216,6 @@ public class Fecha {
         }
     }
 
-    /*ME DA PENA BORRARLA :(
-    public int numeroDeDiaDelAno(){
-        int suma = 0;
-        for(int i = 0; i < this.mes-1; i++){
-            suma += this.diasDelMes(i);
-        }
-        suma+=this.dia;
-
-        if (esBisiesto()) suma++;
-        return suma;
-    }
-    */
 
     /**
      * Avanza el dia del ano.

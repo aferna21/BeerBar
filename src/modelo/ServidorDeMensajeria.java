@@ -76,7 +76,7 @@ public class ServidorDeMensajeria {
     public ArrayList<Nota> mostrarNotasDelDia(Fecha fecha){
         ArrayList<Nota> lista = new ArrayList<Nota>();
         for(Nota n:this.notas){
-            if(n.getFecha().equals(fecha)){
+            if(n.estaEscritaEn(fecha)){
                 lista.add(n);
             }
         }
