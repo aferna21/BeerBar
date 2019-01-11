@@ -2,6 +2,8 @@ package vista;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class VentanaUsuario extends JFrame{
 
@@ -24,6 +26,13 @@ public class VentanaUsuario extends JFrame{
         panelUsuario.add(botonTransacciones);
 
         this.getContentPane().add(panelUsuario);
+
+        botonNotas.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new VentanaNotasUsuario();
+            }
+        });
 
         this.setResizable(false);
         this.setVisible(true);
