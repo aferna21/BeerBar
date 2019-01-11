@@ -24,8 +24,7 @@ public class VentanaBienvenida extends JFrame{
         this.setLocationRelativeTo(null);
 
         panelBienvenida = new JPanel();
-        BorderLayout bl = new BorderLayout();
-        panelBienvenida.setLayout(bl);
+        panelBienvenida.setLayout(new BorderLayout());
         panelBienvenida.setSize(new Dimension(400, 200));
         panelBienvenida.setBorder(new EmptyBorder(new Insets(20, 20, 20, 20)));
 
@@ -34,7 +33,6 @@ public class VentanaBienvenida extends JFrame{
         panelBienvenida.add(textoBienvenida, BorderLayout.CENTER);
 
         botonEntrar = new JButton("Entrar");
-        botonEntrar.setSize(new Dimension(40, 20));
         panelBienvenida.add(botonEntrar, BorderLayout.SOUTH);
 
         this.getContentPane().add(panelBienvenida);
