@@ -1,17 +1,17 @@
 package vista;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class VentanaNotasUsuario extends JFrame {
 
-    JPanel panelNotas, panelPruebaA, panelPruebaB;
-    JButton botonNuevaNota;
+    JPanel panelEscribirNotaA, panelVerNotasRecibidas, panelVerNotasEnviadas;
     JMenuBar barraMenu;
     JMenu menu;
-    JMenuItem pruebaA, pruebaB;
+    JMenuItem opcionEscribirNota, opcionVerNotasRecibidas, opcionVerNotasEnviadas;
     JFrame frameVentanaNotas;
 
     public VentanaNotasUsuario(){
@@ -23,39 +23,62 @@ public class VentanaNotasUsuario extends JFrame {
 
         barraMenu = new JMenuBar();
         menu = new JMenu("Menu");
-        pruebaA = new JMenuItem("Pantalla verde");
-        pruebaB = new JMenuItem("Pantalla azul");
-        menu.add(pruebaA);
-        menu.add(pruebaB);
+        opcionEscribirNota = new JMenuItem("Escribir nota");
+        opcionVerNotasRecibidas = new JMenuItem("Ver notas recibidas");
+        opcionVerNotasEnviadas = new JMenuItem("Ver notas enviadas");
+        menu.add(opcionEscribirNota);
+        menu.add(opcionVerNotasRecibidas);
         barraMenu.add(menu);
         this.setJMenuBar(barraMenu);
 
-        panelPruebaA = new JPanel();
-        panelPruebaA.setSize(800, 600);
-        panelPruebaA.setBackground(Color.GREEN);
+        //ESCRIBIR NOTA
+        panelEscribirNotaA = new JPanel();
+        panelEscribirNotaA.setSize(800, 600);
+        panelEscribirNotaA.setLayout(new BorderLayout());
+        JPanel panelDestinatario = new JPanel();
+        panelDestinatario.setLayout(new BoxLayout(panelDestinatario, BoxLayout.PAGE_AXIS));
+        panelEscribirNotaA.add(panelDestinatario, BorderLayout.NORTH);
+        JLabel textoDestinatario = new JLabel("Destinatario");
+        JTextField campoTextoDestinatario = new JTextField();
+        JLabel textoMensaje = new JLabel("Mensaje");
+        panelDestinatario.add(textoDestinatario);
+        panelDestinatario.add(campoTextoDestinatario);
+        panelDestinatario.add(textoMensaje);
+        JTextField campoMensaje = new JTextField();
+        panelEscribirNotaA.add(campoMensaje, BorderLayout.CENTER);
+        JButton botonEnviar = new JButton("Enviar");
+        panelEscribirNotaA.add(botonEnviar, BorderLayout.SOUTH);
+        panelEscribirNotaA.setBorder(new EmptyBorder(new Insets(10,10, 10, 10)));
 
-        panelPruebaB = new JPanel();
-        panelPruebaB.setSize(800, 600);
-        panelPruebaB.setBackground(Color.BLUE);
 
-        pruebaA.addActionListener(new ActionListener() {
+        //VER NOTAS RECIBIDAS
+        panelVerNotasRecibidas = new JPanel();
+        panelVerNotasRecibidas.setSize(800, 600);
+
+
+        //VER NOTAS ENVIADAS
+        panelVerNotasEnviadas = new JPanel();
+        panelVerNotasEnviadas.setSize(800, 600);
+
+
+        opcionEscribirNota.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frameVentanaNotas.getContentPane().removeAll();
                 frameVentanaNotas.getContentPane().repaint();
                 frameVentanaNotas.getContentPane().revalidate();
-                frameVentanaNotas.getContentPane().add(panelPruebaA);
+                frameVentanaNotas.getContentPane().add(panelEscribirNotaA);
                 frameVentanaNotas.setVisible(true);
             }
         });
 
-        pruebaB.addActionListener(new ActionListener() {
+        opcionVerNotasRecibidas.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frameVentanaNotas.getContentPane().removeAll();
                 frameVentanaNotas.getContentPane().repaint();
                 frameVentanaNotas.getContentPane().revalidate();
-                frameVentanaNotas.getContentPane().add(panelPruebaB);
+                frameVentanaNotas.getContentPane().add(panelVerNotasRecibidas);
                 frameVentanaNotas.setVisible(true);
             }
         });

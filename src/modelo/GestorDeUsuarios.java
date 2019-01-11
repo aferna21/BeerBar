@@ -20,7 +20,7 @@ public class GestorDeUsuarios {
     }
 
     /**
-     * peculiaridad del singletoooooooonnn
+     * Peculiaridad del singleton
      */
     public ArrayList<Usuario> getUsuarios(){
         return this.usuarios;
