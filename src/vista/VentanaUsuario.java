@@ -40,6 +40,13 @@ public class VentanaUsuario extends JFrame{
             }
         });
 
+        botonTransacciones.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new VentanaTransaccionesUsuario();
+            }
+        });
+
         this.setResizable(false);
         this.setVisible(true);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
