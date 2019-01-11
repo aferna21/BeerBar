@@ -33,7 +33,7 @@ public class VentanaIniciarSesion extends JFrame {
         textoUsuario = new JLabel("Usuario");
         textoUsuario.setBorder(new EmptyBorder(new Insets(80, 10, 0, 10)));
         textoContrasena = new JLabel("Contrasena");
-        textoContrasena.setBorder(new EmptyBorder(new Insets(150, 10, 0, 10)));
+        textoContrasena.setBorder(new EmptyBorder(new Insets(140, 10, 0, 10)));
         campoTextoUsuario = new JTextField();
         campoTextoContrasena = new JPasswordField();
 
@@ -57,7 +57,14 @@ public class VentanaIniciarSesion extends JFrame {
         botonIniciarSesion.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new VentanaUsuario();
+                String usuario = campoTextoUsuario.getText();
+                String contrasena = String.valueOf(campoTextoContrasena.getPassword());
+                if(usuario.equals("admin") && contrasena.equals("admin")){
+                    new VentanaAdministrador();
+                }
+                else {
+                    new VentanaUsuario();
+                }
                 frameIniciarSesion.dispatchEvent(new WindowEvent(frameIniciarSesion, WindowEvent.WINDOW_CLOSING));
             }
         });
