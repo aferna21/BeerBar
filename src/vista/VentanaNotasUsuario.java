@@ -42,6 +42,8 @@ public class VentanaNotasUsuario extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frameVentanaNotas.getContentPane().removeAll();
+                frameVentanaNotas.getContentPane().repaint();
+                frameVentanaNotas.getContentPane().revalidate();
                 frameVentanaNotas.getContentPane().add(panelPruebaA);
                 frameVentanaNotas.setVisible(true);
             }
@@ -51,6 +53,8 @@ public class VentanaNotasUsuario extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frameVentanaNotas.getContentPane().removeAll();
+                frameVentanaNotas.getContentPane().repaint();
+                frameVentanaNotas.getContentPane().revalidate();
                 frameVentanaNotas.getContentPane().add(panelPruebaB);
                 frameVentanaNotas.setVisible(true);
             }
