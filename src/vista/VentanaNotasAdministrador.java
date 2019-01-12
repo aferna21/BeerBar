@@ -11,7 +11,7 @@ public class VentanaNotasAdministrador extends JFrame{
     JPanel panelNotas, panelEscribirNotaA, panelVerNotasRecibidas, panelVerNotasEnviadas, panelVerTodasLasNotas;
     JMenuBar barraMenu;
     JMenu menu;
-    JMenuItem opcionEscribirNota, opcionVerNotasRecibidas, opcionVerNotasEnviadas, opcionVerTodasLasNotas;
+    JMenuItem opcionEscribirNota, opcionVerNotasRecibidas, opcionVerNotasEnviadas, opcionVerTodasLasNotas, opcionAyuda;
     JFrame frameVentanaNotas;
 
     public VentanaNotasAdministrador(){
@@ -27,10 +27,12 @@ public class VentanaNotasAdministrador extends JFrame{
         opcionVerNotasRecibidas = new JMenuItem("Ver notas recibidas");
         opcionVerNotasEnviadas = new JMenuItem("Ver notas enviadas");
         opcionVerTodasLasNotas =  new JMenuItem("Ver todas las notas");
+        opcionAyuda = new JMenuItem("Ayuda");
         menu.add(opcionEscribirNota);
         menu.add(opcionVerNotasRecibidas);
         menu.add(opcionVerNotasEnviadas);
         menu.add(opcionVerTodasLasNotas);
+        menu.add(opcionAyuda);
         barraMenu.add(menu);
         this.setJMenuBar(barraMenu);
 
@@ -169,6 +171,14 @@ public class VentanaNotasAdministrador extends JFrame{
                 frameVentanaNotas.getContentPane().revalidate();
                 frameVentanaNotas.getContentPane().add(panelVerTodasLasNotas);
                 frameVentanaNotas.setVisible(true);
+            }
+        });
+
+        opcionAyuda.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPaneAyuda ayuda = new JOptionPaneAyuda((JPanel) frameVentanaNotas.getContentPane());
+                ayuda.muestraAyudaNotasAdministrador();
             }
         });
 

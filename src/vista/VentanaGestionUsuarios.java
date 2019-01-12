@@ -11,7 +11,7 @@ public class VentanaGestionUsuarios extends JFrame {
     JPanel panelUsuarios, panelAnadir, panelEliminar, panelVer;
     JMenuBar barraMenu;
     JMenu menu;
-    JMenuItem opcionAnadir, opcionEliminar, opcionVer;
+    JMenuItem opcionAnadir, opcionEliminar, opcionVer, opcionAyuda;
     JFrame frameVentanaUsuarios;
 
     public VentanaGestionUsuarios(){
@@ -26,9 +26,11 @@ public class VentanaGestionUsuarios extends JFrame {
         opcionAnadir = new JMenuItem("Anadir a un usuario");
         opcionEliminar = new JMenuItem("Eliminar a un usuario");
         opcionVer = new JMenuItem("Ver los usuarios del sistema");
+        opcionAyuda = new JMenuItem("Ayuda");
         menu.add(opcionAnadir);
         menu.add(opcionEliminar);
         menu.add(opcionVer);
+        menu.add(opcionAyuda);
         barraMenu.add(menu);
         this.setJMenuBar(barraMenu);
 
@@ -129,6 +131,14 @@ public class VentanaGestionUsuarios extends JFrame {
                 frameVentanaUsuarios.getContentPane().revalidate();
                 frameVentanaUsuarios.getContentPane().add(panelVer);
                 frameVentanaUsuarios.setVisible(true);
+            }
+        });
+
+        opcionAyuda.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPaneAyuda ayuda = new JOptionPaneAyuda((JPanel) frameVentanaUsuarios.getContentPane());
+                ayuda.muestraAyudaGestorUsuarios();
             }
         });
 

@@ -15,6 +15,9 @@ public class VentanaIniciarSesion extends JFrame {
     JPasswordField campoTextoContrasena;
     JButton botonIniciarSesion;
     JFrame frameIniciarSesion;
+    JMenuBar barraMenu;
+    JMenu menu;
+    JMenuItem opcionAyuda;
 
     public VentanaIniciarSesion(){
 
@@ -24,6 +27,13 @@ public class VentanaIniciarSesion extends JFrame {
         this.setSize(new Dimension(600, 400));
         //Poner la ventana en medio de la pantalla
         this.setLocationRelativeTo(null);
+
+        barraMenu = new JMenuBar();
+        menu = new JMenu("Menu");
+        opcionAyuda = new JMenuItem("Ayuda");
+        menu.add(opcionAyuda);
+        barraMenu.add(menu);
+        this.setJMenuBar(barraMenu);
 
         panelIniciarSesion = new JPanel();
         panelIniciarSesion.setLayout(new BorderLayout());
@@ -60,6 +70,14 @@ public class VentanaIniciarSesion extends JFrame {
                     new VentanaUsuario();
                 }
                 frameIniciarSesion.dispatchEvent(new WindowEvent(frameIniciarSesion, WindowEvent.WINDOW_CLOSING));
+            }
+        });
+
+        opcionAyuda.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPaneAyuda ayuda = new JOptionPaneAyuda((JPanel) frameIniciarSesion.getContentPane());
+                ayuda.muestraAyudaInicioSesion();
             }
         });
 
