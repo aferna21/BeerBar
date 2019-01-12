@@ -1,7 +1,10 @@
 package vista;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class VentanaUsuario extends JFrame{
 
@@ -20,12 +23,32 @@ public class VentanaUsuario extends JFrame{
         botonNotas = new JButton("Notas");
         botonTransacciones = new JButton("Transacciones");
 
+        botonNotas.setPreferredSize(new Dimension(140, 80));
+        botonTransacciones.setPreferredSize(new Dimension(140, 80));
+
+        panelUsuario.setBorder(new EmptyBorder(new Insets(50, 10, 10, 10)));
+
         panelUsuario.add(botonNotas);
         panelUsuario.add(botonTransacciones);
 
         this.getContentPane().add(panelUsuario);
 
-        this.setResizable(false);
+        botonNotas.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new VentanaNotasUsuario();
+            }
+        });
+
+        botonTransacciones.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new VentanaTransaccionesUsuario();
+            }
+        });
+
+        this.setMinimumSize(new Dimension(400, 200));
+        this.setResizable(true);
         this.setVisible(true);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
