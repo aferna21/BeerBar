@@ -81,27 +81,30 @@ public class VentanaNotasUsuario extends JFrame {
         panelVerNotasRecibidas.add(panelScrollRecibidas, BorderLayout.CENTER);
         panelDentroScrollRecibidas.setBackground(Color.BLACK);
 
-        JTextArea textito = new JTextArea();
-        textito.setText("-----------------\nMensaje1\n-----------------");
-        textito.setEditable(false);
-        panelDentroScrollRecibidas.add(textito);
-        JTextArea textito2 = new JTextArea();
-        textito2.setText("-----------------\nMensaje2\n-----------------");
-        textito2.setEditable(false);
-        panelDentroScrollRecibidas.add(textito2);
-        JTextArea textito3 = new JTextArea();
-        textito3.setText("-----------------\nMensaje3\n-----------------");
-        textito3.setEditable(false);
-        panelDentroScrollRecibidas.add(textito3);
-        JTextArea textito4 = new JTextArea();
-        textito4.setText("-----------------\nMensaje4\n-----------------");
-        textito4.setEditable(false);
-        panelDentroScrollRecibidas.add(textito4);
+        JTextAreaNotas texto1 = new JTextAreaNotas("Adri", "Felipe", "1 de Enero de 2019", "Hola que tal estas como te va la vida crak");
+        panelDentroScrollRecibidas.add(texto1);
+
+        JTextAreaNotas texto2 = new JTextAreaNotas("Felipe", "Adri", "4 de Enero de 2019", "A mi bien y a ti que tal meteoro");
+        panelDentroScrollRecibidas.add(texto2);
 
 
         //VER NOTAS ENVIADAS
         panelVerNotasEnviadas = new JPanel();
         panelVerNotasEnviadas.setSize(800, 600);
+        panelVerNotasEnviadas.setLayout(new BorderLayout());
+        JPanel panelDentroScrollEnviadas = new JPanel();
+        panelDentroScrollEnviadas.setLayout(new BoxLayout(panelDentroScrollEnviadas, BoxLayout.PAGE_AXIS));
+        panelDentroScrollEnviadas.setBorder(new EmptyBorder(new Insets(10, 10, 10, 10)));
+        JScrollPane panelScrollEnviadas = new JScrollPane(panelDentroScrollEnviadas);
+        panelScrollEnviadas.getVerticalScrollBar().setUnitIncrement(40);
+        panelVerNotasEnviadas.add(panelScrollEnviadas, BorderLayout.CENTER);
+        panelDentroScrollEnviadas.setBackground(Color.BLACK);
+
+        JTextAreaNotas texto3 = new JTextAreaNotas("Adri", "Felipe", "1 de Enero de 2019", "Bueno pues otro texto de prueba jejejej");
+        panelDentroScrollEnviadas.add(texto3);
+
+        JTextAreaNotas texto4 = new JTextAreaNotas("Felipe", "Adri", "4 de Enero de 2019", "Tampoco se que poner aqui sois unas tenias");
+        panelDentroScrollEnviadas.add(texto4);
 
 
         opcionEscribirNota.addActionListener(new ActionListener() {
