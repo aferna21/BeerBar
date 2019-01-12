@@ -36,7 +36,7 @@ public class VentanaNotasUsuario extends JFrame {
         panelNotas.setLayout(new BorderLayout());
         JLabel textoNotas = new JLabel("Ventana de notas del usuario");
         panelNotas.add(textoNotas, BorderLayout.CENTER);
-        panelNotas.setBorder(new EmptyBorder(new Insets(0, 250, 0, 0)));
+        panelNotas.setBorder(new EmptyBorder(new Insets(0, 300, 0, 300)));
         this.getContentPane().add(panelNotas);
 
 
