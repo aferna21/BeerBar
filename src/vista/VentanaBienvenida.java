@@ -13,6 +13,9 @@ public class VentanaBienvenida extends JFrame{
     JLabel textoBienvenida;
     JButton botonEntrar;
     JFrame frameBienvenida;
+    JMenuBar barraMenu;
+    JMenu menu;
+    JMenuItem opcionAyuda;
 
     public VentanaBienvenida(){
 
@@ -22,6 +25,13 @@ public class VentanaBienvenida extends JFrame{
         this.setSize(new Dimension(400, 200));
         //Poner la ventana en el medio de la pantalla
         this.setLocationRelativeTo(null);
+
+        barraMenu = new JMenuBar();
+        menu = new JMenu("Menu");
+        opcionAyuda = new JMenuItem("Ayuda");
+        menu.add(opcionAyuda);
+        barraMenu.add(menu);
+        this.setJMenuBar(barraMenu);
 
         panelBienvenida = new JPanel();
         panelBienvenida.setLayout(new BorderLayout());
@@ -42,6 +52,14 @@ public class VentanaBienvenida extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 new VentanaIniciarSesion();
                 frameBienvenida.dispatchEvent(new WindowEvent(frameBienvenida, WindowEvent.WINDOW_CLOSING));
+            }
+        });
+
+        opcionAyuda.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPaneAyuda ayuda = new JOptionPaneAyuda((JPanel) frameBienvenida.getContentPane());
+                ayuda.muestraAyudaBienvenida();
             }
         });
 
