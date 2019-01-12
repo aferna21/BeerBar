@@ -34,9 +34,9 @@ public class VentanaTransaccionesUsuario extends JFrame {
 
         panelTransacciones = new JPanel();
         panelTransacciones.setLayout(new BorderLayout());
-        JLabel textoNotas = new JLabel("Ventana de transacciones");
+        JLabel textoNotas = new JLabel("Ventana de transacciones del usuario");
         panelTransacciones.add(textoNotas, BorderLayout.CENTER);
-        panelTransacciones.setBorder(new EmptyBorder(new Insets(0, 300, 0, 300)));
+        panelTransacciones.setBorder(new EmptyBorder(new Insets(0, 250, 0, 0)));
         this.getContentPane().add(panelTransacciones);
 
 

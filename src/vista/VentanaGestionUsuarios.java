@@ -1,6 +1,8 @@
 package vista;
 
-public class VentanaGestionUsuarios {
+import javax.swing.*;
+
+public class VentanaGestionUsuarios extends JFrame {
 
 
 }
