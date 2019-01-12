@@ -88,7 +88,8 @@ public class VentanaTransaccionesUsuario extends JFrame {
             }
         });
 
-        this.setResizable(false);
+        this.setMinimumSize(new Dimension(400, 300));
+        this.setResizable(true);
         this.setVisible(true);
         this.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
     }

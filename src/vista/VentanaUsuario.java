@@ -47,7 +47,8 @@ public class VentanaUsuario extends JFrame{
             }
         });
 
-        this.setResizable(false);
+        this.setMinimumSize(new Dimension(400, 200));
+        this.setResizable(true);
         this.setVisible(true);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }

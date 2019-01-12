@@ -72,6 +72,31 @@ public class VentanaNotasUsuario extends JFrame {
         //VER NOTAS RECIBIDAS
         panelVerNotasRecibidas = new JPanel();
         panelVerNotasRecibidas.setSize(800, 600);
+        panelVerNotasRecibidas.setLayout(new BorderLayout());
+        JPanel panelDentroScrollRecibidas = new JPanel();
+        panelDentroScrollRecibidas.setLayout(new BoxLayout(panelDentroScrollRecibidas, BoxLayout.PAGE_AXIS));
+        panelDentroScrollRecibidas.setBorder(new EmptyBorder(new Insets(10, 10, 10, 10)));
+        JScrollPane panelScrollRecibidas = new JScrollPane(panelDentroScrollRecibidas);
+        panelScrollRecibidas.getVerticalScrollBar().setUnitIncrement(40);
+        panelVerNotasRecibidas.add(panelScrollRecibidas, BorderLayout.CENTER);
+        panelDentroScrollRecibidas.setBackground(Color.BLACK);
+
+        JTextArea textito = new JTextArea();
+        textito.setText("-----------------\nMensaje1\n-----------------");
+        textito.setEditable(false);
+        panelDentroScrollRecibidas.add(textito);
+        JTextArea textito2 = new JTextArea();
+        textito2.setText("-----------------\nMensaje2\n-----------------");
+        textito2.setEditable(false);
+        panelDentroScrollRecibidas.add(textito2);
+        JTextArea textito3 = new JTextArea();
+        textito3.setText("-----------------\nMensaje3\n-----------------");
+        textito3.setEditable(false);
+        panelDentroScrollRecibidas.add(textito3);
+        JTextArea textito4 = new JTextArea();
+        textito4.setText("-----------------\nMensaje4\n-----------------");
+        textito4.setEditable(false);
+        panelDentroScrollRecibidas.add(textito4);
 
 
         //VER NOTAS ENVIADAS
@@ -112,7 +137,8 @@ public class VentanaNotasUsuario extends JFrame {
             }
         });
 
-        this.setResizable(false);
+        this.setMinimumSize(new Dimension(400, 300));
+        this.setResizable(true);
         this.setVisible(true);
         this.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
     }
