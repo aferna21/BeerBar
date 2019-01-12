@@ -85,6 +85,18 @@ public class VentanaGestionUsuarios extends JFrame {
         //VER USUARIOS
         panelVer = new JPanel();
         panelVer.setSize(new Dimension(800, 600));
+        panelVer.setLayout(new BorderLayout());
+        JPanel panelDentroScrollUsuarios = new JPanel();
+        panelDentroScrollUsuarios.setLayout(new BoxLayout(panelDentroScrollUsuarios, BoxLayout.PAGE_AXIS));
+        panelDentroScrollUsuarios.setBorder(new EmptyBorder(new Insets(10, 10, 10,10)));
+        JScrollPane panelScrollUsuarios = new JScrollPane(panelDentroScrollUsuarios);
+        panelScrollUsuarios.getVerticalScrollBar().setUnitIncrement(40);
+        panelVer.add(panelScrollUsuarios, BorderLayout.CENTER);
+        panelDentroScrollUsuarios.setBackground(Color.BLACK);
+
+        panelDentroScrollUsuarios.add(new JTextAreaUsuarios("Felipe", "Tortilluca32"));
+        panelDentroScrollUsuarios.add(new JTextAreaUsuarios("Adri Rastas", "Cafetito54"));
+        panelDentroScrollUsuarios.add(new JTextAreaUsuarios("Adri Delegado", "Evaristo87"));
 
 
         opcionAnadir.addActionListener(new ActionListener() {
