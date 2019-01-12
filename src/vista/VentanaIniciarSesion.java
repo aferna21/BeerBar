@@ -9,7 +9,7 @@ import java.awt.event.WindowEvent;
 
 public class VentanaIniciarSesion extends JFrame {
 
-    JPanel panelIniciarSesion, panelTextos, panelCampos;
+    JPanel panelIniciarSesion, panelUsuarioContrasena;
     JLabel textoUsuario, textoContrasena;
     JTextField campoTextoUsuario;
     JPasswordField campoTextoContrasena;
@@ -30,24 +30,18 @@ public class VentanaIniciarSesion extends JFrame {
         panelIniciarSesion.setSize(new Dimension(600, 400));
         panelIniciarSesion.setBorder(new EmptyBorder(new Insets(10, 10, 10, 10)));
 
-        textoUsuario = new JLabel("Usuario");
-        textoUsuario.setBorder(new EmptyBorder(new Insets(80, 10, 0, 10)));
-        textoContrasena = new JLabel("Contrasena");
-        textoContrasena.setBorder(new EmptyBorder(new Insets(140, 10, 0, 10)));
+        textoUsuario = new JLabel("Usuario: ");
+        textoContrasena = new JLabel("Contrasena: ");
         campoTextoUsuario = new JTextField();
         campoTextoContrasena = new JPasswordField();
 
-        panelTextos = new JPanel();
-        panelTextos.setLayout(new BoxLayout(panelTextos, BoxLayout.PAGE_AXIS));
-        panelIniciarSesion.add(panelTextos, BorderLayout.WEST);
-        panelTextos.add(textoUsuario);
-        panelTextos.add(textoContrasena);
-
-        panelCampos = new JPanel();
-        panelCampos.setLayout(new BoxLayout(panelCampos, BoxLayout.PAGE_AXIS));
-        panelIniciarSesion.add(panelCampos, BorderLayout.CENTER);
-        panelCampos.add(campoTextoUsuario);
-        panelCampos.add(campoTextoContrasena);
+        panelUsuarioContrasena = new JPanel();
+        panelUsuarioContrasena.setLayout(new BoxLayout(panelUsuarioContrasena, BoxLayout.PAGE_AXIS));
+        panelUsuarioContrasena.add(textoUsuario);
+        panelUsuarioContrasena.add(campoTextoUsuario);
+        panelUsuarioContrasena.add(textoContrasena);
+        panelUsuarioContrasena.add(campoTextoContrasena);
+        panelIniciarSesion.add(panelUsuarioContrasena, BorderLayout.NORTH);
 
         botonIniciarSesion = new JButton("Iniciar sesion");
         panelIniciarSesion.add(botonIniciarSesion, BorderLayout.SOUTH);
