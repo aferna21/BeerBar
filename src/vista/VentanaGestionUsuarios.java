@@ -10,7 +10,7 @@ public class VentanaGestionUsuarios extends JFrame {
 
     JPanel panelUsuarios, panelAnadir, panelEliminar, panelVer;
     JMenuBar barraMenu;
-    JMenu menu;
+    JMenu acciones, ayuda;
     JMenuItem opcionAnadir, opcionEliminar, opcionVer, opcionAyuda;
     JFrame frameVentanaUsuarios;
 
@@ -22,16 +22,18 @@ public class VentanaGestionUsuarios extends JFrame {
         this.setSize(new Dimension(800, 600));
 
         barraMenu = new JMenuBar();
-        menu = new JMenu("Menu");
+        acciones = new JMenu("Menu");
+        ayuda = new JMenu("Ayuda");
         opcionAnadir = new JMenuItem("Anadir a un usuario");
         opcionEliminar = new JMenuItem("Eliminar a un usuario");
         opcionVer = new JMenuItem("Ver los usuarios del sistema");
         opcionAyuda = new JMenuItem("Ayuda");
-        menu.add(opcionAnadir);
-        menu.add(opcionEliminar);
-        menu.add(opcionVer);
-        menu.add(opcionAyuda);
-        barraMenu.add(menu);
+        acciones.add(opcionAnadir);
+        acciones.add(opcionEliminar);
+        acciones.add(opcionVer);
+        ayuda.add(opcionAyuda);
+        barraMenu.add(acciones);
+        barraMenu.add(ayuda);
         this.setJMenuBar(barraMenu);
 
         panelUsuarios = new JPanel();

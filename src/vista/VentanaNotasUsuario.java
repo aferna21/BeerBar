@@ -1,8 +1,6 @@
 package vista;
 
-import controlador.ControladorUsuario;
 import modelo.BeerBarException;
-import modelo.GestorDeUsuarios;
 import modelo.Usuario;
 
 import javax.swing.*;
@@ -15,7 +13,7 @@ public class VentanaNotasUsuario extends JFrame {
 
     JPanel panelNotas, panelDestinatario, panelEscribirNotaA, panelVerNotasRecibidas, panelVerNotasEnviadas;
     JMenuBar barraMenu;
-    JMenu menu;
+    JMenu acciones, ayuda;
     JMenuItem opcionEscribirNota, opcionVerNotasRecibidas, opcionVerNotasEnviadas, opcionAyuda;
     JFrame frameVentanaNotas;
     JLabel textoMensaje;
@@ -32,16 +30,18 @@ public class VentanaNotasUsuario extends JFrame {
         this.setSize(new Dimension(800, 600));
 
         barraMenu = new JMenuBar();
-        menu = new JMenu("Menu");
+        acciones = new JMenu("Acciones");
+        ayuda = new JMenu("Ayuda");
         opcionEscribirNota = new JMenuItem("Escribir nota");
         opcionVerNotasRecibidas = new JMenuItem("Ver notas recibidas");
         opcionVerNotasEnviadas = new JMenuItem("Ver notas enviadas");
         opcionAyuda = new JMenuItem("Ayuda");
-        menu.add(opcionEscribirNota);
-        menu.add(opcionVerNotasRecibidas);
-        menu.add(opcionVerNotasEnviadas);
-        menu.add(opcionAyuda);
-        barraMenu.add(menu);
+        acciones.add(opcionEscribirNota);
+        acciones.add(opcionVerNotasRecibidas);
+        acciones.add(opcionVerNotasEnviadas);
+        ayuda.add(opcionAyuda);
+        barraMenu.add(acciones);
+        barraMenu.add(ayuda);
         this.setJMenuBar(barraMenu);
 
         panelNotas = new JPanel();

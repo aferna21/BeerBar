@@ -11,7 +11,7 @@ public class VentanaUsuario extends JFrame{
     JPanel panelUsuario;
     JButton botonNotas, botonTransacciones;
     JMenuBar barraMenu;
-    JMenu menu;
+    JMenu ayuda;
     JMenuItem opcionAyuda;
     JFrame frameUsuario;
 
@@ -24,10 +24,10 @@ public class VentanaUsuario extends JFrame{
         this.setLocationRelativeTo(null);
 
         barraMenu = new JMenuBar();
-        menu = new JMenu("Menu");
+        ayuda = new JMenu("Ayuda");
         opcionAyuda = new JMenuItem("Ayuda");
-        menu.add(opcionAyuda);
-        barraMenu.add(menu);
+        ayuda.add(opcionAyuda);
+        barraMenu.add(ayuda);
         this.setJMenuBar(barraMenu);
 
         panelUsuario = new JPanel();

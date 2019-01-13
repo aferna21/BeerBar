@@ -11,7 +11,7 @@ public class VentanaAdministrador extends JFrame {
     JPanel panelAdministrador;
     JButton botonNotas, botonTransacciones, botonGestionUsuarios;
     JMenuBar barraMenu;
-    JMenu menu;
+    JMenu ayuda;
     JMenuItem opcionAyuda;
     JFrame frameAdministrador;
 
@@ -24,10 +24,10 @@ public class VentanaAdministrador extends JFrame {
         this.setLocationRelativeTo(null);
 
         barraMenu = new JMenuBar();
-        menu = new JMenu("Menu");
+        ayuda = new JMenu("Ayuda");
         opcionAyuda = new JMenuItem("Ayuda");
-        menu.add(opcionAyuda);
-        barraMenu.add(menu);
+        ayuda.add(opcionAyuda);
+        barraMenu.add(ayuda);
         this.setJMenuBar(barraMenu);
 
         panelAdministrador = new JPanel();

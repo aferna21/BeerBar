@@ -14,7 +14,7 @@ public class VentanaBienvenida extends JFrame{
     JButton botonEntrar;
     JFrame frameBienvenida;
     JMenuBar barraMenu;
-    JMenu menu;
+    JMenu ayuda;
     JMenuItem opcionAyuda;
 
     public VentanaBienvenida(){
@@ -27,10 +27,10 @@ public class VentanaBienvenida extends JFrame{
         this.setLocationRelativeTo(null);
 
         barraMenu = new JMenuBar();
-        menu = new JMenu("Menu");
+        ayuda = new JMenu("Ayuda");
         opcionAyuda = new JMenuItem("Ayuda");
-        menu.add(opcionAyuda);
-        barraMenu.add(menu);
+        ayuda.add(opcionAyuda);
+        barraMenu.add(ayuda);
         this.setJMenuBar(barraMenu);
 
         panelBienvenida = new JPanel();

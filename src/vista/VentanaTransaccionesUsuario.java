@@ -10,7 +10,7 @@ public class VentanaTransaccionesUsuario extends JFrame {
 
     JPanel panelTransacciones, panelIntroducirVenta, panelIntroducirGasto, panelVerTransacciones;
     JMenuBar barraMenu;
-    JMenu menu;
+    JMenu acciones, ayuda;
     JMenuItem opcionIntroducirVenta, opcionIntroducirGasto, opcionVerTransacciones, opcionAyuda;
     JFrame frameVentanaTransacciones;
 
@@ -22,16 +22,18 @@ public class VentanaTransaccionesUsuario extends JFrame {
         this.setSize(new Dimension(800, 600));
 
         barraMenu = new JMenuBar();
-        menu = new JMenu("Menu");
+        acciones = new JMenu("Acciones");
+        ayuda = new JMenu("Ayuda");
         opcionIntroducirVenta = new JMenuItem("Introducir una venta");
         opcionIntroducirGasto = new JMenuItem("Introducir un gasto");
         opcionVerTransacciones = new JMenuItem("Ver transacciones");
         opcionAyuda = new JMenuItem("Ayuda");
-        menu.add(opcionIntroducirVenta);
-        menu.add(opcionIntroducirGasto);
-        menu.add(opcionVerTransacciones);
-        menu.add(opcionAyuda);
-        barraMenu.add(menu);
+        acciones.add(opcionIntroducirVenta);
+        acciones.add(opcionIntroducirGasto);
+        acciones.add(opcionVerTransacciones);
+        ayuda.add(opcionAyuda);
+        barraMenu.add(acciones);
+        barraMenu.add(ayuda);
         this.setJMenuBar(barraMenu);
 
         panelTransacciones = new JPanel();

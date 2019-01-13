@@ -46,7 +46,7 @@ public class JOptionPaneAyuda extends JOptionPane {
 
     public void muestraAyudaNotasUsuario(){
         String mensaje =
-                "Esta es la pantalla de las notas del usuario. Accede al menu para\n" +
+                "Esta es la pantalla de las notas del usuario. Accede al acciones para\n" +
                         "seleccionar entre las opciones:\n" +
                         "1. Escribir nota: redactar una nueva nota y enviarsela al usuario seleccionado.\n" +
                         "2. Ver notas recibidas: visualizar las notas recibidas por otros usuarios.\n" +
@@ -57,7 +57,7 @@ public class JOptionPaneAyuda extends JOptionPane {
 
     public void muestraAyudaTransaccionesUsuario(){
         String mensaje =
-                "Esta es la pantalla de las transacciones del usuario. Accede al menu para\n" +
+                "Esta es la pantalla de las transacciones del usuario. Accede al acciones para\n" +
                         "seleccionar entre las opciones:\n" +
                         "1. Introducir una venta: anadir una nueva venta con un concepto opcional a la jornada.\n" +
                         "2. Introducir un gasto: igual que el anterior pero para un gasto.\n" +
@@ -77,7 +77,7 @@ public class JOptionPaneAyuda extends JOptionPane {
 
     public void muestraAyudaNotasAdministrador(){
         String mensaje =
-                "Esta es la pantalla de las notas del administrador. Accede al menu para:\n" +
+                "Esta es la pantalla de las notas del administrador. Accede al acciones para:\n" +
                         "1. Escribir nota: redactar una nota hacia otro usuario.\n" +
                         "2. Ver notas recibidas: visualizar las notas recibidas de otros usuarios.\n" +
                         "3. Ver notas enviadas: igual que el anterior pero para las enviadas.\n" +
@@ -88,7 +88,7 @@ public class JOptionPaneAyuda extends JOptionPane {
 
     public void muestraAyudaTransaccionesAdministrador(){
         String mensaje =
-                "Esta es la pantalla de las notas del administrador. Accede al menu para:\n" +
+                "Esta es la pantalla de las notas del administrador. Accede al acciones para:\n" +
                         "1. Introducir una venta: anadir una nueva venta con un concepto opcional a la jornada.\n" +
                         "2. Introducir un gasto: igual que el anterior pero para un gasto.\n" +
                         "3. Ver transacciones: visualizar las transacciones del dia.\n" +
@@ -101,7 +101,7 @@ public class JOptionPaneAyuda extends JOptionPane {
     public void muestraAyudaGestorUsuarios(){
         String mensaje =
                 "Esta es la pantalla del gestor de usuarios. Solo puede ser abierta por el administrador.\n" +
-                        "Accede al menu para:\n" +
+                        "Accede al acciones para:\n" +
                         "1. Anadir a un usuario: crear un nuevo usuario y anadirlo al sistema.\n" +
                         "2. Eliminar a un usuario: eliminar un usuario ya creado del sistema.\n" +
                         "3. Ver todos los usuarios: visualizar los usuarios del sistema.\n";

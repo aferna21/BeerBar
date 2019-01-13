@@ -1,5 +1,8 @@
 package vista;
 
+import com.toedter.calendar.JDateChooser;
+import com.toedter.calendar.JSpinnerDateEditor;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -8,10 +11,10 @@ import java.awt.event.ActionListener;
 
 public class VentanaTransaccionesAdministrador extends JFrame{
 
-    JPanel panelTransacciones, panelIntroducirVenta, panelIntroducirGasto, panelVerTransacciones, panelVerTodasTransacciones;
+    JPanel panelTransacciones, panelIntroducirVenta, panelIntroducirGasto, panelVerTransacciones, panelVerTodasTransacciones, panelVerTransaccionesFecha;
     JMenuBar barraMenu;
-    JMenu menu;
-    JMenuItem opcionIntroducirVenta, opcionIntroducirGasto, opcionVerTransacciones, opcionVerTodasTransacciones, opcionAyuda;
+    JMenu acciones, ayuda;
+    JMenuItem opcionIntroducirVenta, opcionIntroducirGasto, opcionVerTransacciones, opcionVerTodasTransacciones, opcionVerTransaccionesFecha, opcionAyuda;
     JFrame frameVentanaTransacciones;
 
     public VentanaTransaccionesAdministrador(){
@@ -22,18 +25,22 @@ public class VentanaTransaccionesAdministrador extends JFrame{
         this.setSize(new Dimension(800, 600));
 
         barraMenu = new JMenuBar();
-        menu = new JMenu("Menu");
+        acciones = new JMenu("Menu");
+        ayuda = new JMenu("Ayuda");
         opcionIntroducirVenta = new JMenuItem("Introducir una venta");
         opcionIntroducirGasto = new JMenuItem("Introducir un gasto");
         opcionVerTransacciones = new JMenuItem("Ver transacciones");
         opcionVerTodasTransacciones = new JMenuItem("Ver todas las transacciones");
+        opcionVerTransaccionesFecha = new JMenuItem("Ver transacciones en un rango de fechas");
         opcionAyuda = new JMenuItem("Ayuda");
-        menu.add(opcionIntroducirVenta);
-        menu.add(opcionIntroducirGasto);
-        menu.add(opcionVerTransacciones);
-        menu.add(opcionVerTodasTransacciones);
-        menu.add(opcionAyuda);
-        barraMenu.add(menu);
+        acciones.add(opcionIntroducirVenta);
+        acciones.add(opcionIntroducirGasto);
+        acciones.add(opcionVerTransacciones);
+        acciones.add(opcionVerTodasTransacciones);
+        acciones.add(opcionVerTransaccionesFecha);
+        ayuda.add(opcionAyuda);
+        barraMenu.add(acciones);
+        barraMenu.add(ayuda);
         this.setJMenuBar(barraMenu);
 
         panelTransacciones = new JPanel();
@@ -116,6 +123,39 @@ public class VentanaTransaccionesAdministrador extends JFrame{
         panelDentroScrollTodasTransacciones.add(new JTextAreaTransacciones(false, "Adri", "2 de Enero de 2019", "13,56", "Compra de un buen kilo de alioli como el de hasan\nadministrador"));
 
 
+        //VER TRANSACCIONES EN RANGO DE FECHAS
+        panelVerTransaccionesFecha = new JPanel();
+        panelVerTransaccionesFecha.setSize(new Dimension(800, 600));
+        panelVerTransaccionesFecha.setLayout(new BorderLayout());
+
+        JPanel panelTransaccionesFechaNorte = new JPanel();
+        panelTransaccionesFechaNorte.setLayout(new BoxLayout(panelTransaccionesFechaNorte, BoxLayout.PAGE_AXIS));
+        panelTransaccionesFechaNorte.setBorder(new EmptyBorder(new Insets(10, 10, 10, 10)));
+        panelVerTransaccionesFecha.add(panelTransaccionesFechaNorte, BorderLayout.NORTH);
+        JLabel textoFechaInicio = new JLabel("Fecha inicio: ");
+        JDateChooser dateChooserInicio = new JDateChooser(null, null, null, new JSpinnerDateEditor());
+        JLabel textoFechaFin = new JLabel("Fecha fin: ");
+        JDateChooser dateChooserFin = new JDateChooser(null, null, null, new JSpinnerDateEditor());
+        JButton botonAceptar = new JButton("Aceptar");
+        panelTransaccionesFechaNorte.add(textoFechaInicio);
+        panelTransaccionesFechaNorte.add(dateChooserInicio);
+        panelTransaccionesFechaNorte.add(textoFechaFin);
+        panelTransaccionesFechaNorte.add(dateChooserFin);
+        panelTransaccionesFechaNorte.add(botonAceptar);
+
+        JPanel panelDentroScrollTransaccionesFecha = new JPanel();
+        panelDentroScrollTransaccionesFecha.setLayout(new BoxLayout(panelDentroScrollTransaccionesFecha, BoxLayout.PAGE_AXIS));
+        panelDentroScrollTransaccionesFecha.setBorder(new EmptyBorder(new Insets(10, 10, 10, 10)));
+        JScrollPane panelScrollTransaccionesFecha = new JScrollPane(panelDentroScrollTransaccionesFecha);
+        panelScrollTransaccionesFecha.getVerticalScrollBar().setUnitIncrement(40);
+        panelVerTransaccionesFecha.add(panelScrollTransaccionesFecha, BorderLayout.CENTER);
+        panelDentroScrollTransaccionesFecha.setBackground(Color.BLACK);
+
+        for(int i=0; i<40; i++){
+            panelDentroScrollTransaccionesFecha.add(new JTextAreaNotas("Felipe", "Adri", "2 de febrero", "hola"));
+        }
+
+
         opcionIntroducirVenta.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -156,6 +196,17 @@ public class VentanaTransaccionesAdministrador extends JFrame{
                 frameVentanaTransacciones.getContentPane().repaint();
                 frameVentanaTransacciones.getContentPane().revalidate();
                 frameVentanaTransacciones.getContentPane().add(panelVerTodasTransacciones);
+                frameVentanaTransacciones.setVisible(true);
+            }
+        });
+
+        opcionVerTransaccionesFecha.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frameVentanaTransacciones.getContentPane().removeAll();
+                frameVentanaTransacciones.getContentPane().repaint();
+                frameVentanaTransacciones.getContentPane().revalidate();
+                frameVentanaTransacciones.getContentPane().add(panelVerTransaccionesFecha);
                 frameVentanaTransacciones.setVisible(true);
             }
         });

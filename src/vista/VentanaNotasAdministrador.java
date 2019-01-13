@@ -13,7 +13,7 @@ public class VentanaNotasAdministrador extends JFrame{
 
     JPanel panelNotas, panelEscribirNotaA, panelVerNotasRecibidas, panelVerNotasEnviadas, panelVerTodasLasNotas, panelVerNotasFecha;
     JMenuBar barraMenu;
-    JMenu menu;
+    JMenu acciones, ayuda;
     JMenuItem opcionEscribirNota, opcionVerNotasRecibidas, opcionVerNotasEnviadas, opcionVerTodasLasNotas, opcionVerNotasFecha, opcionAyuda;
     JFrame frameVentanaNotas;
 
@@ -25,20 +25,22 @@ public class VentanaNotasAdministrador extends JFrame{
         this.setSize(new Dimension(800, 600));
 
         barraMenu = new JMenuBar();
-        menu = new JMenu("Menu");
+        acciones = new JMenu("Menu");
+        ayuda = new JMenu("Ayuda");
         opcionEscribirNota = new JMenuItem("Escribir nota");
         opcionVerNotasRecibidas = new JMenuItem("Ver notas recibidas");
         opcionVerNotasEnviadas = new JMenuItem("Ver notas enviadas");
         opcionVerTodasLasNotas =  new JMenuItem("Ver todas las notas");
         opcionVerNotasFecha = new JMenuItem("Ver notas en un rango de fechas");
         opcionAyuda = new JMenuItem("Ayuda");
-        menu.add(opcionEscribirNota);
-        menu.add(opcionVerNotasRecibidas);
-        menu.add(opcionVerNotasEnviadas);
-        menu.add(opcionVerTodasLasNotas);
-        menu.add(opcionVerNotasFecha);
-        menu.add(opcionAyuda);
-        barraMenu.add(menu);
+        acciones.add(opcionEscribirNota);
+        acciones.add(opcionVerNotasRecibidas);
+        acciones.add(opcionVerNotasEnviadas);
+        acciones.add(opcionVerTodasLasNotas);
+        acciones.add(opcionVerNotasFecha);
+        ayuda.add(opcionAyuda);
+        barraMenu.add(acciones);
+        barraMenu.add(ayuda);
         this.setJMenuBar(barraMenu);
 
         panelNotas = new JPanel();
