@@ -13,12 +13,14 @@ public class VentanaTransaccionesUsuario extends JFrame {
     JMenu acciones, ayuda;
     JMenuItem opcionIntroducirVenta, opcionIntroducirGasto, opcionVerTransacciones, opcionAyuda;
     JFrame frameVentanaTransacciones;
+    String nombreUsuario;
 
-    public VentanaTransaccionesUsuario(){
+    public VentanaTransaccionesUsuario(String nombreUsuario){
 
         frameVentanaTransacciones = this;
+        this.nombreUsuario = nombreUsuario;
 
-        this.setTitle("Transacciones usuario");
+        this.setTitle("Transacciones de " + this.nombreUsuario);
         this.setSize(new Dimension(800, 600));
 
         barraMenu = new JMenuBar();
@@ -38,7 +40,7 @@ public class VentanaTransaccionesUsuario extends JFrame {
 
         panelTransacciones = new JPanel();
         panelTransacciones.setLayout(new BorderLayout());
-        JLabel textoNotas = new JLabel("Ventana de transacciones del usuario");
+        JLabel textoNotas = new JLabel("Ventana de transacciones de " + this.nombreUsuario);
         panelTransacciones.add(textoNotas, BorderLayout.CENTER);
         panelTransacciones.setBorder(new EmptyBorder(new Insets(0, 250, 0, 0)));
         this.getContentPane().add(panelTransacciones);

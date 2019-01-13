@@ -14,12 +14,14 @@ public class VentanaUsuario extends JFrame{
     JMenu ayuda;
     JMenuItem opcionAyuda;
     JFrame frameUsuario;
+    String nombreUsuario;
 
-    public VentanaUsuario(){
+    public VentanaUsuario(String nombreUsuario){
 
         frameUsuario = this;
+        this.nombreUsuario = nombreUsuario;
 
-        this.setTitle("Usuario");
+        this.setTitle("Pantalla de " + this.nombreUsuario);
         this.setSize(new Dimension(400, 200));
         this.setLocationRelativeTo(null);
 
@@ -49,14 +51,14 @@ public class VentanaUsuario extends JFrame{
         botonNotas.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new VentanaNotasUsuario();
+                new VentanaNotasUsuario(nombreUsuario);
             }
         });
 
         botonTransacciones.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new VentanaTransaccionesUsuario();
+                new VentanaTransaccionesUsuario(nombreUsuario);
             }
         });
 

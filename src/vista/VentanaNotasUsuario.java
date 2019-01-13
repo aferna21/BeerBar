@@ -19,14 +19,16 @@ public class VentanaNotasUsuario extends JFrame {
     JLabel textoMensaje;
     JTextField campoTextoDestinatario;
     JTextArea campoMensaje;
+    String nombreUsuario;
 
     private VentanaNotasUsuario ventanaNotasUsuario = this;
 
-    public VentanaNotasUsuario(){
+    public VentanaNotasUsuario(String nombreUsuario){
 
         frameVentanaNotas = this;
+        this.nombreUsuario = nombreUsuario;
 
-        this.setTitle("Notas usuario");
+        this.setTitle("Notas de " + this.nombreUsuario);
         this.setSize(new Dimension(800, 600));
 
         barraMenu = new JMenuBar();
@@ -46,7 +48,7 @@ public class VentanaNotasUsuario extends JFrame {
 
         panelNotas = new JPanel();
         panelNotas.setLayout(new BorderLayout());
-        JLabel textoNotas = new JLabel("Ventana de notas del usuario");
+        JLabel textoNotas = new JLabel("Ventana de notas de " + this.nombreUsuario);
         panelNotas.add(textoNotas, BorderLayout.CENTER);
         panelNotas.setBorder(new EmptyBorder(new Insets(0, 300, 0, 0)));
         this.getContentPane().add(panelNotas);

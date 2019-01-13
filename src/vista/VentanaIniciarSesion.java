@@ -67,7 +67,7 @@ public class VentanaIniciarSesion extends JFrame {
                     new VentanaAdministrador();
                 }
                 else {
-                    new VentanaUsuario();
+                    new VentanaUsuario(campoTextoUsuario.getText());
                 }
                 frameIniciarSesion.dispatchEvent(new WindowEvent(frameIniciarSesion, WindowEvent.WINDOW_CLOSING));
             }
