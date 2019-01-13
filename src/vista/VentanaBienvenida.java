@@ -37,12 +37,17 @@ public class VentanaBienvenida extends JFrame{
         panelBienvenida.setLayout(new BorderLayout());
         panelBienvenida.setSize(new Dimension(400, 200));
         panelBienvenida.setBorder(new EmptyBorder(new Insets(20, 20, 20, 20)));
+        panelBienvenida.setBackground(new Color(128, 128, 128));
 
         textoBienvenida = new JLabel("Bienvenido a BeerBar");
         textoBienvenida.setBorder(new EmptyBorder(new Insets(0, 100, 0, 0)));
         panelBienvenida.add(textoBienvenida, BorderLayout.CENTER);
 
         botonEntrar = new JButton("Entrar");
+        botonEntrar.setBackground(new Color(0, 38, 77));
+        botonEntrar.setForeground(Color.WHITE);
+        botonEntrar.setOpaque(true);
+        botonEntrar.setBorderPainted(false);
         panelBienvenida.add(botonEntrar, BorderLayout.SOUTH);
 
         this.getContentPane().add(panelBienvenida);
