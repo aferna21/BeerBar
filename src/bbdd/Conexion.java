@@ -18,6 +18,10 @@ public class Conexion {
 
     }
 
+    public Connection getConexion(){
+        return this.conexion;
+    }
+
     public void abrirConexion(){
         try {
             this.conexion = DriverManager.getConnection(ruta, usuario, contrasena);
