@@ -1,4 +1,4 @@
 package bbdd;
 
-public class DAONotas extends  DAO{
+public class DAONotas extends Conexion {
 }

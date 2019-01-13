@@ -1,4 +1,4 @@
 package bbdd;
 
-public class DAOUsuarios extends DAO {
+public class DAOUsuarios extends Conexion {
 }

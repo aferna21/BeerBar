@@ -1,4 +1,4 @@
 package bbdd;
 
-public class DAOTransacciones extends DAO {
+public class DAOTransacciones extends Conexion {
 }

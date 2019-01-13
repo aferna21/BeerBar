@@ -6,11 +6,11 @@ import org.junit.Test;
 
 public class ConexionTest {
 
-    private Conexion conexion;
+    //private Conexion conexion;
 
     @Before
     public void setUp() throws Exception{
-        conexion = new Conexion();
+       // conexion = new Conexion();
     }
 
     @Test
