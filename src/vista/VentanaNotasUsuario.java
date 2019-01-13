@@ -1,5 +1,10 @@
 package vista;
 
+import controlador.ControladorUsuario;
+import modelo.BeerBarException;
+import modelo.GestorDeUsuarios;
+import modelo.Usuario;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -8,11 +13,16 @@ import java.awt.event.ActionListener;
 
 public class VentanaNotasUsuario extends JFrame {
 
-    JPanel panelNotas, panelEscribirNotaA, panelVerNotasRecibidas, panelVerNotasEnviadas;
+    JPanel panelNotas, panelDestinatario, panelEscribirNotaA, panelVerNotasRecibidas, panelVerNotasEnviadas;
     JMenuBar barraMenu;
     JMenu menu;
     JMenuItem opcionEscribirNota, opcionVerNotasRecibidas, opcionVerNotasEnviadas, opcionAyuda;
     JFrame frameVentanaNotas;
+    JLabel textoMensaje;
+    JTextField campoTextoDestinatario;
+    JTextArea campoMensaje;
+
+    private VentanaNotasUsuario ventanaNotasUsuario = this;
 
     public VentanaNotasUsuario(){
 
@@ -46,16 +56,16 @@ public class VentanaNotasUsuario extends JFrame {
         panelEscribirNotaA = new JPanel();
         panelEscribirNotaA.setSize(800, 600);
         panelEscribirNotaA.setLayout(new BorderLayout());
-        JPanel panelDestinatario = new JPanel();
+        panelDestinatario = new JPanel();
         panelDestinatario.setLayout(new BoxLayout(panelDestinatario, BoxLayout.PAGE_AXIS));
         panelEscribirNotaA.add(panelDestinatario, BorderLayout.NORTH);
         JLabel textoDestinatario = new JLabel("Destinatario");
-        JTextField campoTextoDestinatario = new JTextField();
-        JLabel textoMensaje = new JLabel("Mensaje");
+        campoTextoDestinatario = new JTextField();
+        textoMensaje = new JLabel("Mensaje");
         panelDestinatario.add(textoDestinatario);
         panelDestinatario.add(campoTextoDestinatario);
         panelDestinatario.add(textoMensaje);
-        JTextArea campoMensaje = new JTextArea();
+        campoMensaje = new JTextArea();
         panelEscribirNotaA.add(campoMensaje, BorderLayout.CENTER);
         JButton botonEnviar = new JButton("Enviar");
         panelEscribirNotaA.add(botonEnviar, BorderLayout.SOUTH);
@@ -64,6 +74,17 @@ public class VentanaNotasUsuario extends JFrame {
         botonEnviar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                //Esto creo que está muy mal porque estoy mezclando modelo y vista, pero hay que crear el controaldor en el main
+                MainBeer.controladorUsuario.setVentana(ventanaNotasUsuario);
+                Usuario usuario = new Usuario();
+                usuario.setNombre(campoTextoDestinatario.toString());
+                try {
+                    MainBeer.controladorUsuario.enviarNotaA(usuario, campoMensaje.toString());
+                } catch (BeerBarException e1) {
+                    e1.printStackTrace();
+                }
+
                 // Aqui crear una instancia de la clase controladora de las notas y pasarle al constructor
                 // el destinatario y el texto, y que lo envie. Despues de enviar, se vuelve al panel de las notas
                 // y se muestra un mensaje de confirmacion del envio

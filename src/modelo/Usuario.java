@@ -38,6 +38,8 @@ public class Usuario {
         this.esAdmin = esAdmin;
     }
 
+    public Usuario(){}
+
     /**
      * Getters y setters.
      */
