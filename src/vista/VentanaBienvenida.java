@@ -52,8 +52,6 @@ public class VentanaBienvenida extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 new VentanaIniciarSesion();
                 frameBienvenida.dispatchEvent(new WindowEvent(frameBienvenida, WindowEvent.WINDOW_CLOSING));
-
-                new VentanaCalendario();
             }
         });
 

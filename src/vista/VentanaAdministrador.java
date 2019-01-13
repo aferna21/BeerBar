@@ -37,9 +37,9 @@ public class VentanaAdministrador extends JFrame {
         botonTransacciones = new JButton("Transacciones");
         botonGestionUsuarios = new JButton("Gestion de usuarios");
 
-        botonNotas.setPreferredSize(new Dimension(160, 80));
-        botonTransacciones.setPreferredSize(new Dimension(160, 80));
-        botonGestionUsuarios.setPreferredSize(new Dimension(200, 80));
+        botonNotas.setPreferredSize(new Dimension(160, 60));
+        botonTransacciones.setPreferredSize(new Dimension(160, 60));
+        botonGestionUsuarios.setPreferredSize(new Dimension(200, 60));
 
         panelAdministrador.setBorder(new EmptyBorder(new Insets(10, 10, 10, 10)));
 

@@ -1,5 +1,8 @@
 package vista;
 
+import com.toedter.calendar.JDateChooser;
+import com.toedter.calendar.JSpinnerDateEditor;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -8,10 +11,10 @@ import java.awt.event.ActionListener;
 
 public class VentanaNotasAdministrador extends JFrame{
 
-    JPanel panelNotas, panelEscribirNotaA, panelVerNotasRecibidas, panelVerNotasEnviadas, panelVerTodasLasNotas;
+    JPanel panelNotas, panelEscribirNotaA, panelVerNotasRecibidas, panelVerNotasEnviadas, panelVerTodasLasNotas, panelVerNotasFecha;
     JMenuBar barraMenu;
     JMenu menu;
-    JMenuItem opcionEscribirNota, opcionVerNotasRecibidas, opcionVerNotasEnviadas, opcionVerTodasLasNotas, opcionAyuda;
+    JMenuItem opcionEscribirNota, opcionVerNotasRecibidas, opcionVerNotasEnviadas, opcionVerTodasLasNotas, opcionVerNotasFecha, opcionAyuda;
     JFrame frameVentanaNotas;
 
     public VentanaNotasAdministrador(){
@@ -27,11 +30,13 @@ public class VentanaNotasAdministrador extends JFrame{
         opcionVerNotasRecibidas = new JMenuItem("Ver notas recibidas");
         opcionVerNotasEnviadas = new JMenuItem("Ver notas enviadas");
         opcionVerTodasLasNotas =  new JMenuItem("Ver todas las notas");
+        opcionVerNotasFecha = new JMenuItem("Ver notas en un rango de fechas");
         opcionAyuda = new JMenuItem("Ayuda");
         menu.add(opcionEscribirNota);
         menu.add(opcionVerNotasRecibidas);
         menu.add(opcionVerNotasEnviadas);
         menu.add(opcionVerTodasLasNotas);
+        menu.add(opcionVerNotasFecha);
         menu.add(opcionAyuda);
         barraMenu.add(menu);
         this.setJMenuBar(barraMenu);
@@ -123,11 +128,42 @@ public class VentanaNotasAdministrador extends JFrame{
         panelVerTodasLasNotas.add(panelScrollTodasNotas, BorderLayout.CENTER);
         panelDentroScrollTodasNotas.setBackground(Color.BLACK);
 
-        JTextAreaNotas texto5 = new JTextAreaNotas("Adri", "Felipe", "1 de Enero de 2019", "eeeeeeeeeee jejeje");
-        panelDentroScrollTodasNotas.add(texto5);
+        for(int i=0; i<40; i++){
+            panelDentroScrollTodasNotas.add(new JTextAreaNotas("Felipe", "Adri", "2 de febrero", "hola"));
+        }
 
-        JTextAreaNotas texto6 = new JTextAreaNotas("Felipe", "Adri", "4 de Enero de 2019", "hola qu tal n¡mu buenas");
-        panelDentroScrollTodasNotas.add(texto6);
+
+        //VER NOTAS EN RANGO DE FECHAS
+        panelVerNotasFecha = new JPanel();
+        panelVerNotasFecha.setSize(new Dimension(800, 600));
+        panelVerNotasFecha.setLayout(new BorderLayout());
+
+        JPanel panelNotasFechaNorte = new JPanel();
+        panelNotasFechaNorte.setLayout(new BoxLayout(panelNotasFechaNorte, BoxLayout.PAGE_AXIS));
+        panelNotasFechaNorte.setBorder(new EmptyBorder(new Insets(10, 10, 10, 10)));
+        panelVerNotasFecha.add(panelNotasFechaNorte, BorderLayout.NORTH);
+        JLabel textoFechaInicio = new JLabel("Fecha inicio: ");
+        JDateChooser dateChooserInicio = new JDateChooser(null, null, null, new JSpinnerDateEditor());
+        JLabel textoFechaFin = new JLabel("Fecha fin: ");
+        JDateChooser dateChooserFin = new JDateChooser(null, null, null, new JSpinnerDateEditor());
+        JButton botonAceptar = new JButton("Aceptar");
+        panelNotasFechaNorte.add(textoFechaInicio);
+        panelNotasFechaNorte.add(dateChooserInicio);
+        panelNotasFechaNorte.add(textoFechaFin);
+        panelNotasFechaNorte.add(dateChooserFin);
+        panelNotasFechaNorte.add(botonAceptar);
+
+        JPanel panelDentroScrollNotasFecha = new JPanel();
+        panelDentroScrollNotasFecha.setLayout(new BoxLayout(panelDentroScrollNotasFecha, BoxLayout.PAGE_AXIS));
+        panelDentroScrollNotasFecha.setBorder(new EmptyBorder(new Insets(10, 10, 10, 10)));
+        JScrollPane panelScrollNotasFecha = new JScrollPane(panelDentroScrollNotasFecha);
+        panelScrollNotasFecha.getVerticalScrollBar().setUnitIncrement(40);
+        panelVerNotasFecha.add(panelScrollNotasFecha, BorderLayout.CENTER);
+        panelDentroScrollNotasFecha.setBackground(Color.BLACK);
+
+        for(int i=0; i<40; i++){
+            panelDentroScrollNotasFecha.add(new JTextAreaNotas("Felipe", "Adri", "2 de febrero", "hola"));
+        }
 
 
         opcionEscribirNota.addActionListener(new ActionListener() {
@@ -170,6 +206,17 @@ public class VentanaNotasAdministrador extends JFrame{
                 frameVentanaNotas.getContentPane().repaint();
                 frameVentanaNotas.getContentPane().revalidate();
                 frameVentanaNotas.getContentPane().add(panelVerTodasLasNotas);
+                frameVentanaNotas.setVisible(true);
+            }
+        });
+
+        opcionVerNotasFecha.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frameVentanaNotas.getContentPane().removeAll();
+                frameVentanaNotas.getContentPane().repaint();
+                frameVentanaNotas.getContentPane().revalidate();
+                frameVentanaNotas.getContentPane().add(panelVerNotasFecha);
                 frameVentanaNotas.setVisible(true);
             }
         });
