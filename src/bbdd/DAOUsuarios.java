@@ -31,6 +31,8 @@ public class DAOUsuarios extends Conexion {
             e.printStackTrace();
         }
 
+        this.cerrarConexion();
+
 
         return listaUsuarios;
     }
@@ -43,5 +45,43 @@ public class DAOUsuarios extends Conexion {
         }else{
             return false;
         }
+    }
+
+    private String fromBoolToString(boolean b){
+        if(b){
+            return "si";
+        }else{
+            return "no";
+        }
+    }
+
+
+    public void introduceUsuario(String nombre, String contrasena, boolean b){
+        String esAdmin = fromBoolToString(b);
+        this.abrirConexion();
+        String valores = "(" + nombre + ", " + contrasena + ", " + esAdmin + ");";
+        try {
+            PreparedStatement st = this.getConexion().prepareStatement("INSERT INTO usuarios VALUES ('" + nombre + "', '" + contrasena + "', '" + esAdmin + "');");
+            st.executeUpdate();
+            System.out.println("Usuario introducido.");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        this.cerrarConexion();
+    }
+
+
+    public void eliminarUsuario(String nombre){
+        this.abrirConexion();
+        PreparedStatement st = null;
+        try {
+            st = this.getConexion().prepareStatement("DELETE FROM usuarios WHERE nombre_usuario='"+nombre+ "';");
+            st.executeUpdate();
+            System.out.println("Usuario eliminado");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        this.cerrarConexion();
     }
 }

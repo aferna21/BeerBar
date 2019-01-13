@@ -1,9 +1,7 @@
 package vista;
 
-import bbdd.Conexion;
+import bbdd.DAOUsuarios;
 import controlador.*;
-
-import java.sql.SQLException;
 
 
 public class MainBeer {
@@ -15,7 +13,6 @@ public class MainBeer {
 
 
         new VentanaBienvenida();
-        Conexion c = new Conexion();
-        c.abrirConexion();
+
     }
 }
