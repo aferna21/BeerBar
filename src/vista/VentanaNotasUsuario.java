@@ -11,7 +11,7 @@ public class VentanaNotasUsuario extends JFrame {
     JPanel panelNotas, panelEscribirNotaA, panelVerNotasRecibidas, panelVerNotasEnviadas;
     JMenuBar barraMenu;
     JMenu menu;
-    JMenuItem opcionEscribirNota, opcionVerNotasRecibidas, opcionVerNotasEnviadas;
+    JMenuItem opcionEscribirNota, opcionVerNotasRecibidas, opcionVerNotasEnviadas, opcionAyuda;
     JFrame frameVentanaNotas;
 
     public VentanaNotasUsuario(){
@@ -26,9 +26,11 @@ public class VentanaNotasUsuario extends JFrame {
         opcionEscribirNota = new JMenuItem("Escribir nota");
         opcionVerNotasRecibidas = new JMenuItem("Ver notas recibidas");
         opcionVerNotasEnviadas = new JMenuItem("Ver notas enviadas");
+        opcionAyuda = new JMenuItem("Ayuda");
         menu.add(opcionEscribirNota);
         menu.add(opcionVerNotasRecibidas);
         menu.add(opcionVerNotasEnviadas);
+        menu.add(opcionAyuda);
         barraMenu.add(menu);
         this.setJMenuBar(barraMenu);
 
@@ -36,7 +38,7 @@ public class VentanaNotasUsuario extends JFrame {
         panelNotas.setLayout(new BorderLayout());
         JLabel textoNotas = new JLabel("Ventana de notas del usuario");
         panelNotas.add(textoNotas, BorderLayout.CENTER);
-        panelNotas.setBorder(new EmptyBorder(new Insets(0, 300, 0, 300)));
+        panelNotas.setBorder(new EmptyBorder(new Insets(0, 300, 0, 0)));
         this.getContentPane().add(panelNotas);
 
 
@@ -137,6 +139,14 @@ public class VentanaNotasUsuario extends JFrame {
                 frameVentanaNotas.getContentPane().revalidate();
                 frameVentanaNotas.getContentPane().add(panelVerNotasEnviadas);
                 frameVentanaNotas.setVisible(true);
+            }
+        });
+
+        opcionAyuda.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPaneAyuda ayuda = new JOptionPaneAyuda((JPanel) frameVentanaNotas.getContentPane());
+                ayuda.muestraAyudaNotasUsuario();
             }
         });
 

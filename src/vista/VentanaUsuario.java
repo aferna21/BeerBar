@@ -10,12 +10,25 @@ public class VentanaUsuario extends JFrame{
 
     JPanel panelUsuario;
     JButton botonNotas, botonTransacciones;
+    JMenuBar barraMenu;
+    JMenu menu;
+    JMenuItem opcionAyuda;
+    JFrame frameUsuario;
 
     public VentanaUsuario(){
+
+        frameUsuario = this;
 
         this.setTitle("Usuario");
         this.setSize(new Dimension(400, 200));
         this.setLocationRelativeTo(null);
+
+        barraMenu = new JMenuBar();
+        menu = new JMenu("Menu");
+        opcionAyuda = new JMenuItem("Ayuda");
+        menu.add(opcionAyuda);
+        barraMenu.add(menu);
+        this.setJMenuBar(barraMenu);
 
         panelUsuario = new JPanel();
         panelUsuario.setLayout(new FlowLayout());
@@ -44,6 +57,14 @@ public class VentanaUsuario extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 new VentanaTransaccionesUsuario();
+            }
+        });
+
+        opcionAyuda.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPaneAyuda ayuda = new JOptionPaneAyuda((JPanel) frameUsuario.getContentPane());
+                ayuda.muestraAyudaUsuario();
             }
         });
 

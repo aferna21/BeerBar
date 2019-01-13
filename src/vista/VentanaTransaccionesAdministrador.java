@@ -11,7 +11,7 @@ public class VentanaTransaccionesAdministrador extends JFrame{
     JPanel panelTransacciones, panelIntroducirVenta, panelIntroducirGasto, panelVerTransacciones, panelVerTodasTransacciones;
     JMenuBar barraMenu;
     JMenu menu;
-    JMenuItem opcionIntroducirVenta, opcionIntroducirGasto, opcionVerTransacciones, opcionVerTodasTransacciones;
+    JMenuItem opcionIntroducirVenta, opcionIntroducirGasto, opcionVerTransacciones, opcionVerTodasTransacciones, opcionAyuda;
     JFrame frameVentanaTransacciones;
 
     public VentanaTransaccionesAdministrador(){
@@ -27,10 +27,12 @@ public class VentanaTransaccionesAdministrador extends JFrame{
         opcionIntroducirGasto = new JMenuItem("Introducir un gasto");
         opcionVerTransacciones = new JMenuItem("Ver transacciones");
         opcionVerTodasTransacciones = new JMenuItem("Ver todas las transacciones");
+        opcionAyuda = new JMenuItem("Ayuda");
         menu.add(opcionIntroducirVenta);
         menu.add(opcionIntroducirGasto);
         menu.add(opcionVerTransacciones);
         menu.add(opcionVerTodasTransacciones);
+        menu.add(opcionAyuda);
         barraMenu.add(menu);
         this.setJMenuBar(barraMenu);
 
@@ -155,6 +157,14 @@ public class VentanaTransaccionesAdministrador extends JFrame{
                 frameVentanaTransacciones.getContentPane().revalidate();
                 frameVentanaTransacciones.getContentPane().add(panelVerTodasTransacciones);
                 frameVentanaTransacciones.setVisible(true);
+            }
+        });
+
+        opcionAyuda.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPaneAyuda ayuda = new JOptionPaneAyuda((JPanel) frameVentanaTransacciones.getContentPane());
+                ayuda.muestraAyudaTransaccionesAdministrador();
             }
         });
 

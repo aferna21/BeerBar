@@ -10,12 +10,25 @@ public class VentanaAdministrador extends JFrame {
 
     JPanel panelAdministrador;
     JButton botonNotas, botonTransacciones, botonGestionUsuarios;
+    JMenuBar barraMenu;
+    JMenu menu;
+    JMenuItem opcionAyuda;
+    JFrame frameAdministrador;
 
     public VentanaAdministrador(){
+
+        frameAdministrador = this;
 
         this.setTitle("Administrador");
         this.setSize(new Dimension(400, 200));
         this.setLocationRelativeTo(null);
+
+        barraMenu = new JMenuBar();
+        menu = new JMenu("Menu");
+        opcionAyuda = new JMenuItem("Ayuda");
+        menu.add(opcionAyuda);
+        barraMenu.add(menu);
+        this.setJMenuBar(barraMenu);
 
         panelAdministrador = new JPanel();
         panelAdministrador.setLayout(new FlowLayout());
@@ -54,6 +67,14 @@ public class VentanaAdministrador extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new VentanaGestionUsuarios();
+            }
+        });
+
+        opcionAyuda.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPaneAyuda ayuda = new JOptionPaneAyuda((JPanel) frameAdministrador.getContentPane());
+                ayuda.muestraAyudaAdministrador();
             }
         });
 
