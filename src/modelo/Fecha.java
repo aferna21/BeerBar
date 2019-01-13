@@ -237,4 +237,9 @@ public class Fecha {
             }
         }
     }
+
+
+    public String toStringAbreviado(){
+        return this.dia + "/" + this.mes + "/" + this.ano;
+    }
 }
