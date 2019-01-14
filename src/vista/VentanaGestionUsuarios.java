@@ -12,10 +12,10 @@ import java.awt.event.ActionListener;
 
 public class VentanaGestionUsuarios extends JFrame {
 
-    JPanel panelUsuarios, panelAnadir, panelEliminar, panelVer;
+    JPanel panelUsuarios, panelAnadir, panelEliminar, panelModificar, panelVer;
     JMenuBar barraMenu;
     JMenu acciones, ayuda;
-    JMenuItem opcionAnadir, opcionEliminar, opcionVer, opcionAyuda;
+    JMenuItem opcionAnadir, opcionEliminar, opcionVer, opcionModificar, opcionAyuda;
     JFrame frameVentanaUsuarios;
     ControladorGestorDeUsuarios controladorGestorDeUsuarios = new ControladorGestorDeUsuarios();
 
@@ -31,10 +31,12 @@ public class VentanaGestionUsuarios extends JFrame {
         ayuda = new JMenu("Ayuda");
         opcionAnadir = new JMenuItem("Anadir a un usuario");
         opcionEliminar = new JMenuItem("Eliminar a un usuario");
+        opcionModificar = new JMenuItem("Modificar un usuario");
         opcionVer = new JMenuItem("Ver los usuarios del sistema");
         opcionAyuda = new JMenuItem("Ayuda");
         acciones.add(opcionAnadir);
         acciones.add(opcionEliminar);
+        acciones.add(opcionModificar);
         acciones.add(opcionVer);
         ayuda.add(opcionAyuda);
         barraMenu.add(acciones);
@@ -132,6 +134,38 @@ public class VentanaGestionUsuarios extends JFrame {
         panelEliminar.setBorder(new EmptyBorder(new Insets(10, 10, 10, 10)));
 
 
+        //MODIFICAR USUARIO
+        panelModificar = new JPanel();
+        panelModificar.setBackground(new Color(128, 128, 128));
+        panelModificar.setSize(new Dimension(800, 600));
+        panelModificar.setLayout(new BorderLayout());
+        JPanel panelModificarUsuario = new JPanel();
+        panelModificarUsuario.setBackground(new Color(128, 128, 128));
+        panelModificarUsuario.setLayout(new BoxLayout(panelModificarUsuario, BoxLayout.PAGE_AXIS));
+        panelModificar.add(panelModificarUsuario);
+        JLabel textoNombreAnterior = new JLabel("Nombre usuario: ");
+        JTextField campoTextoNombreAnterior = new JTextField();
+        JLabel textoNombreModificar = new JLabel("Nuevo nombre: ");
+        JTextField campoTextoNombreModificar = new JTextField();
+        JLabel textoContrasenaModificar = new JLabel("Nueva contrasena: ");
+        JTextField campoTextoContrasenaModificar = new JTextField();
+        panelModificarUsuario.add(textoNombreAnterior);
+        panelModificarUsuario.add(campoTextoNombreAnterior);
+        panelModificarUsuario.add(textoNombreModificar);
+        panelModificarUsuario.add(campoTextoNombreModificar);
+        panelModificarUsuario.add(textoContrasenaModificar);
+        panelModificarUsuario.add(campoTextoContrasenaModificar);
+        panelModificar.add(panelModificarUsuario, BorderLayout.NORTH);
+        JButton botonModificar = new JButton("Modificar usuario");
+        botonModificar.setBackground(new Color(0, 38, 77));
+        botonModificar.setForeground(Color.WHITE);
+        botonModificar.setOpaque(true);
+        botonModificar.setBorderPainted(false);
+        botonModificar.setPreferredSize(new Dimension(10, 40));
+        panelModificar.add(botonModificar, BorderLayout.SOUTH);
+        panelModificar.setBorder(new EmptyBorder(new Insets(10, 10, 10, 10)));
+
+
         //VER USUARIOS
         panelVer = new JPanel();
         panelVer.setBackground(new Color(128, 128, 128));
@@ -168,6 +202,17 @@ public class VentanaGestionUsuarios extends JFrame {
                 frameVentanaUsuarios.getContentPane().repaint();
                 frameVentanaUsuarios.getContentPane().revalidate();
                 frameVentanaUsuarios.getContentPane().add(panelEliminar);
+                frameVentanaUsuarios.setVisible(true);
+            }
+        });
+
+        opcionModificar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frameVentanaUsuarios.getContentPane().removeAll();
+                frameVentanaUsuarios.getContentPane().repaint();
+                frameVentanaUsuarios.getContentPane().revalidate();
+                frameVentanaUsuarios.getContentPane().add(panelModificar);
                 frameVentanaUsuarios.setVisible(true);
             }
         });

@@ -79,15 +79,14 @@ public class VentanaIniciarSesion extends JFrame {
                 String contrasena = String.valueOf(campoTextoContrasena.getPassword());
                 boolean esUsuarioCorrecto = new ControladorGestorDeUsuarios().autentificar(usuario, contrasena);
 
-                if(esUsuarioCorrecto){
-                    if(GestorDeUsuarios.darInstancia().getUsuario(usuario).getEsAdmin()){
+                if(esUsuarioCorrecto) {
+                    if (GestorDeUsuarios.darInstancia().getUsuario(usuario).getEsAdmin()) {
                         new VentanaAdministrador();
 
-                    }
-                    else {
+                    } else {
                         new VentanaUsuario(usuario);
                     }
-                    frameIniciarSesion.dispatchEvent(new WindowEvent(frameIniciarSesion, WindowEvent.WINDOW_CLOSING));
+                    frameIniciarSesion.dispose();
                 }
                 else {
                     JOptionPane usuarioIncorrecto = new JOptionPane();
@@ -106,6 +105,6 @@ public class VentanaIniciarSesion extends JFrame {
 
         this.setResizable(false);
         this.setVisible(true);
-        this.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 }

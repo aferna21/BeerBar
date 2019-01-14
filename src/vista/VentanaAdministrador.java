@@ -11,8 +11,8 @@ public class VentanaAdministrador extends JFrame {
     JPanel panelAdministrador;
     JButton botonNotas, botonTransacciones, botonGestionUsuarios;
     JMenuBar barraMenu;
-    JMenu ayuda;
-    JMenuItem opcionAyuda;
+    JMenu ayuda, menu;
+    JMenuItem opcionAyuda, opcionCerrarsesion;
     JFrame frameAdministrador;
 
     public VentanaAdministrador(){
@@ -25,8 +25,12 @@ public class VentanaAdministrador extends JFrame {
 
         barraMenu = new JMenuBar();
         ayuda = new JMenu("Ayuda");
+        menu = new JMenu("Menu");
         opcionAyuda = new JMenuItem("Ayuda");
+        opcionCerrarsesion = new JMenuItem("Cerrar sesion");
         ayuda.add(opcionAyuda);
+        menu.add(opcionCerrarsesion);
+        barraMenu.add(menu);
         barraMenu.add(ayuda);
         this.setJMenuBar(barraMenu);
 
@@ -81,6 +85,14 @@ public class VentanaAdministrador extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new VentanaGestionUsuarios();
+            }
+        });
+
+        opcionCerrarsesion.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frameAdministrador.dispose();
+                new VentanaIniciarSesion();
             }
         });
 

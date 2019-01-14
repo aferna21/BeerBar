@@ -63,7 +63,7 @@ public class VentanaBienvenida extends JFrame{
                 new ControladorInicio();
 
                 new VentanaIniciarSesion();
-                frameBienvenida.dispatchEvent(new WindowEvent(frameBienvenida, WindowEvent.WINDOW_CLOSING));
+                frameBienvenida.dispose();
             }
         });
 
@@ -77,6 +77,6 @@ public class VentanaBienvenida extends JFrame{
 
         this.setResizable(false);
         this.setVisible(true);
-        this.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 }
