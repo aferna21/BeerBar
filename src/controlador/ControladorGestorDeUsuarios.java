@@ -19,6 +19,7 @@ public class ControladorGestorDeUsuarios {
         boolean b = false;
         if(GestorDeUsuarios.darInstancia().getUsuario(nombre) == null) {
             new DAOUsuarios().introduceUsuario(nombre, contrasena, false);
+            GestorDeUsuarios.darInstancia().anadirUsuario(nombre, contrasena);
             b = true;
         }
         // Lo mismo que lo explicado abajo, cuando anades un usuario desde el admin, poder cerrar sesion y entrar
@@ -31,6 +32,7 @@ public class ControladorGestorDeUsuarios {
         boolean b = false;
         if(GestorDeUsuarios.darInstancia().getUsuario(nombre) != null){
             new DAOUsuarios().eliminarUsuario(nombre);
+            GestorDeUsuarios.darInstancia().eliminarUsuario(nombre);
             b = true;
         }
         // Llamo al controlador de inicio para que vuelva a cargar la lista de usuarios una vez borrado porque si no
@@ -43,6 +45,7 @@ public class ControladorGestorDeUsuarios {
         boolean b = false;
         if(GestorDeUsuarios.darInstancia().getUsuario(nombre) != null){
             new DAOUsuarios().cambiarContrasena(nombre, nuevaContrasena);
+            GestorDeUsuarios.darInstancia().cambiarContrasena(nombre, nuevaContrasena);
             b = true;
         }
         // Lo mismo, actualizar

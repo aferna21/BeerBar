@@ -84,6 +84,16 @@ public class GestorDeUsuarios {
         throw new BeerBarException("Usuario no encontrado.\n");
     }
 
+    public boolean cambiarContrasena(String nombre, String contrasena) throws BeerBarException {
+        for (Usuario u : this.usuarios){
+            if (u.getNombre().equals(nombre)){
+                u.setContrasena(contrasena);
+                return true;
+            }
+        }
+        throw new BeerBarException("El nombre de usuario ya existe.\n");
+    }
+
     /**
      * Devuelve un usuario a partir de su nombre. Si no existe, devolvera null.
      * @param nombre nombre del usuario a buscar.
