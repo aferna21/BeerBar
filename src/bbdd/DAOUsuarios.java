@@ -65,6 +65,7 @@ public class DAOUsuarios extends Conexion {
         String esAdmin = fromBoolToString(b);
         this.abrirConexion();
         String valores = "(" + nombre + ", " + contrasena + ", " + esAdmin + ");";
+        System.out.print("DAO \n nombre: " + nombre + "\n contrasena: "+contrasena);
         try {
             PreparedStatement st = this.getConexion().prepareStatement("INSERT INTO usuarios VALUES ('" + nombre + "', '" + contrasena + "', '" + esAdmin + "');");
             st.executeUpdate();

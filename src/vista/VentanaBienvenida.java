@@ -1,5 +1,7 @@
 package vista;
 
+import controlador.ControladorInicio;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -57,6 +59,9 @@ public class VentanaBienvenida extends JFrame{
         botonEntrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                //Crea el usuario admin si no esta, y si esta carga todos los usuarios
+                new ControladorInicio();
+
                 new VentanaIniciarSesion();
                 frameBienvenida.dispatchEvent(new WindowEvent(frameBienvenida, WindowEvent.WINDOW_CLOSING));
             }

@@ -1,5 +1,8 @@
 package vista;
 
+import controlador.ControladorGestorDeUsuarios;
+import modelo.GestorDeUsuarios;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -74,13 +77,22 @@ public class VentanaIniciarSesion extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String usuario = campoTextoUsuario.getText();
                 String contrasena = String.valueOf(campoTextoContrasena.getPassword());
-                if(usuario.equals("admin") && contrasena.equals("admin")){
-                    new VentanaAdministrador();
+                boolean esUsuarioCorrecto = new ControladorGestorDeUsuarios().autentificar(usuario, contrasena);
+
+                if(esUsuarioCorrecto){
+                    if(GestorDeUsuarios.darInstancia().getUsuario(usuario).getEsAdmin()){
+                        new VentanaAdministrador();
+
+                    }
+                    else {
+                        new VentanaUsuario(usuario);
+                    }
+                    frameIniciarSesion.dispatchEvent(new WindowEvent(frameIniciarSesion, WindowEvent.WINDOW_CLOSING));
                 }
                 else {
-                    new VentanaUsuario(campoTextoUsuario.getText());
+                    JOptionPane usuarioIncorrecto = new JOptionPane();
+                    usuarioIncorrecto.showMessageDialog(frameIniciarSesion.getContentPane(), "Usuario incorrecto");
                 }
-                frameIniciarSesion.dispatchEvent(new WindowEvent(frameIniciarSesion, WindowEvent.WINDOW_CLOSING));
             }
         });
 
