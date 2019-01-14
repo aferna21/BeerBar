@@ -124,7 +124,7 @@ public class BeerBar {
      * @param cantidad - Nueva cantidad
      * @return - True si se ha modificado correctamente
      */
-    public boolean modificarTransaccion(Transaccion transaccion, int cantidad) throws BeerBarException {
+    public boolean modificarTransaccion(Transaccion transaccion, float cantidad) throws BeerBarException {
         if(!usuarioActual.getEsAdmin()) return false;
 
         ArrayList<Transaccion> transaccionesJornada = Jornada.darInstancia().getTransacciones();

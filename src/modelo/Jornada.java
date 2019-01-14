@@ -54,8 +54,8 @@ public class Jornada {
      * Devuelve el sumatorio de las transacciones de la jornada.
      * @return sumatorio de las transacciones en esta jornada.
      */
-    public int sumaTransacciones(){
-        int suma = 0;
+    public float sumaTransacciones(){
+        float suma = 0;
         for(Transaccion t:transacciones){
             suma += t.getCantidad();
         }

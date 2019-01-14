@@ -45,7 +45,7 @@ public class Calendario {
         return null;
     }
 
-    private int obtenerBeneficios(Fecha fecha){
+    private float obtenerBeneficios(Fecha fecha){
         return buscarJornada(fecha).sumaTransacciones();
     }
 
@@ -55,14 +55,14 @@ public class Calendario {
      * @param fechafinal ultimo dia del rango de dias.
      * @return beneficio en un rango de dias.
      */
-    public int obtenerBeneficios(Fecha fechainicio, Fecha fechafinal){
-        int suma = 0;
+    public float obtenerBeneficios(Fecha fechainicio, Fecha fechafinal){
+        float suma = 0;
         Fecha fechaux = fechainicio;
         while(!fechaux.equals(fechafinal)){
             suma += this.obtenerBeneficios(fechaux);
             fechaux.avanza();
         }
-        suma+=this.obtenerBeneficios(fechaux);
+        suma += this.obtenerBeneficios(fechaux);
         return suma;
     }
 

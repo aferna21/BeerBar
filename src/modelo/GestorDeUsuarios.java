@@ -28,15 +28,15 @@ public class GestorDeUsuarios {
 
     /**
      * Indica si el usuario y la contrasena introducidas son correctos.
-     * @param nombreusuario nombre del usuario.
+     * @param nombreUsuario nombre del usuario.
      * @param contrasena contrasena del usuario.
      * @return true si la contrasena corresponde a un nombre de usuario que existe.
      */
-    public boolean autentificar(String nombreusuario, String contrasena){
-        Usuario u = this.getUsuario(nombreusuario);
+    public boolean autentificar(String nombreUsuario, String contrasena){
+        Usuario u = this.getUsuario(nombreUsuario);
         if(u == null) return false;
 
-        return nombreusuario.equals(u.getNombre())  &&  contrasena.equals(u.getContrasena());
+        return nombreUsuario.equals(u.getNombre())  &&  contrasena.equals(u.getContrasena());
     }
 
     /**
