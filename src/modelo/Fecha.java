@@ -242,4 +242,12 @@ public class Fecha {
     public String toStringAbreviado(){
         return this.dia + "/" + this.mes + "/" + this.ano;
     }
+
+    public Fecha fromStringAbreviadoToFecha(String s) throws BeerBarException {
+        String[] partes = s.split("/");
+        int dia = Integer.valueOf(partes[0]);
+        int mes = Integer.valueOf(partes[1]);
+        int ano = Integer.valueOf(partes[3]);
+        return new Fecha(dia, mes, ano);
+    }
 }

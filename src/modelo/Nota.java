@@ -52,7 +52,7 @@ public class Nota {
      * @param fecha - Dia en el que esta escrita la nota.
      * @param madre - Nota de la que proviene la escrita. Sera null si empieza un nuevo hilo
      */
-    public Nota(String texto, Usuario remitente, Usuario destinatario, Fecha fecha, Nota madre) throws BeerBarException {
+    public Nota(String texto, Usuario remitente, Usuario destinatario, Fecha fecha, Nota madre, Nota hija) throws BeerBarException {
         if(texto == null || remitente == null || destinatario == null || fecha == null){
             throw new BeerBarException("Error al crear la nota.");
         }
@@ -62,7 +62,7 @@ public class Nota {
             this.destinatario = destinatario;
             this.fecha = fecha;
             this.madre = madre;
-            this.hija = null;
+            this.hija = hija;
             this.leida = false;
 
             if(this.madre != null){
