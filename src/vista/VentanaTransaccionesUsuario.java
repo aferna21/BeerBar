@@ -39,6 +39,7 @@ public class VentanaTransaccionesUsuario extends JFrame {
         this.setJMenuBar(barraMenu);
 
         panelTransacciones = new JPanel();
+        panelTransacciones.setBackground(new Color(128, 128, 128));
         panelTransacciones.setLayout(new BorderLayout());
         JLabel textoNotas = new JLabel("Ventana de transacciones de " + this.nombreUsuario);
         panelTransacciones.add(textoNotas, BorderLayout.CENTER);
@@ -48,9 +49,11 @@ public class VentanaTransaccionesUsuario extends JFrame {
 
         //INTRODUCIR VENTA
         panelIntroducirVenta = new JPanel();
+        panelIntroducirVenta.setBackground(new Color(128, 128, 128));
         panelIntroducirVenta.setSize(800, 600);
         panelIntroducirVenta.setLayout(new BorderLayout());
         JPanel panelVenta = new JPanel();
+        panelVenta.setBackground(new Color(128, 128, 128));
         panelVenta.setLayout(new BoxLayout(panelVenta, BoxLayout.PAGE_AXIS));
         panelIntroducirVenta.add(panelVenta, BorderLayout.NORTH);
         JLabel textoImporteVenta = new JLabel("Importe de la venta");
@@ -62,15 +65,22 @@ public class VentanaTransaccionesUsuario extends JFrame {
         JTextArea campoConceptoVenta = new JTextArea();
         panelIntroducirVenta.add(campoConceptoVenta, BorderLayout.CENTER);
         JButton botonIntroducirVenta = new JButton("Introducir venta");
+        botonIntroducirVenta.setBackground(new Color(0, 38, 77));
+        botonIntroducirVenta.setForeground(Color.WHITE);
+        botonIntroducirVenta.setOpaque(true);
+        botonIntroducirVenta.setBorderPainted(false);
+        botonIntroducirVenta.setPreferredSize(new Dimension(10, 40));
         panelIntroducirVenta.add(botonIntroducirVenta, BorderLayout.SOUTH);
         panelIntroducirVenta.setBorder(new EmptyBorder(new Insets(10,10, 10, 10)));
 
 
         //INTRODUCIR GASTO
         panelIntroducirGasto = new JPanel();
+        panelIntroducirGasto.setBackground(new Color(128, 128, 128));
         panelIntroducirGasto.setSize(800, 600);
         panelIntroducirGasto.setLayout(new BorderLayout());
         JPanel panelGasto = new JPanel();
+        panelGasto.setBackground(new Color(128, 128, 128));
         panelGasto.setLayout(new BoxLayout(panelGasto, BoxLayout.PAGE_AXIS));
         panelIntroducirGasto.add(panelGasto, BorderLayout.NORTH);
         JLabel textoImporteGasto = new JLabel("Importe del gasto");
@@ -82,12 +92,18 @@ public class VentanaTransaccionesUsuario extends JFrame {
         JTextArea campoConceptoGasto = new JTextArea();
         panelIntroducirGasto.add(campoConceptoGasto, BorderLayout.CENTER);
         JButton botonIntroducirGasto = new JButton("Introducir gasto");
+        botonIntroducirGasto.setBackground(new Color(0, 38, 77));
+        botonIntroducirGasto.setForeground(Color.WHITE);
+        botonIntroducirGasto.setOpaque(true);
+        botonIntroducirGasto.setBorderPainted(false);
+        botonIntroducirGasto.setPreferredSize(new Dimension(10, 40));
         panelIntroducirGasto.add(botonIntroducirGasto, BorderLayout.SOUTH);
         panelIntroducirGasto.setBorder(new EmptyBorder(new Insets(10,10, 10, 10)));
 
 
         //VER TRANSACCIONES
         panelVerTransacciones = new JPanel();
+        panelTransacciones.setBackground(new Color(128, 128, 128));
         panelVerTransacciones.setSize(800, 600);
         panelVerTransacciones.setLayout(new BorderLayout());
         JPanel panelDentroScrollTransacciones = new JPanel();
@@ -96,7 +112,7 @@ public class VentanaTransaccionesUsuario extends JFrame {
         JScrollPane panelScrollTransacciones = new JScrollPane(panelDentroScrollTransacciones);
         panelScrollTransacciones.getVerticalScrollBar().setUnitIncrement(40);
         panelVerTransacciones.add(panelScrollTransacciones, BorderLayout.CENTER);
-        panelDentroScrollTransacciones.setBackground(Color.BLACK);
+        panelDentroScrollTransacciones.setBackground(new Color(128, 128, 128));
 
         panelDentroScrollTransacciones.add(new JTextAreaTransacciones(true, "Felipe", "1 de Enero de 2019", "24,57", "Unos buenos cocacolos con una tapichuela de tortilluca"));
         panelDentroScrollTransacciones.add(new JTextAreaTransacciones(false, "Adri", "2 de Enero de 2019", "13,56", "Compra de un buen kilo de alioli como el de hasan"));

@@ -44,6 +44,7 @@ public class VentanaNotasAdministrador extends JFrame{
         this.setJMenuBar(barraMenu);
 
         panelNotas = new JPanel();
+        panelNotas.setBackground(new Color(128, 128, 128));
         panelNotas.setLayout(new BorderLayout());
         JLabel textoNotas = new JLabel("Ventana de notas del administrador");
         panelNotas.add(textoNotas, BorderLayout.CENTER);
@@ -53,9 +54,11 @@ public class VentanaNotasAdministrador extends JFrame{
 
         //ESCRIBIR NOTA
         panelEscribirNotaA = new JPanel();
+        panelEscribirNotaA.setBackground(new Color(128, 128, 128));
         panelEscribirNotaA.setSize(800, 600);
         panelEscribirNotaA.setLayout(new BorderLayout());
         JPanel panelDestinatario = new JPanel();
+        panelDestinatario.setBackground(new Color(128, 128, 128));
         panelDestinatario.setLayout(new BoxLayout(panelDestinatario, BoxLayout.PAGE_AXIS));
         panelEscribirNotaA.add(panelDestinatario, BorderLayout.NORTH);
         JLabel textoDestinatario = new JLabel("Destinatario");
@@ -67,6 +70,11 @@ public class VentanaNotasAdministrador extends JFrame{
         JTextArea campoMensaje = new JTextArea();
         panelEscribirNotaA.add(campoMensaje, BorderLayout.CENTER);
         JButton botonEnviar = new JButton("Enviar");
+        botonEnviar.setBackground(new Color(0, 38, 77));
+        botonEnviar.setForeground(Color.WHITE);
+        botonEnviar.setOpaque(true);
+        botonEnviar.setBorderPainted(false);
+        botonEnviar.setPreferredSize(new Dimension(10, 40));
         panelEscribirNotaA.add(botonEnviar, BorderLayout.SOUTH);
         panelEscribirNotaA.setBorder(new EmptyBorder(new Insets(10,10, 10, 10)));
 
@@ -82,6 +90,7 @@ public class VentanaNotasAdministrador extends JFrame{
 
         //VER NOTAS RECIBIDAS
         panelVerNotasRecibidas = new JPanel();
+        panelVerNotasRecibidas.setBackground(new Color(128, 128, 128));
         panelVerNotasRecibidas.setSize(800, 600);
         panelVerNotasRecibidas.setLayout(new BorderLayout());
         JPanel panelDentroScrollRecibidas = new JPanel();
@@ -89,8 +98,8 @@ public class VentanaNotasAdministrador extends JFrame{
         panelDentroScrollRecibidas.setBorder(new EmptyBorder(new Insets(10, 10, 10, 10)));
         JScrollPane panelScrollRecibidas = new JScrollPane(panelDentroScrollRecibidas);
         panelScrollRecibidas.getVerticalScrollBar().setUnitIncrement(40);
+        panelDentroScrollRecibidas.setBackground(new Color(128, 128, 128));
         panelVerNotasRecibidas.add(panelScrollRecibidas, BorderLayout.CENTER);
-        panelDentroScrollRecibidas.setBackground(Color.BLACK);
 
         JTextAreaNotas texto1 = new JTextAreaNotas("Adri", "Felipe", "1 de Enero de 2019", "prueba de las notas del admin");
         panelDentroScrollRecibidas.add(texto1);
@@ -101,6 +110,7 @@ public class VentanaNotasAdministrador extends JFrame{
 
         //VER NOTAS ENVIADAS
         panelVerNotasEnviadas = new JPanel();
+        panelVerNotasEnviadas.setBackground(new Color(128, 128, 128));
         panelVerNotasEnviadas.setSize(800, 600);
         panelVerNotasEnviadas.setLayout(new BorderLayout());
         JPanel panelDentroScrollEnviadas = new JPanel();
@@ -109,7 +119,7 @@ public class VentanaNotasAdministrador extends JFrame{
         JScrollPane panelScrollEnviadas = new JScrollPane(panelDentroScrollEnviadas);
         panelScrollEnviadas.getVerticalScrollBar().setUnitIncrement(40);
         panelVerNotasEnviadas.add(panelScrollEnviadas, BorderLayout.CENTER);
-        panelDentroScrollEnviadas.setBackground(Color.BLACK);
+        panelDentroScrollEnviadas.setBackground(new Color(128, 128, 128));
 
         JTextAreaNotas texto3 = new JTextAreaNotas("Adri", "Felipe", "1 de Enero de 2019", "otra prueba mais");
         panelDentroScrollEnviadas.add(texto3);
@@ -120,6 +130,7 @@ public class VentanaNotasAdministrador extends JFrame{
 
         //VER TODAS LAS NOTAS
         panelVerTodasLasNotas = new JPanel();
+        panelVerTodasLasNotas.setBackground(new Color(128, 128, 128));
         panelVerTodasLasNotas.setSize(800, 600);
         panelVerTodasLasNotas.setLayout(new BorderLayout());
         JPanel panelDentroScrollTodasNotas = new JPanel();
@@ -128,7 +139,7 @@ public class VentanaNotasAdministrador extends JFrame{
         JScrollPane panelScrollTodasNotas = new JScrollPane(panelDentroScrollTodasNotas);
         panelScrollTodasNotas.getVerticalScrollBar().setUnitIncrement(40);
         panelVerTodasLasNotas.add(panelScrollTodasNotas, BorderLayout.CENTER);
-        panelDentroScrollTodasNotas.setBackground(Color.BLACK);
+        panelDentroScrollTodasNotas.setBackground(new Color(128, 128, 128));
 
         for(int i=0; i<40; i++){
             panelDentroScrollTodasNotas.add(new JTextAreaNotas("Felipe", "Adri", "2 de febrero", "hola"));
@@ -138,9 +149,11 @@ public class VentanaNotasAdministrador extends JFrame{
         //VER NOTAS EN RANGO DE FECHAS
         panelVerNotasFecha = new JPanel();
         panelVerNotasFecha.setSize(new Dimension(800, 600));
+        panelVerNotasFecha.setBackground(new Color(128, 128, 128));
         panelVerNotasFecha.setLayout(new BorderLayout());
 
         JPanel panelNotasFechaNorte = new JPanel();
+        panelNotasFechaNorte.setBackground(new Color(128, 128, 128));
         panelNotasFechaNorte.setLayout(new BoxLayout(panelNotasFechaNorte, BoxLayout.PAGE_AXIS));
         panelNotasFechaNorte.setBorder(new EmptyBorder(new Insets(10, 10, 10, 10)));
         panelVerNotasFecha.add(panelNotasFechaNorte, BorderLayout.NORTH);
@@ -149,6 +162,11 @@ public class VentanaNotasAdministrador extends JFrame{
         JLabel textoFechaFin = new JLabel("Fecha fin: ");
         JDateChooser dateChooserFin = new JDateChooser(null, null, null, new JSpinnerDateEditor());
         JButton botonAceptar = new JButton("Aceptar");
+        botonAceptar.setBackground(new Color(0, 38, 77));
+        botonAceptar.setForeground(Color.WHITE);
+        botonAceptar.setOpaque(true);
+        botonAceptar.setBorderPainted(false);
+
         panelNotasFechaNorte.add(textoFechaInicio);
         panelNotasFechaNorte.add(dateChooserInicio);
         panelNotasFechaNorte.add(textoFechaFin);
@@ -161,7 +179,7 @@ public class VentanaNotasAdministrador extends JFrame{
         JScrollPane panelScrollNotasFecha = new JScrollPane(panelDentroScrollNotasFecha);
         panelScrollNotasFecha.getVerticalScrollBar().setUnitIncrement(40);
         panelVerNotasFecha.add(panelScrollNotasFecha, BorderLayout.CENTER);
-        panelDentroScrollNotasFecha.setBackground(Color.BLACK);
+        panelDentroScrollNotasFecha.setBackground(new Color(128, 128, 128));
 
         for(int i=0; i<40; i++){
             panelDentroScrollNotasFecha.add(new JTextAreaNotas("Felipe", "Adri", "2 de febrero", "hola"));

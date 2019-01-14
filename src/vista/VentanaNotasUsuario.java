@@ -47,6 +47,7 @@ public class VentanaNotasUsuario extends JFrame {
         this.setJMenuBar(barraMenu);
 
         panelNotas = new JPanel();
+        panelNotas.setBackground(new Color(128, 128, 128));
         panelNotas.setLayout(new BorderLayout());
         JLabel textoNotas = new JLabel("Ventana de notas de " + this.nombreUsuario);
         panelNotas.add(textoNotas, BorderLayout.CENTER);
@@ -56,9 +57,11 @@ public class VentanaNotasUsuario extends JFrame {
 
         //ESCRIBIR NOTA
         panelEscribirNotaA = new JPanel();
+        panelEscribirNotaA.setBackground(new Color(128, 128, 128));
         panelEscribirNotaA.setSize(800, 600);
         panelEscribirNotaA.setLayout(new BorderLayout());
         panelDestinatario = new JPanel();
+        panelDestinatario.setBackground(new Color(128, 128, 128));
         panelDestinatario.setLayout(new BoxLayout(panelDestinatario, BoxLayout.PAGE_AXIS));
         panelEscribirNotaA.add(panelDestinatario, BorderLayout.NORTH);
         JLabel textoDestinatario = new JLabel("Destinatario");
@@ -70,6 +73,11 @@ public class VentanaNotasUsuario extends JFrame {
         campoMensaje = new JTextArea();
         panelEscribirNotaA.add(campoMensaje, BorderLayout.CENTER);
         JButton botonEnviar = new JButton("Enviar");
+        botonEnviar.setBackground(new Color(0, 38, 77));
+        botonEnviar.setForeground(Color.WHITE);
+        botonEnviar.setOpaque(true);
+        botonEnviar.setBorderPainted(false);
+        botonEnviar.setPreferredSize(new Dimension(10, 40));
         panelEscribirNotaA.add(botonEnviar, BorderLayout.SOUTH);
         panelEscribirNotaA.setBorder(new EmptyBorder(new Insets(10,10, 10, 10)));
 
@@ -96,6 +104,7 @@ public class VentanaNotasUsuario extends JFrame {
 
         //VER NOTAS RECIBIDAS
         panelVerNotasRecibidas = new JPanel();
+        panelVerNotasRecibidas.setBackground(new Color(128, 128, 128));
         panelVerNotasRecibidas.setSize(800, 600);
         panelVerNotasRecibidas.setLayout(new BorderLayout());
         JPanel panelDentroScrollRecibidas = new JPanel();
@@ -104,7 +113,7 @@ public class VentanaNotasUsuario extends JFrame {
         JScrollPane panelScrollRecibidas = new JScrollPane(panelDentroScrollRecibidas);
         panelScrollRecibidas.getVerticalScrollBar().setUnitIncrement(40);
         panelVerNotasRecibidas.add(panelScrollRecibidas, BorderLayout.CENTER);
-        panelDentroScrollRecibidas.setBackground(Color.BLACK);
+        panelDentroScrollRecibidas.setBackground(new Color(128, 128, 128));
 
         JTextAreaNotas texto1 = new JTextAreaNotas("Adri", "Felipe", "1 de Enero de 2019", "Hola que tal estas como te va la vida crak");
         panelDentroScrollRecibidas.add(texto1);
@@ -115,6 +124,7 @@ public class VentanaNotasUsuario extends JFrame {
 
         //VER NOTAS ENVIADAS
         panelVerNotasEnviadas = new JPanel();
+        panelVerNotasEnviadas.setBackground(new Color(128, 128, 128));
         panelVerNotasEnviadas.setSize(800, 600);
         panelVerNotasEnviadas.setLayout(new BorderLayout());
         JPanel panelDentroScrollEnviadas = new JPanel();
@@ -123,7 +133,7 @@ public class VentanaNotasUsuario extends JFrame {
         JScrollPane panelScrollEnviadas = new JScrollPane(panelDentroScrollEnviadas);
         panelScrollEnviadas.getVerticalScrollBar().setUnitIncrement(40);
         panelVerNotasEnviadas.add(panelScrollEnviadas, BorderLayout.CENTER);
-        panelDentroScrollEnviadas.setBackground(Color.BLACK);
+        panelDentroScrollEnviadas.setBackground(new Color(128, 128, 128));
 
         JTextAreaNotas texto3 = new JTextAreaNotas("Adri", "Felipe", "1 de Enero de 2019", "Bueno pues otro texto de prueba jejejej");
         panelDentroScrollEnviadas.add(texto3);

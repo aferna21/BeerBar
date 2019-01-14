@@ -37,6 +37,7 @@ public class VentanaGestionUsuarios extends JFrame {
         this.setJMenuBar(barraMenu);
 
         panelUsuarios = new JPanel();
+        panelUsuarios.setBackground(new Color(128, 128, 128));
         panelUsuarios.setLayout(new BorderLayout());
         JLabel textoGestor = new JLabel("Ventana de gestion de usuarios");
         panelUsuarios.add(textoGestor, BorderLayout.CENTER);
@@ -46,9 +47,11 @@ public class VentanaGestionUsuarios extends JFrame {
 
         //ANADIR USUARIO
         panelAnadir = new JPanel();
+        panelAnadir.setBackground(new Color(128, 128, 128));
         panelAnadir.setSize(new Dimension(800, 600));
         panelAnadir.setLayout(new BorderLayout());
         JPanel panelNuevoUsuario = new JPanel();
+        panelNuevoUsuario.setBackground(new Color(128, 128, 128));
         panelNuevoUsuario.setLayout(new BoxLayout(panelNuevoUsuario, BoxLayout.PAGE_AXIS));
         panelAnadir.add(panelNuevoUsuario);
         JLabel textoNombreNuevo = new JLabel("Nombre: ");
@@ -61,15 +64,22 @@ public class VentanaGestionUsuarios extends JFrame {
         panelNuevoUsuario.add(campoTextoContrasenaNuevo);
         panelAnadir.add(panelNuevoUsuario, BorderLayout.NORTH);
         JButton botonAnadir = new JButton("Anadir nuevo usuario");
+        botonAnadir.setBackground(new Color(0, 38, 77));
+        botonAnadir.setForeground(Color.WHITE);
+        botonAnadir.setOpaque(true);
+        botonAnadir.setBorderPainted(false);
+        botonAnadir.setPreferredSize(new Dimension(10, 40));
         panelAnadir.add(botonAnadir, BorderLayout.SOUTH);
         panelAnadir.setBorder(new EmptyBorder(new Insets(10, 10, 10, 10)));
 
 
         //ELIMINAR USUARIO
         panelEliminar = new JPanel();
+        panelEliminar.setBackground(new Color(128, 128, 128));
         panelEliminar.setSize(new Dimension(800, 600));
         panelEliminar.setLayout(new BorderLayout());
         JPanel panelEliminarUsuario = new JPanel();
+        panelEliminarUsuario.setBackground(new Color(128, 128, 128));
         panelEliminarUsuario.setLayout(new BoxLayout(panelEliminarUsuario, BoxLayout.PAGE_AXIS));
         panelEliminar.add(panelEliminarUsuario);
         JLabel textoNombreEliminar = new JLabel("Nombre: ");
@@ -82,12 +92,18 @@ public class VentanaGestionUsuarios extends JFrame {
         panelEliminarUsuario.add(campoTextoContrasenaEliminar);
         panelEliminar.add(panelEliminarUsuario, BorderLayout.NORTH);
         JButton botonEliminar = new JButton("Eliminar usuario");
+        botonEliminar.setBackground(new Color(0, 38, 77));
+        botonEliminar.setForeground(Color.WHITE);
+        botonEliminar.setOpaque(true);
+        botonEliminar.setBorderPainted(false);
+        botonEliminar.setPreferredSize(new Dimension(10, 40));
         panelEliminar.add(botonEliminar, BorderLayout.SOUTH);
         panelEliminar.setBorder(new EmptyBorder(new Insets(10, 10, 10, 10)));
 
 
         //VER USUARIOS
         panelVer = new JPanel();
+        panelVer.setBackground(new Color(128, 128, 128));
         panelVer.setSize(new Dimension(800, 600));
         panelVer.setLayout(new BorderLayout());
         JPanel panelDentroScrollUsuarios = new JPanel();
@@ -96,7 +112,7 @@ public class VentanaGestionUsuarios extends JFrame {
         JScrollPane panelScrollUsuarios = new JScrollPane(panelDentroScrollUsuarios);
         panelScrollUsuarios.getVerticalScrollBar().setUnitIncrement(40);
         panelVer.add(panelScrollUsuarios, BorderLayout.CENTER);
-        panelDentroScrollUsuarios.setBackground(Color.BLACK);
+        panelDentroScrollUsuarios.setBackground(new Color(128, 128, 128));
 
         panelDentroScrollUsuarios.add(new JTextAreaUsuarios("Felipe", "Tortilluca32"));
         panelDentroScrollUsuarios.add(new JTextAreaUsuarios("Adri Rastas", "Cafetito54"));
