@@ -33,16 +33,24 @@ public class VentanaUsuario extends JFrame{
         this.setJMenuBar(barraMenu);
 
         panelUsuario = new JPanel();
+        panelUsuario.setBackground(new Color(128, 128, 128));
         panelUsuario.setLayout(new FlowLayout());
 
         botonNotas = new JButton("Notas");
-        botonTransacciones = new JButton("Transacciones");
-
+        botonNotas.setBackground(new Color(0, 38, 77));
+        botonNotas.setForeground(Color.WHITE);
+        botonNotas.setOpaque(true);
+        botonNotas.setBorderPainted(false);
         botonNotas.setPreferredSize(new Dimension(140, 80));
+
+        botonTransacciones = new JButton("Transacciones");
+        botonTransacciones.setBackground(new Color(0, 38, 77));
+        botonTransacciones.setForeground(Color.WHITE);
+        botonTransacciones.setOpaque(true);
+        botonTransacciones.setBorderPainted(false);
         botonTransacciones.setPreferredSize(new Dimension(140, 80));
 
         panelUsuario.setBorder(new EmptyBorder(new Insets(50, 10, 10, 10)));
-
         panelUsuario.add(botonNotas);
         panelUsuario.add(botonTransacciones);
 

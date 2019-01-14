@@ -24,7 +24,7 @@ public class VentanaIniciarSesion extends JFrame {
         frameIniciarSesion = this;
 
         this.setTitle("Iniciar Sesion");
-        this.setSize(new Dimension(600, 400));
+        this.setSize(new Dimension(600, 300));
         //Poner la ventana en medio de la pantalla
         this.setLocationRelativeTo(null);
 
@@ -39,13 +39,19 @@ public class VentanaIniciarSesion extends JFrame {
         panelIniciarSesion.setLayout(new BorderLayout());
         panelIniciarSesion.setSize(new Dimension(600, 400));
         panelIniciarSesion.setBorder(new EmptyBorder(new Insets(10, 10, 10, 10)));
+        panelIniciarSesion.setBackground(new Color(128, 128, 128));
 
         textoUsuario = new JLabel("Usuario: ");
+        textoUsuario.setFont(new Font("Arial", Font.CENTER_BASELINE, 14));
+        textoUsuario.setBorder(new EmptyBorder(new Insets(20, 0, 5, 0)));
         textoContrasena = new JLabel("Contrasena: ");
+        textoContrasena.setFont(new Font("Arial", Font.CENTER_BASELINE, 14));
+        textoContrasena.setBorder(new EmptyBorder(new Insets(20, 0, 5, 0)));
         campoTextoUsuario = new JTextField();
         campoTextoContrasena = new JPasswordField();
 
         panelUsuarioContrasena = new JPanel();
+        panelUsuarioContrasena.setBackground(new Color(128, 128, 128));
         panelUsuarioContrasena.setLayout(new BoxLayout(panelUsuarioContrasena, BoxLayout.PAGE_AXIS));
         panelUsuarioContrasena.add(textoUsuario);
         panelUsuarioContrasena.add(campoTextoUsuario);
@@ -54,6 +60,11 @@ public class VentanaIniciarSesion extends JFrame {
         panelIniciarSesion.add(panelUsuarioContrasena, BorderLayout.NORTH);
 
         botonIniciarSesion = new JButton("Iniciar sesion");
+        botonIniciarSesion.setPreferredSize(new Dimension(10, 40));
+        botonIniciarSesion.setBackground(new Color(0, 38, 77));
+        botonIniciarSesion.setForeground(Color.WHITE);
+        botonIniciarSesion.setOpaque(true);
+        botonIniciarSesion.setBorderPainted(false);
         panelIniciarSesion.add(botonIniciarSesion, BorderLayout.SOUTH);
 
         this.getContentPane().add(panelIniciarSesion);
