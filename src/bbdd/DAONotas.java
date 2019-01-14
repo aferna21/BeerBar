@@ -1,5 +1,6 @@
 package bbdd;
 
+import controlador.ControladorInicio;
 import modelo.*;
 
 import java.sql.PreparedStatement;
@@ -82,7 +83,7 @@ public class DAONotas extends Conexion {
         return nota;
     }
 
-    private ArrayList<Nota> devuelveNotas() throws BeerBarException {
+    public ArrayList<Nota> devuelveNotas() throws BeerBarException {
         ArrayList<Nota> notas = new ArrayList<Nota>();
 
         this.abrirConexion();
@@ -101,4 +102,11 @@ public class DAONotas extends Conexion {
 
         return notas;
     }
+
+
+    public void introduceNota(Nota nota){
+
+    }
+
+
 }
