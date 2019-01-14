@@ -79,7 +79,7 @@ public class Usuario {
         //CAMBIAR ESTO DE LA FECHA DE HOY
         //CAMBIADO
         Fecha hoy = new Fecha().getFechaActual();
-        Nota nota = new Nota(texto, this, usuario, hoy, null);
+        Nota nota = new Nota(texto, this, usuario, hoy, null, null);
         ServidorDeMensajeria.darInstancia().anadirNota(nota);
     }
 

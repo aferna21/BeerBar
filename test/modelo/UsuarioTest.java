@@ -51,8 +51,8 @@ public class UsuarioTest {
     @Test
     public void testVerNotasEnviadas() throws BeerBarException {
         Fecha f = new Fecha().getFechaActual();
-        Nota nota1 = new Nota("Vamos a probar 1", usuarioAdmin, usuarioNormal, f, null);
-        Nota nota2 = new Nota("Vamos a probar 2", usuarioAdmin, usuarioNormal, f, null);
+        Nota nota1 = new Nota("Vamos a probar 1", usuarioAdmin, usuarioNormal, f, null, null);
+        Nota nota2 = new Nota("Vamos a probar 2", usuarioAdmin, usuarioNormal, f, null, null);
         assertEquals(0, usuarioAdmin.verNotasEnviadas().size());
         usuarioAdmin.escribirNotaA(usuarioNormal, "hola");
         assertEquals(1, usuarioAdmin.verNotasEnviadas().size());
