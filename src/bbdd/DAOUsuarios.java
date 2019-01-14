@@ -8,7 +8,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class DAOUsuarios extends Conexion {
-
+    /**
+     * Columnas:
+     * nombre_usuario
+     * contrasena
+     * esAdmin
+     */
 
     public ArrayList<Usuario> devuelveUsuarios(){
         ArrayList<Usuario> listaUsuarios = new ArrayList<Usuario>();
