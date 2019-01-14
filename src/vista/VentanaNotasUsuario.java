@@ -85,16 +85,6 @@ public class VentanaNotasUsuario extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                //Esto creo que está muy mal porque estoy mezclando modelo y vista, pero hay que crear el controaldor en el main
-                MainBeer.controladorUsuario.setVentana(ventanaNotasUsuario);
-                Usuario usuario = new Usuario();
-                usuario.setNombre(campoTextoDestinatario.toString());
-                try {
-                    MainBeer.controladorUsuario.enviarNotaA(usuario, campoMensaje.toString());
-                } catch (BeerBarException e1) {
-                    e1.printStackTrace();
-                }
-
                 // Aqui crear una instancia de la clase controladora de las notas y pasarle al constructor
                 // el destinatario y el texto, y que lo envie. Despues de enviar, se vuelve al panel de las notas
                 // y se muestra un mensaje de confirmacion del envio
