@@ -2,20 +2,21 @@ package vista;
 
 import controlador.ControladorGestorDeUsuarios;
 import modelo.BeerBarException;
-import modelo.GestorDeUsuarios;
+import modelo.Usuario;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class VentanaGestionUsuarios extends JFrame {
 
-    JPanel panelUsuarios, panelAnadir, panelEliminar, panelModificar, panelVer;
+    JPanel panelUsuarios, panelAnadir, panelEliminar, panelCambiar, panelVer;
     JMenuBar barraMenu;
     JMenu acciones, ayuda;
-    JMenuItem opcionAnadir, opcionEliminar, opcionVer, opcionModificar, opcionAyuda;
+    JMenuItem opcionAnadir, opcionEliminar, opcionVer, opcionCambiar, opcionAyuda;
     JFrame frameVentanaUsuarios;
     ControladorGestorDeUsuarios controladorGestorDeUsuarios = new ControladorGestorDeUsuarios();
 
@@ -31,12 +32,12 @@ public class VentanaGestionUsuarios extends JFrame {
         ayuda = new JMenu("Ayuda");
         opcionAnadir = new JMenuItem("Anadir a un usuario");
         opcionEliminar = new JMenuItem("Eliminar a un usuario");
-        opcionModificar = new JMenuItem("Modificar un usuario");
+        opcionCambiar = new JMenuItem("Cambiar contrasena un usuario");
         opcionVer = new JMenuItem("Ver los usuarios del sistema");
         opcionAyuda = new JMenuItem("Ayuda");
         acciones.add(opcionAnadir);
         acciones.add(opcionEliminar);
-        acciones.add(opcionModificar);
+        acciones.add(opcionCambiar);
         acciones.add(opcionVer);
         ayuda.add(opcionAyuda);
         barraMenu.add(acciones);
@@ -133,37 +134,85 @@ public class VentanaGestionUsuarios extends JFrame {
         panelEliminar.add(botonEliminar, BorderLayout.SOUTH);
         panelEliminar.setBorder(new EmptyBorder(new Insets(10, 10, 10, 10)));
 
+        botonEliminar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                boolean b = false;
+                try {
+                    b = controladorGestorDeUsuarios.eliminarUsuario(campoTextoNombreEliminar.getText());
+                } catch (BeerBarException e1) {
+                    e1.printStackTrace();
+                }
+                if(b) {
+                    frameVentanaUsuarios.getContentPane().removeAll();
+                    frameVentanaUsuarios.getContentPane().repaint();
+                    frameVentanaUsuarios.getContentPane().revalidate();
+                    frameVentanaUsuarios.getContentPane().add(panelUsuarios);
+                    frameVentanaUsuarios.setVisible(true);
 
-        //MODIFICAR USUARIO
-        panelModificar = new JPanel();
-        panelModificar.setBackground(new Color(128, 128, 128));
-        panelModificar.setSize(new Dimension(800, 600));
-        panelModificar.setLayout(new BorderLayout());
-        JPanel panelModificarUsuario = new JPanel();
-        panelModificarUsuario.setBackground(new Color(128, 128, 128));
-        panelModificarUsuario.setLayout(new BoxLayout(panelModificarUsuario, BoxLayout.PAGE_AXIS));
-        panelModificar.add(panelModificarUsuario);
+                    JOptionPane usuarioEliminado = new JOptionPane();
+                    usuarioEliminado.showMessageDialog(frameVentanaUsuarios.getContentPane(), "Usuario eliminado correctamente");
+                }
+                else{
+                    JOptionPane usuarioEliminado = new JOptionPane();
+                    usuarioEliminado.showMessageDialog(frameVentanaUsuarios.getContentPane(), "No se ha podido eliminar el usuario porque no existe en la base de datos.");
+                }
+            }
+        });
+
+
+        //CAMBIAR CONTRASENA
+        panelCambiar = new JPanel();
+        panelCambiar.setBackground(new Color(128, 128, 128));
+        panelCambiar.setSize(new Dimension(800, 600));
+        panelCambiar.setLayout(new BorderLayout());
+        JPanel panelCambiarUsuario = new JPanel();
+        panelCambiarUsuario.setBackground(new Color(128, 128, 128));
+        panelCambiarUsuario.setLayout(new BoxLayout(panelCambiarUsuario, BoxLayout.PAGE_AXIS));
+        panelCambiar.add(panelCambiarUsuario);
         JLabel textoNombreAnterior = new JLabel("Nombre usuario: ");
-        JTextField campoTextoNombreAnterior = new JTextField();
-        JLabel textoNombreModificar = new JLabel("Nuevo nombre: ");
-        JTextField campoTextoNombreModificar = new JTextField();
+        JTextField campoTextoNombreCambiar = new JTextField();
         JLabel textoContrasenaModificar = new JLabel("Nueva contrasena: ");
         JTextField campoTextoContrasenaModificar = new JTextField();
-        panelModificarUsuario.add(textoNombreAnterior);
-        panelModificarUsuario.add(campoTextoNombreAnterior);
-        panelModificarUsuario.add(textoNombreModificar);
-        panelModificarUsuario.add(campoTextoNombreModificar);
-        panelModificarUsuario.add(textoContrasenaModificar);
-        panelModificarUsuario.add(campoTextoContrasenaModificar);
-        panelModificar.add(panelModificarUsuario, BorderLayout.NORTH);
-        JButton botonModificar = new JButton("Modificar usuario");
-        botonModificar.setBackground(new Color(0, 38, 77));
-        botonModificar.setForeground(Color.WHITE);
-        botonModificar.setOpaque(true);
-        botonModificar.setBorderPainted(false);
-        botonModificar.setPreferredSize(new Dimension(10, 40));
-        panelModificar.add(botonModificar, BorderLayout.SOUTH);
-        panelModificar.setBorder(new EmptyBorder(new Insets(10, 10, 10, 10)));
+        panelCambiarUsuario.add(textoNombreAnterior);
+        panelCambiarUsuario.add(campoTextoNombreCambiar);
+        panelCambiarUsuario.add(textoContrasenaModificar);
+        panelCambiarUsuario.add(campoTextoContrasenaModificar);
+        panelCambiar.add(panelCambiarUsuario, BorderLayout.NORTH);
+        JButton botonCambiar = new JButton("Cambiar contrasena");
+        botonCambiar.setBackground(new Color(0, 38, 77));
+        botonCambiar.setForeground(Color.WHITE);
+        botonCambiar.setOpaque(true);
+        botonCambiar.setBorderPainted(false);
+        botonCambiar.setPreferredSize(new Dimension(10, 40));
+        panelCambiar.add(botonCambiar, BorderLayout.SOUTH);
+        panelCambiar.setBorder(new EmptyBorder(new Insets(10, 10, 10, 10)));
+
+        botonCambiar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                boolean b = false;
+                try {
+                    b = controladorGestorDeUsuarios.cambiarContrasena(campoTextoNombreCambiar.getText(), campoTextoContrasenaModificar.getText());
+                } catch (BeerBarException e1) {
+                    e1.printStackTrace();
+                }
+                if(b) {
+                    frameVentanaUsuarios.getContentPane().removeAll();
+                    frameVentanaUsuarios.getContentPane().repaint();
+                    frameVentanaUsuarios.getContentPane().revalidate();
+                    frameVentanaUsuarios.getContentPane().add(panelUsuarios);
+                    frameVentanaUsuarios.setVisible(true);
+
+                    JOptionPane contrasenaCambiada = new JOptionPane();
+                    contrasenaCambiada.showMessageDialog(frameVentanaUsuarios.getContentPane(), "Contrasena cambiada correctamente");
+                }
+                else{
+                    JOptionPane contrasenaCambiada = new JOptionPane();
+                    contrasenaCambiada.showMessageDialog(frameVentanaUsuarios.getContentPane(), "No se ha podido cambiar la contrasena porque el usuario no existe en la base de datos.");
+                }
+            }
+        });
 
 
         //VER USUARIOS
@@ -179,9 +228,12 @@ public class VentanaGestionUsuarios extends JFrame {
         panelVer.add(panelScrollUsuarios, BorderLayout.CENTER);
         panelDentroScrollUsuarios.setBackground(new Color(128, 128, 128));
 
-        panelDentroScrollUsuarios.add(new JTextAreaUsuarios("Felipe", "Tortilluca32"));
-        panelDentroScrollUsuarios.add(new JTextAreaUsuarios("Adri Rastas", "Cafetito54"));
-        panelDentroScrollUsuarios.add(new JTextAreaUsuarios("Adri Delegado", "Evaristo87"));
+        ArrayList<Usuario> arr = new ControladorGestorDeUsuarios().devuelveUsuarios();
+        while (!arr.isEmpty()){
+            Usuario usuario = arr.get(0);
+            panelDentroScrollUsuarios.add(new JTextAreaUsuarios(usuario.getNombre(), usuario.getContrasena()));
+            arr.remove(0);
+        }
 
 
         opcionAnadir.addActionListener(new ActionListener() {
@@ -206,13 +258,13 @@ public class VentanaGestionUsuarios extends JFrame {
             }
         });
 
-        opcionModificar.addActionListener(new ActionListener() {
+        opcionCambiar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frameVentanaUsuarios.getContentPane().removeAll();
                 frameVentanaUsuarios.getContentPane().repaint();
                 frameVentanaUsuarios.getContentPane().revalidate();
-                frameVentanaUsuarios.getContentPane().add(panelModificar);
+                frameVentanaUsuarios.getContentPane().add(panelCambiar);
                 frameVentanaUsuarios.setVisible(true);
             }
         });
