@@ -5,16 +5,19 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.util.ArrayList;
 
 public class VentanaUsuario extends JFrame{
 
     JPanel panelUsuario;
     JButton botonNotas, botonTransacciones;
     JMenuBar barraMenu;
-    JMenu ayuda;
-    JMenuItem opcionAyuda;
+    JMenu ayuda, menu;
+    JMenuItem opcionAyuda, opcionCerrarSesion;
     JFrame frameUsuario;
     String nombreUsuario;
+    //ArrayList<JFrame>
 
     public VentanaUsuario(String nombreUsuario){
 
@@ -27,8 +30,12 @@ public class VentanaUsuario extends JFrame{
 
         barraMenu = new JMenuBar();
         ayuda = new JMenu("Ayuda");
+        menu = new JMenu("Menu");
         opcionAyuda = new JMenuItem("Ayuda");
+        opcionCerrarSesion = new JMenuItem("Cerrar sesion");
         ayuda.add(opcionAyuda);
+        menu.add(opcionCerrarSesion);
+        barraMenu.add(menu);
         barraMenu.add(ayuda);
         this.setJMenuBar(barraMenu);
 
@@ -67,6 +74,14 @@ public class VentanaUsuario extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 new VentanaTransaccionesUsuario(nombreUsuario);
+            }
+        });
+
+        opcionCerrarSesion.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frameUsuario.dispose();
+                new VentanaIniciarSesion();
             }
         });
 
