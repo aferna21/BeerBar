@@ -21,6 +21,10 @@ public class ControladorUsuario {
 
     public void enviarNotaA(Usuario usuario, String texto) throws BeerBarException {
 
-        modelo.escribirNotaA(usuario, texto);
+        if (this.modelo == null || this.ventana == null){
+            modelo.escribirNotaA(usuario, texto);
+        }else{
+            throw new BeerBarException("No ha sido posible enviar la nota.\n");
+        }
     }
 }
