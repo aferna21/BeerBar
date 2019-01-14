@@ -1,5 +1,9 @@
 package vista;
 
+import controlador.ControladorGestorDeUsuarios;
+import modelo.BeerBarException;
+import modelo.GestorDeUsuarios;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -13,6 +17,7 @@ public class VentanaGestionUsuarios extends JFrame {
     JMenu acciones, ayuda;
     JMenuItem opcionAnadir, opcionEliminar, opcionVer, opcionAyuda;
     JFrame frameVentanaUsuarios;
+    ControladorGestorDeUsuarios controladorGestorDeUsuarios = new ControladorGestorDeUsuarios();
 
     public VentanaGestionUsuarios(){
 
@@ -71,6 +76,32 @@ public class VentanaGestionUsuarios extends JFrame {
         botonAnadir.setPreferredSize(new Dimension(10, 40));
         panelAnadir.add(botonAnadir, BorderLayout.SOUTH);
         panelAnadir.setBorder(new EmptyBorder(new Insets(10, 10, 10, 10)));
+
+        botonAnadir.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                boolean b = false;
+                try {
+                    b = controladorGestorDeUsuarios.anadirUsuario(campoTextoNombreNuevo.getText(), campoTextoContrasenaNuevo.getText());
+                } catch (BeerBarException e1) {
+                    e1.printStackTrace();
+                }
+                if(b) {
+                    frameVentanaUsuarios.getContentPane().removeAll();
+                    frameVentanaUsuarios.getContentPane().repaint();
+                    frameVentanaUsuarios.getContentPane().revalidate();
+                    frameVentanaUsuarios.getContentPane().add(panelUsuarios);
+                    frameVentanaUsuarios.setVisible(true);
+
+                    JOptionPane usuarioAnadido = new JOptionPane();
+                    usuarioAnadido.showMessageDialog(frameVentanaUsuarios.getContentPane(), "Usuario anadido correctamente");
+                }
+                else{
+                    JOptionPane usuarioAnadido = new JOptionPane();
+                    usuarioAnadido.showMessageDialog(frameVentanaUsuarios.getContentPane(), "No se ha podido anadir el usuario porque ya esta en la base de datos.");
+                }
+            }
+        });
 
 
         //ELIMINAR USUARIO

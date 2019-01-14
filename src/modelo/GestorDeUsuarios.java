@@ -19,6 +19,10 @@ public class GestorDeUsuarios {
         return instancia;
     }
 
+    public void setUsuarios(ArrayList<Usuario> usuarios){
+        this.usuarios = usuarios;
+    }
+
     /**
      * Peculiaridad del singleton
      */
