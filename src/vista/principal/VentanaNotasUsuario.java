@@ -1,4 +1,4 @@
-package vista;
+package vista.principal;
 
 import modelo.Nota;
 import vista.complementos.JOptionPaneAyuda;

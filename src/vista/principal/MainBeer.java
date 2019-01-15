@@ -1,14 +1,8 @@
-package vista;
+package vista.principal;
 
-import bbdd.DAONotas;
-import controlador.ControladorInicio;
-import controlador.ControladorServidorDeMensajeria;
 import modelo.*;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 
 public class MainBeer {
 

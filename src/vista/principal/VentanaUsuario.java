@@ -1,6 +1,9 @@
-package vista;
+package vista.principal;
 
 import vista.complementos.JOptionPaneAyuda;
+import vista.principal.VentanaIniciarSesion;
+import vista.principal.VentanaNotasUsuario;
+import vista.principal.VentanaTransaccionesUsuario;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;

@@ -1,4 +1,4 @@
-package vista;
+package vista.principal;
 
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JSpinnerDateEditor;

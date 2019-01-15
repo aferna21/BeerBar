@@ -1,4 +1,4 @@
-package vista;
+package vista.principal;
 
 import controlador.ControladorInicio;
 import modelo.BeerBarException;

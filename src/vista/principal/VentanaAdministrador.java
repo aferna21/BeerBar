@@ -1,4 +1,4 @@
-package vista;
+package vista.principal;
 
 import modelo.BeerBarException;
 import vista.complementos.JOptionPaneAyuda;
