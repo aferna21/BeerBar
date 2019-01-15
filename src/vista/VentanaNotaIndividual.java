@@ -63,6 +63,18 @@ public class VentanaNotaIndividual extends JFrame {
             }
         });
 
+        JButton botonResponder = new JButton("Responder");
+        botonResponder.setBackground(new Color(0, 38, 77));
+        botonResponder.setForeground(Color.WHITE);
+        botonResponder.setOpaque(true);
+        botonResponder.setBorderPainted(false);
+        botonResponder.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
         JButton botonHija = new JButton("Ir a la hija");
         botonHija.setBackground(new Color(0, 38, 77));
         botonHija.setForeground(Color.WHITE);
@@ -83,6 +95,7 @@ public class VentanaNotaIndividual extends JFrame {
 
         panelBotones.add(botonMadre);
         panelBotones.add(botonHija);
+        panelBotones.add(botonResponder);
         panelVentanaNota.setBorder(new EmptyBorder(new Insets(10,10, 10, 10)));
 
         this.getContentPane().add(panelVentanaNota);

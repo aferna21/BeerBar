@@ -20,7 +20,7 @@ public class VentanaGestionUsuarios extends JFrame {
     JFrame frameVentanaUsuarios;
     ControladorGestorDeUsuarios controladorGestorDeUsuarios = new ControladorGestorDeUsuarios();
 
-    public VentanaGestionUsuarios(){
+    public VentanaGestionUsuarios() throws BeerBarException {
 
         frameVentanaUsuarios = this;
 

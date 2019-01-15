@@ -109,14 +109,6 @@ public class VentanaNotasUsuario extends JFrame {
 
         arLiNotas = ServidorDeMensajeria.darInstancia().mostrarNotasHacia(GestorDeUsuarios.darInstancia().getUsuario(nombreUsuario));
 
-        try {
-            Usuario rem = new DAOUsuarios().devuelveUsuarios().get(1);
-            Usuario dest = new DAOUsuarios().devuelveUsuarios().get(2);
-            arLiNotas.add(new Nota("Hola", rem, dest, new Fecha(1, 1, 1), null, null));
-        } catch (BeerBarException e) {
-            e.printStackTrace();
-        }
-
         while (!arLiNotas.isEmpty()){
             Nota notaActual = arLiNotas.get(0);
             JButton boton = new JButton(
@@ -135,7 +127,7 @@ public class VentanaNotasUsuario extends JFrame {
             boton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    notaActual.setLeida(true);
+                    boton.setBackground(new Color(140, 255, 102));
                     new VentanaNotaIndividual(notaActual);
                 }
             });

@@ -1,6 +1,7 @@
 package vista;
 
 import controlador.ControladorInicio;
+import modelo.BeerBarException;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -60,7 +61,11 @@ public class VentanaBienvenida extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 //Crea el usuario admin si no esta, y si esta carga todos los usuarios
-                new ControladorInicio();
+                try {
+                    new ControladorInicio();
+                } catch (BeerBarException e1) {
+                    e1.printStackTrace();
+                }
 
                 new VentanaIniciarSesion();
                 frameBienvenida.dispose();

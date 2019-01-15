@@ -24,7 +24,7 @@ public class ControladorGestorDeUsuarios {
         }
         // Lo mismo que lo explicado abajo, cuando anades un usuario desde el admin, poder cerrar sesion y entrar
         // con el nuevo usuario creado sin tener que cerrar el programa para que se actualice la bbdd
-        new ControladorInicio().actualizarUsuarios();
+        new ControladorInicio().actualizarInformacion();
         return b;
     }
 
@@ -37,7 +37,7 @@ public class ControladorGestorDeUsuarios {
         }
         // Llamo al controlador de inicio para que vuelva a cargar la lista de usuarios una vez borrado porque si no
         // deja borrar el mismo usuario muchas veces aunque en realidad solo se borra una
-        new ControladorInicio().actualizarUsuarios();
+        new ControladorInicio().actualizarInformacion();
         return b;
     }
 
@@ -49,12 +49,12 @@ public class ControladorGestorDeUsuarios {
             b = true;
         }
         // Lo mismo, actualizar
-        new ControladorInicio().actualizarUsuarios();
+        new ControladorInicio().actualizarInformacion();
         return b;
     }
 
-    public ArrayList<Usuario> devuelveUsuarios(){
-        new ControladorInicio().actualizarUsuarios();
+    public ArrayList<Usuario> devuelveUsuarios() throws BeerBarException {
+        new ControladorInicio().actualizarInformacion();
         ArrayList arr = new DAOUsuarios().devuelveUsuarios();
         return arr;
     }
