@@ -62,9 +62,9 @@ public class BeerBar {
      * @param usuarioDestino - Usuario al que va dirigida
      * @param texto - Texto de la nota
      */
-    public void escribirNota(Usuario usuarioOrigen, String usuarioDestino, String texto) throws BeerBarException {
-        this.usuarioActual.escribirNotaA(GestorDeUsuarios.darInstancia().getUsuario(usuarioDestino), texto);
-    }
+    /*public void escribirNota(Usuario usuarioOrigen, String usuarioDestino, String texto) throws BeerBarException {
+        this.usuarioActual.escribirNota(GestorDeUsuarios.darInstancia().getUsuario(usuarioDestino), texto);
+    }*/
 
     /**
      * Devuelve una lista con todas las transacciones del dia
