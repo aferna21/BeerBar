@@ -49,15 +49,16 @@ public class DAONotas extends Conexion {
             Usuario remitente = GestorDeUsuarios.darInstancia().getUsuario(rs.getString("remitente_nombre"));
             Usuario destinatario = GestorDeUsuarios.darInstancia().getUsuario(rs.getString("destinatario_nombre"));
             Fecha fecha = new Fecha().fromStringAbreviadoToFecha(rs.getString("fecha"));
-            String idmadre = rs.getString("madre");
-            String idhija = rs.getString("hija");
+            int idmadre = rs.getInt("madre");
+            int idhija = rs.getInt("hija");
             Nota madre=null;
             Nota hija = null;
-            if(idmadre != null){
-                madre = getNota(idmadre);
+            System.out.println("idmadre: "+idmadre+"    idhija: "+idhija);
+            if(idmadre != 0){
+                madre = getNota(idmadre, true, false);
             }
-            if(idhija != null){
-                hija = getNota(idhija);
+            if(idhija != 0){
+                hija = getNota(idhija, false, true);
             }
             boolean esLeida = fromStringToBool(rs.getString("esleida"));
             Nota nota = new Nota(texto, remitente, destinatario, fecha, madre, hija);
@@ -82,12 +83,12 @@ public class DAONotas extends Conexion {
         this.cerrarConexion();
     }
 
-    private Nota getNota(String id) throws BeerBarException {
-
+    private Nota getNota(int id, boolean esMadre, boolean esHija) throws BeerBarException {
+        System.out.println("Estamos en getNota(int id). Le he pasado el int: " + id);
         Nota nota = null;
         this.abrirConexion();
         try {
-            PreparedStatement st = this.getConexion().prepareStatement("SELECT * FROM notas WHERE id_nota="+entrecomilla(id) +";");
+            PreparedStatement st = this.getConexion().prepareStatement("SELECT * FROM notas WHERE id_nota='"+id +"';");
             ResultSet rs = st.executeQuery();
             ArrayList<Nota> lista = this.getNotas(rs);
             if(lista.size() != 0) nota = lista.get(0);
@@ -95,6 +96,7 @@ public class DAONotas extends Conexion {
             e.printStackTrace();
         }
         this.cerrarConexion();
+        System.out.println("texto de la nota que devuelvo: "+ nota.getTexto());
         return nota;
     }
 
