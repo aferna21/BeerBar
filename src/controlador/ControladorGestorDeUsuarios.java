@@ -62,4 +62,8 @@ public class ControladorGestorDeUsuarios {
         ArrayList arr = new DAOUsuarios().devuelveUsuarios();
         return arr;
     }
+
+    public boolean esAdmin(String nombre){
+        return GestorDeUsuarios.darInstancia().esAdmin(nombre);
+    }
 }
