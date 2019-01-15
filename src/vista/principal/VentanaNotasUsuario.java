@@ -71,7 +71,7 @@ public class VentanaNotasUsuario extends JFrame {
         //TODO
         //notasEnviadas = new ControladorServidorDeMensajeria().dameNotasEscritasPor(nombreUsuario);
         notasEnviadas = new ArrayList<>();
-        panelVerNotasRecibidas = new JPanelVerNotas(notasEnviadas);
+        panelVerNotasEnviadas = new JPanelVerNotas(notasEnviadas);
 
 
         opcionEscribirNota.addActionListener(new ActionListener() {
@@ -102,6 +102,7 @@ public class VentanaNotasUsuario extends JFrame {
                 ayuda.muestraAyudaNotasUsuario();
             }
         });
+
 
         this.setMinimumSize(new Dimension(400, 300));
         this.setResizable(true);
