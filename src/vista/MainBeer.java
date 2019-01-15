@@ -15,11 +15,11 @@ public class MainBeer {
 
         new VentanaBienvenida();
         new ControladorInicio().actualizarInformacion();
-        Nota nota = new ControladorServidorDeMensajeria().crearNota("holaaa", "Felipe", "Adri");
+        Nota nota = new ControladorServidorDeMensajeria().crearNota("holaaa2", "Felipe", "Adri");
         new ControladorServidorDeMensajeria().escribirNota("holaaa", "Felipe", "Adri", null);
         System.out.println(ServidorDeMensajeria.darInstancia().mostrarNotasDe(GestorDeUsuarios.darInstancia().getUsuario("Felipe")).get(0).getTexto());
 
-        new ControladorServidorDeMensajeria().responderNota(nota, "nota de respuesta", "Felipe", "Adri");
+        //new ControladorServidorDeMensajeria().responderNota(nota, "nota de respuesta2", "Felipe", "Adri");
 
     }
 }
