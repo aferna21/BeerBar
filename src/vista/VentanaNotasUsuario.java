@@ -105,11 +105,26 @@ public class VentanaNotasUsuario extends JFrame {
         panelVerNotasRecibidas.add(panelScrollRecibidas, BorderLayout.CENTER);
         panelDentroScrollRecibidas.setBackground(new Color(128, 128, 128));
 
-        JTextAreaNotas texto1 = new JTextAreaNotas("Adri", "Felipe", "1 de Enero de 2019", "Hola que tal estas como te va la vida crak");
-        panelDentroScrollRecibidas.add(texto1);
+        for(int i=0; i<10; i++){
+            //JButton boton = new JButton("\n----------\nRemitente: " + i + "\nFecha: 1 de Enero de 2019\n----------\n");
+            JButton boton = new JButton("<html>----------<br/>Remitente: Felipe<br/>Fecha: 1 de Enero de 2019<br/>----------</html>");
 
-        JTextAreaNotas texto2 = new JTextAreaNotas("Felipe", "Adri", "4 de Enero de 2019", "A mi bien y a ti que tal meteoro");
-        panelDentroScrollRecibidas.add(texto2);
+            if(i%2 == 0){
+                boton.setBackground(new Color(140, 255, 102));
+            }
+            else{
+                boton.setBackground(new Color(255, 128, 128));
+            }
+
+            boton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    new VentanaNotaIndividual();
+                }
+            });
+
+            panelDentroScrollRecibidas.add(boton);
+        }
 
 
         //VER NOTAS ENVIADAS
