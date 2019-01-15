@@ -1,15 +1,20 @@
 package vista;
 
+import modelo.Nota;
+import modelo.ServidorDeMensajeria;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class VentanaNotaIndividual extends JFrame {
 
     JPanel panelVentanaNota, panelRemitente, panelTextoNota, panelBotones;
     JFrame frameVentanaNota;
 
-    public VentanaNotaIndividual(){
+    public VentanaNotaIndividual(Nota nota){
 
         frameVentanaNota = this;
 
@@ -24,29 +29,58 @@ public class VentanaNotaIndividual extends JFrame {
         panelRemitente.setBackground(new Color(128, 128, 128));
         panelRemitente.setLayout(new BoxLayout(panelRemitente, BoxLayout.PAGE_AXIS));
         panelVentanaNota.add(panelRemitente, BorderLayout.NORTH);
-        JLabel textoRemitente = new JLabel("Remitente: Tupu");
-        JLabel textoFecha = new JLabel("Fecha: 1 de Enero de 2019");
+        JLabel textoRemitente = new JLabel("Remitente: " + nota.getRemitente().toString());
+        JLabel textoDestinatario = new JLabel("Destinatario: " + nota.getDestinatario().toString());
+        JLabel textoFecha = new JLabel("Fecha: " + nota.getFecha().toString());
+        JLabel textoMensaje = new JLabel("Mensaje: ");
         panelRemitente.add(textoRemitente);
+        panelRemitente.add(textoDestinatario);
         panelRemitente.add(textoFecha);
+        panelRemitente.add(textoMensaje);
         panelTextoNota = new JPanel();
         panelVentanaNota.add(panelTextoNota, BorderLayout.CENTER);
-        JLabel textoNota = new JLabel("ME CAGO EN MIS MUELAS");
+        JLabel textoNota = new JLabel(nota.getTexto());
         panelTextoNota.add(textoNota);
         panelBotones = new JPanel();
         panelBotones.setLayout(new FlowLayout());
         panelVentanaNota.add(panelBotones, BorderLayout.SOUTH);
+
         JButton botonMadre = new JButton("Ir a la madre");
         botonMadre.setBackground(new Color(0, 38, 77));
         botonMadre.setForeground(Color.WHITE);
         botonMadre.setOpaque(true);
         botonMadre.setBorderPainted(false);
-        //botonMadre.setPreferredSize(new Dimension(10, 40));
+        botonMadre.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(nota.getMadre() != null) {
+                    new VentanaNotaIndividual(nota.getMadre());
+                }
+                else{
+                    JOptionPane panelNoExisteMadre = new JOptionPane();
+                    panelNoExisteMadre.showMessageDialog(frameVentanaNota.getContentPane(), "Esta nota no tiene madre");
+                }
+            }
+        });
+
         JButton botonHija = new JButton("Ir a la hija");
         botonHija.setBackground(new Color(0, 38, 77));
         botonHija.setForeground(Color.WHITE);
         botonHija.setOpaque(true);
         botonHija.setBorderPainted(false);
-        //botonHija.setPreferredSize(new Dimension(10, 40));
+        botonHija.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(nota.getHija() != null) {
+                    new VentanaNotaIndividual(nota.getHija());
+                }
+                else{
+                    JOptionPane panelNoExisteMadre = new JOptionPane();
+                    panelNoExisteMadre.showMessageDialog(frameVentanaNota.getContentPane(), "Esta nota no tiene hija");
+                }
+            }
+        });
+
         panelBotones.add(botonMadre);
         panelBotones.add(botonHija);
         panelVentanaNota.setBorder(new EmptyBorder(new Insets(10,10, 10, 10)));

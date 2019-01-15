@@ -186,4 +186,8 @@ public class Usuario {
         return this.nombre.equals(u.getNombre())  &&
                 this.contrasena.equals(u.getContrasena());
     }
+
+    public String toString(){
+        return this.nombre;
+    }
 }

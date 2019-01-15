@@ -10,7 +10,7 @@ public class MainBeer {
 
         new VentanaBienvenida();
 
-        new ControladorInicio().actualizarUsuarios();
+        /*new ControladorInicio().actualizarUsuarios();
 
         new DAONotas().introduceNota("Felipe", "Adri", "1/4/2019", null, null, "Primera nota");
         ServidorDeMensajeria.darInstancia().setNotas(new DAONotas().devuelveNotas());
@@ -19,6 +19,6 @@ public class MainBeer {
         ServidorDeMensajeria.darInstancia().setNotas(new DAONotas().devuelveNotas());
 
         new DAONotas().introduceNota("Felipe", "Adri", "3/4/2019", ServidorDeMensajeria.darInstancia().mostrarNotasDe(GestorDeUsuarios.darInstancia().getUsuario("Felipe")).get(0), ServidorDeMensajeria.darInstancia().mostrarNotasDe(GestorDeUsuarios.darInstancia().getUsuario("Adri")).get(1), "Tercera nota");
-        ServidorDeMensajeria.darInstancia().setNotas(new DAONotas().devuelveNotas());
+        ServidorDeMensajeria.darInstancia().setNotas(new DAONotas().devuelveNotas());*/
     }
 }

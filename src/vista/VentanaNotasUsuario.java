@@ -1,5 +1,6 @@
 package vista;
 
+import bbdd.DAOUsuarios;
 import modelo.*;
 
 import javax.swing.*;
@@ -106,12 +107,22 @@ public class VentanaNotasUsuario extends JFrame {
         panelVerNotasRecibidas.add(panelScrollRecibidas, BorderLayout.CENTER);
         panelDentroScrollRecibidas.setBackground(new Color(128, 128, 128));
 
+        arLiNotas = ServidorDeMensajeria.darInstancia().mostrarNotasHacia(GestorDeUsuarios.darInstancia().getUsuario(nombreUsuario));
+
+        try {
+            Usuario rem = new DAOUsuarios().devuelveUsuarios().get(1);
+            Usuario dest = new DAOUsuarios().devuelveUsuarios().get(2);
+            arLiNotas.add(new Nota("Hola", rem, dest, new Fecha(1, 1, 1), null, null));
+        } catch (BeerBarException e) {
+            e.printStackTrace();
+        }
+
         while (!arLiNotas.isEmpty()){
             Nota notaActual = arLiNotas.get(0);
             JButton boton = new JButton(
-                    "Remitente: " + notaActual.getRemitente() + "<br/>" +
+                    "<html>Remitente: " + notaActual.getRemitente() + "<br/>" +
                     "Destinatario: " + notaActual.getDestinatario() + "<br/>" +
-                    "Fecha: " + notaActual.getFecha().toString() + "<br/>");
+                    "Fecha: " + notaActual.getFecha().toString() + "<br/><html/>");
             boton.setBorder(new EmptyBorder(new Insets(20, 20, 20, 20)));
 
             if(notaActual.esLeida()){
@@ -124,7 +135,8 @@ public class VentanaNotasUsuario extends JFrame {
             boton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    new VentanaNotaIndividual();
+                    notaActual.setLeida(true);
+                    new VentanaNotaIndividual(notaActual);
                 }
             });
 
@@ -167,9 +179,6 @@ public class VentanaNotasUsuario extends JFrame {
         opcionVerNotasRecibidas.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                arLiNotas = ServidorDeMensajeria.darInstancia().mostrarNotasHacia(GestorDeUsuarios.darInstancia().getUsuario(nombreUsuario));
-
                 frameVentanaNotas.getContentPane().removeAll();
                 frameVentanaNotas.getContentPane().repaint();
                 frameVentanaNotas.getContentPane().revalidate();
