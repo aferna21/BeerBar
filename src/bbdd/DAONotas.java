@@ -137,6 +137,7 @@ public class DAONotas extends Conexion {
         int m = 0;
         int h = 0;
         if(madre != null) m = getID(madre);
+        //asignarHijaA(m, nuevoIdNota());
         if(hija != null) h = getID(madre);
 
         try {
