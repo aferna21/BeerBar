@@ -67,9 +67,11 @@ public class DAONotas extends Conexion {
     }
 
 
-    private void asignarHijaA(int idmadre, int idhija){
-        this.abrirConexion();
+    public void asignarHijaA(Nota nota){
+        int idmadre = this.getID(nota);
+        int idhija = this.nuevoIdNota();
         try {
+            this.abrirConexion();
             PreparedStatement st = this.getConexion().prepareStatement("UPDATE notas SET hija = " + idhija +
                     " WHERE id_nota = " + idmadre + " ;");
             st.executeUpdate();
@@ -137,7 +139,6 @@ public class DAONotas extends Conexion {
         int m = 0;
         int h = 0;
         if(madre != null) m = getID(madre);
-        //asignarHijaA(m, nuevoIdNota());
         if(hija != null) h = getID(madre);
 
         try {
