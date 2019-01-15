@@ -30,17 +30,22 @@ public class Nota {
     /**
      * Opcional. Nota a la que responde la nota actual.
      */
-    private Nota madre;
+    private int madre;
 
     /**
      * Opcional. Nota que ha respondido a la nota actual.
      */
-    private Nota hija;
+    private int hija;
 
     /**
      * True si la nota ha sido leida por el destinatario.
      */
     private boolean leida;
+
+    /**
+     * cuenta cuantas notas hay en el sistema. Empieza en 1.
+     */
+    private int contador;
 
 
     /**
@@ -52,7 +57,7 @@ public class Nota {
      * @param fecha - Dia en el que esta escrita la nota.
      * @param madre - Nota de la que proviene la escrita. Sera null si empieza un nuevo hilo
      */
-    public Nota(String texto, Usuario remitente, Usuario destinatario, Fecha fecha, Nota madre, Nota hija) throws BeerBarException {
+    public Nota(String texto, Usuario remitente, Usuario destinatario, Fecha fecha, int madre, int hija) throws BeerBarException {
         if(texto == null || remitente == null || destinatario == null || fecha == null){
             throw new BeerBarException("Error al crear la nota.");
         }
@@ -64,9 +69,9 @@ public class Nota {
             this.madre = madre;
             this.hija = hija;
             this.leida = false;
-
-            if(this.madre != null){
-                this.madre.setHija(this);
+            this.contador = ServidorDeMensajeria.darInstancia().contadorUltimaNota()+1;
+            if(this.madre != 0){
+                ServidorDeMensajeria.darInstancia().devuelveNota(this.madre).setHija(this.contador);
             }
         }
     }
@@ -91,11 +96,11 @@ public class Nota {
         return this.fecha;
     }
 
-    public Nota getMadre(){
+    public int getMadre(){
         return this.madre;
     }
 
-    public Nota getHija(){
+    public int getHija(){
         return this.hija;
     }
 
@@ -103,15 +108,17 @@ public class Nota {
         return this.leida;
     }
 
+    public int getContador(){ return this.contador; }
+
     public void setTexto(String texto){
         this.texto = texto;
     }
 
-    public void setMadre(Nota madre){
+    public void setMadre(int madre){
         this.madre = madre;
     }
 
-    public void setHija(Nota hija){
+    public void setHija(int hija){
         this.hija = hija;
     }
 
@@ -156,22 +163,22 @@ public class Nota {
     /**
      * Devuelve true si la nota actual es hija de la nota n.
      *
-     * @param n - Presunta madre de la nota actual.
+     * @param a - Presunta madre de la nota actual.
      * @return - True si esta nota es hija de n.
      */
-    public boolean esHijaDe(Nota n){
-        return this.madre.equals(n);
+    public boolean esHijaDe(int a){
+        return this.madre == a;
     }
 
 
     /**
      * Devuelve true si la nota actual es madre de la nota n.
      *
-     * @param n - Presunta hija de la nota actual.
+     * @param a - Presunta hija de la nota actual.
      * @return - True si la nota es madre de n.
      */
-    public boolean esMadreDe(Nota n){
-        return this.hija.equals(n);
+    public boolean esMadreDe(int a){
+        return this.hija == a;
     }
 
     /**

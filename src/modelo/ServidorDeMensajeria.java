@@ -103,4 +103,25 @@ public class ServidorDeMensajeria {
         }
         return output;
     }
+
+    public Nota devuelveNota(int contador){
+        for(Nota n:this.notas){
+            if(n.getContador() == contador){
+                return n;
+            }
+        }
+        return null;
+    }
+
+    public int contadorUltimaNota(){
+        int output = 0;
+
+        for(Nota n:this.notas){
+            if(n.getContador() > output){
+                output = n.getContador();
+            }
+        }
+
+        return output;
+    }
 }

@@ -3,6 +3,8 @@ package bbdd;
 import controlador.ControladorInicio;
 import modelo.*;
 
+import javax.swing.plaf.nimbus.State;
+import javax.xml.transform.Result;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,10 +17,10 @@ public class DAONotas extends Conexion {
      * remitente_nombre             remitente(usuario)
      * destinatario_nombre          destinatario(usuario)
      * fecha                        fecha(Fecha)
-     * madre                        madre(Nota)
-     * hija                         hija(Nota)
+     * madre                        madre(int)
+     * hija                         hija(int)
      * texto                        esLeida(boolean)
-     * esleida
+     * esleida                      contador(int)
      */
 
     private String entrecomilla(String s){
@@ -51,30 +53,24 @@ public class DAONotas extends Conexion {
             Fecha fecha = new Fecha().fromStringAbreviadoToFecha(rs.getString("fecha"));
             int idmadre = rs.getInt("madre");
             int idhija = rs.getInt("hija");
-            Nota madre=null;
-            Nota hija = null;
-            System.out.println("idmadre: "+idmadre+"    idhija: "+idhija);
-            if(idmadre != 0){
-                madre = getNota(idmadre, true, false);
-            }
-            if(idhija != 0){
-                hija = getNota(idhija, false, true);
-            }
             boolean esLeida = fromStringToBool(rs.getString("esleida"));
-            Nota nota = new Nota(texto, remitente, destinatario, fecha, madre, hija);
+            Nota nota = new Nota(texto, remitente, destinatario, fecha, idmadre, idhija);
+            nota.setHija(rs.getInt("idhija"));
+            nota.setLeida(esLeida);
             salida.add(nota);
         }
         return salida;
     }
 
 
-    public void asignarHijaA(Nota nota){
-        int idmadre = this.getID(nota);
-        int idhija = this.nuevoIdNota();
+
+
+    public void asignarHijaA(int notamadre, int notahija){
+
         try {
             this.abrirConexion();
-            PreparedStatement st = this.getConexion().prepareStatement("UPDATE notas SET hija = " + idhija +
-                    " WHERE id_nota = " + idmadre + " ;");
+            PreparedStatement st = this.getConexion().prepareStatement("UPDATE notas SET hija = " + notahija +
+                    " WHERE id_nota = " + notamadre + " ;");
             st.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -136,17 +132,15 @@ public class DAONotas extends Conexion {
     }
 
 
-    public void introduceNota(String remitente, String destinatario, String fecha, Nota madre, Nota hija, String texto){
+    public void introduceNota(int id_nota, String remitente, String destinatario, String fecha, int madre, int hija, String texto){
         this.abrirConexion();
-        int m = 0;
-        int h = 0;
-        if(madre != null) m = getID(madre);
-        if(hija != null) h = getID(madre);
+
+
 
         try {
             PreparedStatement st = this.getConexion().prepareStatement("INSERT INTO notas VALUES ("+
-                    nuevoIdNota() + ", " + entrecomilla(remitente)+", " + entrecomilla(destinatario) +", " +
-                    entrecomilla(fecha) + ", "+ m + ", " + h + ", " + entrecomilla(texto) +
+                    id_nota + ", " + entrecomilla(remitente)+", " + entrecomilla(destinatario) +", " +
+                    entrecomilla(fecha) + ", "+ madre + ", " + hija + ", " + entrecomilla(texto) +
                     ", " + "'no'" + ");");
             st.executeUpdate();
         } catch (SQLException e) {
