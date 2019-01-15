@@ -90,6 +90,7 @@ public class VentanaAdministrador extends JFrame {
                     new VentanaGestionUsuarios();
                 } catch (BeerBarException e1) {
                     e1.printStackTrace();
+
                 }
             }
         });
