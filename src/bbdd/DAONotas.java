@@ -103,9 +103,58 @@ public class DAONotas extends Conexion {
         return notas;
     }
 
+    public int nuevoIdNota(){
+        this.abrirConexion();
+        int salida = 0;
+        try {
+            PreparedStatement st = this.getConexion().prepareStatement("SELECT MAX(id_nota) FROM notas");
+            ResultSet rs = st.executeQuery();
+            if(rs.next()) salida = rs.getInt(1);
 
-    public void introduceNota(Nota nota){
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        this.cerrarConexion();
+        return salida+1;
+    }
 
+
+    public void introduceNota(String remitente, String destinatario, String fecha, Nota madre, Nota hija, String texto){
+        this.abrirConexion();
+        int m = 0;
+        int h = 0;
+        if(madre != null) m = getID(madre);
+        if(hija != null) h = getID(madre);
+
+        try {
+            PreparedStatement st = this.getConexion().prepareStatement("INSERT INTO notas VALUES ("+
+                    nuevoIdNota() + ", " + entrecomilla(remitente)+", " + entrecomilla(destinatario) +", " +
+                    entrecomilla(fecha) + ", "+ m + ", " + h + ", " + entrecomilla(texto) +
+                    ", " + "'no'" + ");");
+            st.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public int getID(Nota nota){
+        int id = 0;
+        this.abrirConexion();
+        try {
+            PreparedStatement st = this.getConexion().prepareStatement("SELECT id_nota FROM notas WHERE " +
+                    "remitente_nombre = "+ this.entrecomilla(nota.getRemitente().getNombre()) +
+                    "AND destinatario_nombre = "+ this.entrecomilla(nota.getDestinatario().getNombre()) +
+                    "AND fecha = "+ this.entrecomilla(nota.getFecha().toStringAbreviado()) +
+                    "AND texto = "+ this.entrecomilla(nota.getTexto()) + ";");
+            ResultSet rs = st.executeQuery();
+            if(rs.next()) id = rs.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+        return id;
     }
 
 
