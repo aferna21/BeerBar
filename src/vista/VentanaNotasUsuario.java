@@ -1,14 +1,13 @@
 package vista;
 
-import modelo.BeerBarException;
-import modelo.Nota;
-import modelo.Usuario;
+import modelo.*;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class VentanaNotasUsuario extends JFrame {
 
@@ -21,6 +20,7 @@ public class VentanaNotasUsuario extends JFrame {
     JTextField campoTextoDestinatario;
     JTextArea campoMensaje;
     String nombreUsuario;
+    ArrayList<Nota> arLiNotas;
 
     private VentanaNotasUsuario ventanaNotasUsuario = this;
 
@@ -106,14 +106,18 @@ public class VentanaNotasUsuario extends JFrame {
         panelVerNotasRecibidas.add(panelScrollRecibidas, BorderLayout.CENTER);
         panelDentroScrollRecibidas.setBackground(new Color(128, 128, 128));
 
-        for(int i=0; i<10; i++){
-            //JButton boton = new JButton("\n----------\nRemitente: " + i + "\nFecha: 1 de Enero de 2019\n----------\n");
-            JButton boton = new JButton("<html>----------<br/>Remitente: Felipe<br/>Fecha: 1 de Enero de 2019<br/>----------</html>");
+        while (!arLiNotas.isEmpty()){
+            Nota notaActual = arLiNotas.get(0);
+            JButton boton = new JButton(
+                    "Remitente: " + notaActual.getRemitente() + "<br/>" +
+                    "Destinatario: " + notaActual.getDestinatario() + "<br/>" +
+                    "Fecha: " + notaActual.getFecha().toString() + "<br/>");
+            boton.setBorder(new EmptyBorder(new Insets(20, 20, 20, 20)));
 
-            if(i%2 == 0){
+            if(notaActual.esLeida()){
                 boton.setBackground(new Color(140, 255, 102));
             }
-            else{
+            else {
                 boton.setBackground(new Color(255, 128, 128));
             }
 
@@ -125,6 +129,7 @@ public class VentanaNotasUsuario extends JFrame {
             });
 
             panelDentroScrollRecibidas.add(boton);
+            arLiNotas.remove(0);
         }
 
 
@@ -162,6 +167,9 @@ public class VentanaNotasUsuario extends JFrame {
         opcionVerNotasRecibidas.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                arLiNotas = ServidorDeMensajeria.darInstancia().mostrarNotasHacia(GestorDeUsuarios.darInstancia().getUsuario(nombreUsuario));
+
                 frameVentanaNotas.getContentPane().removeAll();
                 frameVentanaNotas.getContentPane().repaint();
                 frameVentanaNotas.getContentPane().revalidate();

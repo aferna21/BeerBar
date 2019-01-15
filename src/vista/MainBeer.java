@@ -1,7 +1,7 @@
 package vista;
 
 import bbdd.DAONotas;
-import bbdd.DAOUsuarios;
+import controlador.ControladorInicio;
 import modelo.*;
 
 public class MainBeer {
@@ -9,12 +9,16 @@ public class MainBeer {
     public static void main(String[] args) throws BeerBarException {
 
         new VentanaBienvenida();
-        GestorDeUsuarios.darInstancia().setUsuarios(new DAOUsuarios().devuelveUsuarios());
-        Nota nota = new Nota("tercera nota.",
-                GestorDeUsuarios.darInstancia().getUsuario("admin"),
-                GestorDeUsuarios.darInstancia().getUsuario("Adri"),
-                new Fecha(10, 10, 1000), null, null);
+
+        new ControladorInicio().actualizarUsuarios();
+
+        new DAONotas().introduceNota("Felipe", "Adri", "1/4/2019", null, null, "Primera nota");
         ServidorDeMensajeria.darInstancia().setNotas(new DAONotas().devuelveNotas());
-        new DAONotas().introduceNota("Adri", "admin", "10/10/1000", ServidorDeMensajeria.darInstancia().mostrarNotasDe(GestorDeUsuarios.darInstancia().getUsuario("admin")).get(0), null, "tercera nota");
+
+        new DAONotas().introduceNota("Adri", "Felipe", "2/4/2019", ServidorDeMensajeria.darInstancia().mostrarNotasDe(GestorDeUsuarios.darInstancia().getUsuario("Adri")).get(0), null, "Segunda nota");
+        ServidorDeMensajeria.darInstancia().setNotas(new DAONotas().devuelveNotas());
+
+        new DAONotas().introduceNota("Felipe", "Adri", "3/4/2019", ServidorDeMensajeria.darInstancia().mostrarNotasDe(GestorDeUsuarios.darInstancia().getUsuario("Felipe")).get(0), ServidorDeMensajeria.darInstancia().mostrarNotasDe(GestorDeUsuarios.darInstancia().getUsuario("Adri")).get(1), "Tercera nota");
+        ServidorDeMensajeria.darInstancia().setNotas(new DAONotas().devuelveNotas());
     }
 }
