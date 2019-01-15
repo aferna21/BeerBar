@@ -1,5 +1,7 @@
 package vista;
 
+import vista.complementos.JOptionPaneAyuda;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -113,9 +115,6 @@ public class VentanaTransaccionesUsuario extends JFrame {
         panelScrollTransacciones.getVerticalScrollBar().setUnitIncrement(40);
         panelVerTransacciones.add(panelScrollTransacciones, BorderLayout.CENTER);
         panelDentroScrollTransacciones.setBackground(new Color(128, 128, 128));
-
-        panelDentroScrollTransacciones.add(new JTextAreaTransacciones(true, "Felipe", "1 de Enero de 2019", "24,57", "Unos buenos cocacolos con una tapichuela de tortilluca"));
-        panelDentroScrollTransacciones.add(new JTextAreaTransacciones(false, "Adri", "2 de Enero de 2019", "13,56", "Compra de un buen kilo de alioli como el de hasan"));
 
 
         opcionIntroducirVenta.addActionListener(new ActionListener() {

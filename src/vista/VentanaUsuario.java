@@ -1,12 +1,12 @@
 package vista;
 
+import vista.complementos.JOptionPaneAyuda;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
-import java.util.ArrayList;
 
 public class VentanaUsuario extends JFrame{
 
@@ -17,7 +17,6 @@ public class VentanaUsuario extends JFrame{
     JMenuItem opcionAyuda, opcionCerrarSesion;
     JFrame frameUsuario;
     String nombreUsuario;
-    //ArrayList<JFrame>
 
     public VentanaUsuario(String nombreUsuario){
 

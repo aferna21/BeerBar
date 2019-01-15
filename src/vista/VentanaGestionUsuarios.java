@@ -3,6 +3,7 @@ package vista;
 import controlador.ControladorGestorDeUsuarios;
 import modelo.BeerBarException;
 import modelo.Usuario;
+import vista.complementos.JOptionPaneAyuda;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -231,7 +232,7 @@ public class VentanaGestionUsuarios extends JFrame {
         ArrayList<Usuario> arr = new ControladorGestorDeUsuarios().devuelveUsuarios();
         while (!arr.isEmpty()){
             Usuario usuario = arr.get(0);
-            panelDentroScrollUsuarios.add(new JTextAreaUsuarios(usuario.getNombre(), usuario.getContrasena()));
+            panelDentroScrollUsuarios.add(new JTextArea(usuario.getNombre() + usuario.getContrasena()));
             arr.remove(0);
         }
 

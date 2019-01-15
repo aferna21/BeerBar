@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-public class NotaTest {
+/*public class NotaTest {
 
     private Nota nota1;
     private Nota nota2;
@@ -123,4 +123,4 @@ public class NotaTest {
     public void testEquals(){
         assertTrue(nota1.equals(nota3));
     }
-}
+}*/

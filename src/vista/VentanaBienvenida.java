@@ -2,6 +2,7 @@ package vista;
 
 import controlador.ControladorInicio;
 import modelo.BeerBarException;
+import vista.complementos.JOptionPaneAyuda;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;

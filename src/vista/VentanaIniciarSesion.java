@@ -1,6 +1,7 @@
 package vista;
 
 import controlador.ControladorGestorDeUsuarios;
+import vista.complementos.JOptionPaneAyuda;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;

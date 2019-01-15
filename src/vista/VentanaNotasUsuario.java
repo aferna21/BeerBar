@@ -1,7 +1,9 @@
 package vista;
 
-import bbdd.DAOUsuarios;
-import modelo.*;
+import modelo.Nota;
+import vista.complementos.JOptionPaneAyuda;
+import vista.complementos.JPanelEscribirNota;
+import vista.complementos.JPanelVerNotas;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -12,18 +14,13 @@ import java.util.ArrayList;
 
 public class VentanaNotasUsuario extends JFrame {
 
-    JPanel panelNotas, panelDestinatario, panelEscribirNotaA, panelVerNotasRecibidas, panelVerNotasEnviadas;
+    JPanel panelNotas, panelEscribirNotaA, panelVerNotasRecibidas, panelVerNotasEnviadas;
     JMenuBar barraMenu;
     JMenu acciones, ayuda;
     JMenuItem opcionEscribirNota, opcionVerNotasRecibidas, opcionVerNotasEnviadas, opcionAyuda;
     JFrame frameVentanaNotas;
-    JLabel textoMensaje;
-    JTextField campoTextoDestinatario;
-    JTextArea campoMensaje;
     String nombreUsuario;
-    ArrayList<Nota> arLiNotas;
-
-    private VentanaNotasUsuario ventanaNotasUsuario = this;
+    ArrayList<Nota> notasRecibidas, notasEnviadas;
 
     public VentanaNotasUsuario(String nombreUsuario){
 
@@ -51,142 +48,50 @@ public class VentanaNotasUsuario extends JFrame {
         panelNotas = new JPanel();
         panelNotas.setBackground(new Color(128, 128, 128));
         panelNotas.setLayout(new BorderLayout());
+
         JLabel textoNotas = new JLabel("Ventana de notas de " + this.nombreUsuario);
         panelNotas.add(textoNotas, BorderLayout.CENTER);
         panelNotas.setBorder(new EmptyBorder(new Insets(0, 300, 0, 0)));
+
         this.getContentPane().add(panelNotas);
 
 
         //ESCRIBIR NOTA
-        panelEscribirNotaA = new JPanel();
-        panelEscribirNotaA.setBackground(new Color(128, 128, 128));
-        panelEscribirNotaA.setSize(800, 600);
-        panelEscribirNotaA.setLayout(new BorderLayout());
-        panelDestinatario = new JPanel();
-        panelDestinatario.setBackground(new Color(128, 128, 128));
-        panelDestinatario.setLayout(new BoxLayout(panelDestinatario, BoxLayout.PAGE_AXIS));
-        panelEscribirNotaA.add(panelDestinatario, BorderLayout.NORTH);
-        JLabel textoDestinatario = new JLabel("Destinatario");
-        campoTextoDestinatario = new JTextField();
-        textoMensaje = new JLabel("Mensaje");
-        panelDestinatario.add(textoDestinatario);
-        panelDestinatario.add(campoTextoDestinatario);
-        panelDestinatario.add(textoMensaje);
-        campoMensaje = new JTextArea();
-        panelEscribirNotaA.add(campoMensaje, BorderLayout.CENTER);
-        JButton botonEnviar = new JButton("Enviar");
-        botonEnviar.setBackground(new Color(0, 38, 77));
-        botonEnviar.setForeground(Color.WHITE);
-        botonEnviar.setOpaque(true);
-        botonEnviar.setBorderPainted(false);
-        botonEnviar.setPreferredSize(new Dimension(10, 40));
-        panelEscribirNotaA.add(botonEnviar, BorderLayout.SOUTH);
-        panelEscribirNotaA.setBorder(new EmptyBorder(new Insets(10,10, 10, 10)));
-
-        botonEnviar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                // Aqui crear una instancia de la clase controladora de las notas y pasarle al constructor
-                // el destinatario y el texto, y que lo envie. Despues de enviar, se vuelve al panel de las notas
-                // y se muestra un mensaje de confirmacion del envio
-            }
-        });
+        panelEscribirNotaA = new JPanelEscribirNota();
 
 
         //VER NOTAS RECIBIDAS
-        panelVerNotasRecibidas = new JPanel();
-        panelVerNotasRecibidas.setBackground(new Color(128, 128, 128));
-        panelVerNotasRecibidas.setSize(800, 600);
-        panelVerNotasRecibidas.setLayout(new BorderLayout());
-        JPanel panelDentroScrollRecibidas = new JPanel();
-        panelDentroScrollRecibidas.setLayout(new BoxLayout(panelDentroScrollRecibidas, BoxLayout.PAGE_AXIS));
-        panelDentroScrollRecibidas.setBorder(new EmptyBorder(new Insets(10, 10, 10, 10)));
-        JScrollPane panelScrollRecibidas = new JScrollPane(panelDentroScrollRecibidas);
-        panelScrollRecibidas.getVerticalScrollBar().setUnitIncrement(40);
-        panelVerNotasRecibidas.add(panelScrollRecibidas, BorderLayout.CENTER);
-        panelDentroScrollRecibidas.setBackground(new Color(128, 128, 128));
-
-        arLiNotas = ServidorDeMensajeria.darInstancia().mostrarNotasHacia(GestorDeUsuarios.darInstancia().getUsuario(nombreUsuario));
-
-        while (!arLiNotas.isEmpty()){
-            Nota notaActual = arLiNotas.get(0);
-            JButton boton = new JButton(
-                    "<html>Remitente: " + notaActual.getRemitente() + "<br/>" +
-                    "Destinatario: " + notaActual.getDestinatario() + "<br/>" +
-                    "Fecha: " + notaActual.getFecha().toString() + "<br/><html/>");
-            boton.setBorder(new EmptyBorder(new Insets(20, 20, 20, 20)));
-
-            if(notaActual.esLeida()){
-                boton.setBackground(new Color(140, 255, 102));
-            }
-            else {
-                boton.setBackground(new Color(255, 128, 128));
-            }
-
-            boton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    boton.setBackground(new Color(140, 255, 102));
-                    new VentanaNotaIndividual(notaActual);
-                }
-            });
-
-            panelDentroScrollRecibidas.add(boton);
-            arLiNotas.remove(0);
-        }
+        //TODO
+        //notasRecibidas = new ControladorServidorDeMensajeria().dameNotasHacia(nombreUsuario);
+        notasRecibidas = new ArrayList<>();
+        panelVerNotasRecibidas = new JPanelVerNotas(notasRecibidas);
 
 
         //VER NOTAS ENVIADAS
-        panelVerNotasEnviadas = new JPanel();
-        panelVerNotasEnviadas.setBackground(new Color(128, 128, 128));
-        panelVerNotasEnviadas.setSize(800, 600);
-        panelVerNotasEnviadas.setLayout(new BorderLayout());
-        JPanel panelDentroScrollEnviadas = new JPanel();
-        panelDentroScrollEnviadas.setLayout(new BoxLayout(panelDentroScrollEnviadas, BoxLayout.PAGE_AXIS));
-        panelDentroScrollEnviadas.setBorder(new EmptyBorder(new Insets(10, 10, 10, 10)));
-        JScrollPane panelScrollEnviadas = new JScrollPane(panelDentroScrollEnviadas);
-        panelScrollEnviadas.getVerticalScrollBar().setUnitIncrement(40);
-        panelVerNotasEnviadas.add(panelScrollEnviadas, BorderLayout.CENTER);
-        panelDentroScrollEnviadas.setBackground(new Color(128, 128, 128));
-
-        JTextAreaNotas texto3 = new JTextAreaNotas("Adri", "Felipe", "1 de Enero de 2019", "Bueno pues otro texto de prueba jejejej");
-        panelDentroScrollEnviadas.add(texto3);
-
-        JTextAreaNotas texto4 = new JTextAreaNotas("Felipe", "Adri", "4 de Enero de 2019", "Tampoco se que poner aqui sois unas tenias");
-        panelDentroScrollEnviadas.add(texto4);
+        //TODO
+        //notasEnviadas = new ControladorServidorDeMensajeria().dameNotasEscritasPor(nombreUsuario);
+        notasEnviadas = new ArrayList<>();
+        panelVerNotasRecibidas = new JPanelVerNotas(notasEnviadas);
 
 
         opcionEscribirNota.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frameVentanaNotas.getContentPane().removeAll();
-                frameVentanaNotas.getContentPane().repaint();
-                frameVentanaNotas.getContentPane().revalidate();
-                frameVentanaNotas.getContentPane().add(panelEscribirNotaA);
-                frameVentanaNotas.setVisible(true);
+                actualizarPanel(panelEscribirNotaA);
             }
         });
 
         opcionVerNotasRecibidas.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frameVentanaNotas.getContentPane().removeAll();
-                frameVentanaNotas.getContentPane().repaint();
-                frameVentanaNotas.getContentPane().revalidate();
-                frameVentanaNotas.getContentPane().add(panelVerNotasRecibidas);
-                frameVentanaNotas.setVisible(true);
+                actualizarPanel(panelVerNotasRecibidas);
             }
         });
 
         opcionVerNotasEnviadas.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frameVentanaNotas.getContentPane().removeAll();
-                frameVentanaNotas.getContentPane().repaint();
-                frameVentanaNotas.getContentPane().revalidate();
-                frameVentanaNotas.getContentPane().add(panelVerNotasEnviadas);
-                frameVentanaNotas.setVisible(true);
+                actualizarPanel(panelVerNotasEnviadas);
             }
         });
 
@@ -202,5 +107,13 @@ public class VentanaNotasUsuario extends JFrame {
         this.setResizable(true);
         this.setVisible(true);
         this.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+    }
+
+    public void actualizarPanel(JPanel panelNuevo){
+        frameVentanaNotas.getContentPane().removeAll();
+        frameVentanaNotas.getContentPane().repaint();
+        frameVentanaNotas.getContentPane().revalidate();
+        frameVentanaNotas.getContentPane().add(panelNuevo);
+        frameVentanaNotas.setVisible(true);
     }
 }

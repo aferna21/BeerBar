@@ -1,6 +1,7 @@
 package vista;
 
 import modelo.BeerBarException;
+import vista.complementos.JOptionPaneAyuda;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -90,7 +91,6 @@ public class VentanaAdministrador extends JFrame {
                     new VentanaGestionUsuarios();
                 } catch (BeerBarException e1) {
                     e1.printStackTrace();
-
                 }
             }
         });

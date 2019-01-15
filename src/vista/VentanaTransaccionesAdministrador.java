@@ -2,6 +2,7 @@ package vista;
 
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JSpinnerDateEditor;
+import vista.complementos.JOptionPaneAyuda;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -119,9 +120,6 @@ public class VentanaTransaccionesAdministrador extends JFrame{
         panelVerTransacciones.add(panelScrollTransacciones, BorderLayout.CENTER);
         panelDentroScrollTransacciones.setBackground(new Color(128, 128, 128));
 
-        panelDentroScrollTransacciones.add(new JTextAreaTransacciones(true, "Felipe", "1 de Enero de 2019", "24,57", "Unos buenos cocacolos con una tapichuela de tortilluca"));
-        panelDentroScrollTransacciones.add(new JTextAreaTransacciones(false, "Adri", "2 de Enero de 2019", "13,56", "Compra de un buen kilo de alioli como el de hasan"));
-
 
         //VER TODAS TRANSACCIONES
         panelVerTodasTransacciones = new JPanel();
@@ -135,9 +133,6 @@ public class VentanaTransaccionesAdministrador extends JFrame{
         panelScrollTodasTransacciones.getVerticalScrollBar().setUnitIncrement(40);
         panelVerTodasTransacciones.add(panelScrollTodasTransacciones, BorderLayout.CENTER);
         panelDentroScrollTodasTransacciones.setBackground(new Color(128, 128, 128));
-
-        panelDentroScrollTodasTransacciones.add(new JTextAreaTransacciones(true, "Felipe", "1 de Enero de 2019", "24,57", "Unos buenos cocacolos con una tapichuela de tortilluca\nadministrador"));
-        panelDentroScrollTodasTransacciones.add(new JTextAreaTransacciones(false, "Adri", "2 de Enero de 2019", "13,56", "Compra de un buen kilo de alioli como el de hasan\nadministrador"));
 
 
         //VER TRANSACCIONES EN RANGO DE FECHAS
@@ -174,10 +169,6 @@ public class VentanaTransaccionesAdministrador extends JFrame{
         panelScrollTransaccionesFecha.getVerticalScrollBar().setUnitIncrement(40);
         panelVerTransaccionesFecha.add(panelScrollTransaccionesFecha, BorderLayout.CENTER);
         panelDentroScrollTransaccionesFecha.setBackground(new Color(128, 128, 128));
-
-        for(int i=0; i<40; i++){
-            panelDentroScrollTransaccionesFecha.add(new JTextAreaNotas("Felipe", "Adri", "2 de febrero", "hola"));
-        }
 
 
         opcionIntroducirVenta.addActionListener(new ActionListener() {

@@ -2,6 +2,7 @@ package vista;
 
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JSpinnerDateEditor;
+import vista.complementos.JOptionPaneAyuda;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -101,12 +102,6 @@ public class VentanaNotasAdministrador extends JFrame{
         panelDentroScrollRecibidas.setBackground(new Color(128, 128, 128));
         panelVerNotasRecibidas.add(panelScrollRecibidas, BorderLayout.CENTER);
 
-        JTextAreaNotas texto1 = new JTextAreaNotas("Adri", "Felipe", "1 de Enero de 2019", "prueba de las notas del admin");
-        panelDentroScrollRecibidas.add(texto1);
-
-        JTextAreaNotas texto2 = new JTextAreaNotas("Felipe", "Adri", "4 de Enero de 2019", "me cago en mis muelas a ver si acabamos");
-        panelDentroScrollRecibidas.add(texto2);
-
 
         //VER NOTAS ENVIADAS
         panelVerNotasEnviadas = new JPanel();
@@ -120,12 +115,6 @@ public class VentanaNotasAdministrador extends JFrame{
         panelScrollEnviadas.getVerticalScrollBar().setUnitIncrement(40);
         panelVerNotasEnviadas.add(panelScrollEnviadas, BorderLayout.CENTER);
         panelDentroScrollEnviadas.setBackground(new Color(128, 128, 128));
-
-        JTextAreaNotas texto3 = new JTextAreaNotas("Adri", "Felipe", "1 de Enero de 2019", "otra prueba mais");
-        panelDentroScrollEnviadas.add(texto3);
-
-        JTextAreaNotas texto4 = new JTextAreaNotas("Felipe", "Adri", "4 de Enero de 2019", "y otra mais esto se va a descontrolaaaaaaa");
-        panelDentroScrollEnviadas.add(texto4);
 
 
         //VER TODAS LAS NOTAS
@@ -141,9 +130,6 @@ public class VentanaNotasAdministrador extends JFrame{
         panelVerTodasLasNotas.add(panelScrollTodasNotas, BorderLayout.CENTER);
         panelDentroScrollTodasNotas.setBackground(new Color(128, 128, 128));
 
-        for(int i=0; i<40; i++){
-            panelDentroScrollTodasNotas.add(new JTextAreaNotas("Felipe", "Adri", "2 de febrero", "hola"));
-        }
 
 
         //VER NOTAS EN RANGO DE FECHAS
@@ -180,10 +166,6 @@ public class VentanaNotasAdministrador extends JFrame{
         panelScrollNotasFecha.getVerticalScrollBar().setUnitIncrement(40);
         panelVerNotasFecha.add(panelScrollNotasFecha, BorderLayout.CENTER);
         panelDentroScrollNotasFecha.setBackground(new Color(128, 128, 128));
-
-        for(int i=0; i<40; i++){
-            panelDentroScrollNotasFecha.add(new JTextAreaNotas("Felipe", "Adri", "2 de febrero", "hola"));
-        }
 
 
         opcionEscribirNota.addActionListener(new ActionListener() {
