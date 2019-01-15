@@ -1,14 +1,12 @@
 package vista;
 
 import controlador.ControladorGestorDeUsuarios;
-import modelo.GestorDeUsuarios;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
 
 public class VentanaIniciarSesion extends JFrame {
 
@@ -28,7 +26,6 @@ public class VentanaIniciarSesion extends JFrame {
 
         this.setTitle("Iniciar Sesion");
         this.setSize(new Dimension(600, 300));
-        //Poner la ventana en medio de la pantalla
         this.setLocationRelativeTo(null);
 
         barraMenu = new JMenuBar();
@@ -80,7 +77,7 @@ public class VentanaIniciarSesion extends JFrame {
                 boolean esUsuarioCorrecto = new ControladorGestorDeUsuarios().autentificar(usuario, contrasena);
 
                 if(esUsuarioCorrecto) {
-                    if (GestorDeUsuarios.darInstancia().getUsuario(usuario).getEsAdmin()) {
+                    if(new ControladorGestorDeUsuarios().esAdmin(usuario)){
                         new VentanaAdministrador();
 
                     } else {

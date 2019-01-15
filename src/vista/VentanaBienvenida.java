@@ -8,7 +8,6 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
 
 public class VentanaBienvenida extends JFrame{
 
@@ -26,7 +25,6 @@ public class VentanaBienvenida extends JFrame{
 
         this.setTitle("Bienvenida");
         this.setSize(new Dimension(400, 200));
-        //Poner la ventana en el medio de la pantalla
         this.setLocationRelativeTo(null);
 
         barraMenu = new JMenuBar();
@@ -66,7 +64,6 @@ public class VentanaBienvenida extends JFrame{
                 } catch (BeerBarException e1) {
                     e1.printStackTrace();
                 }
-
                 new VentanaIniciarSesion();
                 frameBienvenida.dispose();
             }
