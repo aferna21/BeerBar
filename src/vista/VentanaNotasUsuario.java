@@ -1,6 +1,7 @@
 package vista;
 
 import modelo.BeerBarException;
+import modelo.Nota;
 import modelo.Usuario;
 
 import javax.swing.*;
