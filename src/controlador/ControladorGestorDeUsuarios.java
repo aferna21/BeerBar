@@ -8,18 +8,22 @@ import modelo.Usuario;
 import java.util.ArrayList;
 
 public class ControladorGestorDeUsuarios {
+    private GestorDeUsuarios gestordeusuarios;
 
+    public ControladorGestorDeUsuarios(){
+        this.gestordeusuarios = GestorDeUsuarios.darInstancia();
+    }
 
     public boolean autentificar(String nombre, String contrasena){
-        Boolean b = GestorDeUsuarios.darInstancia().autentificar(nombre, contrasena);
+        Boolean b = gestordeusuarios.autentificar(nombre, contrasena);
         return b;
     }
 
     public boolean anadirUsuario(String nombre, String contrasena) throws BeerBarException {
         boolean b = false;
-        if(GestorDeUsuarios.darInstancia().getUsuario(nombre) == null) {
+        if(gestordeusuarios.getUsuario(nombre) == null) {
             new DAOUsuarios().introduceUsuario(nombre, contrasena, false);
-            GestorDeUsuarios.darInstancia().anadirUsuario(nombre, contrasena);
+            gestordeusuarios.anadirUsuario(nombre, contrasena);
             b = true;
         }
         // Lo mismo que lo explicado abajo, cuando anades un usuario desde el admin, poder cerrar sesion y entrar
@@ -32,7 +36,7 @@ public class ControladorGestorDeUsuarios {
         boolean b = false;
         if(GestorDeUsuarios.darInstancia().getUsuario(nombre) != null){
             new DAOUsuarios().eliminarUsuario(nombre);
-            GestorDeUsuarios.darInstancia().eliminarUsuario(nombre);
+            gestordeusuarios.eliminarUsuario(nombre);
             b = true;
         }
         // Llamo al controlador de inicio para que vuelva a cargar la lista de usuarios una vez borrado porque si no
@@ -43,9 +47,9 @@ public class ControladorGestorDeUsuarios {
 
     public boolean cambiarContrasena(String nombre, String nuevaContrasena) throws BeerBarException {
         boolean b = false;
-        if(GestorDeUsuarios.darInstancia().getUsuario(nombre) != null){
+        if(gestordeusuarios.getUsuario(nombre) != null){
             new DAOUsuarios().cambiarContrasena(nombre, nuevaContrasena);
-            GestorDeUsuarios.darInstancia().cambiarContrasena(nombre, nuevaContrasena);
+            gestordeusuarios.cambiarContrasena(nombre, nuevaContrasena);
             b = true;
         }
         // Lo mismo, actualizar
