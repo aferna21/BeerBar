@@ -67,15 +67,28 @@ public class DAONotas extends Conexion {
     }
 
 
+    private void asignarHijaA(int idmadre, int idhija){
+        this.abrirConexion();
+        try {
+            PreparedStatement st = this.getConexion().prepareStatement("UPDATE notas SET hija = " + idhija +
+                    " WHERE id_nota = " + idmadre + " ;");
+            st.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
+        this.cerrarConexion();
+    }
 
     private Nota getNota(String id) throws BeerBarException {
+
         Nota nota = null;
         this.abrirConexion();
         try {
             PreparedStatement st = this.getConexion().prepareStatement("SELECT * FROM notas WHERE id_nota="+entrecomilla(id) +";");
             ResultSet rs = st.executeQuery();
-            nota = this.getNotas(rs).get(0);
+            ArrayList<Nota> lista = this.getNotas(rs);
+            if(lista.size() != 0) nota = lista.get(0);
         } catch (SQLException e) {
             e.printStackTrace();
         }
