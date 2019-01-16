@@ -78,7 +78,7 @@ public class DAOTransacciones extends Conexion {
         }
     }
 
-    public void introuceTransaccion(float cantidad, String fecha, String usuario, String concepto){
+    public void introduceTransaccion(float cantidad, String fecha, String usuario, String concepto){
         this.abrirConexion();
 
         try {
