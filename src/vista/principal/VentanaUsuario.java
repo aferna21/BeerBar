@@ -1,4 +1,7 @@
-package vista;
+package vista.principal;
+
+import vista.complementos.JOptionPaneAyuda;
+import vista.complementos.VentanaElegirJornada;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -11,8 +14,8 @@ public class VentanaUsuario extends JFrame{
     JPanel panelUsuario;
     JButton botonNotas, botonTransacciones;
     JMenuBar barraMenu;
-    JMenu ayuda;
-    JMenuItem opcionAyuda;
+    JMenu ayuda, menu;
+    JMenuItem opcionAyuda, opcionCerrarSesion;
     JFrame frameUsuario;
     String nombreUsuario;
 
@@ -27,22 +30,34 @@ public class VentanaUsuario extends JFrame{
 
         barraMenu = new JMenuBar();
         ayuda = new JMenu("Ayuda");
+        menu = new JMenu("Menu");
         opcionAyuda = new JMenuItem("Ayuda");
+        opcionCerrarSesion = new JMenuItem("Cerrar sesion");
         ayuda.add(opcionAyuda);
+        menu.add(opcionCerrarSesion);
+        barraMenu.add(menu);
         barraMenu.add(ayuda);
         this.setJMenuBar(barraMenu);
 
         panelUsuario = new JPanel();
+        panelUsuario.setBackground(new Color(128, 128, 128));
         panelUsuario.setLayout(new FlowLayout());
 
         botonNotas = new JButton("Notas");
-        botonTransacciones = new JButton("Transacciones");
-
+        botonNotas.setBackground(new Color(0, 38, 77));
+        botonNotas.setForeground(Color.WHITE);
+        botonNotas.setOpaque(true);
+        botonNotas.setBorderPainted(false);
         botonNotas.setPreferredSize(new Dimension(140, 80));
+
+        botonTransacciones = new JButton("Transacciones");
+        botonTransacciones.setBackground(new Color(0, 38, 77));
+        botonTransacciones.setForeground(Color.WHITE);
+        botonTransacciones.setOpaque(true);
+        botonTransacciones.setBorderPainted(false);
         botonTransacciones.setPreferredSize(new Dimension(140, 80));
 
         panelUsuario.setBorder(new EmptyBorder(new Insets(50, 10, 10, 10)));
-
         panelUsuario.add(botonNotas);
         panelUsuario.add(botonTransacciones);
 
@@ -58,7 +73,15 @@ public class VentanaUsuario extends JFrame{
         botonTransacciones.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new VentanaTransaccionesUsuario(nombreUsuario);
+                new VentanaElegirJornada();
+            }
+        });
+
+        opcionCerrarSesion.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frameUsuario.dispose();
+                new VentanaIniciarSesion();
             }
         });
 

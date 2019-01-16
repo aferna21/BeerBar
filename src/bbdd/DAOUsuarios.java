@@ -65,10 +65,11 @@ public class DAOUsuarios extends Conexion {
         String esAdmin = fromBoolToString(b);
         this.abrirConexion();
         String valores = "(" + nombre + ", " + contrasena + ", " + esAdmin + ");";
+        //System.out.println("DAO \n nombre: " + nombre + "\n contrasena: "+contrasena);
         try {
             PreparedStatement st = this.getConexion().prepareStatement("INSERT INTO usuarios VALUES ('" + nombre + "', '" + contrasena + "', '" + esAdmin + "');");
             st.executeUpdate();
-            System.out.println("Usuario introducido.");
+            //System.out.println("Usuario introducido.");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -83,7 +84,20 @@ public class DAOUsuarios extends Conexion {
         try {
             st = this.getConexion().prepareStatement("DELETE FROM usuarios WHERE nombre_usuario='"+nombre+ "';");
             st.executeUpdate();
-            System.out.println("Usuario eliminado");
+            //System.out.println("Usuario eliminado");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        this.cerrarConexion();
+    }
+
+    public void cambiarContrasena(String nombre, String contrasena){
+        this.abrirConexion();
+        PreparedStatement st = null;
+        try {
+            st = this.getConexion().prepareStatement("UPDATE usuarios SET contrasena='"+contrasena+"' WHERE nombre_usuario='"+nombre+ "';");
+            st.executeUpdate();
+            //System.out.println("Contrasena cambiada");
         } catch (SQLException e) {
             e.printStackTrace();
         }

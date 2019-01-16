@@ -19,6 +19,10 @@ public class GestorDeUsuarios {
         return instancia;
     }
 
+    public void setUsuarios(ArrayList<Usuario> usuarios){
+        this.usuarios = usuarios;
+    }
+
     /**
      * Peculiaridad del singleton
      */
@@ -78,6 +82,16 @@ public class GestorDeUsuarios {
             }
         }
         throw new BeerBarException("Usuario no encontrado.\n");
+    }
+
+    public boolean cambiarContrasena(String nombre, String contrasena) throws BeerBarException {
+        for (Usuario u : this.usuarios){
+            if (u.getNombre().equals(nombre)){
+                u.setContrasena(contrasena);
+                return true;
+            }
+        }
+        throw new BeerBarException("El nombre de usuario ya existe.\n");
     }
 
     /**

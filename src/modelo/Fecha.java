@@ -113,7 +113,7 @@ public class Fecha {
     }
 
     public void setAno(int a) throws BeerBarException {
-        if (a >= 2019 && a <= 2099) {
+        if (a > 0) {
             this.ano = a;
         }else{
             throw new BeerBarException("Ano no correcto.\n");
@@ -241,5 +241,13 @@ public class Fecha {
 
     public String toStringAbreviado(){
         return this.dia + "/" + this.mes + "/" + this.ano;
+    }
+
+    public Fecha fromStringAbreviadoToFecha(String s) throws BeerBarException {
+        String[] partes = s.split("/");
+        int dia = Integer.valueOf(partes[0]);
+        int mes = Integer.valueOf(partes[1]);
+        int ano = Integer.valueOf(partes[2]);
+        return new Fecha(dia, mes, ano);
     }
 }

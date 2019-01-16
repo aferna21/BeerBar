@@ -25,7 +25,7 @@ public class Conexion {
     public void abrirConexion(){
         try {
             this.conexion = DriverManager.getConnection(ruta, usuario, contrasena);
-            System.out.println("Conexion abierta con la base de datos.");
+            //System.out.println("Conexion abierta con la base de datos.");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -34,7 +34,7 @@ public class Conexion {
     public void cerrarConexion(){
         try {
             this.conexion.close();
-            System.out.println(("Conexion cerrada con la base de datos."));
+            //System.out.println(("Conexion cerrada con la base de datos."));
         } catch (SQLException e) {
             e.printStackTrace();
         }

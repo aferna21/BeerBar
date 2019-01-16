@@ -75,13 +75,11 @@ public class Usuario {
      * @param usuario - Usuario destino.
      * @param texto - Texto de la nota.
      */
-    public void escribirNotaA(Usuario usuario, String texto) throws BeerBarException {
-        //CAMBIAR ESTO DE LA FECHA DE HOY
-        //CAMBIADO
+    /*public void escribirNota(Usuario usuario, String texto, Fecha f) throws BeerBarException {
         Fecha hoy = new Fecha().getFechaActual();
-        Nota nota = new Nota(texto, this, usuario, hoy, null);
+        Nota nota = new Nota(texto, this, usuario, f, null, null);
         ServidorDeMensajeria.darInstancia().anadirNota(nota);
-    }
+    }*/ // comentado porque no veo que sirva para nada
 
     /**
      * Devuelve todas las notas enviadas por el usuario que las consulta (this).
@@ -185,5 +183,9 @@ public class Usuario {
     public boolean equals(Usuario u){
         return this.nombre.equals(u.getNombre())  &&
                 this.contrasena.equals(u.getContrasena());
+    }
+
+    public String toString(){
+        return this.nombre;
     }
 }

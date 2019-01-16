@@ -1,11 +1,14 @@
-package vista;
+package vista.principal;
+
+import controlador.ControladorInicio;
+import modelo.BeerBarException;
+import vista.complementos.JOptionPaneAyuda;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
 
 public class VentanaBienvenida extends JFrame{
 
@@ -23,7 +26,6 @@ public class VentanaBienvenida extends JFrame{
 
         this.setTitle("Bienvenida");
         this.setSize(new Dimension(400, 200));
-        //Poner la ventana en el medio de la pantalla
         this.setLocationRelativeTo(null);
 
         barraMenu = new JMenuBar();
@@ -40,7 +42,8 @@ public class VentanaBienvenida extends JFrame{
         panelBienvenida.setBackground(new Color(128, 128, 128));
 
         textoBienvenida = new JLabel("Bienvenido a BeerBar");
-        textoBienvenida.setBorder(new EmptyBorder(new Insets(0, 100, 0, 0)));
+        textoBienvenida.setBorder(new EmptyBorder(new Insets(0, 80, 0, 0)));
+        textoBienvenida.setFont(new Font("Arial", Font.CENTER_BASELINE, 18));
         panelBienvenida.add(textoBienvenida, BorderLayout.CENTER);
 
         botonEntrar = new JButton("Entrar");
@@ -48,6 +51,7 @@ public class VentanaBienvenida extends JFrame{
         botonEntrar.setForeground(Color.WHITE);
         botonEntrar.setOpaque(true);
         botonEntrar.setBorderPainted(false);
+        botonEntrar.setPreferredSize(new Dimension(10, 40));
         panelBienvenida.add(botonEntrar, BorderLayout.SOUTH);
 
         this.getContentPane().add(panelBienvenida);
@@ -55,8 +59,14 @@ public class VentanaBienvenida extends JFrame{
         botonEntrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                //Crea el usuario admin si no esta, y si esta carga todos los usuarios
+                try {
+                    new ControladorInicio();
+                } catch (BeerBarException e1) {
+                    e1.printStackTrace();
+                }
                 new VentanaIniciarSesion();
-                frameBienvenida.dispatchEvent(new WindowEvent(frameBienvenida, WindowEvent.WINDOW_CLOSING));
+                frameBienvenida.dispose();
             }
         });
 
@@ -70,6 +80,6 @@ public class VentanaBienvenida extends JFrame{
 
         this.setResizable(false);
         this.setVisible(true);
-        this.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 }

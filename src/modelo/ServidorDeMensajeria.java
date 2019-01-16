@@ -37,6 +37,10 @@ public class ServidorDeMensajeria {
         this.notas.add(nota);
     }
 
+    public void setNotas(ArrayList<Nota> newnotas){
+        this.notas = newnotas;
+    }
+
     /**
      * Muestra las notas que se ha enviado el usuario pasado por parametro.
      * @param usuario remitente de las notas que queremos mostrar.
@@ -97,6 +101,27 @@ public class ServidorDeMensajeria {
                 output.add(n);
             }
         }
+        return output;
+    }
+
+    public Nota devuelveNota(int contador){
+        for(Nota n:this.notas){
+            if(n.getContador() == contador){
+                return n;
+            }
+        }
+        return null;
+    }
+
+    public int contadorUltimaNota(){
+        int output = 0;
+
+        for(Nota n:this.notas){
+            if(n.getContador() > output){
+                output = n.getContador();
+            }
+        }
+
         return output;
     }
 }

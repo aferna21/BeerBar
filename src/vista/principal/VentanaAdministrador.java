@@ -1,4 +1,8 @@
-package vista;
+package vista.principal;
+
+import modelo.BeerBarException;
+import vista.complementos.JOptionPaneAyuda;
+import vista.complementos.VentanaElegirJornada;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -11,8 +15,8 @@ public class VentanaAdministrador extends JFrame {
     JPanel panelAdministrador;
     JButton botonNotas, botonTransacciones, botonGestionUsuarios;
     JMenuBar barraMenu;
-    JMenu ayuda;
-    JMenuItem opcionAyuda;
+    JMenu ayuda, menu;
+    JMenuItem opcionAyuda, opcionCerrarsesion;
     JFrame frameAdministrador;
 
     public VentanaAdministrador(){
@@ -25,20 +29,38 @@ public class VentanaAdministrador extends JFrame {
 
         barraMenu = new JMenuBar();
         ayuda = new JMenu("Ayuda");
+        menu = new JMenu("Menu");
         opcionAyuda = new JMenuItem("Ayuda");
+        opcionCerrarsesion = new JMenuItem("Cerrar sesion");
         ayuda.add(opcionAyuda);
+        menu.add(opcionCerrarsesion);
+        barraMenu.add(menu);
         barraMenu.add(ayuda);
         this.setJMenuBar(barraMenu);
 
         panelAdministrador = new JPanel();
+        panelAdministrador.setBackground(new Color(128, 128, 128));
         panelAdministrador.setLayout(new FlowLayout());
 
         botonNotas = new JButton("Notas");
-        botonTransacciones = new JButton("Transacciones");
-        botonGestionUsuarios = new JButton("Gestion de usuarios");
-
+        botonNotas.setBackground(new Color(0, 38, 77));
+        botonNotas.setForeground(Color.WHITE);
+        botonNotas.setOpaque(true);
+        botonNotas.setBorderPainted(false);
         botonNotas.setPreferredSize(new Dimension(160, 60));
+
+        botonTransacciones = new JButton("Transacciones");
+        botonTransacciones.setBackground(new Color(0, 38, 77));
+        botonTransacciones.setForeground(Color.WHITE);
+        botonTransacciones.setOpaque(true);
+        botonTransacciones.setBorderPainted(false);
         botonTransacciones.setPreferredSize(new Dimension(160, 60));
+
+        botonGestionUsuarios = new JButton("Gestion de usuarios");
+        botonGestionUsuarios.setBackground(new Color(0, 38, 77));
+        botonGestionUsuarios.setForeground(Color.WHITE);
+        botonGestionUsuarios.setOpaque(true);
+        botonGestionUsuarios.setBorderPainted(false);
         botonGestionUsuarios.setPreferredSize(new Dimension(200, 60));
 
         panelAdministrador.setBorder(new EmptyBorder(new Insets(10, 10, 10, 10)));
@@ -59,14 +81,26 @@ public class VentanaAdministrador extends JFrame {
         botonTransacciones.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new VentanaTransaccionesAdministrador();
+                new VentanaElegirJornada();
             }
         });
 
         botonGestionUsuarios.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new VentanaGestionUsuarios();
+                try {
+                    new VentanaGestionUsuarios();
+                } catch (BeerBarException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        });
+
+        opcionCerrarsesion.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frameAdministrador.dispose();
+                new VentanaIniciarSesion();
             }
         });
 
