@@ -79,7 +79,7 @@ public class VentanaIniciarSesion extends JFrame {
 
                 if(esUsuarioCorrecto) {
                     if(new ControladorGestorDeUsuarios().esAdmin(usuario)){
-                        new VentanaAdministrador();
+                        new VentanaAdministrador(usuario);
 
                     } else {
                         new VentanaUsuario(usuario);

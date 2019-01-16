@@ -19,7 +19,7 @@ public class VentanaAdministrador extends JFrame {
     JMenuItem opcionAyuda, opcionCerrarsesion;
     JFrame frameAdministrador;
 
-    public VentanaAdministrador(){
+    public VentanaAdministrador(String nombreUsuario){
 
         frameAdministrador = this;
 
@@ -81,7 +81,7 @@ public class VentanaAdministrador extends JFrame {
         botonTransacciones.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new VentanaElegirJornada();
+                new VentanaElegirJornada(nombreUsuario);
             }
         });
 

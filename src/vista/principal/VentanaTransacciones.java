@@ -20,7 +20,7 @@ public class VentanaTransacciones extends JFrame {
     JFrame frameVentanaTransacciones;
     String nombreUsuario;
 
-    public VentanaTransacciones(){
+    public VentanaTransacciones(String nombreUsuario, String fechaString){
 
         frameVentanaTransacciones = this;
         this.nombreUsuario = nombreUsuario;
@@ -59,11 +59,11 @@ public class VentanaTransacciones extends JFrame {
 
 
         //INTRODUCIR VENTA
-        panelIntroducirVenta = new JPanelIntroducirTransaccion(true);
+        panelIntroducirVenta = new JPanelIntroducirTransaccion(true, this.nombreUsuario, fechaString);
 
 
         //INTRODUCIR GASTO
-        panelIntroducirGasto = new JPanelIntroducirTransaccion(false);
+        panelIntroducirGasto = new JPanelIntroducirTransaccion(false, this.nombreUsuario, fechaString);
 
 
         //VER TRANSACCIONES

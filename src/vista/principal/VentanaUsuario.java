@@ -73,7 +73,7 @@ public class VentanaUsuario extends JFrame{
         botonTransacciones.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new VentanaElegirJornada();
+                new VentanaElegirJornada(nombreUsuario);
             }
         });
 

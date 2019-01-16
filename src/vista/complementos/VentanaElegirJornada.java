@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 
 public class VentanaElegirJornada extends JFrame {
 
@@ -21,7 +22,7 @@ public class VentanaElegirJornada extends JFrame {
     JButton botonAceptar;
     JFrame frameElegir;
 
-    public VentanaElegirJornada() {
+    public VentanaElegirJornada(String nombreUsuario) {
 
         frameElegir = this;
 
@@ -64,7 +65,12 @@ public class VentanaElegirJornada extends JFrame {
         botonAceptar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new VentanaTransacciones();
+
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                String dateString = dateFormat.format(dateChooserJornada.getDate());
+                System.out.println(dateString);
+
+                new VentanaTransacciones(nombreUsuario, dateString);
                 frameElegir.dispose();
             }
         });

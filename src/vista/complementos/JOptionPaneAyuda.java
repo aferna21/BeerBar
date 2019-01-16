@@ -63,6 +63,7 @@ public class JOptionPaneAyuda extends JOptionPane {
                         "Luego accede al menu acciones para seleccionar entre las opciones:\n" +
                         "1. Introducir una venta: anadir una nueva venta con un concepto opcional a la jornada.\n" +
                         "2. Introducir un gasto: igual que el anterior pero para un gasto.\n" +
+                        "Los numeros deben introducirse con un punto como puntuacion.\n" +
                         "3. Ver transacciones: visualizar el historial de transacciones del dia.\n" +
                         "4. Cerrar jornada. Sal de la jornada actual y guarda todo en la base de datos.";
 
