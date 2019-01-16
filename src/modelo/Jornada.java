@@ -79,8 +79,6 @@ public class Jornada {
         return output;
     }
 
-    public void setTransacciones(ArrayList<Transaccion> transacciones){
-        this.transacciones = transacciones;
-    }
+
 
 }

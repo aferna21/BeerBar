@@ -70,4 +70,27 @@ public class DAOTransacciones extends Conexion {
         return transacciones;
     }
 
+    private String saberEsVenta(Float f){
+        if (f >= 0){
+            return "si";
+        }else{
+            return "no";
+        }
+    }
+
+    public void introuceTransaccion(float cantidad, String fecha, String usuario, String concepto){
+        this.abrirConexion();
+
+        try {
+            PreparedStatement st = this.getConexion().prepareStatement("INSERT INTO transacciones VALUES (" + this.nuevoIdTransaccion() +
+                    ", " + cantidad + ", " + entrecomilla(fecha) + ", " + entrecomilla(usuario) + ", " + entrecomilla(concepto) +
+                    ", " + entrecomilla(saberEsVenta(cantidad)) + ");");
+            st.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        this.cerrarConexion();
+    }
+
 }
