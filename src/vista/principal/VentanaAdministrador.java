@@ -2,6 +2,7 @@ package vista.principal;
 
 import modelo.BeerBarException;
 import vista.complementos.JOptionPaneAyuda;
+import vista.complementos.VentanaElegirJornada;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -80,7 +81,7 @@ public class VentanaAdministrador extends JFrame {
         botonTransacciones.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new VentanaTransaccionesAdministrador();
+                new VentanaElegirJornada();
             }
         });
 
