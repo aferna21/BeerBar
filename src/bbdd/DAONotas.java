@@ -174,8 +174,8 @@ public class DAONotas extends Conexion {
         this.abrirConexion();
 
         try {
-            PreparedStatement st = this.getConexion().prepareStatement("UPDATE transacciones SET esleida = " +
-                    entrecomilla(esleido) + " WHERE id_nota = " + idNota + ";");
+            PreparedStatement st = this.getConexion().prepareStatement("UPDATE notas SET esleida = " +
+                    entrecomilla(esleido) + " WHERE id_nota = '" + idNota + "';");
             st.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

@@ -64,21 +64,21 @@ public class VentanaNotasAdministrador extends JFrame{
         //TODO
         //notasRecibidas = new ControladorServidorDeMensajeria().devuelveNotasHacia("Admistrador");
         notasRecibidas = new ArrayList<>();
-        panelVerNotasRecibidas = new JPanelVerNotas(notasRecibidas);
+        panelVerNotasRecibidas = new JPanelVerNotas(notasRecibidas, false);
 
 
         //VER NOTAS ENVIADAS
         //TODO
         //notasEnviadas = new ControladorServidorDeMensajeria().dameNotasEscritasPor(nombreUsuario);
         notasEnviadas = new ArrayList<>();
-        panelVerNotasEnviadas = new JPanelVerNotas(notasEnviadas);
+        panelVerNotasEnviadas = new JPanelVerNotas(notasEnviadas, true);
 
 
         //VER TODAS LAS NOTAS
         //TODO
         //notasTotales = new ControladorServidorDeMensajeria().dameTodasNotas();
         notasTotales = new ArrayList<>();
-        panelVerTodasLasNotas = new JPanelVerNotas(notasTotales);
+        panelVerTodasLasNotas = new JPanelVerNotas(notasTotales, false);
 
 
         opcionEscribirNota.addActionListener(new ActionListener() {

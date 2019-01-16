@@ -1,6 +1,8 @@
 package vista.principal;
 
+import controlador.ControladorInicio;
 import controlador.ControladorServidorDeMensajeria;
+import modelo.BeerBarException;
 import modelo.Nota;
 import vista.complementos.JOptionPaneAyuda;
 import vista.complementos.JPanelEscribirNota;
@@ -63,19 +65,22 @@ public class VentanaNotasUsuario extends JFrame {
 
         //VER NOTAS RECIBIDAS
         notasRecibidas = new ControladorServidorDeMensajeria().devuelveNotasHacia(nombreUsuario);
-        panelVerNotasRecibidas = new JPanelVerNotas(notasRecibidas);
+        panelVerNotasRecibidas = new JPanelVerNotas(notasRecibidas, false);
 
 
         //VER NOTAS ENVIADAS
-        //TODO
-        //notasEnviadas = new ControladorServidorDeMensajeria().dameNotasEscritasPor(nombreUsuario);
-        notasEnviadas = new ArrayList<>();
-        panelVerNotasEnviadas = new JPanelVerNotas(notasEnviadas);
+        notasEnviadas = new ControladorServidorDeMensajeria().devuelveNotasEscritasPor(nombreUsuario);
+        panelVerNotasEnviadas = new JPanelVerNotas(notasEnviadas, true);
 
 
         opcionEscribirNota.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                try {
+                    new ControladorInicio().actualizarInformacion();
+                } catch (BeerBarException e1) {
+                    e1.printStackTrace();
+                }
                 actualizarPanel(panelEscribirNotaA);
             }
         });

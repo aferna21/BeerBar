@@ -2,6 +2,7 @@ package controlador;
 
 import bbdd.DAONotas;
 import bbdd.DAOUsuarios;
+import javafx.scene.effect.SepiaTone;
 import modelo.*;
 
 import java.util.ArrayList;
@@ -47,5 +48,14 @@ public class ControladorServidorDeMensajeria {
 
     public ArrayList<Nota> devuelveNotasHacia(String usuario){
         return ServidorDeMensajeria.darInstancia().mostrarNotasHacia(GestorDeUsuarios.darInstancia().getUsuario(usuario));
+    }
+
+    public ArrayList<Nota> devuelveNotasEscritasPor(String usuario){
+        return ServidorDeMensajeria.darInstancia().mostrarNotasDe(GestorDeUsuarios.darInstancia().getUsuario(usuario));
+    }
+
+    public void leerNota(Nota notaLeida){
+        ServidorDeMensajeria.darInstancia().devuelveNota(notaLeida.getContador());
+        new DAONotas().cambiaEsLeido("si", notaLeida.getContador());
     }
 }
