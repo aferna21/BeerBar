@@ -92,6 +92,11 @@ public class VentanaGestionUsuarios extends JFrame {
         opcionVer.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                try {
+                    panelVer = new JPanelVerUsuarios();
+                } catch (BeerBarException e1) {
+                    e1.printStackTrace();
+                }
                 actualizarPanel(panelVer);
             }
         });

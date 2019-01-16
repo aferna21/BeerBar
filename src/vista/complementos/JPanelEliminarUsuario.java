@@ -1,6 +1,7 @@
 package vista.complementos;
 
 import controlador.ControladorGestorDeUsuarios;
+import controlador.ControladorInicio;
 import modelo.BeerBarException;
 
 import javax.swing.*;

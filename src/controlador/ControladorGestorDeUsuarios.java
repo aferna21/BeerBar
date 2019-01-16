@@ -56,11 +56,12 @@ public class ControladorGestorDeUsuarios {
         boolean b = false;
         if(gestordeusuarios.getUsuario(nombre) != null){
             new DAOUsuarios().cambiarContrasena(nombre, nuevaContrasena);
-            gestordeusuarios.cambiarContrasena(nombre, nuevaContrasena);
+            gestordeusuarios.setUsuarios(new DAOUsuarios().devuelveUsuarios());
             b = true;
         }
         // Lo mismo, actualizar
         new ControladorInicio().actualizarInformacion();
+        GestorDeUsuarios.darInstancia().cambiarContrasena(nombre, nuevaContrasena);
         return b;
     }
 

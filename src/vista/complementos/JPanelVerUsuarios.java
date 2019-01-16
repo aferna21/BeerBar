@@ -28,6 +28,11 @@ public class JPanelVerUsuarios extends JPanel {
         this.add(panelScrollUsuarios, BorderLayout.CENTER);
         panelDentroScrollUsuarios.setBackground(new Color(128, 128, 128));
 
+        actualizarUsuarios();
+    }
+
+    public void actualizarUsuarios() throws BeerBarException{
+
         ArrayList<Usuario> arr = new ControladorGestorDeUsuarios().devuelveUsuarios();
         while (!arr.isEmpty()){
             Usuario usuario = arr.get(0);
