@@ -79,12 +79,6 @@ public class VentanaNotasAdministrador extends JFrame{
         panelVerTodasLasNotas = new JPanelVerNotas(notasTotales);
 
 
-        /*import com.toedter.calendar.JDateChooser;
-        import com.toedter.calendar.JSpinnerDateEditor;
-        JDateChooser dateChooserInicio = new JDateChooser(null, null, null, new JSpinnerDateEditor());
-        JDateChooser dateChooserFin = new JDateChooser(null, null, null, new JSpinnerDateEditor());*/
-
-
         opcionEscribirNota.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

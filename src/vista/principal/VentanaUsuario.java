@@ -1,6 +1,7 @@
 package vista.principal;
 
 import vista.complementos.JOptionPaneAyuda;
+import vista.complementos.VentanaElegirJornada;
 import vista.principal.VentanaIniciarSesion;
 import vista.principal.VentanaNotasUsuario;
 import vista.principal.VentanaTransaccionesUsuario;
@@ -75,7 +76,7 @@ public class VentanaUsuario extends JFrame{
         botonTransacciones.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new VentanaTransaccionesUsuario(nombreUsuario);
+                new VentanaElegirJornada(nombreUsuario);
             }
         });
 
