@@ -54,8 +54,8 @@ public class DAONotas extends Conexion {
             int idmadre = rs.getInt("madre");
             int idhija = rs.getInt("hija");
             boolean esLeida = fromStringToBool(rs.getString("esleida"));
-            Nota nota = new Nota(texto, remitente, destinatario, fecha, idmadre, idhija);
-            nota.setHija(rs.getInt("idhija"));
+            Nota nota = new Nota(texto, remitente, destinatario, fecha, idmadre, idhija, rs.getInt("id_nota"));
+            nota.setHija(rs.getInt("hija"));
             nota.setLeida(esLeida);
             salida.add(nota);
         }

@@ -57,7 +57,7 @@ public class Nota {
      * @param fecha - Dia en el que esta escrita la nota.
      * @param madre - Nota de la que proviene la escrita. Sera null si empieza un nuevo hilo
      */
-    public Nota(String texto, Usuario remitente, Usuario destinatario, Fecha fecha, int madre, int hija) throws BeerBarException {
+    public Nota(String texto, Usuario remitente, Usuario destinatario, Fecha fecha, int madre, int hija, int contador) throws BeerBarException {
         if(texto == null || remitente == null || destinatario == null || fecha == null){
             throw new BeerBarException("Error al crear la nota.");
         }
@@ -69,8 +69,13 @@ public class Nota {
             this.madre = madre;
             this.hija = hija;
             this.leida = false;
-            this.contador = ServidorDeMensajeria.darInstancia().contadorUltimaNota()+1;
-            if(this.madre != 0){
+            if (contador == 0){
+                this.contador = ServidorDeMensajeria.darInstancia().contadorUltimaNota()+1;
+            }else{
+                this.contador = contador;
+            }
+            if(this.madre != 0 && ServidorDeMensajeria.darInstancia().contadorUltimaNota() != 0){
+                ServidorDeMensajeria.darInstancia().devuelveNota(this.madre);
                 ServidorDeMensajeria.darInstancia().devuelveNota(this.madre).setHija(this.contador);
             }
         }
