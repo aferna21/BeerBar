@@ -135,7 +135,7 @@ public class DAONotas extends Conexion {
     public void introduceNota(int id_nota, String remitente, String destinatario, String fecha, int madre, int hija, String texto){
         this.abrirConexion();
 
-
+        if(id_nota == 0) id_nota = nuevoIdNota();
 
         try {
             PreparedStatement st = this.getConexion().prepareStatement("INSERT INTO notas VALUES ("+
@@ -169,4 +169,18 @@ public class DAONotas extends Conexion {
     }
 
 
+
+    public void cambiaEsLeido(String esleido, int idNota){
+        this.abrirConexion();
+
+        try {
+            PreparedStatement st = this.getConexion().prepareStatement("UPDATE transacciones SET esleida = " +
+                    entrecomilla(esleido) + " WHERE id_nota = " + idNota + ";");
+            st.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        this.cerrarConexion();
+    }
 }
