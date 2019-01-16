@@ -13,8 +13,8 @@ import java.awt.event.ActionListener;
 public class VentanaElegirJornada extends JFrame {
 
     JPanel panelSelector;
-    JMenuItem opcionVerTransaccionesEntreDosFechas;
-    JMenu acciones;
+    JMenuItem opcionVerTransaccionesEntreDosFechas, opcionAyuda;
+    JMenu acciones, ayuda;
     JMenuBar barraMenu;
     JLabel textoSeleccion;
     JDateChooser dateChooserJornada;
@@ -27,9 +27,13 @@ public class VentanaElegirJornada extends JFrame {
 
         barraMenu = new JMenuBar();
         acciones = new JMenu("Acciones");
+        ayuda = new JMenu("Ayuda");
         opcionVerTransaccionesEntreDosFechas = new JMenuItem("Ver transacciones entre 2 fechas");
+        opcionAyuda = new JMenuItem("Ayuda");
         acciones.add(opcionVerTransaccionesEntreDosFechas);
+        ayuda.add(opcionAyuda);
         barraMenu.add(acciones);
+        barraMenu.add(ayuda);
         this.setJMenuBar(barraMenu);
 
         this.setBackground(new Color(128, 128, 128));
@@ -70,6 +74,14 @@ public class VentanaElegirJornada extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 new VentanaVerTransaccionesEntreDosFechas();
                 frameElegir.dispose();
+            }
+        });
+
+        opcionAyuda.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPaneAyuda ayuda = new JOptionPaneAyuda((JPanel) frameElegir.getContentPane());
+                ayuda.muestraAyudaVentanaElegirNota();
             }
         });
 

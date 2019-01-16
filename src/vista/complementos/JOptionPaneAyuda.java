@@ -114,4 +114,24 @@ public class JOptionPaneAyuda extends JOptionPane {
 
         this.showMessageDialog(panelActual, mensaje, "Ayuda ventana gestor de usuarios", JOptionPane.INFORMATION_MESSAGE);
     }
+
+    public void muestraAyudaVentanaVerTransaccionesEntreDosFechas(){
+        String mensaje =
+                "Esta es la pantalla para ver las transacciones realizadas durante dos fechas pedidas al usuario.\n" +
+                        "1. Introduce las 2 fechas (inicio y fin) con las opciones que da el programa.\n" +
+                        "2. Si las fechas son correctas, se veran todas las transacciones en ese pediodo de tiempo.\n";
+
+        this.showMessageDialog(panelActual, mensaje, "Ayuda ventana ver transacciones entre fechas", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public void muestraAyudaVentanaElegirNota(){
+        String mensaje =
+                "Esta es la pantalla para seleccionar una jornada para trabajar con ella.\n" +
+                        "1. Introduce como jornada el dia en el que vas a meter las transacciones.\n" +
+                        "2. Se mostrara una ventana nueva con las diferentes funciones.\n" +
+                        "Tambien se puede acceder a la funcion de ver transacciones entre dos fechas. Esta opcion esta en la barra de menu.\n";
+;
+
+        this.showMessageDialog(panelActual, mensaje, "Ayuda ventana gestor de usuarios", JOptionPane.INFORMATION_MESSAGE);
+    }
 }

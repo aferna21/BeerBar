@@ -12,20 +12,29 @@ import java.awt.event.ActionListener;
 public class VentanaVerTransaccionesEntreDosFechas extends JFrame {
 
     JPanel panelSelector;
-    JMenuItem opcionVerTransaccionesEntreDosFechas;
+    JMenu ayuda;
+    JMenuBar barraMenu;
+    JMenuItem opcionAyuda;
     JLabel textoJornadaPrincipio, textoJornadaFinal;
     JDateChooser dateChooserJornadaInicio, dateChooserJornadaFinal;
     JButton botonAceptar;
-    JFrame frameElegir;
+    JFrame frameThisVentana;
 
 
     public VentanaVerTransaccionesEntreDosFechas(){
 
-        frameElegir = this;
+        frameThisVentana = this;
 
         this.setBackground(new Color(128, 128, 128));
         this.setSize(800, 600);
         this.setLayout(new BorderLayout());
+
+        opcionAyuda = new JMenuItem("Ayuda");
+        ayuda = new JMenu("Ayuda");
+        barraMenu = new JMenuBar();
+        ayuda.add(opcionAyuda);
+        barraMenu.add(ayuda);
+        this.setJMenuBar(barraMenu);
 
         panelSelector = new JPanel();
         panelSelector.setBackground(new Color(128, 128, 128));
@@ -55,8 +64,16 @@ public class VentanaVerTransaccionesEntreDosFechas extends JFrame {
         botonAceptar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                //TODO
 
-                frameElegir.dispose();
+            }
+        });
+
+        opcionAyuda.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPaneAyuda ayuda = new JOptionPaneAyuda((JPanel) frameThisVentana.getContentPane());
+                ayuda.muestraAyudaVentanaVerTransaccionesEntreDosFechas();
             }
         });
 
