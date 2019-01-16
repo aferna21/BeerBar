@@ -2,7 +2,6 @@ package vista.complementos;
 
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JSpinnerDateEditor;
-import vista.principal.VentanaTransacciones;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -10,27 +9,19 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class VentanaElegirJornada extends JFrame {
+public class VentanaVerTransaccionesEntreDosFechas extends JFrame {
 
     JPanel panelSelector;
     JMenuItem opcionVerTransaccionesEntreDosFechas;
-    JMenu acciones;
-    JMenuBar barraMenu;
-    JLabel textoSeleccion;
-    JDateChooser dateChooserJornada;
+    JLabel textoJornadaPrincipio, textoJornadaFinal;
+    JDateChooser dateChooserJornadaInicio, dateChooserJornadaFinal;
     JButton botonAceptar;
     JFrame frameElegir;
 
-    public VentanaElegirJornada() {
+
+    public VentanaVerTransaccionesEntreDosFechas(){
 
         frameElegir = this;
-
-        barraMenu = new JMenuBar();
-        acciones = new JMenu("Acciones");
-        opcionVerTransaccionesEntreDosFechas = new JMenuItem("Ver transacciones entre 2 fechas");
-        acciones.add(opcionVerTransaccionesEntreDosFechas);
-        barraMenu.add(acciones);
-        this.setJMenuBar(barraMenu);
 
         this.setBackground(new Color(128, 128, 128));
         this.setSize(800, 600);
@@ -40,13 +31,17 @@ public class VentanaElegirJornada extends JFrame {
         panelSelector.setBackground(new Color(128, 128, 128));
         panelSelector.setLayout(new BoxLayout(panelSelector, BoxLayout.PAGE_AXIS));
 
-        textoSeleccion = new JLabel("Selecciona una jornada");
-        dateChooserJornada = new JDateChooser(null, null, null, new JSpinnerDateEditor());
+        textoJornadaPrincipio = new JLabel("Selecciona la fecha de inicio.");
+        dateChooserJornadaInicio = new JDateChooser(null, null, null, new JSpinnerDateEditor());
+        textoJornadaFinal = new JLabel("Selecciona la fecha final.");
+        dateChooserJornadaFinal = new JDateChooser(null, null, null, new JSpinnerDateEditor());
 
-        panelSelector.add(textoSeleccion);
-        panelSelector.add(dateChooserJornada);
+        panelSelector.add(textoJornadaPrincipio);
+        panelSelector.add(dateChooserJornadaInicio);
         this.add(panelSelector, BorderLayout.NORTH);
 
+        panelSelector.add(textoJornadaFinal);
+        panelSelector.add(dateChooserJornadaFinal);
 
         botonAceptar = new JButton("Enviar");
         botonAceptar.setBackground(new Color(0, 38, 77));
@@ -60,15 +55,7 @@ public class VentanaElegirJornada extends JFrame {
         botonAceptar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new VentanaTransacciones();
-                frameElegir.dispose();
-            }
-        });
 
-        opcionVerTransaccionesEntreDosFechas.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new VentanaVerTransaccionesEntreDosFechas();
                 frameElegir.dispose();
             }
         });
@@ -77,5 +64,6 @@ public class VentanaElegirJornada extends JFrame {
         this.setResizable(true);
         this.setVisible(true);
         this.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+
     }
 }

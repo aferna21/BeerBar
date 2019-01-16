@@ -35,11 +35,13 @@ public class VentanaTransacciones extends JFrame {
         opcionIntroducirGasto = new JMenuItem("Introducir un gasto");
         opcionVerTransacciones = new JMenuItem("Ver transacciones");
         opcionCerrarJornada = new JMenuItem("Cerrar jornada");
+
         opcionAyuda = new JMenuItem("Ayuda");
         acciones.add(opcionIntroducirVenta);
         acciones.add(opcionIntroducirGasto);
         acciones.add(opcionVerTransacciones);
         acciones.add(opcionCerrarJornada);
+
         ayuda.add(opcionAyuda);
         barraMenu.add(acciones);
         barraMenu.add(ayuda);
