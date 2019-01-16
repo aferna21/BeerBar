@@ -65,12 +65,12 @@ public class VentanaNotasUsuario extends JFrame {
 
         //VER NOTAS RECIBIDAS
         notasRecibidas = new ControladorServidorDeMensajeria().devuelveNotasHacia(nombreUsuario);
-        panelVerNotasRecibidas = new JPanelVerNotas(notasRecibidas, false);
+        panelVerNotasRecibidas = new JPanelVerNotas(notasRecibidas, false, nombreUsuario);
 
 
         //VER NOTAS ENVIADAS
         notasEnviadas = new ControladorServidorDeMensajeria().devuelveNotasEscritasPor(nombreUsuario);
-        panelVerNotasEnviadas = new JPanelVerNotas(notasEnviadas, true);
+        panelVerNotasEnviadas = new JPanelVerNotas(notasEnviadas, true, nombreUsuario);
 
 
         opcionEscribirNota.addActionListener(new ActionListener() {

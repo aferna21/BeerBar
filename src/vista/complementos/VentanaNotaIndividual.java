@@ -16,7 +16,7 @@ public class VentanaNotaIndividual extends JFrame {
     JLabel textoRemitente, textoDestinatario, textoFecha, textoMensaje, textoNota;
     JButton botonMadre, botonResponder, botonHija;
 
-    public VentanaNotaIndividual(Nota nota){
+    public VentanaNotaIndividual(Nota nota, String nombreDelQueLaVe){
 
         frameVentanaNota = this;
 
@@ -61,11 +61,11 @@ public class VentanaNotaIndividual extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(nota.getMadre() != 0) {
-                    new VentanaNotaIndividual(ServidorDeMensajeria.darInstancia().devuelveNota(nota.getMadre()));
+                    new VentanaNotaIndividual(ServidorDeMensajeria.darInstancia().devuelveNota(nota.getMadre()), nombreDelQueLaVe);
                 }
                 else{
                     JOptionPane panelNoExisteMadre = new JOptionPane();
-                    panelNoExisteMadre.showMessageDialog(frameVentanaNota.getContentPane(), "Esta nota no tiene madre");
+                    panelNoExisteMadre.showMessageDialog(frameVentanaNota.getContentPane(), "Esta nota no tiene madre.");
                 }
             }
         });
@@ -78,10 +78,16 @@ public class VentanaNotaIndividual extends JFrame {
         botonResponder.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //Tienen que estar remitentes y destinatarios cambiados porque es la respuesta
-                panelResponder = new JPanelResponderNota(nota.getDestinatario().toString(), nota.getRemitente().toString(), frameVentanaNota, nota.getContador());
-                panelResponder.remove(panelResponder);
-                actualizarPanel(panelResponder);
+                //El destinatario tiene que ser el remitente y viceversa porque es la respuesta
+                if(nombreDelQueLaVe.equals(nota.getRemitente().toString())){
+                    JOptionPane noResponderATiMismo = new JOptionPane();
+                    noResponderATiMismo.showMessageDialog(frameVentanaNota.getContentPane(), "No puedes responderte a ti mismo.");
+                }
+                else {
+                    panelResponder = new JPanelResponderNota(nota.getDestinatario().toString(), nota.getRemitente().toString(), frameVentanaNota, nota.getContador());
+                    panelResponder.remove(panelResponder);
+                    actualizarPanel(panelResponder);
+                }
             }
         });
 
@@ -94,11 +100,11 @@ public class VentanaNotaIndividual extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(nota.getHija() != 0) {
-                    new VentanaNotaIndividual(ServidorDeMensajeria.darInstancia().devuelveNota(nota.getHija()));
+                    new VentanaNotaIndividual(ServidorDeMensajeria.darInstancia().devuelveNota(nota.getHija()), nombreDelQueLaVe);
                 }
                 else{
                     JOptionPane panelNoExisteHija = new JOptionPane();
-                    panelNoExisteHija.showMessageDialog(frameVentanaNota.getContentPane(), "Esta nota no tiene hija");
+                    panelNoExisteHija.showMessageDialog(frameVentanaNota.getContentPane(), "Esta nota no tiene hija.");
                 }
             }
         });
