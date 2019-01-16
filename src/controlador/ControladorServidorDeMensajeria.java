@@ -23,7 +23,7 @@ public class ControladorServidorDeMensajeria {
         Usuario remitente = GestorDeUsuarios.darInstancia().getUsuario(nombreremitente);
         Usuario destinatario = GestorDeUsuarios.darInstancia().getUsuario(nombredestinatario);
         Fecha hoy = new Fecha().getFechaActual();
-        Nota nota = new Nota(texto, remitente, destinatario, hoy, 0, 0 );
+        Nota nota = new Nota(texto, remitente, destinatario, hoy, 0, 0, 0 );
         return nota;
     }
 
@@ -31,7 +31,7 @@ public class ControladorServidorDeMensajeria {
         Usuario remitente = GestorDeUsuarios.darInstancia().getUsuario(nombreremitente);
         Usuario destinatario = GestorDeUsuarios.darInstancia().getUsuario(nombredestinatario);
         Fecha hoy = new Fecha().getFechaActual();
-        Nota nota = new Nota(texto, remitente, destinatario, hoy, madre, 0 );
+        Nota nota = new Nota(texto, remitente, destinatario, hoy, madre, 0 , 0);
         instancia.anadirNota(nota);
         new DAONotas().introduceNota(nota.getContador(), nombreremitente, nombredestinatario, nota.getFecha().toStringAbreviado(), madre, 0, texto);
     }
