@@ -1,6 +1,7 @@
 package vista.principal;
 
 import bbdd.DAONotas;
+import bbdd.DAOTransacciones;
 import controlador.ControladorInicio;
 import controlador.ControladorServidorDeMensajeria;
 import modelo.*;
@@ -13,6 +14,8 @@ public class MainBeer {
 
         new VentanaBienvenida();
 
+        ArrayList<Transaccion> t = new DAOTransacciones().devuelveTransacciones();
+        System.out.println(t.get(0).toString());
     }
 
 

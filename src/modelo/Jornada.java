@@ -40,7 +40,9 @@ public class Jornada {
         return output;
     }
 
-    //ESTE METODO NO SALE EN EL DIAGRAMA. ANADIR EXCEPCION
+    public void setTransacciones(ArrayList<Transaccion> t){
+        this.transacciones = t;
+    }
 
     /**
      * Anade una transaccion mas al array de transacciones de la jornada.
