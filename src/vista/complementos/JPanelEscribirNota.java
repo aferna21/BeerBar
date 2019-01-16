@@ -1,5 +1,9 @@
 package vista.complementos;
 
+import controlador.ControladorGestorDeUsuarios;
+import controlador.ControladorServidorDeMensajeria;
+import modelo.BeerBarException;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -13,7 +17,7 @@ public class JPanelEscribirNota extends JPanel {
     JTextField campoTextoDestinatario;
     JTextArea campoMensaje;
 
-    public JPanelEscribirNota() {
+    public JPanelEscribirNota(String remitente, JFrame frame) {
 
         this.setBackground(new Color(128, 128, 128));
         this.setSize(800, 600);
@@ -47,9 +51,19 @@ public class JPanelEscribirNota extends JPanel {
         botonEnviar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Aqui crear una instancia de la clase controladora de las notas y pasarle al constructor
-                // el destinatario y el texto, y que lo envie. Despues de enviar, se vuelve al panel de las notas
-                // y se muestra un mensaje de confirmacion del envio
+                try {
+                    if(new ControladorGestorDeUsuarios().existe(campoTextoDestinatario.getText())){
+                        new ControladorServidorDeMensajeria().escribirNota(campoMensaje.getText(), remitente, campoTextoDestinatario.getText(), 0);
+                        JOptionPane mensajeEnviado = new JOptionPane();
+                        mensajeEnviado.showMessageDialog(frame.getContentPane(), "Mensaje enviado correctamente");
+                    }
+                    else{
+                        JOptionPane destinatarioIncorrecto = new JOptionPane();
+                        destinatarioIncorrecto.showMessageDialog(frame.getContentPane(), "Destinatario incorrecto");
+                    }
+                } catch (BeerBarException e1) {
+                    e1.printStackTrace();
+                }
             }
         });
     }

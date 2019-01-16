@@ -1,5 +1,6 @@
 package vista.principal;
 
+import controlador.ControladorServidorDeMensajeria;
 import modelo.Nota;
 import vista.complementos.JOptionPaneAyuda;
 import vista.complementos.JPanelEscribirNota;
@@ -57,13 +58,11 @@ public class VentanaNotasUsuario extends JFrame {
 
 
         //ESCRIBIR NOTA
-        panelEscribirNotaA = new JPanelEscribirNota();
+        panelEscribirNotaA = new JPanelEscribirNota(nombreUsuario, frameVentanaNotas);
 
 
         //VER NOTAS RECIBIDAS
-        //TODO
-        //notasRecibidas = new ControladorServidorDeMensajeria().dameNotasHacia(nombreUsuario);
-        notasRecibidas = new ArrayList<>();
+        notasRecibidas = new ControladorServidorDeMensajeria().devuelveNotasHacia(nombreUsuario);
         panelVerNotasRecibidas = new JPanelVerNotas(notasRecibidas);
 
 

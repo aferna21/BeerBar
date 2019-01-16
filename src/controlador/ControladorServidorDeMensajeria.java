@@ -4,6 +4,8 @@ import bbdd.DAONotas;
 import bbdd.DAOUsuarios;
 import modelo.*;
 
+import java.util.ArrayList;
+
 public class ControladorServidorDeMensajeria {
     ServidorDeMensajeria instancia;
 
@@ -41,5 +43,9 @@ public class ControladorServidorDeMensajeria {
         DAONotas daonotas = new DAONotas();
         daonotas.asignarHijaA(notaAresponder, ServidorDeMensajeria.darInstancia().contadorUltimaNota()+1);
         escribirNota(texto, nombreremitente, nombredestinatario, notaAresponder);
+    }
+
+    public ArrayList<Nota> devuelveNotasHacia(String usuario){
+        return ServidorDeMensajeria.darInstancia().mostrarNotasHacia(GestorDeUsuarios.darInstancia().getUsuario(usuario));
     }
 }

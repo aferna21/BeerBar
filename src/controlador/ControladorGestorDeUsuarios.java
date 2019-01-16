@@ -15,7 +15,14 @@ public class ControladorGestorDeUsuarios {
     }
 
     public boolean autentificar(String nombre, String contrasena){
-        Boolean b = gestordeusuarios.autentificar(nombre, contrasena);
+        return gestordeusuarios.autentificar(nombre, contrasena);
+    }
+
+    public boolean existe(String nombre){
+        boolean b = false;
+        if(gestordeusuarios.getUsuario(nombre) != null){
+            b = true;
+        }
         return b;
     }
 
