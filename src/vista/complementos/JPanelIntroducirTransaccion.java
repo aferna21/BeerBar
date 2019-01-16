@@ -62,8 +62,6 @@ public class JPanelIntroducirTransaccion extends JPanel {
         botonIntroducirTransaccion.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO
-                //Introducir en la jornada la venta
 
                 String s = campoTextoImporte.getText();
                 Float f = Float.parseFloat(s);

@@ -57,14 +57,8 @@ public class VentanaTransacciones extends JFrame {
 
         this.getContentPane().add(panelTransacciones);
 
-
-        //INTRODUCIR VENTA
         panelIntroducirVenta = new JPanelIntroducirTransaccion(true, this.nombreUsuario, fechaString);
-
-
-        //INTRODUCIR GASTO
         panelIntroducirGasto = new JPanelIntroducirTransaccion(false, this.nombreUsuario, fechaString);
-
 
         //VER TRANSACCIONES
         //TODO
@@ -89,6 +83,13 @@ public class VentanaTransacciones extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 actualizarPanel(panelVerTransacciones);
+            }
+        });
+
+        opcionCerrarJornada.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
             }
         });
 
