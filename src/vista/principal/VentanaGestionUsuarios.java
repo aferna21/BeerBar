@@ -52,42 +52,32 @@ public class VentanaGestionUsuarios extends JFrame {
         this.getContentPane().add(panelUsuarios);
 
 
-        //ANADIR USUARIO
-        panelAnadir = new JPanelAnadirUsuario(this);
-
-
-        //ELIMINAR USUARIO
-        panelEliminar = new JPanelEliminarUsuario(this);
-
-
-        //CAMBIAR CONTRASENA
-        panelCambiar = new JPanelCambiarContrasena(this);
-
-
-        //VER USUARIOS
-        panelVer = new JPanelVerUsuarios();
-
-
         opcionAnadir.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                panelAnadir = new JPanelAnadirUsuario(frameVentanaUsuarios);
                 actualizarPanel(panelAnadir);
             }
         });
 
+
         opcionEliminar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                panelEliminar = new JPanelEliminarUsuario(frameVentanaUsuarios);
                 actualizarPanel(panelEliminar);
             }
         });
 
+
         opcionCambiar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                panelCambiar = new JPanelCambiarContrasena(frameVentanaUsuarios);
                 actualizarPanel(panelCambiar);
             }
         });
+
 
         opcionVer.addActionListener(new ActionListener() {
             @Override
@@ -100,6 +90,7 @@ public class VentanaGestionUsuarios extends JFrame {
                 actualizarPanel(panelVer);
             }
         });
+
 
         opcionAyuda.addActionListener(new ActionListener() {
             @Override
@@ -115,6 +106,7 @@ public class VentanaGestionUsuarios extends JFrame {
         this.setVisible(true);
         this.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
     }
+
 
     public void actualizarPanel(JPanel panelNuevo){
         frameVentanaUsuarios.getContentPane().removeAll();

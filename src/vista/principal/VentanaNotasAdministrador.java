@@ -56,52 +56,44 @@ public class VentanaNotasAdministrador extends JFrame{
         this.getContentPane().add(panelNotas);
 
 
-        //ESCRIBIR NOTA
-        panelEscribirNotaA = new JPanelEscribirNota("admin", frameVentanaNotas);
-
-
-        //VER NOTAS RECIBIDAS
-        notasRecibidas = new ControladorServidorDeMensajeria().devuelveNotasHacia("admin");
-        panelVerNotasRecibidas = new JPanelVerNotas(notasRecibidas, false, "admin");
-
-
-        //VER NOTAS ENVIADAS
-        notasEnviadas = new ControladorServidorDeMensajeria().devuelveNotasEscritasPor("admin");
-        panelVerNotasEnviadas = new JPanelVerNotas(notasEnviadas, true, "admin");
-
-
-        //VER TODAS LAS NOTAS
-        notasTotales = new ControladorServidorDeMensajeria().dameTodasNotas();
-        panelVerTodasLasNotas = new JPanelVerNotas(notasTotales, true, "admin");
-
-
         opcionEscribirNota.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                panelEscribirNotaA = new JPanelEscribirNota("admin", frameVentanaNotas);
                 actualizarPanel(panelEscribirNotaA);
             }
         });
 
+
         opcionVerNotasRecibidas.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                notasRecibidas = new ControladorServidorDeMensajeria().devuelveNotasHacia("admin");
+                panelVerNotasRecibidas = new JPanelVerNotas(notasRecibidas, false, "admin");
                 actualizarPanel(panelVerNotasRecibidas);
             }
         });
 
+
         opcionVerNotasEnviadas.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                notasEnviadas = new ControladorServidorDeMensajeria().devuelveNotasEscritasPor("admin");
+                panelVerNotasEnviadas = new JPanelVerNotas(notasEnviadas, true, "admin");
                 actualizarPanel(panelVerNotasEnviadas);
             }
         });
 
+
         opcionVerTodasLasNotas.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                notasTotales = new ControladorServidorDeMensajeria().dameTodasNotas();
+                panelVerTodasLasNotas = new JPanelVerNotas(notasTotales, true, "admin");
                 actualizarPanel(panelVerTodasLasNotas);
             }
         });
+
 
         opcionAyuda.addActionListener(new ActionListener() {
             @Override
@@ -117,6 +109,7 @@ public class VentanaNotasAdministrador extends JFrame{
         this.setVisible(true);
         this.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
     }
+
 
     public void actualizarPanel(JPanel panelNuevo){
         frameVentanaNotas.getContentPane().removeAll();

@@ -59,23 +59,10 @@ public class VentanaNotasUsuario extends JFrame {
         this.getContentPane().add(panelNotas);
 
 
-        //ESCRIBIR NOTA
-        panelEscribirNotaA = new JPanelEscribirNota(nombreUsuario, frameVentanaNotas);
-
-
-        //VER NOTAS RECIBIDAS
-        notasRecibidas = new ControladorServidorDeMensajeria().devuelveNotasHacia(nombreUsuario);
-        panelVerNotasRecibidas = new JPanelVerNotas(notasRecibidas, false, nombreUsuario);
-
-
-        //VER NOTAS ENVIADAS
-        notasEnviadas = new ControladorServidorDeMensajeria().devuelveNotasEscritasPor(nombreUsuario);
-        panelVerNotasEnviadas = new JPanelVerNotas(notasEnviadas, true, nombreUsuario);
-
-
         opcionEscribirNota.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                panelEscribirNotaA = new JPanelEscribirNota(nombreUsuario, frameVentanaNotas);
                 try {
                     new ControladorInicio().actualizarInformacion();
                 } catch (BeerBarException e1) {
@@ -85,19 +72,26 @@ public class VentanaNotasUsuario extends JFrame {
             }
         });
 
+
         opcionVerNotasRecibidas.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                notasRecibidas = new ControladorServidorDeMensajeria().devuelveNotasHacia(nombreUsuario);
+                panelVerNotasRecibidas = new JPanelVerNotas(notasRecibidas, false, nombreUsuario);
                 actualizarPanel(panelVerNotasRecibidas);
             }
         });
 
+
         opcionVerNotasEnviadas.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                notasEnviadas = new ControladorServidorDeMensajeria().devuelveNotasEscritasPor(nombreUsuario);
+                panelVerNotasEnviadas = new JPanelVerNotas(notasEnviadas, true, nombreUsuario);
                 actualizarPanel(panelVerNotasEnviadas);
             }
         });
+
 
         opcionAyuda.addActionListener(new ActionListener() {
             @Override
@@ -113,6 +107,7 @@ public class VentanaNotasUsuario extends JFrame {
         this.setVisible(true);
         this.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
     }
+
 
     public void actualizarPanel(JPanel panelNuevo){
         frameVentanaNotas.getContentPane().removeAll();
