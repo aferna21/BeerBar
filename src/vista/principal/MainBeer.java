@@ -13,9 +13,9 @@ public class MainBeer {
     public static void main(String[] args) throws BeerBarException {
 
         new VentanaBienvenida();
-
+        new ControladorInicio().actualizarInformacion();
         ArrayList<Transaccion> t = new DAOTransacciones().devuelveTransacciones();
-        System.out.println(t.get(0).toString());
+        System.out.println(t.get(2).toString());
     }
 
 
