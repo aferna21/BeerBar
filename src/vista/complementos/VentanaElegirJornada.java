@@ -68,7 +68,6 @@ public class VentanaElegirJornada extends JFrame {
 
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
                 String dateString = dateFormat.format(dateChooserJornada.getDate());
-                System.out.println(dateString);
 
                 new VentanaTransacciones(nombreUsuario, dateString);
                 frameElegir.dispose();
