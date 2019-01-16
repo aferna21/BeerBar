@@ -2,8 +2,7 @@ package vista.complementos;
 
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JSpinnerDateEditor;
-import vista.principal.VentanaTransaccionesAdministrador;
-import vista.principal.VentanaTransaccionesUsuario;
+import vista.principal.VentanaTransacciones;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -19,7 +18,7 @@ public class VentanaElegirJornada extends JFrame {
     JButton botonAceptar;
     JFrame frameElegir;
 
-    public VentanaElegirJornada(String nombreUsuario) {
+    public VentanaElegirJornada() {
 
         frameElegir = this;
 
@@ -51,13 +50,7 @@ public class VentanaElegirJornada extends JFrame {
         botonAceptar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(nombreUsuario == "admin"){
-                    new VentanaTransaccionesAdministrador();
-
-                }
-                else {
-                    new VentanaTransaccionesUsuario(nombreUsuario);
-                }
+                new VentanaTransacciones();
                 frameElegir.dispose();
             }
         });

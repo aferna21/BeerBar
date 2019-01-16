@@ -2,14 +2,16 @@ package vista.principal;
 
 import vista.complementos.JOptionPaneAyuda;
 import vista.complementos.JPanelIntroducirTransaccion;
+import vista.complementos.JPanelVerTransacciones;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
-public class VentanaTransaccionesUsuario extends JFrame {
+public class VentanaTransacciones extends JFrame {
 
     JPanel panelTransacciones, panelIntroducirVenta, panelIntroducirGasto, panelVerTransacciones;
     JMenuBar barraMenu;
@@ -18,7 +20,7 @@ public class VentanaTransaccionesUsuario extends JFrame {
     JFrame frameVentanaTransacciones;
     String nombreUsuario;
 
-    public VentanaTransaccionesUsuario(String nombreUsuario){
+    public VentanaTransacciones(){
 
         frameVentanaTransacciones = this;
         this.nombreUsuario = nombreUsuario;
@@ -63,17 +65,8 @@ public class VentanaTransaccionesUsuario extends JFrame {
 
 
         //VER TRANSACCIONES
-        panelVerTransacciones = new JPanel();
-        panelVerTransacciones.setBackground(new Color(128, 128, 128));
-        panelVerTransacciones.setSize(800, 600);
-        panelVerTransacciones.setLayout(new BorderLayout());
-        JPanel panelDentroScrollTransacciones = new JPanel();
-        panelDentroScrollTransacciones.setLayout(new BoxLayout(panelDentroScrollTransacciones, BoxLayout.PAGE_AXIS));
-        panelDentroScrollTransacciones.setBorder(new EmptyBorder(new Insets(10, 10, 10, 10)));
-        JScrollPane panelScrollTransacciones = new JScrollPane(panelDentroScrollTransacciones);
-        panelScrollTransacciones.getVerticalScrollBar().setUnitIncrement(40);
-        panelVerTransacciones.add(panelScrollTransacciones, BorderLayout.CENTER);
-        panelDentroScrollTransacciones.setBackground(new Color(128, 128, 128));
+        //TODO
+        panelVerTransacciones = new JPanelVerTransacciones(new ArrayList<>());
 
 
         opcionIntroducirVenta.addActionListener(new ActionListener() {

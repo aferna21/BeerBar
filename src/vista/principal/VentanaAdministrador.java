@@ -81,7 +81,7 @@ public class VentanaAdministrador extends JFrame {
         botonTransacciones.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new VentanaElegirJornada("admin");
+                new VentanaElegirJornada();
             }
         });
 
