@@ -57,28 +57,22 @@ public class VentanaNotasAdministrador extends JFrame{
 
 
         //ESCRIBIR NOTA
-        panelEscribirNotaA = new JPanelEscribirNota("Administrador", frameVentanaNotas);
+        panelEscribirNotaA = new JPanelEscribirNota("admin", frameVentanaNotas);
 
 
         //VER NOTAS RECIBIDAS
-        //TODO
-        //notasRecibidas = new ControladorServidorDeMensajeria().devuelveNotasHacia("Admistrador");
-        notasRecibidas = new ArrayList<>();
+        notasRecibidas = new ControladorServidorDeMensajeria().devuelveNotasHacia("admin");
         panelVerNotasRecibidas = new JPanelVerNotas(notasRecibidas, false);
 
 
         //VER NOTAS ENVIADAS
-        //TODO
-        //notasEnviadas = new ControladorServidorDeMensajeria().dameNotasEscritasPor(nombreUsuario);
-        notasEnviadas = new ArrayList<>();
+        notasEnviadas = new ControladorServidorDeMensajeria().devuelveNotasEscritasPor("admin");
         panelVerNotasEnviadas = new JPanelVerNotas(notasEnviadas, true);
 
 
         //VER TODAS LAS NOTAS
-        //TODO
-        //notasTotales = new ControladorServidorDeMensajeria().dameTodasNotas();
-        notasTotales = new ArrayList<>();
-        panelVerTodasLasNotas = new JPanelVerNotas(notasTotales, false);
+        notasTotales = new ControladorServidorDeMensajeria().dameTodasNotas();
+        panelVerTodasLasNotas = new JPanelVerNotas(notasTotales, true);
 
 
         opcionEscribirNota.addActionListener(new ActionListener() {

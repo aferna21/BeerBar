@@ -124,4 +124,8 @@ public class ServidorDeMensajeria {
 
         return output;
     }
+
+    public ArrayList<Nota> devuelveTodasNotas(){
+        return notas;
+    }
 }

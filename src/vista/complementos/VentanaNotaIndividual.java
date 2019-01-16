@@ -1,6 +1,7 @@
 package vista.complementos;
 
 import modelo.Nota;
+import modelo.ServidorDeMensajeria;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -10,7 +11,7 @@ import java.awt.event.ActionListener;
 
 public class VentanaNotaIndividual extends JFrame {
 
-    JPanel panelVentanaNota, panelRemitente, panelTextoNota, panelBotones;
+    JPanel panelVentanaNota, panelRemitente, panelTextoNota, panelBotones, panelResponder;
     JFrame frameVentanaNota;
     JLabel textoRemitente, textoDestinatario, textoFecha, textoMensaje, textoNota;
     JButton botonMadre, botonResponder, botonHija;
@@ -51,7 +52,7 @@ public class VentanaNotaIndividual extends JFrame {
         panelBotones.setLayout(new FlowLayout());
         panelVentanaNota.add(panelBotones, BorderLayout.SOUTH);
 
-       botonMadre = new JButton("Ir a la madre");
+        botonMadre = new JButton("Ir a la madre");
         botonMadre.setBackground(new Color(0, 38, 77));
         botonMadre.setForeground(Color.WHITE);
         botonMadre.setOpaque(true);
@@ -59,16 +60,13 @@ public class VentanaNotaIndividual extends JFrame {
         botonMadre.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO
-                //Cargar la nota madre a partir de ControladorServidorNotas a raiz del numero de madre
-
-                /*if(nota.getMadre() != 0) {
-                    new VentanaNotaIndividual(nota.getMadre());
+                if(nota.getMadre() != 0) {
+                    new VentanaNotaIndividual(ServidorDeMensajeria.darInstancia().devuelveNota(nota.getMadre()));
                 }
                 else{
                     JOptionPane panelNoExisteMadre = new JOptionPane();
                     panelNoExisteMadre.showMessageDialog(frameVentanaNota.getContentPane(), "Esta nota no tiene madre");
-                }*/
+                }
             }
         });
 
@@ -80,8 +78,10 @@ public class VentanaNotaIndividual extends JFrame {
         botonResponder.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO
-
+                //Tienen que estar remitentes y destinatarios cambiados porque es la respuesta
+                panelResponder = new JPanelResponderNota(nota.getDestinatario().toString(), nota.getRemitente().toString(), frameVentanaNota, nota.getContador());
+                panelResponder.remove(panelResponder);
+                actualizarPanel(panelResponder);
             }
         });
 
@@ -93,16 +93,13 @@ public class VentanaNotaIndividual extends JFrame {
         botonHija.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO
-                //Cargar la nota hija a partir de ControladorServidorNotas a raiz del numero de hija
-
-                /*if(nota.getHija() != 0) {
-                    new VentanaNotaIndividual(nota.getHija());
+                if(nota.getHija() != 0) {
+                    new VentanaNotaIndividual(ServidorDeMensajeria.darInstancia().devuelveNota(nota.getHija()));
                 }
                 else{
                     JOptionPane panelNoExisteHija = new JOptionPane();
                     panelNoExisteHija.showMessageDialog(frameVentanaNota.getContentPane(), "Esta nota no tiene hija");
-                }*/
+                }
             }
         });
 
@@ -117,5 +114,13 @@ public class VentanaNotaIndividual extends JFrame {
         this.setResizable(true);
         this.setVisible(true);
         this.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+    }
+
+    public void actualizarPanel(JPanel panelNuevo){
+        frameVentanaNota.getContentPane().removeAll();
+        frameVentanaNota.getContentPane().repaint();
+        frameVentanaNota.getContentPane().revalidate();
+        frameVentanaNota.getContentPane().add(panelNuevo);
+        frameVentanaNota.setVisible(true);
     }
 }
