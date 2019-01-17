@@ -1,5 +1,6 @@
 package vista.principal;
 
+import modelo.BeerBarException;
 import vista.complementos.JOptionPaneAyuda;
 import vista.complementos.JPanelIntroducirTransaccion;
 import vista.complementos.JPanelVerTransacciones;
@@ -20,7 +21,7 @@ public class VentanaTransacciones extends JFrame {
     JFrame frameVentanaTransacciones;
     String nombreUsuario;
 
-    public VentanaTransacciones(String nombreUsuario, String fechaString){
+    public VentanaTransacciones(String nombreUsuario, String fechaString) throws BeerBarException {
 
         frameVentanaTransacciones = this;
         this.nombreUsuario = nombreUsuario;
@@ -62,7 +63,7 @@ public class VentanaTransacciones extends JFrame {
 
         //VER TRANSACCIONES
         //TODO
-        panelVerTransacciones = new JPanelVerTransacciones(new ArrayList<>());
+        panelVerTransacciones = new JPanelVerTransacciones(fechaString);
 
 
         opcionIntroducirVenta.addActionListener(new ActionListener() {

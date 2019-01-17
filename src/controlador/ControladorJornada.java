@@ -1,8 +1,10 @@
 package controlador;
 
-import bbdd.DAONotas;
 import bbdd.DAOTransacciones;
 import modelo.*;
+
+import java.util.ArrayList;
+
 
 public class ControladorJornada {
 
@@ -18,5 +20,12 @@ public class ControladorJornada {
         Transaccion t = new Transaccion(cantidad, concepto, instancia.getFecha().fromStringAbreviadoToFecha(fechaString), GestorDeUsuarios.darInstancia().getUsuario(nombreUsuario));
         instancia.anadirTransaccion(t);
         new DAOTransacciones().introduceTransaccion(cantidad, fechaString, nombreUsuario, concepto);
+    }
+
+    public ArrayList<Transaccion> getTransacciones(String fechaString) throws BeerBarException {
+
+        instancia.setFecha(new Fecha().fromStringAbreviadoToFecha(fechaString));
+
+        return instancia.getTransacciones();
     }
 }

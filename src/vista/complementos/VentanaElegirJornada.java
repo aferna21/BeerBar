@@ -2,6 +2,7 @@ package vista.complementos;
 
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JSpinnerDateEditor;
+import modelo.BeerBarException;
 import vista.principal.VentanaTransacciones;
 
 import javax.swing.*;
@@ -69,7 +70,11 @@ public class VentanaElegirJornada extends JFrame {
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
                 String dateString = dateFormat.format(dateChooserJornada.getDate());
 
-                new VentanaTransacciones(nombreUsuario, dateString);
+                try {
+                    new VentanaTransacciones(nombreUsuario, dateString);
+                } catch (BeerBarException e1) {
+                    e1.printStackTrace();
+                }
                 frameElegir.dispose();
             }
         });

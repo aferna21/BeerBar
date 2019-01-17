@@ -1,5 +1,9 @@
 package vista.complementos;
 
+import controlador.ControladorCalendario;
+import controlador.ControladorJornada;
+import modelo.BeerBarException;
+import modelo.Nota;
 import modelo.Transaccion;
 
 import javax.swing.*;
@@ -14,7 +18,7 @@ public class JPanelVerTransacciones extends JPanel {
     JPanel panelDentroScroll;
     JScrollPane panelScroll;
 
-    public JPanelVerTransacciones(ArrayList<Transaccion> transacciones){
+    public JPanelVerTransacciones(String fechaString) throws BeerBarException {
 
         this.setBackground(new Color(128, 128, 128));
         this.setSize(800, 600);
@@ -30,6 +34,8 @@ public class JPanelVerTransacciones extends JPanel {
         panelDentroScroll.setBackground(new Color(128, 128, 128));
 
         //TODO
+        ArrayList<Transaccion> transacciones = new ControladorJornada().getTransacciones(fechaString);
+
         while (!transacciones.isEmpty()){
             Transaccion transaccionActual = transacciones.get(0);
             JButton boton = new JButton(
