@@ -34,8 +34,13 @@ public class ControladorCalendario {
         }
     }
 
-    public Jornada devuelveJornada(Fecha f){
-        return instancia.getJornada(f);
+    public Jornada accederAJornada(Fecha f){
+        Jornada jornada = instancia.getJornada(f);
+        if(jornada == null){
+            jornada = new Jornada(f, new ArrayList<Transaccion>());
+            instancia.anadirJornada(jornada);
+        }
+        return jornada;
     }
 
     public float obtenerBeneficiosEnRango(Fecha fechainicio, Fecha fechafin){
@@ -56,12 +61,9 @@ public class ControladorCalendario {
     }
 
 
+    //Aqui no se si cambiar el atributo fecha por directamente el atributo jornada. Yo creo que si, pero ya lo veras tu.
     public void introduceTransaccion(float cantidad, String concepto, Fecha fecha, Usuario usuario){
         Jornada jornada = instancia.getJornada(fecha);
-        if(jornada == null){
-            jornada = new Jornada(fecha, new ArrayList<Transaccion>());
-            instancia.anadirJornada(jornada);
-        }
         //anade al singleton
         jornada.anadirTransaccion(new Transaccion(cantidad, concepto, fecha, usuario));
 
