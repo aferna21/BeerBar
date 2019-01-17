@@ -96,6 +96,7 @@ public class VentanaTransacciones extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 float sumaTotal = 0;
                 try {
+                    new ControladorCalendario().rellenaCalendario();
                     ArrayList<Transaccion> transacciones = new ControladorCalendario().obtenTransaccionesDelDia(new Fecha().fromStringAbreviadoToFecha(fechaString));
                     while(!transacciones.isEmpty()){
                         sumaTotal += transacciones.get(0).getCantidad();
