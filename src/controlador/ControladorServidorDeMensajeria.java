@@ -64,7 +64,8 @@ public class ControladorServidorDeMensajeria {
             //eliminar del Servidor
             this.instancia.eliminarNota(this.instancia.devuelveNota(i));
             //elimina de la bbdd
-            new DAONotas().eliminaNota(i);
+
+            new DAONotas().eliminaNota(i, this.instancia.devuelveNota(i).getHija());
         }
     }
 }

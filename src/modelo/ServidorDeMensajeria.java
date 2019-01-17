@@ -136,6 +136,10 @@ public class ServidorDeMensajeria {
     }
 
     public void eliminarNota(Nota n){
+        int i = n.getHija();
+        if(i != 0){
+            this.devuelveNota(i).setMadre(0);
+        }
         this.notas.remove(n);
     }
 }
