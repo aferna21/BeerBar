@@ -65,8 +65,12 @@ public class ControladorCalendario {
     //Aqui no se si cambiar el atributo fecha por directamente el atributo jornada. Yo creo que si, pero ya lo veras tu.
     public void introduceTransaccion(float cantidad, String concepto, Fecha fecha, Usuario usuario){
         Jornada jornada = calendario.getJornada(fecha);
+        if(jornada == null){
+            ArrayList<Transaccion> transacciones = new ArrayList<>();
+            calendario.anadirJornada(new Jornada(fecha, transacciones));
+        }
         //anade al singleton
-        jornada.anadirTransaccion(new Transaccion(cantidad, concepto, fecha, usuario));
+        //jornada.anadirTransaccion(new Transaccion(cantidad, concepto, fecha, usuario));
 
         //anade a la BBDD, hay que cambiar esto, lo se.
         new DAOTransacciones().introduceTransaccion(cantidad, fecha.toStringAbreviado(), usuario.getNombre(), concepto);
