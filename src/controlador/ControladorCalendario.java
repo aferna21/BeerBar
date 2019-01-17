@@ -67,10 +67,11 @@ public class ControladorCalendario {
         Jornada jornada = calendario.getJornada(fecha);
         if(jornada == null){
             ArrayList<Transaccion> transacciones = new ArrayList<>();
-            calendario.anadirJornada(new Jornada(fecha, transacciones));
+            jornada = new Jornada(fecha, transacciones);
+            calendario.anadirJornada(jornada);
         }
         //anade al singleton
-        //jornada.anadirTransaccion(new Transaccion(cantidad, concepto, fecha, usuario));
+        jornada.anadirTransaccion(new Transaccion(cantidad, concepto, fecha, usuario));
 
         //anade a la BBDD, hay que cambiar esto, lo se.
         new DAOTransacciones().introduceTransaccion(cantidad, fecha.toStringAbreviado(), usuario.getNombre(), concepto);
