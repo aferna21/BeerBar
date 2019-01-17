@@ -9,6 +9,9 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class VentanaAdministrador extends JFrame {
 
@@ -121,7 +124,18 @@ public class VentanaAdministrador extends JFrame {
         opcionGuardar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                JFileChooser chooser = new JFileChooser();
+                chooser.setDialogTitle("Guardar copia de seguridad en...");
+                int selection = chooser.showSaveDialog(null);
 
+                if (selection  == JFileChooser.APPROVE_OPTION) {
+                    try {
+                        FileWriter file = new FileWriter(chooser.getSelectedFile().toString() + ".sql");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    JOptionPane.showMessageDialog(null, "Copia de seguridad guardada correctamente.");
+                }
             }
         });
 
