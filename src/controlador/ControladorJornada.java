@@ -10,12 +10,13 @@ public class ControladorJornada {
 
     Jornada instancia;
 
-    public ControladorJornada(){
+    public ControladorJornada() throws BeerBarException {
         instancia = Jornada.darInstancia();
     }
 
 
     public void introducirTransaccion(float cantidad, String concepto, String nombreUsuario, String fechaString) throws BeerBarException {
+
         instancia.setFecha(new Fecha().fromStringAbreviadoToFecha(fechaString));
         Transaccion t = new Transaccion(cantidad, concepto, instancia.getFecha().fromStringAbreviadoToFecha(fechaString), GestorDeUsuarios.darInstancia().getUsuario(nombreUsuario));
         instancia.anadirTransaccion(t);
@@ -25,7 +26,6 @@ public class ControladorJornada {
     public ArrayList<Transaccion> getTransacciones(String fechaString) throws BeerBarException {
 
         instancia.setFecha(new Fecha().fromStringAbreviadoToFecha(fechaString));
-
         return instancia.getTransacciones();
     }
 }

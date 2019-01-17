@@ -45,6 +45,10 @@ public class Calendario {
         return null;
     }
 
+    public void addJornada(Jornada j){
+        this.jornadas.add(j);
+    }
+
     private float obtenerBeneficios(Fecha fecha){
         return buscarJornada(fecha).sumaTransacciones();
     }
@@ -71,7 +75,10 @@ public class Calendario {
      * @param fecha dia concreto del que se quieren ver las transacciones
      * @return conjunto de transacciones de un dia.
      */
-        private ArrayList<Transaccion> verTransaccionesDelDia(Fecha fecha){
+    private ArrayList<Transaccion> verTransaccionesDelDia(Fecha fecha){
+        if (buscarJornada(fecha).getTransacciones().isEmpty()){
+            return new ArrayList<Transaccion>();
+        }
         return buscarJornada(fecha).getTransacciones();
     }
 

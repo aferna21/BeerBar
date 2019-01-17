@@ -2,16 +2,18 @@ package vista.complementos;
 
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JSpinnerDateEditor;
+import modelo.BeerBarException;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 
 public class VentanaVerTransaccionesEntreDosFechas extends JFrame {
 
-    JPanel panelSelector;
+    JPanel panelSelector, panelTransacciones;
     JMenu ayuda;
     JMenuBar barraMenu;
     JMenuItem opcionAyuda;
@@ -40,6 +42,9 @@ public class VentanaVerTransaccionesEntreDosFechas extends JFrame {
         panelSelector.setBackground(new Color(128, 128, 128));
         panelSelector.setLayout(new BoxLayout(panelSelector, BoxLayout.PAGE_AXIS));
 
+        panelTransacciones = new JPanel();
+        panelTransacciones.setLayout(new BoxLayout(panelTransacciones, BoxLayout.PAGE_AXIS));
+
         textoJornadaPrincipio = new JLabel("Selecciona la fecha de inicio.");
         dateChooserJornadaInicio = new JDateChooser(null, null, null, new JSpinnerDateEditor());
         textoJornadaFinal = new JLabel("Selecciona la fecha final.");
@@ -48,11 +53,12 @@ public class VentanaVerTransaccionesEntreDosFechas extends JFrame {
         panelSelector.add(textoJornadaPrincipio);
         panelSelector.add(dateChooserJornadaInicio);
         this.add(panelSelector, BorderLayout.NORTH);
+        this.add(panelTransacciones, BorderLayout.CENTER);
 
         panelSelector.add(textoJornadaFinal);
         panelSelector.add(dateChooserJornadaFinal);
 
-        botonAceptar = new JButton("Enviar");
+        botonAceptar = new JButton("Aceptar");
         botonAceptar.setBackground(new Color(0, 38, 77));
         botonAceptar.setForeground(Color.WHITE);
         botonAceptar.setOpaque(true);
@@ -65,7 +71,15 @@ public class VentanaVerTransaccionesEntreDosFechas extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //TODO
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                String fechaInicioString = dateFormat.format(dateChooserJornadaInicio.getDate());
+                String fechaFinalString = dateFormat.format(dateChooserJornadaFinal.getDate());
 
+                try {
+                    actualizarPanel(new JPanelVerTransacciones(fechaInicioString, fechaFinalString));
+                } catch (BeerBarException e1) {
+                    e1.printStackTrace();
+                }
             }
         });
 
@@ -82,5 +96,13 @@ public class VentanaVerTransaccionesEntreDosFechas extends JFrame {
         this.setVisible(true);
         this.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 
+    }
+
+    public void actualizarPanel(JPanel panelNuevo){
+        panelTransacciones.removeAll();
+        panelTransacciones.repaint();
+        panelTransacciones.revalidate();
+        panelTransacciones.add(panelNuevo);
+        panelTransacciones.setVisible(true);
     }
 }

@@ -63,7 +63,7 @@ public class VentanaTransacciones extends JFrame {
 
         //VER TRANSACCIONES
         //TODO
-        panelVerTransacciones = new JPanelVerTransacciones(fechaString);
+        panelVerTransacciones = new JPanelVerTransacciones(fechaString, "");
 
 
         opcionIntroducirVenta.addActionListener(new ActionListener() {

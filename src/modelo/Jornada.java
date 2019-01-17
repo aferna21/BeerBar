@@ -12,7 +12,7 @@ public class Jornada {
     private ArrayList<Transaccion> transacciones;
 
     private Jornada(){
-        transacciones = new ArrayList<>();
+        transacciones = new ArrayList<Transaccion>();
     }
 
     public static Jornada darInstancia(){

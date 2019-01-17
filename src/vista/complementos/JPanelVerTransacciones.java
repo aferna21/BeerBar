@@ -11,6 +11,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class JPanelVerTransacciones extends JPanel {
@@ -18,7 +19,7 @@ public class JPanelVerTransacciones extends JPanel {
     JPanel panelDentroScroll;
     JScrollPane panelScroll;
 
-    public JPanelVerTransacciones(String fechaString) throws BeerBarException {
+    public JPanelVerTransacciones(String fechaString, String fechaFinalString) throws BeerBarException {
 
         this.setBackground(new Color(128, 128, 128));
         this.setSize(800, 600);
@@ -33,8 +34,13 @@ public class JPanelVerTransacciones extends JPanel {
         this.add(panelScroll, BorderLayout.CENTER);
         panelDentroScroll.setBackground(new Color(128, 128, 128));
 
+        ArrayList<Transaccion> transacciones;
         //TODO
-        ArrayList<Transaccion> transacciones = new ControladorJornada().getTransacciones(fechaString);
+        if (fechaFinalString.equals("")) {
+            transacciones = new ControladorJornada().getTransacciones(fechaString);
+        } else {
+            transacciones = new ControladorCalendario().getTransaccionesEntreDosFechas(fechaString, fechaFinalString);
+        }
 
         while (!transacciones.isEmpty()){
             Transaccion transaccionActual = transacciones.get(0);

@@ -3,6 +3,7 @@ package controlador;
 import bbdd.DAOTransacciones;
 import modelo.*;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 
@@ -14,10 +15,26 @@ public class ControladorCalendario {
         instancia = Calendario.darInstancia();
     }
 
+    public ArrayList<Transaccion> getTransaccionesEntreDosFechas(String fechaInicioString, String fechaFinalString) throws BeerBarException {
 
-    public ArrayList<Transaccion> getTransacciones(String fechaString) throws BeerBarException {
 
-        Fecha f = new Fecha().fromStringAbreviadoToFecha(fechaString);
-        return instancia.verTransaccionesDeLosDias(f, f);
+        Fecha fechaInicio = new Fecha().fromStringAbreviadoToFecha(fechaInicioString);
+        Fecha fechaFinal = new Fecha().fromStringAbreviadoToFecha(fechaFinalString);
+        Fecha fechaAux = fechaInicio;
+
+        ArrayList<Transaccion> transacciones = new ArrayList<Transaccion>();
+
+        Jornada.darInstancia().setFecha(fechaInicio);
+        System.out.println(Jornada.darInstancia().getFecha());
+
+        while (!fechaAux.equals(fechaFinal)){
+            transacciones.addAll(Jornada.darInstancia().getTransacciones());
+            System.out.println("Transacciones en la Jornada: " + Jornada.darInstancia().getTransacciones().size());
+            fechaAux.avanza();
+        }
+
+
+        return transacciones;
+        //return instancia.verTransaccionesDeLosDias(fechaInicio, fechaFinal);
     }
 }
