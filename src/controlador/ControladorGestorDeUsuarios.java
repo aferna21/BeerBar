@@ -1,9 +1,7 @@
 package controlador;
 
 import bbdd.DAOUsuarios;
-import modelo.BeerBarException;
-import modelo.GestorDeUsuarios;
-import modelo.Usuario;
+import modelo.*;
 
 import java.util.ArrayList;
 
@@ -42,6 +40,9 @@ public class ControladorGestorDeUsuarios {
     public boolean eliminarUsuario(String nombre) throws BeerBarException {
         boolean b = false;
         if(GestorDeUsuarios.darInstancia().getUsuario(nombre) != null){
+            /*********************/
+            new ControladorServidorDeMensajeria().eliminaNotasDe(this.gestordeusuarios.getUsuario(nombre));
+            /*********************/
             new DAOUsuarios().eliminarUsuario(nombre);
             gestordeusuarios.eliminarUsuario(nombre);
             b = true;

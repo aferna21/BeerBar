@@ -12,14 +12,7 @@ public class ControladorServidorDeMensajeria {
         instancia = ServidorDeMensajeria.darInstancia();
     }
 
-    /**
-     * este metodo es solo para el testeo
-     * @param texto
-     * @param nombreremitente
-     * @param nombredestinatario
-     * @return
-     * @throws BeerBarException
-     */
+
     public Nota crearNota(String texto, String nombreremitente, String nombredestinatario) throws BeerBarException {
         Usuario remitente = GestorDeUsuarios.darInstancia().getUsuario(nombreremitente);
         Usuario destinatario = GestorDeUsuarios.darInstancia().getUsuario(nombredestinatario);
@@ -59,5 +52,19 @@ public class ControladorServidorDeMensajeria {
 
     public ArrayList<Nota> dameTodasNotas(){
         return ServidorDeMensajeria.darInstancia().devuelveTodasNotas();
+    }
+
+    public void eliminaNotasDe(Usuario usuario){
+        ArrayList<Integer> idsNotasAEliminar = new ArrayList<Integer>();
+        for(Nota n:ServidorDeMensajeria.darInstancia().devuelveNotasEnRelacionA(usuario)){
+            idsNotasAEliminar.add(n.getContador());
+        }
+
+        for(int i:idsNotasAEliminar){
+            //eliminar del Servidor
+            this.instancia.eliminarNota(this.instancia.devuelveNota(i));
+            //elimina de la bbdd
+            new DAONotas().eliminaNota(i);
+        }
     }
 }

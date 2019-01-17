@@ -84,7 +84,7 @@ public class DAOUsuarios extends Conexion {
         try {
             st = this.getConexion().prepareStatement("DELETE FROM usuarios WHERE nombre_usuario='"+nombre+ "';");
             st.executeUpdate();
-            //System.out.println("Usuario eliminado");
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

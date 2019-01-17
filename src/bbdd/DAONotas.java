@@ -183,4 +183,17 @@ public class DAONotas extends Conexion {
 
         this.cerrarConexion();
     }
+
+    public void eliminaNota(int id){
+        this.abrirConexion();
+        PreparedStatement st = null;
+        try {
+            st = this.getConexion().prepareStatement("DELETE FROM notas WHERE id_nota="+id+ ";");
+            st.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        this.cerrarConexion();
+    }
 }

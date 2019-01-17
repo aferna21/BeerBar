@@ -128,4 +128,14 @@ public class ServidorDeMensajeria {
     public ArrayList<Nota> devuelveTodasNotas(){
         return notas;
     }
+
+    public ArrayList<Nota> devuelveNotasEnRelacionA(Usuario u){
+        ArrayList<Nota> output = this.mostrarNotasDe(u);
+        output.addAll(this.mostrarNotasHacia(u));
+        return output;
+    }
+
+    public void eliminarNota(Nota n){
+        this.notas.remove(n);
+    }
 }
