@@ -15,8 +15,8 @@ public class VentanaAdministrador extends JFrame {
     JPanel panelAdministrador;
     JButton botonNotas, botonTransacciones, botonGestionUsuarios;
     JMenuBar barraMenu;
-    JMenu ayuda, menu;
-    JMenuItem opcionAyuda, opcionCerrarsesion;
+    JMenu ayuda, menu, copiaSeguridad;
+    JMenuItem opcionAyuda, opcionCerrarsesion, opcionGuardar, opcionCargar;
     JFrame frameAdministrador;
 
     public VentanaAdministrador(String nombreUsuario){
@@ -30,12 +30,18 @@ public class VentanaAdministrador extends JFrame {
         barraMenu = new JMenuBar();
         ayuda = new JMenu("Ayuda");
         menu = new JMenu("Menu");
+        copiaSeguridad = new JMenu("Copia de seguridad");
         opcionAyuda = new JMenuItem("Ayuda");
         opcionCerrarsesion = new JMenuItem("Cerrar sesion");
+        opcionGuardar = new JMenuItem("Guardar una copia de seguridad");
+        opcionCargar = new JMenuItem("Cargar una copiad de seguridad");
         ayuda.add(opcionAyuda);
         menu.add(opcionCerrarsesion);
+        copiaSeguridad.add(opcionGuardar);
+        copiaSeguridad.add(opcionCargar);
         barraMenu.add(menu);
         barraMenu.add(ayuda);
+        barraMenu.add(copiaSeguridad);
         this.setJMenuBar(barraMenu);
 
         panelAdministrador = new JPanel();

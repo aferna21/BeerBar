@@ -17,7 +17,7 @@ public class VentanaNotaIndividual extends JFrame {
     JLabel textoRemitente, textoDestinatario, textoFecha, textoMensaje, textoNota;
     JButton botonMadre, botonResponder, botonHija, botonEliminar;
 
-    public VentanaNotaIndividual(Nota nota, String nombreDelQueLaVe){
+    public VentanaNotaIndividual(Nota nota, String nombreDelQueLaVe, JPanel panelAnterior){
 
         frameVentanaNota = this;
 
@@ -62,7 +62,7 @@ public class VentanaNotaIndividual extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(nota.getMadre() != 0) {
-                    new VentanaNotaIndividual(ServidorDeMensajeria.darInstancia().devuelveNota(nota.getMadre()), nombreDelQueLaVe);
+                    new VentanaNotaIndividual(ServidorDeMensajeria.darInstancia().devuelveNota(nota.getMadre()), nombreDelQueLaVe, panelAnterior);
                 }
                 else{
                     JOptionPane panelNoExisteMadre = new JOptionPane();
@@ -85,7 +85,7 @@ public class VentanaNotaIndividual extends JFrame {
                     noResponderATiMismo.showMessageDialog(frameVentanaNota.getContentPane(), "No puedes responderte a ti mismo.");
                 }
                 else {
-                    panelResponder = new JPanelResponderNota(nota.getDestinatario().toString(), nota.getRemitente().toString(), frameVentanaNota, nota.getContador());
+                    panelResponder = new JPanelResponderNota(nombreDelQueLaVe, nota.getRemitente().toString(), frameVentanaNota, nota.getContador());
                     panelResponder.remove(panelResponder);
                     actualizarPanel(panelResponder);
                 }
@@ -101,7 +101,7 @@ public class VentanaNotaIndividual extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(nota.getHija() != 0) {
-                    new VentanaNotaIndividual(ServidorDeMensajeria.darInstancia().devuelveNota(nota.getHija()), nombreDelQueLaVe);
+                    new VentanaNotaIndividual(ServidorDeMensajeria.darInstancia().devuelveNota(nota.getHija()), nombreDelQueLaVe, panelAnterior);
                 }
                 else{
                     JOptionPane panelNoExisteHija = new JOptionPane();
@@ -119,7 +119,7 @@ public class VentanaNotaIndividual extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(nota.getHija() != 0) {
-                    new VentanaNotaIndividual(ServidorDeMensajeria.darInstancia().devuelveNota(nota.getHija()), nombreDelQueLaVe);
+                    new VentanaNotaIndividual(ServidorDeMensajeria.darInstancia().devuelveNota(nota.getHija()), nombreDelQueLaVe, panelAnterior);
                 }
                 else{
                     JOptionPane panelNoExisteHija = new JOptionPane();

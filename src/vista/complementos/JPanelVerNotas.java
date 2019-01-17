@@ -4,6 +4,7 @@ import controlador.ControladorInicio;
 import controlador.ControladorServidorDeMensajeria;
 import modelo.BeerBarException;
 import modelo.Nota;
+import vista.principal.VentanaNotasAdministrador;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -16,8 +17,11 @@ public class JPanelVerNotas extends JPanel{
 
     JPanel panelDentroScroll;
     JScrollPane panelScroll;
+    JPanel panelVerNota;
 
     public JPanelVerNotas(ArrayList<Nota> notas, boolean sonEnviadas, String nombreDelQueLaVe){
+
+        panelVerNota = this;
 
         this.setBackground(new Color(128, 128, 128));
         this.setSize(800, 600);
@@ -53,7 +57,7 @@ public class JPanelVerNotas extends JPanel{
                         boton.setBackground(new Color(140, 255, 102));
                         new ControladorServidorDeMensajeria().leerNota(notaActual);
                     }
-                    new VentanaNotaIndividual(notaActual, nombreDelQueLaVe);
+                    new VentanaNotaIndividual(notaActual, nombreDelQueLaVe, panelVerNota);
                     try {
                         new ControladorInicio().actualizarInformacion();
                     } catch (BeerBarException e1) {
