@@ -77,7 +77,7 @@ public class VentanaNotasUsuario extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 notasRecibidas = new ControladorServidorDeMensajeria().devuelveNotasHacia(nombreUsuario);
-                panelVerNotasRecibidas = new JPanelVerNotas(notasRecibidas, false, nombreUsuario);
+                panelVerNotasRecibidas = new JPanelVerNotas(notasRecibidas, false, nombreUsuario, null);
                 actualizarPanel(panelVerNotasRecibidas);
             }
         });
@@ -87,7 +87,7 @@ public class VentanaNotasUsuario extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 notasEnviadas = new ControladorServidorDeMensajeria().devuelveNotasEscritasPor(nombreUsuario);
-                panelVerNotasEnviadas = new JPanelVerNotas(notasEnviadas, true, nombreUsuario);
+                panelVerNotasEnviadas = new JPanelVerNotas(notasEnviadas, true, nombreUsuario, null);
                 actualizarPanel(panelVerNotasEnviadas);
             }
         });

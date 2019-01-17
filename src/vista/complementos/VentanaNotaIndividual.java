@@ -3,6 +3,7 @@ package vista.complementos;
 import controlador.ControladorServidorDeMensajeria;
 import modelo.Nota;
 import modelo.ServidorDeMensajeria;
+import vista.principal.VentanaNotasAdministrador;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -17,7 +18,7 @@ public class VentanaNotaIndividual extends JFrame {
     JLabel textoRemitente, textoDestinatario, textoFecha, textoMensaje, textoNota;
     JButton botonMadre, botonResponder, botonHija, botonEliminar;
 
-    public VentanaNotaIndividual(Nota nota, String nombreDelQueLaVe, JPanelVerNotas panelAnterior){
+    public VentanaNotaIndividual(Nota nota, String nombreDelQueLaVe, VentanaNotasAdministrador ventanaNotasAdministrador){
 
         frameVentanaNota = this;
 
@@ -62,7 +63,7 @@ public class VentanaNotaIndividual extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(nota.getMadre() != 0) {
-                    new VentanaNotaIndividual(ServidorDeMensajeria.darInstancia().devuelveNota(nota.getMadre()), nombreDelQueLaVe, panelAnterior);
+                    new VentanaNotaIndividual(ServidorDeMensajeria.darInstancia().devuelveNota(nota.getMadre()), nombreDelQueLaVe, ventanaNotasAdministrador);
                 }
                 else{
                     JOptionPane panelNoExisteMadre = new JOptionPane();
@@ -102,7 +103,7 @@ public class VentanaNotaIndividual extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(nota.getHija() != 0) {
-                    new VentanaNotaIndividual(ServidorDeMensajeria.darInstancia().devuelveNota(nota.getHija()), nombreDelQueLaVe, panelAnterior);
+                    new VentanaNotaIndividual(ServidorDeMensajeria.darInstancia().devuelveNota(nota.getHija()), nombreDelQueLaVe, ventanaNotasAdministrador);
                 }
                 else{
                     JOptionPane panelNoExisteHija = new JOptionPane();
@@ -122,7 +123,9 @@ public class VentanaNotaIndividual extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 new ControladorServidorDeMensajeria().eliminarNota(nota);
                 JOptionPane panelNotaEliminada = new JOptionPane();
+                ventanaNotasAdministrador.dispose();
                 panelNotaEliminada.showMessageDialog(frameVentanaNota.getContentPane(), "Nota eliminada.");
+                frameVentanaNota.dispose();
             }
         });
 
