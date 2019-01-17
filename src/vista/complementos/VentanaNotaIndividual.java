@@ -144,7 +144,7 @@ public class VentanaNotaIndividual extends JFrame {
         panelBotones.add(botonMadre);
         panelBotones.add(botonResponder);
         panelBotones.add(botonHija);
-        panelBotones.add(botonEliminar);
+        if(nombreDelQueLaVe.equals("admin")) panelBotones.add(botonEliminar);
         panelVentanaNota.setBorder(new EmptyBorder(new Insets(10,10, 10, 10)));
 
         this.getContentPane().add(panelVentanaNota);
