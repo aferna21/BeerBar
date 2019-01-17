@@ -1,6 +1,7 @@
 package modelo;
 
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -148,5 +149,17 @@ public class Calendario {
             }
         }
         return null;
+    }
+
+    public ArrayList<Transaccion> verTodasDe(Usuario usuario){
+        ArrayList<Transaccion> salida = new ArrayList<Transaccion>();
+        for(Jornada j:this.jornadas){
+            for(Transaccion t: j.getTransacciones()){
+                if(t.getUsuario().equals(usuario)){
+                    salida.add(t);
+                }
+            }
+        }
+        return salida;
     }
 }
