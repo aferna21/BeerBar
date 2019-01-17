@@ -156,6 +156,8 @@ public class VentanaAdministrador extends JFrame {
                 File archivo = chooser.getSelectedFile();
                 if(archivo.getName().contains("sql")){
                     new ControladorCopiaDeSeguridad().cargarCopiaDeSeguridad(archivo.getAbsolutePath());
+                    JOptionPane archivoincorrecto = new JOptionPane();
+                    archivoincorrecto.showMessageDialog(new JFrame().getContentPane(), "Copia cargada con exito");
                 }else{
                     JOptionPane archivoincorrecto = new JOptionPane();
                     archivoincorrecto.showMessageDialog(new JFrame().getContentPane(), "Error en la seleccion del archivo");
