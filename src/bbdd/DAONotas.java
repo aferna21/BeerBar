@@ -184,7 +184,7 @@ public class DAONotas extends Conexion {
         this.cerrarConexion();
     }
 
-    public void eliminaNota(int id, int idhija){
+    public void eliminaNota(int id, int idhija, int idmadre){
         this.abrirConexion();
         PreparedStatement st = null;
         try {
@@ -192,6 +192,11 @@ public class DAONotas extends Conexion {
             st.executeUpdate();
             if(idhija != 0){
                 st = this.getConexion().prepareStatement("UPDATE notas SET madre = 0 WHERE id_nota = "+idhija+";");
+                st.executeUpdate();
+            }
+            if(idmadre != 0){
+                st = this.getConexion().prepareStatement("UPDATE notas SET hija = 0 WHERE id_nota = "+idmadre+";");
+                st.executeUpdate();
             }
 
         } catch (SQLException e) {

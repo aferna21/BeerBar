@@ -65,7 +65,7 @@ public class ControladorServidorDeMensajeria {
             this.instancia.eliminarNota(this.instancia.devuelveNota(i));
             //elimina de la bbdd
 
-            new DAONotas().eliminaNota(i, this.instancia.devuelveNota(i).getHija());
+            new DAONotas().eliminaNota(i, this.instancia.devuelveNota(i).getHija(), this.instancia.devuelveNota(i).getMadre());
         }
     }
 }
