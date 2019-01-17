@@ -18,11 +18,8 @@ public class JPanelVerNotas extends JPanel{
     JPanel panelDentroScroll;
     JScrollPane panelScroll;
     JPanelVerNotas panelVerNota;
-    VentanaNotasAdministrador ventanaAnterior;
 
-    public JPanelVerNotas(ArrayList<Nota> notas, boolean sonEnviadas, String nombreDelQueLaVe){
-
-        this.ventanaAnterior = ventanaAnterior;
+    public JPanelVerNotas(ArrayList<Nota> notas, boolean sonEnviadas, String nombreDelQueLaVe, VentanaNotasAdministrador ventanaNotasAdministrador){
 
         panelVerNota = this;
 
@@ -59,7 +56,7 @@ public class JPanelVerNotas extends JPanel{
                         boton.setBackground(new Color(140, 255, 102));
                         new ControladorServidorDeMensajeria().leerNota(notaActual);
                     }
-                    new VentanaNotaIndividual(notaActual, nombreDelQueLaVe, panelVerNota);
+                    new VentanaNotaIndividual(notaActual, nombreDelQueLaVe, ventanaNotasAdministrador);
                     try {
                         new ControladorInicio().actualizarInformacion();
                     } catch (BeerBarException e1) {

@@ -23,8 +23,11 @@ public class VentanaNotasAdministrador extends JFrame{
     JMenuItem opcionEscribirNota, opcionVerNotasRecibidas, opcionVerNotasEnviadas, opcionVerTodasLasNotas, opcionAyuda;
     JFrame frameVentanaNotas;
     ArrayList<Nota> notasRecibidas, notasEnviadas, notasTotales;
+    VentanaNotasAdministrador ventanaNotasAdministrador;
 
     public VentanaNotasAdministrador(){
+
+        ventanaNotasAdministrador = this;
 
         frameVentanaNotas = this;
 
@@ -77,7 +80,7 @@ public class VentanaNotasAdministrador extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 notasRecibidas = new ControladorServidorDeMensajeria().devuelveNotasHacia("admin");
-                panelVerNotasRecibidas = new JPanelVerNotas(notasRecibidas, false, "admin");
+                panelVerNotasRecibidas = new JPanelVerNotas(notasRecibidas, false, "admin", ventanaNotasAdministrador);
                 actualizarPanel(panelVerNotasRecibidas);
             }
         });
@@ -87,7 +90,7 @@ public class VentanaNotasAdministrador extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 notasEnviadas = new ControladorServidorDeMensajeria().devuelveNotasEscritasPor("admin");
-                panelVerNotasEnviadas = new JPanelVerNotas(notasEnviadas, true, "admin");
+                panelVerNotasEnviadas = new JPanelVerNotas(notasEnviadas, true, "admin", ventanaNotasAdministrador);
                 actualizarPanel(panelVerNotasEnviadas);
             }
         });
@@ -97,7 +100,7 @@ public class VentanaNotasAdministrador extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 notasTotales = new ControladorServidorDeMensajeria().dameTodasNotas();
-                panelVerTodasLasNotas = new JPanelVerNotas(notasTotales, true, "admin");
+                panelVerTodasLasNotas = new JPanelVerNotas(notasTotales, true, "admin", ventanaNotasAdministrador);
                 actualizarPanel(panelVerTodasLasNotas);
             }
         });
@@ -125,5 +128,12 @@ public class VentanaNotasAdministrador extends JFrame{
         frameVentanaNotas.getContentPane().revalidate();
         frameVentanaNotas.getContentPane().add(panelNuevo);
         frameVentanaNotas.setVisible(true);
+    }
+
+    public void actualizaPanelVerTodas() throws BeerBarException {
+        new ControladorInicio().actualizarInformacion();
+        notasTotales = new ControladorServidorDeMensajeria().dameTodasNotas();
+        panelVerTodasLasNotas = new JPanelVerNotas(notasTotales, true, "admin", ventanaNotasAdministrador);
+        actualizarPanel(panelVerTodasLasNotas);
     }
 }
