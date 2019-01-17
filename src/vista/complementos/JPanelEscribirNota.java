@@ -51,6 +51,11 @@ public class JPanelEscribirNota extends JPanel {
         botonEnviar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if(campoTextoDestinatario.getText().equals(remitente)){
+                    JOptionPane error = new JOptionPane();
+                    error.showMessageDialog(frame.getContentPane(), "No te puedes mandar un mensaje a ti mismo");
+                    return;
+                }
                 try {
                     if(new ControladorGestorDeUsuarios().existe(campoTextoDestinatario.getText())){
                         new ControladorServidorDeMensajeria().escribirNota(campoMensaje.getText(), remitente, campoTextoDestinatario.getText(), 0);
