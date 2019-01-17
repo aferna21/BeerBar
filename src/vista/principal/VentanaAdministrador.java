@@ -118,6 +118,13 @@ public class VentanaAdministrador extends JFrame {
             }
         });
 
+        opcionGuardar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+
+            }
+        });
+
         this.setMinimumSize(new Dimension(400, 200));
         this.setResizable(true);
         this.setVisible(true);
