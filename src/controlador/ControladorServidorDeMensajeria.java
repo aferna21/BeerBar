@@ -68,4 +68,9 @@ public class ControladorServidorDeMensajeria {
             new DAONotas().eliminaNota(i, this.instancia.devuelveNota(i).getHija(), this.instancia.devuelveNota(i).getMadre());
         }
     }
+
+    public void eliminarNota(Nota n){
+        this.instancia.eliminarNota(n);
+        new DAONotas().eliminaNota(n.getContador(), n.getHija(), n.getMadre());
+    }
 }

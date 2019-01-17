@@ -1,5 +1,6 @@
 package vista.complementos;
 
+import controlador.ControladorServidorDeMensajeria;
 import modelo.Nota;
 import modelo.ServidorDeMensajeria;
 
@@ -14,7 +15,7 @@ public class VentanaNotaIndividual extends JFrame {
     JPanel panelVentanaNota, panelRemitente, panelTextoNota, panelBotones, panelResponder;
     JFrame frameVentanaNota;
     JLabel textoRemitente, textoDestinatario, textoFecha, textoMensaje, textoNota;
-    JButton botonMadre, botonResponder, botonHija;
+    JButton botonMadre, botonResponder, botonHija, botonEliminar;
 
     public VentanaNotaIndividual(Nota nota, String nombreDelQueLaVe){
 
@@ -109,9 +110,41 @@ public class VentanaNotaIndividual extends JFrame {
             }
         });
 
+        botonHija = new JButton("Ir a la hija");
+        botonHija.setBackground(new Color(0, 38, 77));
+        botonHija.setForeground(Color.WHITE);
+        botonHija.setOpaque(true);
+        botonHija.setBorderPainted(false);
+        botonHija.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(nota.getHija() != 0) {
+                    new VentanaNotaIndividual(ServidorDeMensajeria.darInstancia().devuelveNota(nota.getHija()), nombreDelQueLaVe);
+                }
+                else{
+                    JOptionPane panelNoExisteHija = new JOptionPane();
+                    panelNoExisteHija.showMessageDialog(frameVentanaNota.getContentPane(), "Esta nota no tiene hija.");
+                }
+            }
+        });
+        botonEliminar = new JButton("Eliminar nota");
+        botonEliminar.setBackground(new Color(0, 38, 77));
+        botonEliminar.setForeground(Color.WHITE);
+        botonEliminar.setOpaque(true);
+        botonEliminar.setBorderPainted(false);
+        botonEliminar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new ControladorServidorDeMensajeria().eliminarNota(nota);
+                JOptionPane panelNotaEliminada = new JOptionPane();
+                panelNotaEliminada.showMessageDialog(frameVentanaNota.getContentPane(), "Nota eliminada.");
+            }
+        });
+
         panelBotones.add(botonMadre);
         panelBotones.add(botonResponder);
         panelBotones.add(botonHija);
+        panelBotones.add(botonEliminar);
         panelVentanaNota.setBorder(new EmptyBorder(new Insets(10,10, 10, 10)));
 
         this.getContentPane().add(panelVentanaNota);
