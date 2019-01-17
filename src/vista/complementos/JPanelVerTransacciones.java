@@ -2,6 +2,7 @@ package vista.complementos;
 
 import controlador.ControladorCalendario;
 import modelo.BeerBarException;
+import modelo.Fecha;
 import modelo.Transaccion;
 
 import javax.swing.*;
@@ -16,7 +17,7 @@ public class JPanelVerTransacciones extends JPanel {
     JPanel panelDentroScroll;
     JScrollPane panelScroll;
 
-    public JPanelVerTransacciones(String fechaString, String fechaFinalString) throws BeerBarException {
+    public JPanelVerTransacciones(String fechaInicioString, String fechaFinalString) throws BeerBarException {
 
         this.setBackground(new Color(128, 128, 128));
         this.setSize(800, 600);
@@ -32,19 +33,23 @@ public class JPanelVerTransacciones extends JPanel {
         panelDentroScroll.setBackground(new Color(128, 128, 128));
 
         ArrayList<Transaccion> transacciones;
-        /*//TODO
-        if (fechaFinalString.equals("")) {
+
+        /*if (fechaFinalString.equals("")) {
             transacciones = new ControladorJornada().getTransacciones(fechaString);
         } else {
             transacciones = new ControladorCalendario().getTransaccionesEntreDosFechas(fechaString, fechaFinalString);
-        }
+        }*/
+
+        transacciones = new ControladorCalendario().obtenTransaccionesEnRango(new Fecha().fromStringAbreviadoToFecha(fechaInicioString), new Fecha().fromStringAbreviadoToFecha(fechaFinalString));
 
         while (!transacciones.isEmpty()){
             Transaccion transaccionActual = transacciones.get(0);
+
             JButton boton = new JButton(
                     "<html>Creador: " + transaccionActual.getUsuario().toString() + "<br/>" +
                             "Cantidad: " + transaccionActual.getCantidad() + "<br/>" +
                             "Fecha: " + transaccionActual.getFecha().toString() + "<br/><html/>");
+
             boton.setBorder(new EmptyBorder(new Insets(20, 20, 20, 20)));
 
             if(transaccionActual.getEsVenta()){
@@ -57,13 +62,12 @@ public class JPanelVerTransacciones extends JPanel {
             boton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    boton.setBackground(new Color(140, 255, 102));
                     new VentanaTransaccionIndividual(transaccionActual);
                 }
             });
 
             panelDentroScroll.add(boton);
             transacciones.remove(0);
-        }*/
+        }
     }
 }
