@@ -47,6 +47,12 @@ public class JPanelEliminarUsuario extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 boolean b = false;
+                String nombreusuario = campoTextoNombreEliminar.getText();
+                if(nombreusuario.equals("admin")){
+                    JOptionPane usuarioEliminado = new JOptionPane();
+                    usuarioEliminado.showMessageDialog(frameVentanaUsuarios.getContentPane(), "No se puede eliminar el usuario administrador");
+                    return;
+                }
                 try {
                     b = new ControladorGestorDeUsuarios().eliminarUsuario(campoTextoNombreEliminar.getText());
                 } catch (BeerBarException e1) {
