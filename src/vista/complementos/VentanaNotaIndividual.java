@@ -1,6 +1,7 @@
 package vista.complementos;
 
 import controlador.ControladorServidorDeMensajeria;
+import modelo.BeerBarException;
 import modelo.Nota;
 import modelo.ServidorDeMensajeria;
 import vista.principal.VentanaNotasAdministrador;
@@ -122,8 +123,13 @@ public class VentanaNotaIndividual extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new ControladorServidorDeMensajeria().eliminarNota(nota);
+                //ventanaNotasAdministrador.dispose();
+                try {
+                    ventanaNotasAdministrador.actualizaPanelVerTodas();
+                } catch (BeerBarException e1) {
+                    e1.printStackTrace();
+                }
                 JOptionPane panelNotaEliminada = new JOptionPane();
-                ventanaNotasAdministrador.dispose();
                 panelNotaEliminada.showMessageDialog(frameVentanaNota.getContentPane(), "Nota eliminada.");
                 frameVentanaNota.dispose();
             }

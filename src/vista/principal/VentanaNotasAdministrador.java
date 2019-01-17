@@ -129,4 +129,11 @@ public class VentanaNotasAdministrador extends JFrame{
         frameVentanaNotas.getContentPane().add(panelNuevo);
         frameVentanaNotas.setVisible(true);
     }
+
+    public void actualizaPanelVerTodas() throws BeerBarException {
+        new ControladorInicio().actualizarInformacion();
+        notasTotales = new ControladorServidorDeMensajeria().dameTodasNotas();
+        panelVerTodasLasNotas = new JPanelVerNotas(notasTotales, true, "admin", ventanaNotasAdministrador);
+        actualizarPanel(panelVerTodasLasNotas);
+    }
 }
