@@ -17,9 +17,12 @@ public class JPanelVerNotas extends JPanel{
 
     JPanel panelDentroScroll;
     JScrollPane panelScroll;
-    JPanel panelVerNota;
+    JPanelVerNotas panelVerNota;
+    VentanaNotasAdministrador ventanaAnterior;
 
     public JPanelVerNotas(ArrayList<Nota> notas, boolean sonEnviadas, String nombreDelQueLaVe){
+
+        this.ventanaAnterior = ventanaAnterior;
 
         panelVerNota = this;
 
@@ -35,7 +38,6 @@ public class JPanelVerNotas extends JPanel{
         panelScroll.getVerticalScrollBar().setUnitIncrement(40);
         this.add(panelScroll, BorderLayout.CENTER);
         panelDentroScroll.setBackground(new Color(128, 128, 128));
-
         while (!notas.isEmpty()){
             Nota notaActual = notas.get(0);
             JButton boton = new JButton(

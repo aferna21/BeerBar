@@ -17,7 +17,7 @@ public class VentanaNotaIndividual extends JFrame {
     JLabel textoRemitente, textoDestinatario, textoFecha, textoMensaje, textoNota;
     JButton botonMadre, botonResponder, botonHija, botonEliminar;
 
-    public VentanaNotaIndividual(Nota nota, String nombreDelQueLaVe, JPanel panelAnterior){
+    public VentanaNotaIndividual(Nota nota, String nombreDelQueLaVe, JPanelVerNotas panelAnterior){
 
         frameVentanaNota = this;
 
@@ -92,23 +92,6 @@ public class VentanaNotaIndividual extends JFrame {
             }
         });
 
-        botonHija = new JButton("Ir a la hija");
-        botonHija.setBackground(new Color(0, 38, 77));
-        botonHija.setForeground(Color.WHITE);
-        botonHija.setOpaque(true);
-        botonHija.setBorderPainted(false);
-        botonHija.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(nota.getHija() != 0) {
-                    new VentanaNotaIndividual(ServidorDeMensajeria.darInstancia().devuelveNota(nota.getHija()), nombreDelQueLaVe, panelAnterior);
-                }
-                else{
-                    JOptionPane panelNoExisteHija = new JOptionPane();
-                    panelNoExisteHija.showMessageDialog(frameVentanaNota.getContentPane(), "Esta nota no tiene hija.");
-                }
-            }
-        });
 
         botonHija = new JButton("Ir a la hija");
         botonHija.setBackground(new Color(0, 38, 77));
@@ -127,6 +110,8 @@ public class VentanaNotaIndividual extends JFrame {
                 }
             }
         });
+
+
         botonEliminar = new JButton("Eliminar nota");
         botonEliminar.setBackground(new Color(0, 38, 77));
         botonEliminar.setForeground(Color.WHITE);

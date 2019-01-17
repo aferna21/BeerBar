@@ -1,6 +1,8 @@
 package vista.principal;
 
+import controlador.ControladorInicio;
 import controlador.ControladorServidorDeMensajeria;
+import modelo.BeerBarException;
 import modelo.Nota;
 import vista.complementos.JOptionPaneAyuda;
 import vista.complementos.JPanelEscribirNota;
@@ -53,6 +55,7 @@ public class VentanaNotasAdministrador extends JFrame{
         JLabel textoNotas = new JLabel("Ventana de notas del administrador");
         panelNotas.add(textoNotas, BorderLayout.CENTER);
         panelNotas.setBorder(new EmptyBorder(new Insets(0, 250, 0, 0)));
+
         this.getContentPane().add(panelNotas);
 
 
@@ -60,6 +63,11 @@ public class VentanaNotasAdministrador extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 panelEscribirNotaA = new JPanelEscribirNota("admin", frameVentanaNotas);
+                try {
+                    new ControladorInicio().actualizarInformacion();
+                } catch (BeerBarException e1) {
+                    e1.printStackTrace();
+                }
                 actualizarPanel(panelEscribirNotaA);
             }
         });
