@@ -126,4 +126,27 @@ public class Calendario {
         }
         return output;
     }
+
+    public void anadirJornada(Jornada jornada){
+        this.jornadas.add(jornada);
+    }
+
+    public boolean existeDia(Fecha f){
+        boolean existe = false;
+        for(Jornada j:this.jornadas){
+            if(j.getFecha().equals(f)){
+                existe = true;
+            }
+        }
+        return existe;
+    }
+
+    public Jornada getJornada(Fecha f){
+        for(Jornada j:this.jornadas){
+            if(j.getFecha().equals(f)){
+                return j;
+            }
+        }
+        return null;
+    }
 }

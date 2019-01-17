@@ -7,17 +7,15 @@ import java.util.ArrayList;
  */
 public class Jornada {
 
-    private static Jornada instancia = new Jornada();
     private Fecha fecha;
     private ArrayList<Transaccion> transacciones;
 
-    private Jornada(){
-        transacciones = new ArrayList<Transaccion>();
+    public Jornada(Fecha fecha, ArrayList<Transaccion> transacciones){
+        this.fecha = fecha;
+        this.transacciones = transacciones;
     }
 
-    public static Jornada darInstancia(){
-        return instancia;
-    }
+
 
     public Fecha getFecha(){
         return this.fecha;

@@ -121,33 +121,9 @@ public class Usuario {
         return ServidorDeMensajeria.darInstancia().mostrarNotasDeHacia(usuario, this);
     }
 
-    /**
-     * Crea una nueva venta y la introduce en la jornada del dia en cuestion.
-     *
-     * @param cantidad - Importe de la venta.
-     * @param concepto - Texto asociado a la venta.
-     */
-    public void introducirVenta(float cantidad, String concepto) throws BeerBarException {
-        Fecha hoy = new Fecha();
-        hoy = hoy.getFechaActual();
-        Transaccion transaccion = new Transaccion(cantidad, concepto, hoy, this);
-        Jornada jornada = Jornada.darInstancia();
-        jornada.anadirTransaccion(transaccion);
-    }
 
-    /**
-     * Crea un nuevo gasto y lo introduce en la jornada del dia en cuestion.
-     *
-     * @param cantidad - Importe del gasto.
-     * @param concepto - Texto asociado al gasto.
-     */
-    public void introducirGasto(float cantidad, String concepto) throws BeerBarException{
-        Fecha hoy = new Fecha();
-        hoy = hoy.getFechaActual();
-        Transaccion transaccion = new Transaccion(-cantidad, concepto, hoy, this);
-        Jornada jornada = Jornada.darInstancia();
-        jornada.anadirTransaccion(transaccion);
-    }
+
+
 
     /**
      * Devuelve una lista con todas las ventas realizadas en un periodo de tiempo.

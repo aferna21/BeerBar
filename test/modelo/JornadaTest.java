@@ -12,7 +12,7 @@ public class JornadaTest {
 
     @Before
     public void setUp() throws Exception{
-        jornada = Jornada.darInstancia();
+        //jornada = Jornada.darInstancia();
     }
 
     @Test

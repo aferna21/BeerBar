@@ -15,26 +15,20 @@ public class ControladorCalendario {
         instancia = Calendario.darInstancia();
     }
 
-    public ArrayList<Transaccion> getTransaccionesEntreDosFechas(String fechaInicioString, String fechaFinalString) throws BeerBarException {
 
-
-        Fecha fechaInicio = new Fecha().fromStringAbreviadoToFecha(fechaInicioString);
-        Fecha fechaFinal = new Fecha().fromStringAbreviadoToFecha(fechaFinalString);
-        Fecha fechaAux = fechaInicio;
-
-        ArrayList<Transaccion> transacciones = new ArrayList<Transaccion>();
-
-        Jornada.darInstancia().setFecha(fechaInicio);
-        System.out.println(Jornada.darInstancia().getFecha());
-
-        while (!fechaAux.equals(fechaFinal)){
-            transacciones.addAll(Jornada.darInstancia().getTransacciones());
-            System.out.println("Transacciones en la Jornada: " + Jornada.darInstancia().getTransacciones().size());
-            fechaAux.avanza();
+    public void rellenaCalendario() throws BeerBarException {
+        ArrayList<Transaccion> transacciones = new DAOTransacciones().devuelveTransacciones();
+        Calendario calendario = Calendario.darInstancia();
+        for(Transaccion t:transacciones){
+            if(!calendario.existeDia(t.getFecha())){
+                Jornada j = new Jornada(t.getFecha(), new ArrayList<Transaccion>());
+                instancia.anadirJornada(j);
+            }
         }
 
-
-        return transacciones;
-        //return instancia.verTransaccionesDeLosDias(fechaInicio, fechaFinal);
+        for(Transaccion t:transacciones){
+            Jornada j = instancia.getJornada(t.getFecha());
+            j.anadirTransaccion(t);
+        }
     }
 }

@@ -1,6 +1,5 @@
 package vista.complementos;
 
-import controlador.ControladorJornada;
 import modelo.BeerBarException;
 
 import javax.swing.*;
@@ -63,23 +62,7 @@ public class JPanelIntroducirTransaccion extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                String s = campoTextoImporte.getText();
-                Float f = Float.parseFloat(s);
 
-                if (esVenta){
-                    try {
-
-                        new ControladorJornada().introducirTransaccion(f, campoConcepto.getText(), nombreUsuario, fechaString);
-                    } catch (BeerBarException e1) {
-                        e1.printStackTrace();
-                    }
-                }else{
-                    try {
-                        new ControladorJornada().introducirTransaccion(-f, campoConcepto.getText(), nombreUsuario, fechaString);
-                    } catch (BeerBarException e1) {
-                        e1.printStackTrace();
-                    }
-                }
             }
         });
     }

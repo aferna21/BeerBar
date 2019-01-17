@@ -1,9 +1,7 @@
 package vista.complementos;
 
 import controlador.ControladorCalendario;
-import controlador.ControladorJornada;
 import modelo.BeerBarException;
-import modelo.Nota;
 import modelo.Transaccion;
 
 import javax.swing.*;
@@ -11,7 +9,6 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class JPanelVerTransacciones extends JPanel {
@@ -35,7 +32,7 @@ public class JPanelVerTransacciones extends JPanel {
         panelDentroScroll.setBackground(new Color(128, 128, 128));
 
         ArrayList<Transaccion> transacciones;
-        //TODO
+        /*//TODO
         if (fechaFinalString.equals("")) {
             transacciones = new ControladorJornada().getTransacciones(fechaString);
         } else {
@@ -67,6 +64,6 @@ public class JPanelVerTransacciones extends JPanel {
 
             panelDentroScroll.add(boton);
             transacciones.remove(0);
-        }
+        }*/
     }
 }
