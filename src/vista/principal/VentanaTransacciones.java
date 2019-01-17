@@ -61,6 +61,7 @@ public class VentanaTransacciones extends JFrame {
         opcionIntroducirVenta.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                panelIntroducirVenta = new JPanelIntroducirTransaccion(true, nombreUsuario, fechaString);
                 actualizarPanel(panelIntroducirVenta);
             }
         });
@@ -68,7 +69,7 @@ public class VentanaTransacciones extends JFrame {
         opcionIntroducirGasto.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                panelIntroducirVenta = new JPanelIntroducirTransaccion(true, nombreUsuario, fechaString);
+                panelIntroducirGasto = new JPanelIntroducirTransaccion(false, nombreUsuario, fechaString);
                 actualizarPanel(panelIntroducirGasto);
             }
         });
@@ -89,7 +90,8 @@ public class VentanaTransacciones extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JOptionPane panelSumaJornada = new JOptionPane();
-                panelSumaJornada.showMessageDialog(frameVentanaTransacciones.getContentPane(), "Total de la jornada: doziento euro primo");
+                panelSumaJornada.showMessageDialog(frameVentanaTransacciones.getContentPane(), "Total de la jornada: doziento euro primo\n" +
+                        "pd: tonto el que lo lea jeje");
                 dispose();
             }
         });

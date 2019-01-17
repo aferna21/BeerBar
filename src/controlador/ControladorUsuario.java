@@ -11,6 +11,8 @@ public class ControladorUsuario {
         this.usuario = GestorDeUsuarios.darInstancia().getUsuario(nombre);
     }
 
-
+    public Usuario devuelveUsuario(){
+        return usuario;
+    }
 
 }

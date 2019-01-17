@@ -34,13 +34,12 @@ public class JPanelVerTransacciones extends JPanel {
 
         ArrayList<Transaccion> transacciones;
 
-        /*if (fechaFinalString.equals("")) {
-            transacciones = new ControladorJornada().getTransacciones(fechaString);
-        } else {
-            transacciones = new ControladorCalendario().getTransaccionesEntreDosFechas(fechaString, fechaFinalString);
-        }*/
-
-        transacciones = new ControladorCalendario().obtenTransaccionesEnRango(new Fecha().fromStringAbreviadoToFecha(fechaInicioString), new Fecha().fromStringAbreviadoToFecha(fechaFinalString));
+        if(fechaInicioString.equals(fechaFinalString)){
+            transacciones = new ControladorCalendario().obtenTransaccionesDelDia(new Fecha().fromStringAbreviadoToFecha(fechaInicioString));
+        }
+        else {
+            transacciones = new ControladorCalendario().obtenTransaccionesEnRango(new Fecha().fromStringAbreviadoToFecha(fechaInicioString), new Fecha().fromStringAbreviadoToFecha(fechaFinalString));
+        }
 
         while (!transacciones.isEmpty()){
             Transaccion transaccionActual = transacciones.get(0);

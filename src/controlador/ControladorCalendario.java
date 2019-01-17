@@ -48,6 +48,10 @@ public class ControladorCalendario {
         return calendario.verTransaccionesDeLosDias(fechainicio, fechafinal);
     }
 
+    public ArrayList<Transaccion> obtenTransaccionesDelDia(Fecha fecha){
+        return calendario.verTransaccionesDelDia(fecha);
+    }
+
 
     public ArrayList<Transaccion> verTransaccionesDeEnRango(Fecha fechainicio, Fecha fechafinal, Usuario usuario){
         return calendario.verTransaccionesDe(fechainicio, fechafinal, usuario);
