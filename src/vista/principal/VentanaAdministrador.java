@@ -1,11 +1,13 @@
 package vista.principal;
 
+import controlador.ControladorCopiaDeSeguridad;
 import modelo.BeerBarException;
 import vista.complementos.JOptionPaneAyuda;
 import vista.complementos.VentanaElegirJornada;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -128,9 +130,13 @@ public class VentanaAdministrador extends JFrame {
                 chooser.setDialogTitle("Guardar copia de seguridad en...");
                 int selection = chooser.showSaveDialog(null);
 
+
                 if (selection  == JFileChooser.APPROVE_OPTION) {
                     try {
-                        FileWriter file = new FileWriter(chooser.getSelectedFile().toString() + ".sql");
+                        String ruta = chooser.getSelectedFile().toString() + ".sql";
+                        FileWriter file = new FileWriter(ruta);
+                        new ControladorCopiaDeSeguridad().crearCopiaDeSeguridad(ruta);
+
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
