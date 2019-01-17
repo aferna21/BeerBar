@@ -70,16 +70,15 @@ public class VentanaVerTransaccionesEntreDosFechas extends JFrame {
         botonAceptar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-                String fechaInicioString = dateFormat.format(dateChooserJornadaInicio.getDate());
-                String fechaFinalString = dateFormat.format(dateChooserJornadaFinal.getDate());
-
+                String fechaInicio = dateFormat.format(dateChooserJornadaInicio.getDate());
+                String fechaFinal = dateFormat.format(dateChooserJornadaFinal.getDate());
                 try {
-                    actualizarPanel(new JPanelVerTransacciones(fechaInicioString, fechaFinalString));
+                    panelTransacciones = new JPanelVerTransacciones(fechaInicio, fechaFinal);
                 } catch (BeerBarException e1) {
                     e1.printStackTrace();
                 }
+                actualizarPanel(panelTransacciones);
             }
         });
 

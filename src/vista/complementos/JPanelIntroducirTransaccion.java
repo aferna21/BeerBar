@@ -19,7 +19,7 @@ public class JPanelIntroducirTransaccion extends JPanel {
     JTextArea campoConcepto;
     JButton botonIntroducirTransaccion;
 
-    public JPanelIntroducirTransaccion(boolean esVenta, String nombreUsuario, String fechaString){
+    public JPanelIntroducirTransaccion(boolean esVenta, String nombreUsuario, String fechaString, JFrame frameAnterior){
 
         this.setBackground(new Color(128, 128, 128));
         this.setSize(800, 600);
@@ -65,11 +65,17 @@ public class JPanelIntroducirTransaccion extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    String importe = campoTextoImporte.getText().toString();
-                    new ControladorCalendario().introduceTransaccion(Float.parseFloat(importe), campoConcepto.toString(), new Fecha().fromStringAbreviadoToFecha(fechaString), new ControladorUsuario(nombreUsuario).devuelveUsuario());
+                    String importeString = campoTextoImporte.getText().toString();
+                    float importe = Float.parseFloat(importeString);
+                    if(!esVenta){
+                        importe = -importe;
+                    }
+                    new ControladorCalendario().introduceTransaccion(importe, campoConcepto.getText().toString(), new Fecha().fromStringAbreviadoToFecha(fechaString), new ControladorUsuario(nombreUsuario).devuelveUsuario());
                 } catch (BeerBarException e1) {
                     e1.printStackTrace();
                 }
+                JOptionPane transaccionIntroducida = new JOptionPane();
+                transaccionIntroducida.showMessageDialog(frameAnterior.getContentPane(),"Transaccion introducida correctamente");
             }
         });
     }

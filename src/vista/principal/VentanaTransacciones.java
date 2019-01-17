@@ -1,6 +1,10 @@
 package vista.principal;
 
+import controlador.ControladorCalendario;
+import controlador.ControladorInicio;
 import modelo.BeerBarException;
+import modelo.Fecha;
+import modelo.Transaccion;
 import vista.complementos.JOptionPaneAyuda;
 import vista.complementos.JPanelIntroducirTransaccion;
 import vista.complementos.JPanelVerTransacciones;
@@ -10,6 +14,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class VentanaTransacciones extends JFrame {
 
@@ -61,7 +66,7 @@ public class VentanaTransacciones extends JFrame {
         opcionIntroducirVenta.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                panelIntroducirVenta = new JPanelIntroducirTransaccion(true, nombreUsuario, fechaString);
+                panelIntroducirVenta = new JPanelIntroducirTransaccion(true, nombreUsuario, fechaString, frameVentanaTransacciones);
                 actualizarPanel(panelIntroducirVenta);
             }
         });
@@ -69,7 +74,7 @@ public class VentanaTransacciones extends JFrame {
         opcionIntroducirGasto.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                panelIntroducirGasto = new JPanelIntroducirTransaccion(false, nombreUsuario, fechaString);
+                panelIntroducirGasto = new JPanelIntroducirTransaccion(false, nombreUsuario, fechaString, frameVentanaTransacciones);
                 actualizarPanel(panelIntroducirGasto);
             }
         });
@@ -89,9 +94,19 @@ public class VentanaTransacciones extends JFrame {
         opcionCerrarJornada.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                float sumaTotal = 0;
+                try {
+                    ArrayList<Transaccion> transacciones = new ControladorCalendario().obtenTransaccionesDelDia(new Fecha().fromStringAbreviadoToFecha(fechaString));
+                    while(!transacciones.isEmpty()){
+                        sumaTotal += transacciones.get(0).getCantidad();
+                        transacciones.remove(0);
+                    }
+                } catch (BeerBarException e1) {
+                    e1.printStackTrace();
+                }
+
                 JOptionPane panelSumaJornada = new JOptionPane();
-                panelSumaJornada.showMessageDialog(frameVentanaTransacciones.getContentPane(), "Total de la jornada: doziento euro primo\n" +
-                        "pd: tonto el que lo lea jeje");
+                panelSumaJornada.showMessageDialog(frameVentanaTransacciones.getContentPane(), "Total de la jornada: " + sumaTotal);
                 dispose();
             }
         });

@@ -1,5 +1,6 @@
 package controlador;
 
+import bbdd.DAONotas;
 import bbdd.DAOTransacciones;
 import modelo.*;
 
@@ -74,6 +75,6 @@ public class ControladorCalendario {
         jornada.anadirTransaccion(new Transaccion(cantidad, concepto, fecha, usuario));
 
         //anade a la BBDD, hay que cambiar esto, lo se.
-        new DAOTransacciones().introduceTransaccion(cantidad, fecha.toStringAbreviado(), usuario.getNombre(), concepto);
+        new DAOTransacciones().introduceTransaccion(cantidad, fecha.toStringAbreviado(), usuario.getNombre(), concepto);;
     }
 }
