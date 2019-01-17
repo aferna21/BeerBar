@@ -10,7 +10,6 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 public class VentanaTransacciones extends JFrame {
 
@@ -58,17 +57,11 @@ public class VentanaTransacciones extends JFrame {
 
         this.getContentPane().add(panelTransacciones);
 
-        panelIntroducirVenta = new JPanelIntroducirTransaccion(true, this.nombreUsuario, fechaString);
-        panelIntroducirGasto = new JPanelIntroducirTransaccion(false, this.nombreUsuario, fechaString);
-
-        //VER TRANSACCIONES
-        //TODO
-        panelVerTransacciones = new JPanelVerTransacciones(fechaString, "");
-
 
         opcionIntroducirVenta.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                panelIntroducirVenta = new JPanelIntroducirTransaccion(true, nombreUsuario, fechaString);
                 actualizarPanel(panelIntroducirVenta);
             }
         });
@@ -76,6 +69,7 @@ public class VentanaTransacciones extends JFrame {
         opcionIntroducirGasto.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                panelIntroducirGasto = new JPanelIntroducirTransaccion(false, nombreUsuario, fechaString);
                 actualizarPanel(panelIntroducirGasto);
             }
         });
@@ -83,6 +77,11 @@ public class VentanaTransacciones extends JFrame {
         opcionVerTransacciones.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                try {
+                    panelVerTransacciones = new JPanelVerTransacciones(fechaString, fechaString);
+                } catch (BeerBarException e1) {
+                    e1.printStackTrace();
+                }
                 actualizarPanel(panelVerTransacciones);
             }
         });
@@ -90,6 +89,9 @@ public class VentanaTransacciones extends JFrame {
         opcionCerrarJornada.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                JOptionPane panelSumaJornada = new JOptionPane();
+                panelSumaJornada.showMessageDialog(frameVentanaTransacciones.getContentPane(), "Total de la jornada: doziento euro primo\n" +
+                        "pd: tonto el que lo lea jeje");
                 dispose();
             }
         });

@@ -76,7 +76,7 @@ public class Calendario {
      * @param fecha dia concreto del que se quieren ver las transacciones
      * @return conjunto de transacciones de un dia.
      */
-    private ArrayList<Transaccion> verTransaccionesDelDia(Fecha fecha){
+    public ArrayList<Transaccion> verTransaccionesDelDia(Fecha fecha){
         if (buscarJornada(fecha).getTransacciones().isEmpty()){
             return new ArrayList<Transaccion>();
         }
