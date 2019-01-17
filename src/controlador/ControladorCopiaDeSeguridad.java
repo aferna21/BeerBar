@@ -1,8 +1,6 @@
 package controlador;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 
 public class ControladorCopiaDeSeguridad {
 
@@ -19,6 +17,29 @@ public class ControladorCopiaDeSeguridad {
                 bit = is.read(buffer);
             }
             fos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public void cargarCopiaDeSeguridad(String ruta){
+        try {
+            Process proceso = Runtime.getRuntime().exec("mysql -u inso -pinso beerbar");
+
+            OutputStream os = proceso.getOutputStream();
+            FileInputStream archivo = new FileInputStream(ruta);
+            byte[] buffer = new byte[1000];
+
+            int bit = archivo.read(buffer);
+            while (bit > 0) {
+                os.write(buffer, 0, bit);
+                bit = archivo.read(buffer);
+            }
+
+            os.flush();
+            os.close();
+            archivo.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
