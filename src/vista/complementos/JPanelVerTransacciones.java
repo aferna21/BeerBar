@@ -10,6 +10,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class JPanelVerTransacciones extends JPanel {
@@ -41,8 +42,7 @@ public class JPanelVerTransacciones extends JPanel {
             transacciones = new ControladorCalendario().obtenTransaccionesEnRango(new Fecha().fromStringAbreviadoToFecha(fechaInicioString), new Fecha().fromStringAbreviadoToFecha(fechaFinalString));
         }
 
-        while (!transacciones.isEmpty()){
-            Transaccion transaccionActual = transacciones.get(0);
+        for(Transaccion transaccionActual: transacciones){
 
             JButton boton = new JButton(
                     "<html>Creador: " + transaccionActual.getUsuario().toString() + "<br/>" +
@@ -66,7 +66,6 @@ public class JPanelVerTransacciones extends JPanel {
             });
 
             panelDentroScroll.add(boton);
-            transacciones.remove(0);
         }
     }
 }
