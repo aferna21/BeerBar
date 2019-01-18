@@ -13,7 +13,7 @@ import java.text.SimpleDateFormat;
 
 public class VentanaVerTransaccionesEntreDosFechas extends JFrame {
 
-    JPanel panelSelector, panelTransacciones;
+    JPanel panelVerEntreDosFechas, panelSelector, panelTransacciones;
     JMenu ayuda;
     JMenuBar barraMenu;
     JMenuItem opcionAyuda;
@@ -30,6 +30,9 @@ public class VentanaVerTransaccionesEntreDosFechas extends JFrame {
         this.setBackground(new Color(128, 128, 128));
         this.setSize(800, 600);
         this.setLayout(new BorderLayout());
+
+        panelVerEntreDosFechas = new JPanel();
+        panelVerEntreDosFechas.setLayout(new BorderLayout());
 
         opcionAyuda = new JMenuItem("Ayuda");
         ayuda = new JMenu("Ayuda");
@@ -52,8 +55,8 @@ public class VentanaVerTransaccionesEntreDosFechas extends JFrame {
 
         panelSelector.add(textoJornadaPrincipio);
         panelSelector.add(dateChooserJornadaInicio);
-        this.add(panelSelector, BorderLayout.NORTH);
-        this.add(panelTransacciones, BorderLayout.CENTER);
+        panelVerEntreDosFechas.add(panelSelector, BorderLayout.NORTH);
+        panelVerEntreDosFechas.add(panelTransacciones, BorderLayout.CENTER);
 
         panelSelector.add(textoJornadaFinal);
         panelSelector.add(dateChooserJornadaFinal);
@@ -67,6 +70,8 @@ public class VentanaVerTransaccionesEntreDosFechas extends JFrame {
         this.add(botonAceptar, BorderLayout.SOUTH);
         panelSelector.setBorder(new EmptyBorder(new Insets(10, 10, 10, 10)));
 
+        this.getContentPane().add(panelVerEntreDosFechas);
+
         botonAceptar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -78,7 +83,7 @@ public class VentanaVerTransaccionesEntreDosFechas extends JFrame {
                 } catch (BeerBarException e1) {
                     e1.printStackTrace();
                 }
-                actualizarPanel(panelTransacciones);
+                actualizarPanel(panelVerEntreDosFechas);
             }
         });
 
@@ -98,10 +103,10 @@ public class VentanaVerTransaccionesEntreDosFechas extends JFrame {
     }
 
     public void actualizarPanel(JPanel panelNuevo){
-        panelTransacciones.removeAll();
-        panelTransacciones.repaint();
-        panelTransacciones.revalidate();
-        panelTransacciones.add(panelNuevo);
-        panelTransacciones.setVisible(true);
+        frameThisVentana.removeAll();
+        frameThisVentana.repaint();
+        frameThisVentana.revalidate();
+        frameThisVentana.add(panelNuevo);
+        frameThisVentana.setVisible(true);
     }
 }

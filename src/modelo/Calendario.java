@@ -88,13 +88,23 @@ public class Calendario {
      * @return conjunto de transacciones de un rango de dias.
      */
     public ArrayList<Transaccion> verTransaccionesDeLosDias(Fecha fechainicio, Fecha fechafinal){
-        ArrayList<Transaccion> output = new ArrayList<Transaccion>();
+        ArrayList<Transaccion> output = new ArrayList<>();
         Fecha fechaux = fechainicio;
         while(!fechaux.equals(fechafinal)){
-            output.addAll(this.verTransaccionesDelDia(fechaux));
+            if(this.getJornada(fechaux) == null){
+                this.jornadas.add(new Jornada(fechaux, new ArrayList<>()));
+            }
+            else {
+                output.addAll(this.verTransaccionesDelDia(fechaux));
+            }
             fechaux.avanza();
         }
-        output.addAll(this.verTransaccionesDelDia(fechaux));
+        if(this.getJornada(fechaux) == null){
+            this.jornadas.add(new Jornada(fechaux, new ArrayList<>()));
+        }
+        else {
+            output.addAll(this.verTransaccionesDelDia(fechaux));
+        }
         return output;
     }
 
