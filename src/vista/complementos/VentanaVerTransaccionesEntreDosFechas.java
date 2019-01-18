@@ -86,6 +86,7 @@ public class VentanaVerTransaccionesEntreDosFechas extends JFrame {
                 } catch (BeerBarException e1) {
                     e1.printStackTrace();
                 }
+
                 actualizarPanel(panelTransacciones);
             }
         });
