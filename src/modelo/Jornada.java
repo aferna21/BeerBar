@@ -1,5 +1,7 @@
 package modelo;
 
+import controlador.ControladorInicio;
+
 import java.util.ArrayList;
 
 /**

@@ -1,6 +1,7 @@
 package vista.complementos;
 
 import controlador.ControladorCalendario;
+import controlador.ControladorInicio;
 import modelo.BeerBarException;
 import modelo.Fecha;
 import modelo.Transaccion;
