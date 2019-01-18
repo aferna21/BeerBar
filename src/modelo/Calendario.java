@@ -82,6 +82,7 @@ public class Calendario {
             this.jornadas.add(new Jornada(fecha, new ArrayList<>()));
             return new ArrayList<>();
         }
+
         return buscarJornada(fecha).getTransacciones();
     }
 
