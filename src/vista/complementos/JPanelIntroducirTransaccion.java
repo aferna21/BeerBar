@@ -66,9 +66,20 @@ public class JPanelIntroducirTransaccion extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 try {
                     String importeString = campoTextoImporte.getText().toString();
-                    float importe = Float.parseFloat(importeString);
-                    if(!esVenta){
-                        importe = -importe;
+                    float importe = 0;
+                    try{
+                        importe = Float.parseFloat(importeString);
+                    }catch(NumberFormatException exception){
+                        JOptionPane noesunNumero = new JOptionPane();
+                        noesunNumero.showMessageDialog(frameAnterior.getContentPane(),"Error: introduzca un numero.");
+                        return;
+
+                    }
+
+                    if((esVenta && importe < 0)  ||  (!esVenta && importe > 0)){
+                        JOptionPane signoEquivocado = new JOptionPane();
+                        signoEquivocado.showMessageDialog(frameAnterior.getContentPane(),"Error: introduzca un numero valido.");
+                        return;
                     }
                     new ControladorCalendario().introduceTransaccion(importe, campoConcepto.getText().toString(), new Fecha().fromStringAbreviadoToFecha(fechaString), new ControladorGestorDeUsuarios().devuelveUsuario(nombreUsuario));
                 } catch (BeerBarException e1) {
