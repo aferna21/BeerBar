@@ -56,6 +56,11 @@ public class JPanelEscribirNota extends JPanel {
                     error.showMessageDialog(frame.getContentPane(), "No te puedes mandar un mensaje a ti mismo");
                     return;
                 }
+                if(campoMensaje.getText().length()>4000){
+                    JOptionPane error = new JOptionPane();
+                    error.showMessageDialog(frame.getContentPane(), "Error. Caracteres permitidos: 4000");
+                    return;
+                }
                 try {
                     if(new ControladorGestorDeUsuarios().existe(campoTextoDestinatario.getText())){
                         new ControladorServidorDeMensajeria().escribirNota(campoMensaje.getText(), remitente, campoTextoDestinatario.getText(), 0);

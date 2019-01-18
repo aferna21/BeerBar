@@ -81,6 +81,11 @@ public class JPanelIntroducirTransaccion extends JPanel {
                         signoEquivocado.showMessageDialog(frameAnterior.getContentPane(),"Error: introduzca un numero valido.");
                         return;
                     }
+                    if(campoConcepto.getText().length() > 150){
+                        JOptionPane textomuygrande = new JOptionPane();
+                        textomuygrande.showMessageDialog(frameAnterior.getContentPane(),"Caracteres permitidos en el concepto: 150");
+                        return;
+                    }
                     new ControladorCalendario().introduceTransaccion(importe, campoConcepto.getText().toString(), new Fecha().fromStringAbreviadoToFecha(fechaString), new ControladorGestorDeUsuarios().devuelveUsuario(nombreUsuario));
                 } catch (BeerBarException e1) {
                     e1.printStackTrace();
