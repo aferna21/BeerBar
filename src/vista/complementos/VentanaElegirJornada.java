@@ -36,7 +36,9 @@ public class VentanaElegirJornada extends JFrame {
         opcionAyudaGeneral = new JMenuItem("Menú de ayuda");
         ayuda.add(opcionAyuda);
         ayuda.add(opcionAyudaGeneral);
-        barraMenu.add(acciones);
+        if(nombreUsuario.equals("admin")) {
+            barraMenu.add(acciones);
+        }
         barraMenu.add(ayuda);
         this.setJMenuBar(barraMenu);
 
