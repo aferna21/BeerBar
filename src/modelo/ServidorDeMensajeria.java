@@ -153,13 +153,13 @@ public class ServidorDeMensajeria {
     }
 
     public void eliminarNota(Nota n){
-        int i = n.getHija();
-        int j = n.getMadre();
-        if(i != 0){
-            this.devuelveNota(i).setMadre(0);
+        int contadorHija = n.getHija();
+        int contadorMadre = n.getMadre();
+        if(contadorHija != 0){
+            this.devuelveNota(contadorHija).setMadre(0);
         }
-        if(j != 0){
-            this.devuelveNota(i).setHija(0);
+        if(contadorMadre != 0){
+            this.devuelveNota(contadorMadre).setHija(0);
         }
         this.notas.remove(n);
     }
