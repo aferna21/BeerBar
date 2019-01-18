@@ -3,6 +3,7 @@ package vista.complementos;
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JSpinnerDateEditor;
 import modelo.BeerBarException;
+import vista.principal.VentanaAyudaGeneral;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -94,6 +95,13 @@ public class VentanaVerTransaccionesEntreDosFechas extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 JOptionPaneAyuda ayuda = new JOptionPaneAyuda((JPanel) frameThisVentana.getContentPane());
                 ayuda.muestraAyudaVentanaVerTransaccionesEntreDosFechas();
+            }
+        });
+
+        opcionAyudaGeneral.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new VentanaAyudaGeneral();
             }
         });
 
