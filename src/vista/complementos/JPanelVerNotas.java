@@ -35,6 +35,7 @@ public class JPanelVerNotas extends JPanel{
         panelScroll.getVerticalScrollBar().setUnitIncrement(40);
         this.add(panelScroll, BorderLayout.CENTER);
         panelDentroScroll.setBackground(new Color(128, 128, 128));
+
         while (!notas.isEmpty()){
             Nota notaActual = notas.get(0);
             JButton boton = new JButton(

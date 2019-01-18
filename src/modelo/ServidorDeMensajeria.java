@@ -1,5 +1,7 @@
 package modelo;
 
+import controlador.ControladorInicio;
+
 import java.util.ArrayList;
 
 /**
@@ -47,6 +49,11 @@ public class ServidorDeMensajeria {
      * @return Conjunto de notas del usuario con ese remitente.
      */
     public ArrayList<Nota> mostrarNotasDe(Usuario usuario){
+        try {
+            new ControladorInicio().actualizarInformacion();
+        } catch (BeerBarException e) {
+            e.printStackTrace();
+        }
         ArrayList<Nota> lista = new ArrayList<Nota>();
         for(Nota n:this.notas){
             if(n.getRemitente().equals(usuario)){
@@ -62,6 +69,11 @@ public class ServidorDeMensajeria {
      * @return Conjunto de notas del usuario con ese destinatario.
      */
     public ArrayList<Nota> mostrarNotasHacia(Usuario usuario){
+        try {
+            new ControladorInicio().actualizarInformacion();
+        } catch (BeerBarException e) {
+            e.printStackTrace();
+        }
         ArrayList<Nota> lista = new ArrayList<Nota>();
         for(Nota n:this.notas){
             if(n.getDestinatario().equals(usuario)){
@@ -126,6 +138,11 @@ public class ServidorDeMensajeria {
     }
 
     public ArrayList<Nota> devuelveTodasNotas(){
+        try {
+            new ControladorInicio().actualizarInformacion();
+        } catch (BeerBarException e) {
+            e.printStackTrace();
+        }
         return notas;
     }
 
