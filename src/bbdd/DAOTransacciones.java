@@ -1,6 +1,5 @@
 package bbdd;
 
-import com.mysql.cj.protocol.Resultset;
 import modelo.*;
 
 import java.sql.PreparedStatement;

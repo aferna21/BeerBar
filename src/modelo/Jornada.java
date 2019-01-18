@@ -1,7 +1,5 @@
 package modelo;
 
-import controlador.ControladorInicio;
-
 import java.util.ArrayList;
 
 /**
@@ -63,22 +61,4 @@ public class Jornada {
         }
         return suma;
     }
-
-    /**
-     * Permite ver las transacciones del usuario especificado.
-     * @param u usuario del que queremos ver las transacciones.
-     * @return Conjunto de transacciones de ese usuario.
-     */
-    public ArrayList<Transaccion> verTransaccionesDe(Usuario u){
-        ArrayList<Transaccion> output = new ArrayList<Transaccion>();
-        for(Transaccion t:this.transacciones){
-            if(t.getUsuario().equals(u)){
-                output.add(t);
-            }
-        }
-        return output;
-    }
-
-
-
 }

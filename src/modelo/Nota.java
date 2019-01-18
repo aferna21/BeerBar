@@ -115,10 +115,6 @@ public class Nota {
 
     public int getContador(){ return this.contador; }
 
-    public void setTexto(String texto){
-        this.texto = texto;
-    }
-
     public void setMadre(int madre){
         this.madre = madre;
     }
@@ -131,29 +127,6 @@ public class Nota {
         this.leida = leida;
     }
 
-
-    /**
-     * Devuelve true si el usuario es remitente de la nota.
-     *
-     * @param u - Presunto remitente de la nota.
-     * @return - True si el usuario u la ha escrito.
-     */
-    public boolean esRemitente(Usuario u){
-        return this.remitente.equals(u);
-    }
-
-
-    /**
-     * Devuelve true si el usuario es el destinatario de la nota.
-     *
-     * @param u - Presunto destinatario de la nota.
-     * @return - true si el usuario u es al que va dirigido la nota.
-     */
-    public boolean esDestinatario(Usuario u){
-        return this.destinatario.equals(u);
-    }
-
-
     /**
      * Devuelve true si la nota esta escrita en una fecha determinada.
      *
@@ -162,28 +135,6 @@ public class Nota {
      */
     public boolean estaEscritaEn(Fecha f){
         return f.equals(this.fecha);
-    }
-
-
-    /**
-     * Devuelve true si la nota actual es hija de la nota n.
-     *
-     * @param a - Presunta madre de la nota actual.
-     * @return - True si esta nota es hija de n.
-     */
-    public boolean esHijaDe(int a){
-        return this.madre == a;
-    }
-
-
-    /**
-     * Devuelve true si la nota actual es madre de la nota n.
-     *
-     * @param a - Presunta hija de la nota actual.
-     * @return - True si la nota es madre de n.
-     */
-    public boolean esMadreDe(int a){
-        return this.hija == a;
     }
 
     /**

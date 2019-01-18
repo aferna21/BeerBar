@@ -1,7 +1,5 @@
 package modelo;
 
-import controlador.ControladorInicio;
-
 import java.util.ArrayList;
 
 /**
@@ -47,12 +45,13 @@ public class Calendario {
         return null;
     }
 
-    public void addJornada(Jornada j){
-        this.jornadas.add(j);
-    }
-
     private float obtenerBeneficios(Fecha fecha){
-        return buscarJornada(fecha).sumaTransacciones();
+        Jornada jornada = buscarJornada(fecha);
+        if(jornada == null){
+            return 0;
+        }else{
+            return jornada.sumaTransacciones();
+        }
     }
 
     /**
@@ -96,7 +95,6 @@ public class Calendario {
         ArrayList<Transaccion> output = new ArrayList<Transaccion>();
         Fecha fechaux = fechainicio;
         while(!fechaux.equals(fechafinal)){
-            System.out.println(fechaux.toStringAbreviado());
             if(this.getJornada(fechaux) == null){
                 ArrayList<Transaccion> transacciones = new ArrayList<>();
                 this.jornadas.add(new Jornada(fechaux, transacciones));
@@ -105,41 +103,12 @@ public class Calendario {
                 output.addAll(this.verTransaccionesDelDia(fechaux));
             }
             fechaux.avanza();
-            System.out.println(output.size());
         }
         if(this.getJornada(fechaux) == null){
             this.jornadas.add(new Jornada(fechaux, new ArrayList<Transaccion>()));
         }
         else {
             output.addAll(this.verTransaccionesDelDia(fechaux));
-        }
-        return output;
-    }
-
-    /**
-     * Devuelve el conjunto de beneficios y gastos en un dia concreto de un usuario concreto.
-     * @param fecha dia del que obtener las transacciones.
-     * @param usuario usuario que realizo las transacciones.
-     * @return conjunto de transacciones de un dia y un usuario concretos.
-     */
-    private ArrayList<Transaccion> verTransaccionesDe(Fecha fecha, Usuario usuario){
-        Jornada j = this.buscarJornada(fecha);
-        return j.verTransaccionesDe(usuario);
-    }
-
-    /**
-     * Devuelve el conjunto de beneficios y gastos en un rango de dias de un usuario concreto.
-     * @param fechainicio primer dia del rango de dias.
-     * @param fechafin ultimo dia del rango de dias.
-     * @param usuario usuario del que obtener los beneficios.
-     * @return Conjunto de transacciones de un usuario concreto en un rango de dias
-     */
-    public ArrayList<Transaccion> verTransaccionesDe(Fecha fechainicio, Fecha fechafin, Usuario usuario){
-        ArrayList<Transaccion> output = new ArrayList<Transaccion>();
-        Fecha fechaux = fechainicio;
-        while(!fechaux.equals(fechafin)){
-            output.addAll(verTransaccionesDe(fechaux, usuario));
-            fechainicio.avanza();
         }
         return output;
     }
@@ -165,17 +134,5 @@ public class Calendario {
             }
         }
         return null;
-    }
-
-    public ArrayList<Transaccion> verTodasDe(Usuario usuario){
-        ArrayList<Transaccion> salida = new ArrayList<Transaccion>();
-        for(Jornada j:this.jornadas){
-            for(Transaccion t: j.getTransacciones()){
-                if(t.getUsuario().equals(usuario)){
-                    salida.add(t);
-                }
-            }
-        }
-        return salida;
     }
 }

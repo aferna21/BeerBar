@@ -1,10 +1,8 @@
 package controlador;
 
-import bbdd.DAONotas;
 import bbdd.DAOTransacciones;
 import modelo.*;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 
@@ -33,19 +31,6 @@ public class ControladorCalendario {
         }
     }
 
-    public Jornada accederAJornada(Fecha f){
-        Jornada jornada = calendario.getJornada(f);
-        if(jornada == null){
-            jornada = new Jornada(f, new ArrayList<Transaccion>());
-            calendario.anadirJornada(jornada);
-        }
-        return jornada;
-    }
-
-    public float obtenerBeneficiosEnRango(Fecha fechainicio, Fecha fechafin){
-        return calendario.obtenerBeneficios(fechainicio, fechafin);
-    }
-
     public ArrayList<Transaccion> obtenTransaccionesEnRango(Fecha fechainicio, Fecha fechafinal){
         return calendario.verTransaccionesDeLosDias(fechainicio, fechafinal);
     }
@@ -54,17 +39,6 @@ public class ControladorCalendario {
         return calendario.verTransaccionesDelDia(fecha);
     }
 
-
-    public ArrayList<Transaccion> verTransaccionesDeEnRango(Fecha fechainicio, Fecha fechafinal, Usuario usuario){
-        return calendario.verTransaccionesDe(fechainicio, fechafinal, usuario);
-    }
-
-    public ArrayList<Transaccion> verTodasLasTransaccionesDe(Usuario u){
-        return calendario.verTodasDe(u);
-    }
-
-
-    //Aqui no se si cambiar el atributo fecha por directamente el atributo jornada. Yo creo que si, pero ya lo veras tu.
     public void introduceTransaccion(float cantidad, String concepto, Fecha fecha, Usuario usuario){
         Jornada jornada = calendario.getJornada(fecha);
         if(jornada == null){
@@ -72,10 +46,31 @@ public class ControladorCalendario {
             jornada = new Jornada(fecha, transacciones);
             calendario.anadirJornada(jornada);
         }
-        //anade al singleton
         jornada.anadirTransaccion(new Transaccion(cantidad, concepto, fecha, usuario));
-
-        //anade a la BBDD, hay que cambiar esto, lo se.
         new DAOTransacciones().introduceTransaccion(cantidad, fecha.toStringAbreviado(), usuario.getNombre(), concepto);;
+    }
+
+    public float sumaTransaccionesDelDia(String fechaString){
+        float sumaTotal = 0;
+        try {
+            ArrayList<Transaccion> transacciones = new ControladorCalendario().obtenTransaccionesDelDia(new Fecha().fromStringAbreviadoToFecha(fechaString));
+            for(Transaccion t: transacciones){
+                sumaTotal += t.getCantidad();
+            }
+        } catch (BeerBarException e1) {
+            e1.printStackTrace();
+        }
+        return sumaTotal;
+    }
+
+    public float sumaTransaccionesDeLosDias(String fechaInicio, String fechaFinal){
+        try {
+            Fecha inicio = new Fecha().fromStringAbreviadoToFecha(fechaInicio);
+            Fecha f_final = new Fecha().fromStringAbreviadoToFecha(fechaFinal);
+            return this.calendario.obtenerBeneficios(inicio, f_final);
+        } catch (BeerBarException e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 }

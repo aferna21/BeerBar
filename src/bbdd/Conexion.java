@@ -37,43 +37,4 @@ public class Conexion {
             e.printStackTrace();
         }
     }
-
-    public void eliminarBBDD(){
-        this.eliminarUsuarios();
-        this.eliminarNotas();
-        this.eliminarTransacciones();
-    }
-
-    private void eliminarUsuarios(){
-        this.abrirConexion();
-        try {
-            PreparedStatement st = this.getConexion().prepareStatement("DELETE FROM usuarios;");
-            st.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        this.cerrarConexion();
-    }
-
-    private void eliminarNotas(){
-        this.abrirConexion();
-        try {
-            PreparedStatement st = this.getConexion().prepareStatement("DELETE FROM notas;");
-            st.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        this.cerrarConexion();
-    }
-
-    private void eliminarTransacciones(){
-        this.abrirConexion();
-        try {
-            PreparedStatement st = this.getConexion().prepareStatement("DELETE FROM transacciones;");
-            st.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        this.cerrarConexion();
-    }
 }

@@ -27,14 +27,6 @@ public class Transaccion {
      */
     private boolean esVenta;
 
-
-    /**
-     * Constructor vacio de la clase.
-     */
-    public Transaccion(){
-
-    }
-
     /**
      * Constructor de la clase. Crea una transaccion y le asigna la cantidad,
      * el concepto, la fecha, el usuario y si es venta o gasto.
@@ -80,24 +72,12 @@ public class Transaccion {
         return this.fecha;
     }
 
-    public void setCantidad(float c){
-        this.cantidad = c;
-    }
-
-    public void setConcepto(String c){
-        this.concepto = c;
-    }
-
     public void setFecha(Fecha f){
         this.fecha = f;
     }
 
     public void setUsuario(Usuario u){
         this.usuario = u;
-    }
-
-    public void setEsVenta(boolean b){
-        this.esVenta = b;
     }
 
     public String toString(){

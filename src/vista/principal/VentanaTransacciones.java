@@ -1,10 +1,7 @@
 package vista.principal;
 
 import controlador.ControladorCalendario;
-import controlador.ControladorInicio;
 import modelo.BeerBarException;
-import modelo.Fecha;
-import modelo.Transaccion;
 import vista.complementos.JOptionPaneAyuda;
 import vista.complementos.JPanelIntroducirTransaccion;
 import vista.complementos.JPanelVerTransacciones;
@@ -14,7 +11,6 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 public class VentanaTransacciones extends JFrame {
 
@@ -96,15 +92,7 @@ public class VentanaTransacciones extends JFrame {
         opcionCerrarJornada.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                float sumaTotal = 0;
-                try {
-                    ArrayList<Transaccion> transacciones = new ControladorCalendario().obtenTransaccionesDelDia(new Fecha().fromStringAbreviadoToFecha(fechaString));
-                    for(Transaccion t: transacciones){
-                        sumaTotal += t.getCantidad();
-                    }
-                } catch (BeerBarException e1) {
-                    e1.printStackTrace();
-                }
+                float sumaTotal = new ControladorCalendario().sumaTransaccionesDelDia(fechaString);
 
                 JOptionPane panelSumaJornada = new JOptionPane();
                 panelSumaJornada.showMessageDialog(frameVentanaTransacciones.getContentPane(), "Total de la jornada: " + sumaTotal);

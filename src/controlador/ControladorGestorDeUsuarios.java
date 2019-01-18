@@ -75,4 +75,8 @@ public class ControladorGestorDeUsuarios {
     public boolean esAdmin(String nombre){
         return GestorDeUsuarios.darInstancia().esAdmin(nombre);
     }
+
+    public Usuario devuelveUsuario(String nombre){
+        return this.gestordeusuarios.getUsuario(nombre);
+    }
 }

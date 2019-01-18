@@ -24,13 +24,6 @@ public class GestorDeUsuarios {
     }
 
     /**
-     * Peculiaridad del singleton
-     */
-    public ArrayList<Usuario> getUsuarios(){
-        return this.usuarios;
-    }
-
-    /**
      * Indica si el usuario y la contrasena introducidas son correctos.
      * @param nombreUsuario nombre del usuario.
      * @param contrasena contrasena del usuario.

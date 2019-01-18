@@ -1,7 +1,7 @@
 package vista.complementos;
 
 import controlador.ControladorCalendario;
-import controlador.ControladorUsuario;
+import controlador.ControladorGestorDeUsuarios;
 import modelo.BeerBarException;
 import modelo.Fecha;
 
@@ -70,7 +70,7 @@ public class JPanelIntroducirTransaccion extends JPanel {
                     if(!esVenta){
                         importe = -importe;
                     }
-                    new ControladorCalendario().introduceTransaccion(importe, campoConcepto.getText().toString(), new Fecha().fromStringAbreviadoToFecha(fechaString), new ControladorUsuario(nombreUsuario).devuelveUsuario());
+                    new ControladorCalendario().introduceTransaccion(importe, campoConcepto.getText().toString(), new Fecha().fromStringAbreviadoToFecha(fechaString), new ControladorGestorDeUsuarios().devuelveUsuario(nombreUsuario));
                 } catch (BeerBarException e1) {
                     e1.printStackTrace();
                 }

@@ -1,10 +1,7 @@
 package bbdd;
 
-import controlador.ControladorInicio;
 import modelo.*;
 
-import javax.swing.plaf.nimbus.State;
-import javax.xml.transform.Result;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -35,15 +32,6 @@ public class DAONotas extends Conexion {
         }
     }
 
-    private String fromBoolToString(boolean b){
-        if(b){
-            return "si";
-        }else{
-            return "no";
-        }
-    }
-
-
     private ArrayList<Nota> getNotas(ResultSet rs) throws SQLException, BeerBarException {
         ArrayList<Nota> salida = new ArrayList<Nota>();
         while(rs.next()){
@@ -61,9 +49,6 @@ public class DAONotas extends Conexion {
         }
         return salida;
     }
-
-
-
 
     public void asignarHijaA(int notamadre, int notahija){
 
@@ -147,28 +132,6 @@ public class DAONotas extends Conexion {
             e.printStackTrace();
         }
     }
-
-
-    public int getID(Nota nota){
-        int id = 0;
-        this.abrirConexion();
-        try {
-            PreparedStatement st = this.getConexion().prepareStatement("SELECT id_nota FROM notas WHERE " +
-                    "remitente_nombre = "+ this.entrecomilla(nota.getRemitente().getNombre()) +
-                    "AND destinatario_nombre = "+ this.entrecomilla(nota.getDestinatario().getNombre()) +
-                    "AND fecha = "+ this.entrecomilla(nota.getFecha().toStringAbreviado()) +
-                    "AND texto = "+ this.entrecomilla(nota.getTexto()) + ";");
-            ResultSet rs = st.executeQuery();
-            if(rs.next()) id = rs.getInt(1);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-
-        return id;
-    }
-
-
 
     public void cambiaEsLeido(String esleido, int idNota){
         this.abrirConexion();

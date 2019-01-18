@@ -2,7 +2,9 @@ package vista.complementos;
 
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JSpinnerDateEditor;
+import controlador.ControladorCalendario;
 import modelo.BeerBarException;
+import modelo.Fecha;
 import vista.principal.VentanaAyudaGeneral;
 
 import javax.swing.*;
@@ -15,9 +17,9 @@ import java.text.SimpleDateFormat;
 public class VentanaVerTransaccionesEntreDosFechas extends JFrame {
 
     JPanel panelVerEntreDosFechas, panelSelector, panelTransacciones;
-    JMenu ayuda;
+    JMenu acciones, ayuda;
     JMenuBar barraMenu;
-    JMenuItem opcionAyuda, opcionAyudaGeneral;
+    JMenuItem opcionSuma, opcionAyuda, opcionAyudaGeneral;
     JLabel textoJornadaPrincipio, textoJornadaFinal;
     JDateChooser dateChooserJornadaInicio, dateChooserJornadaFinal;
     JButton botonAceptar;
@@ -37,10 +39,14 @@ public class VentanaVerTransaccionesEntreDosFechas extends JFrame {
 
         opcionAyuda = new JMenuItem("Ayuda");
         ayuda = new JMenu("Ayuda");
+        acciones = new JMenu("Acciones");
+        opcionSuma = new JMenuItem("Suma de todas las transacciones");
         barraMenu = new JMenuBar();
         opcionAyudaGeneral = new JMenuItem("Menú de ayuda");
+        acciones.add(opcionSuma);
         ayuda.add(opcionAyuda);
         ayuda.add(opcionAyudaGeneral);
+        barraMenu.add(acciones);
         barraMenu.add(ayuda);
         this.setJMenuBar(barraMenu);
 
@@ -88,6 +94,18 @@ public class VentanaVerTransaccionesEntreDosFechas extends JFrame {
                 }
 
                 actualizarPanel(panelTransacciones);
+            }
+        });
+
+        opcionSuma.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                String fechaInicio = dateFormat.format(dateChooserJornadaInicio.getDate());
+                String fechaFinal = dateFormat.format(dateChooserJornadaFinal.getDate());
+                float sumaTotal = new ControladorCalendario().sumaTransaccionesDeLosDias(fechaInicio, fechaFinal);
+                JOptionPane panelSuma = new JOptionPane();
+                panelSuma.showMessageDialog(frameThisVentana.getContentPane(), "Suma de las transacciones: " + sumaTotal);
             }
         });
 

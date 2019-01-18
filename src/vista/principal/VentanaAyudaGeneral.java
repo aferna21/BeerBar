@@ -1,6 +1,5 @@
 package vista.principal;
 
-import controlador.ControladorGestorDeUsuarios;
 import vista.complementos.JOptionPaneAyuda;
 
 import javax.swing.*;

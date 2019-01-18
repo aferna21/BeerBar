@@ -12,15 +12,6 @@ public class ControladorServidorDeMensajeria {
         instancia = ServidorDeMensajeria.darInstancia();
     }
 
-
-    public Nota crearNota(String texto, String nombreremitente, String nombredestinatario) throws BeerBarException {
-        Usuario remitente = GestorDeUsuarios.darInstancia().getUsuario(nombreremitente);
-        Usuario destinatario = GestorDeUsuarios.darInstancia().getUsuario(nombredestinatario);
-        Fecha hoy = new Fecha().getFechaActual();
-        Nota nota = new Nota(texto, remitente, destinatario, hoy, 0, 0, 0 );
-        return nota;
-    }
-
     public void escribirNota(String texto, String nombreremitente, String nombredestinatario, int madre) throws BeerBarException {
         Usuario remitente = GestorDeUsuarios.darInstancia().getUsuario(nombreremitente);
         Usuario destinatario = GestorDeUsuarios.darInstancia().getUsuario(nombredestinatario);
@@ -29,7 +20,6 @@ public class ControladorServidorDeMensajeria {
         instancia.anadirNota(nota);
         new DAONotas().introduceNota(nota.getContador(), nombreremitente, nombredestinatario, nota.getFecha().toStringAbreviado(), madre, 0, texto);
     }
-
 
     public void responderNota(int notaAresponder, String texto, String nombreremitente, String nombredestinatario) throws BeerBarException {
         DAONotas daonotas = new DAONotas();

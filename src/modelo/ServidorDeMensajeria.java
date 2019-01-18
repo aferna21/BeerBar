@@ -83,22 +83,6 @@ public class ServidorDeMensajeria {
         return lista;
     }
 
-
-    /**
-     * Muestra todas las notas de ese dia.
-     * @param fecha de las notas que queremos mostrar.
-     * @return Conjunto de notas de esa fecha.
-     */
-    public ArrayList<Nota> mostrarNotasDelDia(Fecha fecha){
-        ArrayList<Nota> lista = new ArrayList<Nota>();
-        for(Nota n:this.notas){
-            if(n.estaEscritaEn(fecha)){
-                lista.add(n);
-            }
-        }
-        return lista;
-    }
-
     /**
      * Muestra las notas de un usuario especifico a un destinatario especifico.
      * @param  rem usuario remitente de la nota.
