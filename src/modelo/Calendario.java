@@ -89,9 +89,10 @@ public class Calendario {
      * @return conjunto de transacciones de un rango de dias.
      */
     public ArrayList<Transaccion> verTransaccionesDeLosDias(Fecha fechainicio, Fecha fechafinal){
-        ArrayList<Transaccion> output = new ArrayList<>();
+        ArrayList<Transaccion> output = new ArrayList<Transaccion>();
         Fecha fechaux = fechainicio;
         while(!fechaux.equals(fechafinal)){
+            System.out.println(fechaux.toStringAbreviado());
             if(this.getJornada(fechaux) == null){
                 this.jornadas.add(new Jornada(fechaux, new ArrayList<>()));
             }
@@ -99,9 +100,10 @@ public class Calendario {
                 output.addAll(this.verTransaccionesDelDia(fechaux));
             }
             fechaux.avanza();
+            System.out.println(output.size());
         }
         if(this.getJornada(fechaux) == null){
-            this.jornadas.add(new Jornada(fechaux, new ArrayList<>()));
+            this.jornadas.add(new Jornada(fechaux, new ArrayList<Transaccion>()));
         }
         else {
             output.addAll(this.verTransaccionesDelDia(fechaux));

@@ -85,7 +85,7 @@ public class VentanaVerTransaccionesEntreDosFechas extends JFrame {
                 } catch (BeerBarException e1) {
                     e1.printStackTrace();
                 }
-                actualizarPanel(panelVerEntreDosFechas);
+                actualizarPanel(panelTransacciones);
             }
         });
 
@@ -105,10 +105,10 @@ public class VentanaVerTransaccionesEntreDosFechas extends JFrame {
     }
 
     public void actualizarPanel(JPanel panelNuevo){
-        frameThisVentana.removeAll();
-        frameThisVentana.repaint();
-        frameThisVentana.revalidate();
-        frameThisVentana.add(panelNuevo);
+        frameThisVentana.getContentPane().removeAll();
+        frameThisVentana.getContentPane().repaint();
+        frameThisVentana.getContentPane().revalidate();
+        frameThisVentana.getContentPane().add(panelNuevo);
         frameThisVentana.setVisible(true);
     }
 }
