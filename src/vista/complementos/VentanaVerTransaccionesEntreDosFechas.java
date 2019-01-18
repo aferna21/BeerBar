@@ -4,7 +4,6 @@ import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JSpinnerDateEditor;
 import controlador.ControladorCalendario;
 import modelo.BeerBarException;
-import modelo.Fecha;
 import vista.principal.VentanaAyudaGeneral;
 
 import javax.swing.*;
