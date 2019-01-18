@@ -47,6 +47,11 @@ public class JPanelCambiarContrasena extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 boolean b = false;
+                if(campoTextoContrasenaModificar.getText().length() > 20){
+                    JOptionPane contrasenaMuyLarga = new JOptionPane();
+                    contrasenaMuyLarga.showMessageDialog(frameVentanaUsuarios.getContentPane(), "Error: la contrasena no debe exceder los 20 caracteres");
+                    return;
+                }
                 try {
                     b = new ControladorGestorDeUsuarios().cambiarContrasena(campoTextoNombreCambiar.getText(), campoTextoContrasenaModificar.getText());
                 } catch (BeerBarException e1) {

@@ -51,6 +51,16 @@ public class JPanelAnadirUsuario extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 boolean b = false;
+                if(campoTextoNombreNuevo.getText().length() > 20){
+                    JOptionPane nombreMuyLargo = new JOptionPane();
+                    nombreMuyLargo.showMessageDialog(frameVentanaUsuarios.getContentPane(), "Error: el nombre de usuario no debe exceder los 20 caracteres");
+                    return;
+                }
+                if(campoTextoContrasenaNuevo.getText().length() > 20){
+                    JOptionPane contrasenaMuyLarga = new JOptionPane();
+                    contrasenaMuyLarga.showMessageDialog(frameVentanaUsuarios.getContentPane(), "Error: la contrasena no debe exceder los 20 caracteres");
+                    return;
+                }
                 try {
                     b = new ControladorGestorDeUsuarios().anadirUsuario(campoTextoNombreNuevo.getText(), campoTextoContrasenaNuevo.getText());
                 } catch (BeerBarException e1) {
