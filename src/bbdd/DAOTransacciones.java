@@ -70,7 +70,7 @@ public class DAOTransacciones extends Conexion {
         return transacciones;
     }
 
-    private String saberEsVenta(Float f){
+    private String saberEsVenta(float f){
         if (f >= 0){
             return "si";
         }else{

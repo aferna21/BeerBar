@@ -121,35 +121,6 @@ public class Usuario {
         return ServidorDeMensajeria.darInstancia().mostrarNotasDeHacia(usuario, this);
     }
 
-
-
-
-
-    /**
-     * Devuelve una lista con todas las ventas realizadas en un periodo de tiempo.
-     *
-     * @param fechaInicio - Fecha del inicio del periodo.
-     * @param fechaFin - Fecha del fin del periodo.
-     * @return - Lista de las ventas.
-     */
-    public ArrayList<Nota> verVentas(Fecha fechaInicio, Fecha fechaFin){
-
-        //LLAMAR A METODOS DE LA CLASE JORNADA PARA HACERLO
-
-        return new ArrayList();
-    }
-
-    /**
-     * Devuelve una lista con todas las ventas realizadas en la jornada actual.
-     *
-     * @return - Lista de las ventas.
-     */
-    public ArrayList<Nota> verVentasDeHoy() throws BeerBarException{
-        Fecha hoy = new Fecha();
-        hoy = hoy.getFechaActual();
-        return verVentas(hoy, hoy);
-    }
-
     /**
      * Dos usuarios son considerados iguales cuando su nombre y contrasena coinciden.
      *

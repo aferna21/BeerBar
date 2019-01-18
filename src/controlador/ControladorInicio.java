@@ -3,7 +3,6 @@ package controlador;
 import bbdd.DAONotas;
 import bbdd.DAOUsuarios;
 import modelo.BeerBarException;
-import modelo.Calendario;
 import modelo.GestorDeUsuarios;
 import modelo.ServidorDeMensajeria;
 
