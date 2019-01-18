@@ -1,5 +1,7 @@
 package modelo;
 
+import controlador.ControladorInicio;
+
 import java.util.ArrayList;
 
 /**
@@ -76,8 +78,9 @@ public class Calendario {
      * @return conjunto de transacciones de un dia.
      */
     public ArrayList<Transaccion> verTransaccionesDelDia(Fecha fecha){
-        if (buscarJornada(fecha).getTransacciones().isEmpty()){
-            return new ArrayList<Transaccion>();
+        if(buscarJornada(fecha) == null){
+            this.jornadas.add(new Jornada(fecha, new ArrayList<>()));
+            return new ArrayList<>();
         }
         return buscarJornada(fecha).getTransacciones();
     }
@@ -93,7 +96,8 @@ public class Calendario {
         Fecha fechaux = fechainicio;
         while(!fechaux.equals(fechafinal)){
             if(this.getJornada(fechaux) == null){
-                this.jornadas.add(new Jornada(fechaux, new ArrayList<>()));
+                ArrayList<Transaccion> transacciones = new ArrayList<>();
+                this.jornadas.add(new Jornada(fechaux, transacciones));
             }
             else {
                 output.addAll(this.verTransaccionesDelDia(fechaux));
