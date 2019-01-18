@@ -146,6 +146,24 @@ public class VentanaAdministrador extends JFrame {
                 }
             }
         });
+        opcionCargar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                JFileChooser chooser = new JFileChooser();
+
+                chooser.setDialogTitle("Cargar copia de seguridad.");
+                int selection = chooser.showSaveDialog(null);
+                File archivo = chooser.getSelectedFile();
+                if(archivo.getName().contains("sql")){
+                    new ControladorCopiaDeSeguridad().cargarCopiaDeSeguridad(archivo.getAbsolutePath());
+                    JOptionPane archivoincorrecto = new JOptionPane();
+                    archivoincorrecto.showMessageDialog(new JFrame().getContentPane(), "Copia cargada con exito");
+                }else{
+                    JOptionPane archivoincorrecto = new JOptionPane();
+                    archivoincorrecto.showMessageDialog(new JFrame().getContentPane(), "Error en la seleccion del archivo");
+                }
+            }
+        });
 
         opcionAyudaGeneral.addActionListener(new ActionListener() {
             @Override
