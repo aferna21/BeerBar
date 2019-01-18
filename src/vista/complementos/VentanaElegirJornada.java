@@ -56,7 +56,7 @@ public class VentanaElegirJornada extends JFrame {
         this.add(panelSelector, BorderLayout.NORTH);
 
 
-        botonAceptar = new JButton("Enviar");
+        botonAceptar = new JButton("Acceder a la jornada");
         botonAceptar.setBackground(new Color(0, 38, 77));
         botonAceptar.setForeground(Color.WHITE);
         botonAceptar.setOpaque(true);
