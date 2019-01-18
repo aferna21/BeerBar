@@ -15,7 +15,7 @@ public class VentanaUsuario extends JFrame{
     JButton botonNotas, botonTransacciones;
     JMenuBar barraMenu;
     JMenu ayuda, menu;
-    JMenuItem opcionAyuda, opcionCerrarSesion;
+    JMenuItem opcionAyuda, opcionCerrarSesion, opcionAyudaGeneral;
     JFrame frameUsuario;
     String nombreUsuario;
 
@@ -33,7 +33,9 @@ public class VentanaUsuario extends JFrame{
         menu = new JMenu("Menu");
         opcionAyuda = new JMenuItem("Ayuda");
         opcionCerrarSesion = new JMenuItem("Cerrar sesion");
+        opcionAyudaGeneral = new JMenuItem("Menú de ayuda");
         ayuda.add(opcionAyuda);
+        ayuda.add(opcionAyudaGeneral);
         menu.add(opcionCerrarSesion);
         barraMenu.add(menu);
         barraMenu.add(ayuda);
@@ -92,6 +94,14 @@ public class VentanaUsuario extends JFrame{
                 ayuda.muestraAyudaUsuario();
             }
         });
+
+        opcionAyudaGeneral.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new VentanaAyudaGeneral();
+            }
+        });
+
 
         this.setMinimumSize(new Dimension(400, 200));
         this.setResizable(true);

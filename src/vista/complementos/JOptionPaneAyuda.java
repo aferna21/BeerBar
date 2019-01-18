@@ -133,6 +133,6 @@ public class JOptionPaneAyuda extends JOptionPane {
                         "Tambien se puede acceder a la funcion de ver transacciones entre dos fechas. Esta opcion esta en la barra de menu.\n";
 ;
 
-        this.showMessageDialog(panelActual, mensaje, "Ayuda ventana gestor de usuarios", JOptionPane.INFORMATION_MESSAGE);
+        this.showMessageDialog(panelActual, mensaje, "Ayuda ventana elegir nota", JOptionPane.INFORMATION_MESSAGE);
     }
 }

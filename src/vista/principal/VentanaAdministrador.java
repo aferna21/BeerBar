@@ -21,7 +21,7 @@ public class VentanaAdministrador extends JFrame {
     JButton botonNotas, botonTransacciones, botonGestionUsuarios;
     JMenuBar barraMenu;
     JMenu ayuda, menu, copiaSeguridad;
-    JMenuItem opcionAyuda, opcionCerrarsesion, opcionGuardar, opcionCargar;
+    JMenuItem opcionAyuda, opcionCerrarsesion, opcionGuardar, opcionCargar, opcionAyudaGeneral;
     JFrame frameAdministrador;
 
     public VentanaAdministrador(String nombreUsuario){
@@ -40,7 +40,9 @@ public class VentanaAdministrador extends JFrame {
         opcionCerrarsesion = new JMenuItem("Cerrar sesion");
         opcionGuardar = new JMenuItem("Guardar una copia de seguridad");
         opcionCargar = new JMenuItem("Cargar una copiad de seguridad");
+        opcionAyudaGeneral = new JMenuItem("Menú de ayuda");
         ayuda.add(opcionAyuda);
+        ayuda.add(opcionAyudaGeneral);
         menu.add(opcionCerrarsesion);
         copiaSeguridad.add(opcionGuardar);
         copiaSeguridad.add(opcionCargar);
@@ -127,12 +129,11 @@ public class VentanaAdministrador extends JFrame {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 JFileChooser chooser = new JFileChooser();
-
                 chooser.setDialogTitle("Guardar copia de seguridad en...");
                 int selection = chooser.showSaveDialog(null);
 
 
-                if (selection  == JFileChooser.FILES_ONLY) {
+                if (selection  == JFileChooser.APPROVE_OPTION) {
                     try {
                         String ruta = chooser.getSelectedFile().toString() + ".sql";
                         FileWriter file = new FileWriter(ruta);
@@ -146,23 +147,10 @@ public class VentanaAdministrador extends JFrame {
             }
         });
 
-        opcionCargar.addActionListener(new ActionListener() {
+        opcionAyudaGeneral.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                JFileChooser chooser = new JFileChooser();
-
-                chooser.setDialogTitle("Cargar copia de seguridad.");
-                int selection = chooser.showSaveDialog(null);
-                File archivo = chooser.getSelectedFile();
-                if(archivo.getName().contains("sql")){
-                    new ControladorCopiaDeSeguridad().cargarCopiaDeSeguridad(archivo.getAbsolutePath());
-                    JOptionPane archivoincorrecto = new JOptionPane();
-                    archivoincorrecto.showMessageDialog(new JFrame().getContentPane(), "Copia cargada con exito");
-                }else{
-                    JOptionPane archivoincorrecto = new JOptionPane();
-                    archivoincorrecto.showMessageDialog(new JFrame().getContentPane(), "Error en la seleccion del archivo");
-                }
-
+            public void actionPerformed(ActionEvent e) {
+                new VentanaAyudaGeneral();
             }
         });
 

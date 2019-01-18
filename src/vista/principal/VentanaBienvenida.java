@@ -18,7 +18,7 @@ public class VentanaBienvenida extends JFrame{
     JFrame frameBienvenida;
     JMenuBar barraMenu;
     JMenu ayuda;
-    JMenuItem opcionAyuda;
+    JMenuItem opcionAyuda, opcionAyudaGeneral;
 
     public VentanaBienvenida(){
 
@@ -31,7 +31,9 @@ public class VentanaBienvenida extends JFrame{
         barraMenu = new JMenuBar();
         ayuda = new JMenu("Ayuda");
         opcionAyuda = new JMenuItem("Ayuda");
+        opcionAyudaGeneral = new JMenuItem("Menú de ayuda");
         ayuda.add(opcionAyuda);
+        ayuda.add(opcionAyudaGeneral);
         barraMenu.add(ayuda);
         this.setJMenuBar(barraMenu);
 
@@ -77,6 +79,14 @@ public class VentanaBienvenida extends JFrame{
                 ayuda.muestraAyudaBienvenida();
             }
         });
+
+        opcionAyudaGeneral.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new VentanaAyudaGeneral();
+            }
+        });
+
 
         this.setResizable(false);
         this.setVisible(true);

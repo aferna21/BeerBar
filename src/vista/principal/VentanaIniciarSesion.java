@@ -19,7 +19,7 @@ public class VentanaIniciarSesion extends JFrame {
     JFrame frameIniciarSesion;
     JMenuBar barraMenu;
     JMenu ayuda;
-    JMenuItem opcionAyuda;
+    JMenuItem opcionAyuda, opcionAyudaGeneral;
 
     public VentanaIniciarSesion(){
 
@@ -32,7 +32,9 @@ public class VentanaIniciarSesion extends JFrame {
         barraMenu = new JMenuBar();
         ayuda = new JMenu("Ayuda");
         opcionAyuda = new JMenuItem("Ayuda");
+        opcionAyudaGeneral = new JMenuItem("Menú de ayuda");
         ayuda.add(opcionAyuda);
+        ayuda.add(opcionAyudaGeneral);
         barraMenu.add(ayuda);
         this.setJMenuBar(barraMenu);
 
@@ -100,6 +102,14 @@ public class VentanaIniciarSesion extends JFrame {
                 ayuda.muestraAyudaInicioSesion();
             }
         });
+
+        opcionAyudaGeneral.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new VentanaAyudaGeneral();
+            }
+        });
+
 
         this.setResizable(false);
         this.setVisible(true);

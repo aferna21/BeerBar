@@ -20,7 +20,7 @@ public class VentanaNotasUsuario extends JFrame {
     JPanel panelNotas, panelEscribirNotaA, panelVerNotasRecibidas, panelVerNotasEnviadas;
     JMenuBar barraMenu;
     JMenu acciones, ayuda;
-    JMenuItem opcionEscribirNota, opcionVerNotasRecibidas, opcionVerNotasEnviadas, opcionAyuda;
+    JMenuItem opcionEscribirNota, opcionVerNotasRecibidas, opcionVerNotasEnviadas, opcionAyuda, opcionAyudaGeneral;
     JFrame frameVentanaNotas;
     String nombreUsuario;
     ArrayList<Nota> notasRecibidas, notasEnviadas;
@@ -43,7 +43,9 @@ public class VentanaNotasUsuario extends JFrame {
         acciones.add(opcionEscribirNota);
         acciones.add(opcionVerNotasRecibidas);
         acciones.add(opcionVerNotasEnviadas);
+        opcionAyudaGeneral = new JMenuItem("Menú de ayuda");
         ayuda.add(opcionAyuda);
+        ayuda.add(opcionAyudaGeneral);
         barraMenu.add(acciones);
         barraMenu.add(ayuda);
         this.setJMenuBar(barraMenu);
@@ -100,6 +102,14 @@ public class VentanaNotasUsuario extends JFrame {
                 ayuda.muestraAyudaNotasUsuario();
             }
         });
+
+        opcionAyudaGeneral.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new VentanaAyudaGeneral();
+            }
+        });
+
 
 
         this.setMinimumSize(new Dimension(400, 300));

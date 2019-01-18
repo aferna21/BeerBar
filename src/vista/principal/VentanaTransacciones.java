@@ -21,7 +21,7 @@ public class VentanaTransacciones extends JFrame {
     JPanel panelTransacciones, panelIntroducirVenta, panelIntroducirGasto, panelVerTransacciones;
     JMenuBar barraMenu;
     JMenu acciones, ayuda;
-    JMenuItem opcionIntroducirVenta, opcionIntroducirGasto, opcionVerTransacciones, opcionCerrarJornada, opcionAyuda;
+    JMenuItem opcionIntroducirVenta, opcionIntroducirGasto, opcionVerTransacciones, opcionCerrarJornada, opcionAyuda, opcionAyudaGeneral;
     JFrame frameVentanaTransacciones;
     String nombreUsuario;
 
@@ -40,14 +40,16 @@ public class VentanaTransacciones extends JFrame {
         opcionIntroducirGasto = new JMenuItem("Introducir un gasto");
         opcionVerTransacciones = new JMenuItem("Ver transacciones");
         opcionCerrarJornada = new JMenuItem("Cerrar jornada");
+        opcionAyudaGeneral = new JMenuItem("Menú de ayuda");
 
         opcionAyuda = new JMenuItem("Ayuda");
         acciones.add(opcionIntroducirVenta);
         acciones.add(opcionIntroducirGasto);
         acciones.add(opcionVerTransacciones);
         acciones.add(opcionCerrarJornada);
-
+        
         ayuda.add(opcionAyuda);
+        ayuda.add(opcionAyudaGeneral);
         barraMenu.add(acciones);
         barraMenu.add(ayuda);
         this.setJMenuBar(barraMenu);
@@ -119,6 +121,15 @@ public class VentanaTransacciones extends JFrame {
                 ayuda.muestraAyudaTransaccionesUsuario();
             }
         });
+
+        opcionAyudaGeneral.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new VentanaAyudaGeneral();
+            }
+        });
+
+
 
         this.setMinimumSize(new Dimension(400, 300));
         this.setResizable(true);

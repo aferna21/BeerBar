@@ -16,7 +16,7 @@ public class VentanaVerTransaccionesEntreDosFechas extends JFrame {
     JPanel panelVerEntreDosFechas, panelSelector, panelTransacciones;
     JMenu ayuda;
     JMenuBar barraMenu;
-    JMenuItem opcionAyuda;
+    JMenuItem opcionAyuda, opcionAyudaGeneral;
     JLabel textoJornadaPrincipio, textoJornadaFinal;
     JDateChooser dateChooserJornadaInicio, dateChooserJornadaFinal;
     JButton botonAceptar;
@@ -37,7 +37,9 @@ public class VentanaVerTransaccionesEntreDosFechas extends JFrame {
         opcionAyuda = new JMenuItem("Ayuda");
         ayuda = new JMenu("Ayuda");
         barraMenu = new JMenuBar();
+        opcionAyudaGeneral = new JMenuItem("Menú de ayuda");
         ayuda.add(opcionAyuda);
+        ayuda.add(opcionAyudaGeneral);
         barraMenu.add(ayuda);
         this.setJMenuBar(barraMenu);
 

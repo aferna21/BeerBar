@@ -15,7 +15,7 @@ import java.text.SimpleDateFormat;
 public class VentanaElegirJornada extends JFrame {
 
     JPanel panelSelector;
-    JMenuItem opcionVerTransaccionesEntreDosFechas, opcionAyuda;
+    JMenuItem opcionVerTransaccionesEntreDosFechas, opcionAyuda, opcionAyudaGeneral;
     JMenu acciones, ayuda;
     JMenuBar barraMenu;
     JLabel textoSeleccion;
@@ -33,7 +33,9 @@ public class VentanaElegirJornada extends JFrame {
         opcionVerTransaccionesEntreDosFechas = new JMenuItem("Ver transacciones entre 2 fechas");
         opcionAyuda = new JMenuItem("Ayuda");
         acciones.add(opcionVerTransaccionesEntreDosFechas);
+        opcionAyudaGeneral = new JMenuItem("Menú de ayuda");
         ayuda.add(opcionAyuda);
+        ayuda.add(opcionAyudaGeneral);
         barraMenu.add(acciones);
         barraMenu.add(ayuda);
         this.setJMenuBar(barraMenu);
