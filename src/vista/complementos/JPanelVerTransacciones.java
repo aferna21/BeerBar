@@ -1,7 +1,6 @@
 package vista.complementos;
 
 import controlador.ControladorCalendario;
-import controlador.ControladorInicio;
 import modelo.BeerBarException;
 import modelo.Fecha;
 import modelo.Transaccion;
@@ -11,7 +10,6 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class JPanelVerTransacciones extends JPanel {
@@ -36,12 +34,7 @@ public class JPanelVerTransacciones extends JPanel {
 
         ArrayList<Transaccion> transacciones;
 
-        if(fechaInicioString.equals(fechaFinalString)){
-            transacciones = new ControladorCalendario().obtenTransaccionesDelDia(new Fecha().fromStringAbreviadoToFecha(fechaInicioString));
-        }
-        else {
-            transacciones = new ControladorCalendario().obtenTransaccionesEnRango(new Fecha().fromStringAbreviadoToFecha(fechaInicioString), new Fecha().fromStringAbreviadoToFecha(fechaFinalString));
-        }
+        transacciones = new ControladorCalendario().obtenTransaccionesEnRango(new Fecha().fromStringAbreviadoToFecha(fechaInicioString), new Fecha().fromStringAbreviadoToFecha(fechaFinalString));
 
         for(Transaccion transaccionActual: transacciones){
 
