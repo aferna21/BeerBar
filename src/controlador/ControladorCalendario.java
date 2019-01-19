@@ -73,4 +73,8 @@ public class ControladorCalendario {
         }
         return 0;
     }
+
+    public boolean esMasTardia(Fecha fecha1, Fecha fecha2){
+        return fecha1.esMasTardiaQue(fecha2);
+    }
 }

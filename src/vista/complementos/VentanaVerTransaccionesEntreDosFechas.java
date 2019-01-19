@@ -4,6 +4,7 @@ import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JSpinnerDateEditor;
 import controlador.ControladorCalendario;
 import modelo.BeerBarException;
+import modelo.Fecha;
 import vista.principal.VentanaAyudaGeneral;
 
 import javax.swing.*;
@@ -86,6 +87,15 @@ public class VentanaVerTransaccionesEntreDosFechas extends JFrame {
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
                 String fechaInicio = dateFormat.format(dateChooserJornadaInicio.getDate());
                 String fechaFinal = dateFormat.format(dateChooserJornadaFinal.getDate());
+                try {
+                    if(new ControladorCalendario().esMasTardia(new Fecha().fromStringAbreviadoToFecha(fechaInicio), new Fecha().fromStringAbreviadoToFecha(fechaFinal))){
+                        JOptionPane errorFechas = new JOptionPane();
+                        errorFechas.showMessageDialog(frameThisVentana.getContentPane(), "Introduzca las fechas en el orden correcto.");
+                        return;
+                    }
+                } catch (BeerBarException e1) {
+                    e1.printStackTrace();
+                }
                 try {
                     panelTransacciones = new JPanelVerTransacciones(fechaInicio, fechaFinal);
                 } catch (BeerBarException e1) {

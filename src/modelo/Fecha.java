@@ -250,4 +250,25 @@ public class Fecha {
         int ano = Integer.valueOf(partes[2]);
         return new Fecha(dia, mes, ano);
     }
+
+
+    public boolean esMasTardiaQue(Fecha fecha){
+        if(this.ano < fecha.getAno()){
+            return false;
+        }else if (this.ano > fecha.getAno()){
+            return true;
+        }else{
+            if(this.mes < fecha.getMes()){
+                return false;
+            }else if( this.mes > fecha.getMes()){
+                return true;
+            }else{
+                if(this.dia < fecha.getDia()){
+                    return false;
+                }else{
+                    return true;
+                }
+            }
+        }
+    }
 }
