@@ -1,14 +1,19 @@
 package vista.complementos;
 
+import controlador.ControladorCalendario;
 import controlador.ControladorGestorDeUsuarios;
-import controlador.ControladorInicio;
+import controlador.ControladorServidorDeMensajeria;
 import modelo.BeerBarException;
+import modelo.Fecha;
+import modelo.Nota;
+import modelo.Transaccion;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class JPanelEliminarUsuario extends JPanel {
 
@@ -47,6 +52,7 @@ public class JPanelEliminarUsuario extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 boolean b = false;
+                boolean tieneNOT = false;
                 String nombreusuario = campoTextoNombreEliminar.getText();
                 if(nombreusuario.equals("admin")){
                     JOptionPane usuarioEliminado = new JOptionPane();
@@ -54,7 +60,15 @@ public class JPanelEliminarUsuario extends JPanel {
                     return;
                 }
                 try {
-                    b = new ControladorGestorDeUsuarios().eliminarUsuario(campoTextoNombreEliminar.getText());
+                    boolean tieneNotasOTransacciones = new ControladorGestorDeUsuarios().tieneNotasOTransacciones(nombreusuario);
+                    if(tieneNotasOTransacciones){
+                        tieneNOT = true;
+                        JOptionPane panelTieneAlgo = new JOptionPane();
+                        panelTieneAlgo.showMessageDialog(frameVentanaUsuarios.getContentPane(), "No se puede eliminar al usuario porque tiene notas o transacciones asociadas.");
+                    }
+                    else {
+                        b = new ControladorGestorDeUsuarios().eliminarUsuario(campoTextoNombreEliminar.getText());
+                    }
                 } catch (BeerBarException e1) {
                     e1.printStackTrace();
                 }
@@ -62,7 +76,7 @@ public class JPanelEliminarUsuario extends JPanel {
                     JOptionPane usuarioEliminado = new JOptionPane();
                     usuarioEliminado.showMessageDialog(frameVentanaUsuarios.getContentPane(), "Usuario eliminado correctamente");
                 }
-                else{
+                else if(!b && !tieneNOT) {
                     JOptionPane usuarioEliminado = new JOptionPane();
                     usuarioEliminado.showMessageDialog(frameVentanaUsuarios.getContentPane(), "No se ha podido eliminar el usuario porque no existe en la base de datos.");
                 }

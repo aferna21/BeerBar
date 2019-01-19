@@ -1,5 +1,7 @@
 package controlador;
 
+import bbdd.DAONotas;
+import bbdd.DAOTransacciones;
 import bbdd.DAOUsuarios;
 import modelo.*;
 
@@ -78,5 +80,25 @@ public class ControladorGestorDeUsuarios {
 
     public Usuario devuelveUsuario(String nombre){
         return this.gestordeusuarios.getUsuario(nombre);
+    }
+
+    public boolean tieneNotasOTransacciones(String nombreUsuario) throws BeerBarException {
+        ArrayList<Nota> notas = new DAONotas().devuelveNotas();
+        ArrayList<Transaccion> transacciones = new DAOTransacciones().devuelveTransacciones();
+        boolean tieneNotas = false;
+        boolean tieneTransacciones = false;
+        boolean tieneUnasUOtras;
+        for(Nota n: notas){
+            if(n.getRemitente().getNombre().equals(nombreUsuario) || n.getDestinatario().getNombre().equals(nombreUsuario)){
+                tieneNotas = true;
+            }
+        }
+        for(Transaccion t: transacciones){
+            if(t.getUsuario().getNombre().equals(nombreUsuario)){
+                tieneTransacciones = true;
+            }
+        }
+        tieneUnasUOtras = tieneNotas || tieneTransacciones;
+        return tieneUnasUOtras;
     }
 }
