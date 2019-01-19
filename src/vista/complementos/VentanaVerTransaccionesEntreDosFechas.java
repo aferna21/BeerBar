@@ -84,25 +84,34 @@ public class VentanaVerTransaccionesEntreDosFechas extends JFrame {
         botonAceptar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-                String fechaInicio = dateFormat.format(dateChooserJornadaInicio.getDate());
-                String fechaFinal = dateFormat.format(dateChooserJornadaFinal.getDate());
-                try {
-                    if(new ControladorCalendario().esMasTardia(new Fecha().fromStringAbreviadoToFecha(fechaInicio), new Fecha().fromStringAbreviadoToFecha(fechaFinal))){
-                        JOptionPane errorFechas = new JOptionPane();
-                        errorFechas.showMessageDialog(frameThisVentana.getContentPane(), "Introduzca las fechas en el orden correcto.");
-                        return;
-                    }
-                } catch (BeerBarException e1) {
-                    e1.printStackTrace();
-                }
-                try {
-                    panelTransacciones = new JPanelVerTransacciones(fechaInicio, fechaFinal);
-                } catch (BeerBarException e1) {
-                    e1.printStackTrace();
-                }
 
-                actualizarPanel(panelTransacciones);
+                if (dateChooserJornadaFinal.getDate() != null && dateChooserJornadaInicio.getDate() != null) {
+
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                    String fechaInicio = dateFormat.format(dateChooserJornadaInicio.getDate());
+                    String fechaFinal = dateFormat.format(dateChooserJornadaFinal.getDate());
+
+                    try {
+                        if (new ControladorCalendario().esMasTardia(new Fecha().fromStringAbreviadoToFecha(fechaInicio), new Fecha().fromStringAbreviadoToFecha(fechaFinal))) {
+                            JOptionPane errorFechas = new JOptionPane();
+                            errorFechas.showMessageDialog(frameThisVentana.getContentPane(), "Introduzca las fechas en el orden correcto.");
+                            return;
+                        }
+                    } catch (BeerBarException e1) {
+                        e1.printStackTrace();
+                    }
+                    try {
+                        panelTransacciones = new JPanelVerTransacciones(fechaInicio, fechaFinal);
+                    } catch (BeerBarException e1) {
+                        e1.printStackTrace();
+                    }
+
+                    actualizarPanel(panelTransacciones);
+
+                }else{
+                    JOptionPane errorFechasVacias = new JOptionPane();
+                    errorFechasVacias.showMessageDialog(frameThisVentana.getContentPane(), "No deje las fechas vacías.");
+                }
             }
         });
 
