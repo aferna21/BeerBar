@@ -71,15 +71,22 @@ public class VentanaElegirJornada extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-                String dateString = dateFormat.format(dateChooserJornada.getDate());
 
-                try {
-                    new VentanaTransacciones(nombreUsuario, dateString);
-                } catch (BeerBarException e1) {
-                    e1.printStackTrace();
+                if (dateChooserJornada.getDate() == null){
+                    JOptionPane usuarioIncorrecto = new JOptionPane();
+                    usuarioIncorrecto.showMessageDialog(frameElegir.getContentPane(), "Selecciona la jornada.");
+                }else{
+
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                    String dateString = dateFormat.format(dateChooserJornada.getDate());
+
+                    try {
+                        new VentanaTransacciones(nombreUsuario, dateString);
+                    } catch (BeerBarException e1) {
+                        e1.printStackTrace();
+                    }
+                    frameElegir.dispose();
                 }
-                frameElegir.dispose();
             }
         });
 
